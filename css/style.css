@@ -28,6 +28,44 @@
   box-sizing: border-box;
 }
 
+/* -------------------------------------------------------------------------
+   Grid & layout utilities
+   (replaces the handful of Bootstrap classes the markup used to depend on:
+   .row, .col-md-6, .d-flex, .justify-content-center, .align-items-center)
+   ------------------------------------------------------------------------- */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-6 {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
 html,
 body {
   margin: 0;
