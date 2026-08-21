@@ -259,7 +259,29 @@ button:focus-visible {
   line-height: 1.6;
   color: var(--ink-muted);
   max-width: 46ch;
-  margin: 24px auto 36px;
+  margin: 24px auto 20px;
+}
+
+.logistics-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 24px;
+  margin: 0 auto 48px;
+  color: var(--ink-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.logistics-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.logistics-item svg {
+  flex-shrink: 0;
+  color: var(--accent);
 }
 
 .hero-actions {
