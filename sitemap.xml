@@ -13,4 +13,16 @@
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/" />
   </url>
+  <url>
+    <loc>https://yuwri.pt/software/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/software/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/software/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/software/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/pt/software/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/software/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/software/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/software/" />
+  </url>
 </urlset>
