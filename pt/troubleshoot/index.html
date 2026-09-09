@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="diagnóstico de computador, PC não liga, computador lento, ecrã azul, vírus, suporte informático Seixal" />
+  <meta name="description" content="Responda a algumas perguntas rápidas e seja encaminhado para a solução provável, ou descubra quando é altura de trazer o computador." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Diagnosticar | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/troubleshoot/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/troubleshoot/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/troubleshoot/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuwri.pt/pt/troubleshoot/" />
+  <meta property="og:title" content="Yuwri | Diagnosticar" />
+  <meta property="og:description" content="Responda a algumas perguntas rápidas e seja encaminhado para a solução provável." />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:locale:alternate" content="en" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Yuwri | Diagnosticar" />
+  <meta name="twitter:description" content="O que se passa com o seu PC? Responda a algumas perguntas para descobrir." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link href="../../css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <div id="top">
+
+    <!-- Washi tape stripe -->
+    <div class="tape-stripe">
+      <div style="background:var(--tile-lavender);"></div>
+      <div style="background:var(--tile-mint);"></div>
+      <div style="background:var(--tile-peach);"></div>
+      <div style="background:var(--tile-sky);"></div>
+      <div style="background:var(--tile-butter);"></div>
+      <div style="background:var(--tile-blush);"></div>
+    </div>
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links">
+          <a class="link-underline" href="../../#servicos">Serviços</a>
+          <a class="link-underline" href="../software/">Software</a>
+          <a class="link-underline" href="../blog/">Dicas</a>
+          <a class="link-underline" href="./">Diagnosticar</a>
+          <a class="link-underline" href="../../#sobre">Sobre</a>
+          <a class="link-underline" href="../../#contacto">Contactos</a>
+        </div>
+        <div style="display:flex; align-items:center; gap:18px;">
+          <a href="../../troubleshoot/" class="lang-switch mono" lang="en" hreflang="en">EN</a>
+          <a href="../../#contacto" class="btn btn-primary btn-sm">Contacte-me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <h1>O Que Se Passa Com o Seu PC?</h1>
+        <p>Responda a algumas perguntas rápidas e eu encaminho-o para a solução provável, ou digo-lhe quando é altura de o trazer.</p>
+      </div>
+    </section>
+
+    <!-- Wizard -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="wizard" id="wizard-root"></div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../../#servicos">Serviços</a>
+          <a class="link-underline" href="../../#sobre">Sobre</a>
+          <a class="link-underline" href="../../#contacto">Contactos</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    window.TROUBLESHOOT_DATA = {
+      ui: {
+        eyebrow: "Diagnosticar",
+        tipEyebrow: "Experimente isto primeiro",
+        ctaEyebrow: "Vale a pena olhar com atenção",
+        back: "← Voltar",
+        startOver: "Recomeçar",
+        contactCta: "Contacte-me",
+        contactHref: "../../#contacto"
+      },
+      tree: {
+        start: {
+          question: "O que se está a passar com o seu computador?",
+          options: [
+            { label: "Não liga de todo", next: "power_1" },
+            { label: "Está muito lento", next: "slow_1" },
+            { label: "Bloqueia ou mostra um ecrã azul/preto", next: "crash_1" },
+            { label: "Acho que tem um vírus", next: "virus_1" },
+            { label: "Problemas de internet / Wi-Fi", next: "wifi_1" },
+            { label: "Outra coisa", next: "other" }
+          ]
+        },
+        power_1: {
+          question: "Acontece alguma coisa quando carrega no botão de ligar: luzes, ventoinhas, sons?",
+          options: [
+            { label: "Nada de todo", next: "power_nothing" },
+            { label: "Luzes/ventoinhas ligam, mas nada aparece no ecrã", next: "power_noDisplay" }
+          ]
+        },
+        power_nothing: {
+          question: "O cabo de alimentação está bem ligado nas duas pontas, e já experimentou outra tomada?",
+          options: [
+            { label: "Sim, experimentei, continua nada", next: "cta_hardware" },
+            { label: "Ainda não experimentei", next: "tip_checkCable" }
+          ]
+        },
+        tip_checkCable: {
+          result: "tip",
+          title: "Experimente isto primeiro",
+          body: "Ligue o cabo diretamente a uma tomada de parede, sem usar nenhuma extensão ou ficha múltipla, e verifique se o próprio cabo tem danos. Se for um portátil com bateria removível, retire a bateria, mantenha o botão de ligar premido 30 segundos, e depois ligue à corrente e tente outra vez sem a bateria."
+        },
+        power_noDisplay: {
+          question: "O monitor está ligado, e configurado para a entrada correta?",
+          options: [
+            { label: "Sim, já verifiquei", next: "cta_hardware" },
+            { label: "Não tenho a certeza / ainda não verifiquei", next: "tip_checkMonitor" }
+          ]
+        },
+        tip_checkMonitor: {
+          result: "tip",
+          title: "Experimente isto primeiro",
+          body: "Certifique-se de que o monitor está ligado e configurado para a entrada correta (HDMI, DisplayPort, ou VGA, o que estiver realmente ligado). Experimente outro cabo ou porta, se tiver algum à mão."
+        },
+        slow_1: {
+          question: "Ficou lento gradualmente ao longo do tempo, ou de repente, do nada?",
+          options: [
+            { label: "Gradualmente, ao longo de semanas ou meses", next: "slow_gradual" },
+            { label: "De repente", next: "slow_sudden" }
+          ]
+        },
+        slow_gradual: {
+          result: "tip",
+          title: "Causa provável: acumulação, não avaria",
+          body: "Isto costuma ser demasiados programas a iniciar com o Windows, um disco quase cheio, ou simplesmente anos de acumulação. Experimente o BleachBit e o Microsoft PowerToys, e veja quanto espaço livre resta no disco principal. Menos de 10–15% livre já abranda bastante as coisas.",
+          link: { href: "../software/", text: "Veja as ferramentas de limpeza que recomendo" }
+        },
+        slow_sudden: {
+          result: "tip",
+          title: "Vale a pena excluir: malware ou um disco a falhar",
+          body: "Uma lentidão súbita é mais preocupante do que uma gradual. Faça uma verificação com o Malwarebytes, e veja a saúde do disco com o HWiNFO. Se a verificação estiver limpa e o disco estiver saudável mas continuar lento, vale a pena olhar com atenção.",
+          link: { href: "../software/", text: "Encontre essas ferramentas na minha página de software" }
+        },
+        crash_1: {
+          question: "Acontece aleatoriamente, ou só ao fazer algo específico, como jogar ou abrir um programa em concreto?",
+          options: [
+            { label: "Aleatoriamente, sem padrão claro", next: "crash_random" },
+            { label: "Só numa tarefa específica", next: "crash_specific" }
+          ]
+        },
+        crash_random: {
+          result: "cta",
+          title: "Este vale a pena olhar com atenção",
+          body: "Crashes aleatórios e ecrãs azuis/pretos costumam estar relacionados com hardware: memória RAM, um disco, ou sobreaquecimento. Anote qualquer código de erro que veja (uma fotografia do ecrã ajuda bastante) e entre em contacto."
+        },
+        crash_specific: {
+          result: "tip",
+          title: "Experimente isto primeiro",
+          body: "Isto costuma apontar para um problema de driver ou software com esse programa específico. Os drivers gráficos são o culpado mais comum. Experimente atualizar os drivers gráficos primeiro. Se continuar a acontecer depois disso, vale a pena olhar com mais atenção."
+        },
+        virus_1: {
+          question: "Está a ver mensagens de resgate, ficheiros bloqueados, ou pop-ups a exigir pagamento?",
+          options: [
+            { label: "Sim", next: "virus_ransom" },
+            { label: "Não, só está estranho, lento, ou com pop-ups esquisitos", next: "virus_general" }
+          ]
+        },
+        virus_ransom: {
+          result: "cta",
+          title: "Pare e desligue-se da rede",
+          body: "Desligue o computador da internet já (desligue o cabo ou o Wi-Fi) e não pague nada. Não tente resolver isto sozinho; entre em contacto assim que puder."
+        },
+        virus_general: {
+          result: "tip",
+          title: "Experimente isto primeiro",
+          body: "Faça uma verificação completa com o Malwarebytes, e depois uma segunda opinião com o Microsoft Defender. Não clique em nada dentro de pop-ups. Feche-os pela barra de tarefas ou pelo gestor de tarefas, em vez de clicar em qualquer botão dentro do próprio pop-up.",
+          link: { href: "../software/", text: "Obtenha o Malwarebytes na minha página de software" }
+        },
+        wifi_1: {
+          question: "É só este dispositivo, ou a internet está em baixo para tudo, telemóveis incluídos?",
+          options: [
+            { label: "Só este computador", next: "wifi_oneDevice" },
+            { label: "Está tudo em baixo", next: "wifi_everything" }
+          ]
+        },
+        wifi_everything: {
+          result: "tip",
+          title: "Este é do router, não do PC",
+          body: "Reinicie o router: desligue-o, espere 30 segundos, volte a ligar, e dê-lhe uns minutos. Se continuar em baixo para todos os dispositivos depois disso, é uma chamada para o seu fornecedor de internet, não uma reparação de computador."
+        },
+        wifi_oneDevice: {
+          result: "tip",
+          title: "Experimente isto primeiro",
+          body: "Esqueça a rede Wi-Fi nesse computador e volte a ligar-se do zero. Se isso não ajudar, pode ser um problema de driver com o adaptador Wi-Fi, e vale a pena trazer se reiniciar e voltar a ligar não resolver."
+        },
+        other: {
+          result: "cta",
+          title: "Vamos só falar sobre isso",
+          body: "Nem todos os problemas encaixam perfeitamente numa checklist, e não faz mal. Diga-me o que se passa e eu descubro o melhor próximo passo."
+        },
+        cta_hardware: {
+          result: "cta",
+          title: "Isto precisa de uma vista de olhos a sério",
+          body: "A este ponto é provavelmente um problema de hardware que precisa de diagnóstico presencial, e é exatamente isso que eu faço. Entre em contacto e resolvemos isto."
+        }
+      }
+    };
+  </script>
+  <script src="../../js/troubleshoot-wizard.js"></script>
+</body>
+
+</html>

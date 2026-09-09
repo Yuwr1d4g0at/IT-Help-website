@@ -40,6 +40,7 @@
       lines.push(
         "winget install --id " +
           c.dataset.winget +
+          (c.dataset.source ? " -s " + c.dataset.source : "") +
           " -e --silent --accept-package-agreements --accept-source-agreements"
       );
       lines.push("echo.");

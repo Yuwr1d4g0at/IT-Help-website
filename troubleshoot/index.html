@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="computer troubleshooting, PC won't turn on, computer slow, blue screen, virus, Seixal IT support" />
+  <meta name="description" content="Answer a couple of quick questions and get pointed to the likely fix, or find out when it's time to just bring it in." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Troubleshoot | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/troubleshoot/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/troubleshoot/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/troubleshoot/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuwri.pt/troubleshoot/" />
+  <meta property="og:title" content="Yuwri | Troubleshoot" />
+  <meta property="og:description" content="Answer a couple of quick questions and get pointed to the likely fix." />
+  <meta property="og:locale" content="en" />
+  <meta property="og:locale:alternate" content="pt_PT" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Yuwri | Troubleshoot" />
+  <meta name="twitter:description" content="What's wrong with your PC? Answer a couple of questions to find out." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link href="../css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <div id="top">
+
+    <!-- Washi tape stripe -->
+    <div class="tape-stripe">
+      <div style="background:var(--tile-lavender);"></div>
+      <div style="background:var(--tile-mint);"></div>
+      <div style="background:var(--tile-peach);"></div>
+      <div style="background:var(--tile-sky);"></div>
+      <div style="background:var(--tile-butter);"></div>
+      <div style="background:var(--tile-blush);"></div>
+    </div>
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links">
+          <a class="link-underline" href="../#services">Services</a>
+          <a class="link-underline" href="../software/">Software</a>
+          <a class="link-underline" href="../blog/">Tips</a>
+          <a class="link-underline" href="./">Troubleshoot</a>
+          <a class="link-underline" href="../#about">About</a>
+          <a class="link-underline" href="../#contact">Contact</a>
+        </div>
+        <div style="display:flex; align-items:center; gap:18px;">
+          <a href="../pt/troubleshoot/" class="lang-switch mono" lang="pt-PT" hreflang="pt-PT">PT</a>
+          <a href="../#contact" class="btn btn-primary btn-sm">Contact Me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <h1>What's Wrong With Your PC?</h1>
+        <p>Answer a couple of quick questions and I'll point you to the likely fix, or I'll tell you when it's time to just bring it in.</p>
+      </div>
+    </section>
+
+    <!-- Wizard -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="wizard" id="wizard-root"></div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../#services">Services</a>
+          <a class="link-underline" href="../#about">About</a>
+          <a class="link-underline" href="../#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    window.TROUBLESHOOT_DATA = {
+      ui: {
+        eyebrow: "Troubleshoot",
+        tipEyebrow: "Try this first",
+        ctaEyebrow: "Worth a proper look",
+        back: "← Back",
+        startOver: "Start over",
+        contactCta: "Contact Me",
+        contactHref: "../#contact"
+      },
+      tree: {
+        start: {
+          question: "What's happening with your computer?",
+          options: [
+            { label: "It won't turn on at all", next: "power_1" },
+            { label: "It's very slow", next: "slow_1" },
+            { label: "It crashes or shows a blue/black screen", next: "crash_1" },
+            { label: "I think it has a virus", next: "virus_1" },
+            { label: "No internet / Wi-Fi problems", next: "wifi_1" },
+            { label: "Something else", next: "other" }
+          ]
+        },
+        power_1: {
+          question: "Does anything happen at all when you press the power button: lights, fans, sounds?",
+          options: [
+            { label: "Nothing at all", next: "power_nothing" },
+            { label: "Lights/fans turn on, but nothing shows on screen", next: "power_noDisplay" }
+          ]
+        },
+        power_nothing: {
+          question: "Is the power cable firmly plugged in at both ends, and have you tried a different wall socket?",
+          options: [
+            { label: "Yes, tried that, still nothing", next: "cta_hardware" },
+            { label: "Haven't tried that yet", next: "tip_checkCable" }
+          ]
+        },
+        tip_checkCable: {
+          result: "tip",
+          title: "Try this first",
+          body: "Plug the cable straight into a wall socket, skipping any power strip or extension lead, and check the cable itself for damage. If it's a laptop with a removable battery, take the battery out, hold the power button for 30 seconds, then plug it in and try again without the battery."
+        },
+        power_noDisplay: {
+          question: "Is the monitor itself switched on, and set to the right input source?",
+          options: [
+            { label: "Yes, checked that", next: "cta_hardware" },
+            { label: "Not sure / haven't checked", next: "tip_checkMonitor" }
+          ]
+        },
+        tip_checkMonitor: {
+          result: "tip",
+          title: "Try this first",
+          body: "Make sure the monitor is powered on and set to the correct input (HDMI, DisplayPort, or VGA, whichever cable is actually connected). Try a different cable or port if you have one to hand."
+        },
+        slow_1: {
+          question: "Did it get slow gradually over time, or suddenly, out of nowhere?",
+          options: [
+            { label: "Gradually, over weeks or months", next: "slow_gradual" },
+            { label: "Suddenly", next: "slow_sudden" }
+          ]
+        },
+        slow_gradual: {
+          result: "tip",
+          title: "Likely cause: clutter, not damage",
+          body: "This is usually too many programs starting up with Windows, a nearly-full hard drive, or just years of accumulated junk. Try BleachBit and Microsoft PowerToys, and check how much free space is left on your main drive. Under 10–15% free will slow things down a lot.",
+          link: { href: "../software/", text: "See my recommended cleanup tools" }
+        },
+        slow_sudden: {
+          result: "tip",
+          title: "Worth ruling out: malware or a failing drive",
+          body: "A sudden slowdown is more concerning than a gradual one. Run a scan with Malwarebytes, and check your drive's health with HWiNFO. If the scan is clean and the drive checks out healthy but it's still slow, it's worth having it looked at properly.",
+          link: { href: "../software/", text: "Find those tools on my software page" }
+        },
+        crash_1: {
+          question: "Does it happen randomly, or only when doing something specific, like gaming or opening a certain program?",
+          options: [
+            { label: "Randomly, no clear pattern", next: "crash_random" },
+            { label: "Only during a specific task", next: "crash_specific" }
+          ]
+        },
+        crash_random: {
+          result: "cta",
+          title: "This one's worth a proper look",
+          body: "Random crashes and blue/black screens are often hardware-related: RAM, a drive, or overheating. Note down any error code you see (a photo of the screen helps a lot) and get in touch."
+        },
+        crash_specific: {
+          result: "tip",
+          title: "Try this first",
+          body: "This usually points to a driver or software issue with that specific program. Graphics drivers are the most common culprit. Try updating your graphics drivers first. If it keeps happening after that, it's worth a closer look."
+        },
+        virus_1: {
+          question: "Are you seeing ransom messages, locked files, or pop-ups demanding payment?",
+          options: [
+            { label: "Yes", next: "virus_ransom" },
+            { label: "No, just acting strange, slow, or odd pop-ups", next: "virus_general" }
+          ]
+        },
+        virus_ransom: {
+          result: "cta",
+          title: "Stop and disconnect",
+          body: "Disconnect the computer from the internet right now (unplug the cable or turn off Wi-Fi) and don't pay anything. Don't try to fix this alone; get in touch as soon as you can."
+        },
+        virus_general: {
+          result: "tip",
+          title: "Try this first",
+          body: "Run a full scan with Malwarebytes, then a second-opinion scan with Microsoft Defender. Don't click anything inside pop-ups. Close them from the taskbar or task manager instead of clicking any button in the pop-up itself.",
+          link: { href: "../software/", text: "Get Malwarebytes from my software page" }
+        },
+        wifi_1: {
+          question: "Is it just this one device, or is the internet down for everything, phones included?",
+          options: [
+            { label: "Just this computer", next: "wifi_oneDevice" },
+            { label: "Everything's down", next: "wifi_everything" }
+          ]
+        },
+        wifi_everything: {
+          result: "tip",
+          title: "This one's on your router, not the PC",
+          body: "Restart your router: unplug it, wait 30 seconds, plug it back in, and give it a couple of minutes. If it's still down for every device afterward, that's a call to your internet provider, not a computer repair."
+        },
+        wifi_oneDevice: {
+          result: "tip",
+          title: "Try this first",
+          body: "Forget the Wi-Fi network on that computer and reconnect from scratch. If that doesn't help, it may be a driver issue with the Wi-Fi adapter, and it's worth bringing in if restarting and reconnecting doesn't fix it."
+        },
+        other: {
+          result: "cta",
+          title: "Let's just talk about it",
+          body: "Not every problem fits neatly into a checklist, and that's fine. Tell me what's going on and I'll figure out the best next step."
+        },
+        cta_hardware: {
+          result: "cta",
+          title: "This needs a proper look",
+          body: "At this point it's likely a hardware issue that needs hands-on diagnosis, and that's exactly what I do. Get in touch and we'll sort it out."
+        }
+      }
+    };
+  </script>
+  <script src="../js/troubleshoot-wizard.js"></script>
+</body>
+
+</html>

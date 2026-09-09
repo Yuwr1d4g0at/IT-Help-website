@@ -8,10 +8,10 @@
 
   <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
   <meta name="keywords" content="recommended software, antivirus, VPN, remote desktop, password manager, office suite, ad blocker, email client, cloud storage, calendar app, media player, file archiver, uninstaller, file search, screen capture, messaging app, photo editor, note taking, Seixal" />
-  <meta name="description" content="The antivirus, VPN, and productivity software Yuwri actually recommends to clients in Seixal — trusted picks, not filler." />
+  <meta name="description" content="The antivirus, VPN, and productivity software Yuwri actually recommends to clients in Seixal: trusted picks, not filler." />
   <meta name="author" content="Yuwri" />
 
-  <title>Yuwri — Recommended Software</title>
+  <title>Yuwri | Recommended Software</title>
 
   <link rel="alternate" hreflang="en" href="https://yuwri.pt/software/" />
   <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/software/" />
@@ -19,12 +19,12 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yuwri.pt/software/" />
-  <meta property="og:title" content="Yuwri — Recommended Software" />
+  <meta property="og:title" content="Yuwri | Recommended Software" />
   <meta property="og:description" content="The antivirus, VPN, and productivity software Yuwri actually recommends to clients in Seixal." />
   <meta property="og:locale" content="en" />
   <meta property="og:locale:alternate" content="pt_PT" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Yuwri — Recommended Software" />
+  <meta name="twitter:title" content="Yuwri | Recommended Software" />
   <meta name="twitter:description" content="The antivirus, VPN, and productivity software Yuwri actually recommends to clients in Seixal." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,8 +57,9 @@
         <div class="nav-links">
           <a class="link-underline" href="../#services">Services</a>
           <a class="link-underline" href="./">Software</a>
+          <a class="link-underline" href="../blog/">Tips</a>
+          <a class="link-underline" href="../troubleshoot/">Troubleshoot</a>
           <a class="link-underline" href="../#about">About</a>
-          <a class="link-underline" href="../#approach">Approach</a>
           <a class="link-underline" href="../#contact">Contact</a>
         </div>
         <div style="display:flex; align-items:center; gap:18px;">
@@ -83,7 +84,7 @@
         <div class="picker-bar">
           <div class="picker-info">
             <strong id="picker-count" data-singular="{n} selected" data-plural="{n} selected">0 selected</strong>
-            <span class="picker-hint">Tick anything with a checkbox below, then get one script that installs it all &mdash; via winget, already built into Windows 10/11. Nothing is hosted or bundled by me.</span>
+            <span class="picker-hint">Tick anything with a checkbox below, then get one script that installs it all. It runs on winget, already built into Windows 10/11, and nothing is hosted or bundled by me.</span>
           </div>
           <button type="button" class="btn btn-primary btn-sm" id="picker-generate" disabled>Generate Install Script</button>
         </div>
@@ -94,7 +95,7 @@
             <a href="#" id="picker-download" class="btn btn-primary btn-sm" download="install-picks.bat">Download install-picks.bat</a>
             <button type="button" class="btn btn-outline btn-sm" id="picker-copy">Copy script</button>
           </div>
-          <p class="picker-note">Needs winget (already on Windows 10 2018+ and Windows 11). Double-click the file, choose "More info &rarr; Run anyway" if Windows SmartScreen asks &mdash; that's normal for any unsigned script, same as one you'd write yourself &mdash; and it installs everything with no further prompts.</p>
+          <p class="picker-note">Needs winget (already on Windows 10 2018+ and Windows 11). Double-click the file, and choose "More info &rarr; Run anyway" if Windows SmartScreen asks. That's normal for any unsigned script, same as one you'd write yourself, and it installs everything with no further prompts.</p>
         </div>
 
         <div class="software-sections">
@@ -130,7 +131,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="MullvadVPN.MullvadVPN" data-name="Mullvad VPN" aria-label="Include Mullvad VPN in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-sky);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><path d="M4 4l16 16"/></svg></span>
-                <a href="https://mullvad.net/" class="app-name" target="_blank" rel="noopener" title="A Swedish VPN that doesn't even ask for your email &mdash; pay with cash or crypto, get an anonymous account number, and go. About as close to a truly no-logs VPN as it gets.">Mullvad VPN</a>
+                <a href="https://mullvad.net/" class="app-name" target="_blank" rel="noopener" title="A Swedish VPN that doesn't even ask for your email. Pay with cash or crypto, get an anonymous account number, and go. About as close to a truly no-logs VPN as it gets.">Mullvad VPN</a>
               </div>
             </div>
           </div>
@@ -147,6 +148,11 @@
                 <input type="checkbox" class="pick-check" data-winget="Proton.ProtonPass" data-name="Proton Pass" aria-label="Include Proton Pass in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-peach);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4"/><path d="M10.5 12.5 19 4M15 6l3 3M12.5 8.5l2.5 2.5"/></svg></span>
                 <a href="https://proton.me/pass" class="app-name" target="_blank" rel="noopener" title="Proton's own password manager, built into the same privacy-focused account as Mail, Calendar, and Drive. Worth it if you want everything under one login.">Proton Pass</a>
+              </div>
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="DominikReichl.KeePass" data-name="KeePass" aria-label="Include KeePass in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-mint);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="4"/><path d="M12 12h9"/><path d="M17 12v3"/><path d="M20 12v2"/></svg></span>
+                <a href="https://keepass.info/" class="app-name" target="_blank" rel="noopener" title="A local password manager that keeps everything in a single encrypted file on your own PC, with nothing synced to the cloud unless you set that up yourself. A more hands-on, fully offline alternative to Bitwarden.">KeePass</a>
               </div>
             </div>
           </div>
@@ -173,7 +179,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Brave.Brave" data-name="Brave" aria-label="Include Brave in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-lavender);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18"/><circle cx="6" cy="6" r="0.6" fill="currentColor" stroke="none"/></svg></span>
-                <a href="https://brave.com/" class="app-name" target="_blank" rel="noopener" title="A Chromium-based browser with ad and tracker blocking built in from the start &mdash; no extensions required. Chrome's compatibility, without Google watching.">Brave</a>
+                <a href="https://brave.com/" class="app-name" target="_blank" rel="noopener" title="A Chromium-based browser with ad and tracker blocking built in from the start, no extensions required. Chrome's compatibility, without Google watching.">Brave</a>
               </div>
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Zen-Team.Zen-Browser" data-name="Zen Browser" aria-label="Include Zen Browser in the installer">
@@ -183,7 +189,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Vivaldi.Vivaldi" data-name="Vivaldi" aria-label="Include Vivaldi in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-blush);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c2-6 4-9 8-9s6 3 8 9"/><path d="M4 16h16"/></svg></span>
-                <a href="https://vivaldi.com/" class="app-name" target="_blank" rel="noopener" title="A heavily customizable Chromium browser built by ex-Opera developers &mdash; tab stacking, built-in notes, and more knobs to turn than almost anything else out there.">Vivaldi</a>
+                <a href="https://vivaldi.com/" class="app-name" target="_blank" rel="noopener" title="A heavily customizable Chromium browser built by ex-Opera developers, with tab stacking, built-in notes, and more knobs to turn than almost anything else out there.">Vivaldi</a>
               </div>
             </div>
           </div>
@@ -194,7 +200,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="TheDocumentFoundation.LibreOffice" data-name="LibreOffice" aria-label="Include LibreOffice in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-sky);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
-                <a href="https://www.libreoffice.org/" class="app-name" target="_blank" rel="noopener" title="A full office suite &mdash; word processor, spreadsheets, presentations &mdash; that opens and saves Microsoft Office files without the subscription.">LibreOffice</a>
+                <a href="https://www.libreoffice.org/" class="app-name" target="_blank" rel="noopener" title="A full office suite (word processor, spreadsheets, presentations) that opens and saves Microsoft Office files without the subscription.">LibreOffice</a>
               </div>
             </div>
           </div>
@@ -205,7 +211,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="GIMP.GIMP" data-name="GIMP" aria-label="Include GIMP in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-peach);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-4 4-3-3-5 5"/></svg></span>
-                <a href="https://www.gimp.org/" class="app-name" target="_blank" rel="noopener" title="A full photo editor that rivals Photoshop for most everyday edits &mdash; retouching, layers, filters &mdash; completely free.">GIMP</a>
+                <a href="https://www.gimp.org/" class="app-name" target="_blank" rel="noopener" title="A full photo editor that rivals Photoshop for most everyday edits: retouching, layers, filters. Completely free.">GIMP</a>
               </div>
             </div>
           </div>
@@ -216,7 +222,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Joplin.Joplin" data-name="Joplin" aria-label="Include Joplin in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-sky);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h5"/></svg></span>
-                <a href="https://joplinapp.org/" class="app-name" target="_blank" rel="noopener" title="Free, open-source note-taking with end-to-end encryption &mdash; notes sync between devices without a big tech company reading them.">Joplin</a>
+                <a href="https://joplinapp.org/" class="app-name" target="_blank" rel="noopener" title="Free, open-source note-taking with end-to-end encryption. Notes sync between devices without a big tech company reading them.">Joplin</a>
               </div>
             </div>
           </div>
@@ -232,7 +238,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Spotify.Spotify" data-name="Spotify" aria-label="Include Spotify in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-mint);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17" r="2.3"/><circle cx="17" cy="15" r="2.3"/><path d="M9.3 17V5.5L19.3 4v10.5"/></svg></span>
-                <a href="https://www.spotify.com/" class="app-name" target="_blank" rel="noopener" title="The music streaming app most people already use &mdash; free tier included, no separate download needed for anything else.">Spotify</a>
+                <a href="https://www.spotify.com/" class="app-name" target="_blank" rel="noopener" title="The music streaming app most people already use, with a free tier included and no separate download needed for anything else.">Spotify</a>
               </div>
             </div>
           </div>
@@ -244,6 +250,16 @@
                 <input type="checkbox" class="pick-check" data-winget="7zip.7zip" data-name="7-Zip" aria-label="Include 7-Zip in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-blush);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M3 7l1.5-3h15L21 7"/><path d="M10 12h4"/></svg></span>
                 <a href="https://www.7-zip.org/" class="app-name" target="_blank" rel="noopener" title="A free, open-source archiver that opens and creates every compressed format. No nag screens like the WinRAR &quot;trial&quot; you've probably seen.">7-Zip</a>
+              </div>
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="Giorgiotani.Peazip" data-name="PeaZip" aria-label="Include PeaZip in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-mint);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M12 9v8"/><path d="M10.5 10.5h3M10.5 13h3M10.5 15.5h3"/></svg></span>
+                <a href="https://peazip.github.io/" class="app-name" target="_blank" rel="noopener" title="Another free, open-source archiver, with a different interface than 7-Zip and support for a few extra formats. Worth trying if 7-Zip's interface doesn't click for you.">PeaZip</a>
+              </div>
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="RARLab.WinRAR" data-name="WinRAR" aria-label="Include WinRAR in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-butter);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16"/><path d="M10 7h4M10 10h4M10 13h4M10 16h4"/></svg></span>
+                <a href="https://www.win-rar.com/" class="app-name" target="_blank" rel="noopener" title="The archiver most people already know, and the one behind that familiar &quot;trial expired&quot; nag screen that never actually locks you out. 7-Zip and PeaZip above do the same job for free, with no nagging.">WinRAR</a>
               </div>
             </div>
           </div>
@@ -259,7 +275,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Mozilla.Thunderbird" data-name="Thunderbird" aria-label="Include Thunderbird in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-blush);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h4l2 3h4l2-3h4"/><path d="M4 12V6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v6"/><path d="M4 12v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6"/></svg></span>
-                <a href="https://www.thunderbird.net/" class="app-name" target="_blank" rel="noopener" title="A free desktop email client from Mozilla &mdash; works with any address you already have (Gmail, Outlook, etc.), unlike Proton Mail which is its own separate service.">Thunderbird</a>
+                <a href="https://www.thunderbird.net/" class="app-name" target="_blank" rel="noopener" title="A free desktop email client from Mozilla. Works with any address you already have (Gmail, Outlook, etc.), unlike Proton Mail which is its own separate service.">Thunderbird</a>
               </div>
             </div>
           </div>
@@ -283,6 +299,16 @@
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-lavender);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C6.5 3 2 6.8 2 11.5c0 2.4 1.2 4.6 3.1 6.1L4 21l3.9-1.3c1.3.5 2.7.8 4.1.8 5.5 0 10-3.8 10-8.5S17.5 3 12 3z"/></svg></span>
                 <a href="https://signal.org/" class="app-name" target="_blank" rel="noopener" title="End-to-end encrypted messaging and calls, from a non-profit with no ads and no data to sell. The most private mainstream alternative to WhatsApp.">Signal</a>
               </div>
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="Microsoft.Teams" data-name="Microsoft Teams" aria-label="Include Microsoft Teams in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-sky);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="12" height="10" rx="2"/><path d="M15 10l6-3v10l-6-3z"/></svg></span>
+                <a href="https://www.microsoft.com/microsoft-teams/log-in" class="app-name" target="_blank" rel="noopener" title="Microsoft's video calling and chat app, mostly known from work and school, but just as usable for free calls with family. Handy to have on hand even if your workplace already installs it for you.">Microsoft Teams</a>
+              </div>
+              <div class="app-row">
+                <span class="pick-spacer" aria-hidden="true"></span>
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-blush);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-4 4v-4H6a2 2 0 0 1-2-2z"/></svg></span>
+                <a href="https://fluxer.app/" class="app-name" target="_blank" rel="noopener" title="A newer, open-source alternative to Discord built by an independent developer, with the same chat, voice, and community features and the option to self-host. Worth knowing about, but there's no winget package for it yet, so it isn't in the install script.">Fluxer Chat</a>
+              </div>
             </div>
           </div>
 
@@ -292,12 +318,12 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="AnyDeskSoftwareGmbH.AnyDesk" data-name="AnyDesk" aria-label="Include AnyDesk in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-butter);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8"/><path d="M12 16v4"/></svg></span>
-                <a href="https://anydesk.com/" class="app-name" target="_blank" rel="noopener" title="What I use for remote support sessions &mdash; lightweight, fast to set up, and safe to close once we're done.">AnyDesk</a>
+                <a href="https://anydesk.com/" class="app-name" target="_blank" rel="noopener" title="What I use for remote support sessions: lightweight, fast to set up, and safe to close once we're done.">AnyDesk</a>
               </div>
               <div class="app-row">
                 <span class="pick-spacer" aria-hidden="true"></span>
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-lavender);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="12" height="9" rx="1.5"/><rect x="10" y="10" width="12" height="9" rx="1.5"/></svg></span>
-                <a href="https://rustdesk.com/" class="app-name" target="_blank" rel="noopener" title="An open-source alternative to AnyDesk/TeamViewer that you can even self-host. Worth knowing about, though not installable via winget right now &mdash; pulled from the repository over a false-positive antivirus flag, still unresolved.">RustDesk</a>
+                <a href="https://rustdesk.com/" class="app-name" target="_blank" rel="noopener" title="An open-source alternative to AnyDesk/TeamViewer that you can even self-host. Worth knowing about, though not installable via winget right now: it was pulled from the repository over a false-positive antivirus flag, still unresolved.">RustDesk</a>
               </div>
             </div>
           </div>
@@ -334,7 +360,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Klocman.BulkCrapUninstaller" data-name="BCUninstaller" aria-label="Include BCUninstaller in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-sky);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9l6 6M15 9l-6 6"/></svg></span>
-                <a href="https://www.bcuninstaller.com/" class="app-name" target="_blank" rel="noopener" title="A free, open-source bulk uninstaller &mdash; select a dozen programs at once and remove them all, leftover files included.">BCUninstaller</a>
+                <a href="https://www.bcuninstaller.com/" class="app-name" target="_blank" rel="noopener" title="A free, open-source bulk uninstaller. Select a dozen programs at once and remove them all, leftover files included.">BCUninstaller</a>
               </div>
             </div>
           </div>
@@ -345,7 +371,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Microsoft.PowerToys" data-name="Microsoft PowerToys" aria-label="Include Microsoft PowerToys in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-butter);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="18" height="9" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M3 14h18"/></svg></span>
-                <a href="https://learn.microsoft.com/en-us/windows/powertoys/install" class="app-name" target="_blank" rel="noopener" title="Official Microsoft utilities &mdash; window snapping, batch file rename, a color picker, and more. Genuinely useful, and free straight from Microsoft.">Microsoft PowerToys</a>
+                <a href="https://learn.microsoft.com/en-us/windows/powertoys/install" class="app-name" target="_blank" rel="noopener" title="Official Microsoft utilities: window snapping, batch file rename, a color picker, and more. Genuinely useful, and free straight from Microsoft.">Microsoft PowerToys</a>
               </div>
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="voidtools.Everything" data-name="Everything" aria-label="Include Everything in the installer">
@@ -361,12 +387,22 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Proton.ProtonDrive" data-name="Proton Drive" aria-label="Include Proton Drive in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-peach);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.5-7.97A5 5 0 0 1 16.5 8.06 4.5 4.5 0 0 1 17.5 17H7z"/><path d="M12 13v6"/><path d="M9.5 15.5 12 13l2.5 2.5"/></svg></span>
-                <a href="https://proton.me/drive" class="app-name" target="_blank" rel="noopener" title="End-to-end encrypted cloud storage with a genuinely usable free tier &mdash; a privacy-first alternative to Google Drive or OneDrive for backing up what matters.">Proton Drive</a>
+                <a href="https://proton.me/drive" class="app-name" target="_blank" rel="noopener" title="End-to-end encrypted cloud storage with a genuinely usable free tier, and a privacy-first alternative to Google Drive or OneDrive for backing up what matters.">Proton Drive</a>
               </div>
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Duplicati.Duplicati" data-name="Duplicati" aria-label="Include Duplicati in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-blush);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 16l9 5 9-5"/></svg></span>
-                <a href="https://duplicati.com/" class="app-name" target="_blank" rel="noopener" title="Free and open-source, and encrypts backups before they leave your PC &mdash; works with your own cloud storage or a plain external drive, no subscription needed.">Duplicati</a>
+                <a href="https://duplicati.com/" class="app-name" target="_blank" rel="noopener" title="Free and open-source, and encrypts backups before they leave your PC. Works with your own cloud storage or a plain external drive, no subscription needed.">Duplicati</a>
+              </div>
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="Dropbox.Dropbox" data-name="Dropbox" aria-label="Include Dropbox in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-sky);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>
+                <a href="https://www.dropbox.com/" class="app-name" target="_blank" rel="noopener" title="One of the original cloud storage services, and still one of the easiest for sharing a folder with other people. The free tier is small; Proton Drive above is the more privacy-focused pick if that matters more to you than convenience.">Dropbox</a>
+              </div>
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="Microsoft.OneDrive" data-name="OneDrive" aria-label="Include OneDrive in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-lavender);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 17a4 4 0 0 1-1-7.9A5 5 0 0 1 16 8a4 4 0 0 1 1 7.9z"/></svg></span>
+                <a href="https://onedrive.live.com/about/" class="app-name" target="_blank" rel="noopener" title="Microsoft's cloud storage, tied into the same account as Windows and Office. It's usually built in already, but this reinstalls it cleanly if it's missing or acting up.">OneDrive</a>
               </div>
             </div>
           </div>
@@ -377,7 +413,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="REALiX.HWiNFO" data-name="HWiNFO" aria-label="Include HWiNFO in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-mint);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15a8 8 0 0 1 16 0"/><path d="M12 15l3.5-4.5"/><circle cx="12" cy="15" r="1"/></svg></span>
-                <a href="https://www.hwinfo.com/" class="app-name" target="_blank" rel="noopener" title="Deep hardware diagnostics &mdash; temperatures, voltages, drive health, all of it. What I check first when a PC is running hot or acting up.">HWiNFO</a>
+                <a href="https://www.hwinfo.com/" class="app-name" target="_blank" rel="noopener" title="Deep hardware diagnostics: temperatures, voltages, drive health, all of it. What I check first when a PC is running hot or acting up.">HWiNFO</a>
               </div>
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="CPUID.CPU-Z" data-name="CPU-Z" aria-label="Include CPU-Z in the installer">
@@ -393,7 +429,12 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="LocalSend.LocalSend" data-name="LocalSend" aria-label="Include LocalSend in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-peach);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="18" cy="18" r="2.2"/><path d="M8 11l8-4M8 13l8 4"/></svg></span>
-                <a href="https://localsend.org/" class="app-name" target="_blank" rel="noopener" title="Send files between your phone, laptop, and PC over the same Wi-Fi &mdash; no cloud, no cable, no size limits. Free and open-source.">LocalSend</a>
+                <a href="https://localsend.org/" class="app-name" target="_blank" rel="noopener" title="Send files between your phone, laptop, and PC over the same Wi-Fi, no cloud, no cable, no size limits. Free and open-source.">LocalSend</a>
+              </div>
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="TimKosse.FileZilla.Client" data-name="FileZilla" aria-label="Include FileZilla in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-lavender);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16V8"/><path d="M4 11l3-3 3 3"/><path d="M17 8v8"/><path d="M14 13l3 3 3-3"/></svg></span>
+                <a href="https://filezilla-project.org/" class="app-name" target="_blank" rel="noopener" title="A free FTP/SFTP client for uploading and downloading files to a website or server. The standard tool if you manage your own site or do any web work.">FileZilla</a>
               </div>
             </div>
           </div>
@@ -405,6 +446,11 @@
                 <input type="checkbox" class="pick-check" data-winget="WinDirStat.WinDirStat" data-name="WinDirStat" aria-label="Include WinDirStat in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-peach);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="5"/><rect x="13" y="10" width="8" height="4"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="16" width="8" height="5"/></svg></span>
                 <a href="https://windirstat.net/" class="app-name" target="_blank" rel="noopener" title="A visual map of what's actually eating your disk space, folder by folder. The fastest way to find out why a drive is suddenly full.">WinDirStat</a>
+              </div>
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="AntibodySoftware.WizTree" data-name="WizTree" aria-label="Include WizTree in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-sky);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="12" y="3" width="4" height="8" rx="1"/><rect x="18" y="3" width="3" height="8" rx="1"/><rect x="12" y="13" width="9" height="8" rx="1"/></svg></span>
+                <a href="https://diskanalyzer.com/" class="app-name" target="_blank" rel="noopener" title="Shows what's eating your disk space just like WinDirStat above, but reads the drive's file table directly, so it finishes in seconds instead of minutes on a full drive.">WizTree</a>
               </div>
             </div>
           </div>
@@ -426,7 +472,7 @@
               <div class="app-row">
                 <span class="pick-spacer" aria-hidden="true"></span>
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-sky);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></span>
-                <a href="https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion" class="app-name" target="_blank" rel="noopener" title="Free virtual-machine software for running another OS inside Windows &mdash; genuinely free since Broadcom's 2024 licensing change, but needs a free Broadcom account to download, so it can't be scripted here.">VMware Workstation Pro</a>
+                <a href="https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion" class="app-name" target="_blank" rel="noopener" title="Free virtual-machine software for running another OS inside Windows. Genuinely free since Broadcom's 2024 licensing change, but it needs a free Broadcom account to download, so it can't be scripted here.">VMware Workstation Pro</a>
               </div>
             </div>
           </div>
@@ -442,7 +488,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="EpicGames.EpicGamesLauncher" data-name="Epic Games Launcher" aria-label="Include Epic Games Launcher in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-peach);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18"/><path d="M5 4h13l-3 4 3 4H5"/></svg></span>
-                <a href="https://store.epicgames.com/" class="app-name" target="_blank" rel="noopener" title="Home to Fortnite and the regular free-game giveaways &mdash; worth having alongside Steam, not instead of it.">Epic Games Launcher</a>
+                <a href="https://store.epicgames.com/" class="app-name" target="_blank" rel="noopener" title="Home to Fortnite and the regular free-game giveaways. Worth having alongside Steam, not instead of it.">Epic Games Launcher</a>
               </div>
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="GOG.Galaxy" data-name="GOG Galaxy" aria-label="Include GOG Galaxy in the installer">
@@ -452,12 +498,71 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Discord.Discord" data-name="Discord" aria-label="Include Discord in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-butter);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="6"/><path d="M8 21l2-4h4l2 4"/><circle cx="9" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/></svg></span>
-                <a href="https://discord.com/" class="app-name" target="_blank" rel="noopener" title="Where most gaming communities actually talk &mdash; voice chat, servers, screen sharing, all free.">Discord</a>
+                <a href="https://discord.com/" class="app-name" target="_blank" rel="noopener" title="Where most gaming communities actually talk: voice chat, servers, screen sharing, all free.">Discord</a>
               </div>
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Guru3D.Afterburner" data-name="MSI Afterburner" aria-label="Include MSI Afterburner in the installer">
                 <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-blush);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4 0-6-3-6-6 0-3 2-5 3-7 0 2 1 3 2 3 0-3 1-5 3-7 1 3 4 6 4 11 0 3-2 6-6 6z"/></svg></span>
-                <a href="https://www.msi.com/Landing/afterburner" class="app-name" target="_blank" rel="noopener" title="The standard tool for monitoring and tuning your graphics card &mdash; temperatures, fan curves, a bit of extra performance if you want it.">MSI Afterburner</a>
+                <a href="https://www.msi.com/Landing/afterburner" class="app-name" target="_blank" rel="noopener" title="The standard tool for monitoring and tuning your graphics card: temperatures, fan curves, a bit of extra performance if you want it.">MSI Afterburner</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <h3 class="software-category-title">Downloads</h3>
+            <div class="software-list">
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="qBittorrent.qBittorrent" data-name="qBittorrent" aria-label="Include qBittorrent in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-peach);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg></span>
+                <a href="https://www.qbittorrent.org/" class="app-name" target="_blank" rel="noopener" title="A free, open-source torrent client with no ads and nothing bundled in, unlike some of the alternatives out there. The standard choice for Linux ISOs and other legal torrents.">qBittorrent</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <h3 class="software-category-title">Creative &amp; Design</h3>
+            <div class="software-list">
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="BlenderFoundation.Blender" data-name="Blender" aria-label="Include Blender in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-butter);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="9" ry="4"/></svg></span>
+                <a href="https://www.blender.org/" class="app-name" target="_blank" rel="noopener" title="A full, free 3D modeling, animation, and rendering suite used everywhere from hobby projects to professional film studios. Steep learning curve, but there's nothing it can't do.">Blender</a>
+              </div>
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="Inkscape.Inkscape" data-name="Inkscape" aria-label="Include Inkscape in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-blush);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 7-9 9-4 1 1-4z"/><path d="M14.5 5.5l4 4"/></svg></span>
+                <a href="https://inkscape.org/" class="app-name" target="_blank" rel="noopener" title="A free vector graphics editor for logos, icons, and illustrations, the open-source answer to Adobe Illustrator. Saves and exports SVG natively.">Inkscape</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <h3 class="software-category-title">Developer Tools</h3>
+            <div class="software-list">
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="Microsoft.VisualStudioCode" data-name="Visual Studio Code" aria-label="Include Visual Studio Code in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-sky);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-5 6 5 6"/><path d="M15 6l5 6-5 6"/></svg></span>
+                <a href="https://code.visualstudio.com/" class="app-name" target="_blank" rel="noopener" title="A free code editor from Microsoft that's become the standard for most developers, with support for nearly every programming language through extensions.">Visual Studio Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <h3 class="software-category-title">AI Assistants</h3>
+            <div class="software-list">
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="9PLM9XGG6VKS" data-source="msstore" data-name="ChatGPT" aria-label="Include ChatGPT in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-mint);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4 3v-3H6a2 2 0 0 1-2-2z"/><path d="M12 8v4M10 10h4"/></svg></span>
+                <a href="https://openai.com/chatgpt/download/" class="app-name" target="_blank" rel="noopener" title="OpenAI's chatbot, the one that kicked off the current wave of AI assistants. This installs the official Windows app from the Microsoft Store, since that's the only channel OpenAI publishes it through.">ChatGPT</a>
+              </div>
+              <div class="app-row">
+                <input type="checkbox" class="pick-check" data-winget="Anthropic.Claude" data-name="Claude" aria-label="Include Claude in the installer">
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-peach);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3"/></svg></span>
+                <a href="https://claude.ai/download" class="app-name" target="_blank" rel="noopener" title="Anthropic's chatbot, what I actually use day to day for writing and troubleshooting help. Free tier available, with more capable paid tiers on top.">Claude</a>
+              </div>
+              <div class="app-row">
+                <span class="pick-spacer" aria-hidden="true"></span>
+                <span class="tile-icon" style="width:20px; height:20px; border-radius:7px; background:var(--tile-lavender);"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c0 5-4 9-9 9 5 0 9 4 9 9 0-5 4-9 9-9-5 0-9-4-9-9z"/></svg></span>
+                <a href="https://gemini.google.com/" class="app-name" target="_blank" rel="noopener" title="Google's chatbot, built into Gmail, Docs, and Android. There's no real native Windows app, just a website and a small tray shortcut, so there's nothing to add to the install script here.">Gemini</a>
               </div>
             </div>
           </div>
