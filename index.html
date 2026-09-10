@@ -57,6 +57,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
@@ -84,7 +86,7 @@
           <a class="link-underline" href="#services">Services</a>
           <a class="link-underline" href="software/">Software</a>
           <a class="link-underline" href="blog/">Tips</a>
-          <a class="link-underline" href="troubleshoot/">Troubleshoot</a>
+          <a class="link-underline" href="resources/">Resources</a>
           <a class="link-underline" href="#about">About</a>
           <a class="link-underline" href="#contact">Contact</a>
         </div>
@@ -158,7 +160,7 @@
     </section>
 
     <!-- Services -->
-    <section id="services" class="section">
+    <section id="services" class="section section-compact">
       <div class="wrap">
         <div class="section-heading">
           <h2>My Services</h2>
@@ -226,49 +228,62 @@
       </div>
     </section>
 
-    <!-- Software teaser -->
-    <section class="section">
+    <!-- Software + Free tools -->
+    <section class="section section-compact">
       <div class="wrap">
-        <div class="teaser-card">
-          <h2>Not sure what to install?</h2>
-          <p>Here's the antivirus, VPN, backup, and cleanup software I actually use and recommend to clients.</p>
-          <a href="software/" class="link-underline" style="color:var(--accent); font-weight:700; font-size:15px;">See my recommendations &rarr;</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="section">
-      <div class="wrap">
-        <div class="notecard-wrap">
-          <div class="tape" style="top:-14px; left:50%; transform:translateX(-50%) rotate(-3deg);"></div>
-          <div class="notecard">
-            <h2>About Me</h2>
-            <p>Yuwri isn't just a company name. I'm your trusted partner in resolving all your PC issues swiftly and efficiently. Started out of a passion for technology and a commitment to exceptional service, I've been proudly serving individuals and businesses in Seixal since 2023.</p>
+        <div class="two-col-row">
+          <div class="teaser-card">
+            <h2>Not sure what to install?</h2>
+            <p>Here's the antivirus, VPN, backup, and cleanup software I actually use and recommend to clients.</p>
+            <a href="software/" class="link-underline" style="color:var(--accent); font-weight:700; font-size:15px;">See my recommendations &rarr;</a>
           </div>
-          <div class="stamp mono">
-            <div class="year">2023</div>
-            <div class="place">SEIXAL</div>
+
+          <div class="teaser-card">
+            <h2>A Few Free Extras</h2>
+            <p>Whether or not you ever hire me: a troubleshooting wizard, a repair-or-replace quiz, printable cheat sheets, a plain-language glossary, and a board for anything worth flagging right now.</p>
+            <div class="tool-links">
+              <a href="troubleshoot/" class="tool-pill">Troubleshooting Wizard</a>
+              <a href="repair-or-replace/" class="tool-pill">Repair or Replace?</a>
+              <a href="cheat-sheets/" class="tool-pill">Cheat Sheets</a>
+              <a href="glossary/" class="tool-pill">Glossary</a>
+              <a href="heads-up/" class="tool-pill">Heads Up</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Personalized Approach -->
-    <section id="approach" class="band">
-      <div class="wrap band-inner">
-        <h2>Personalized Approach</h2>
-        <p>What sets me apart is my personalized approach to IT solutions. I believe in building relationships, not just fixing computers. When you choose Yuwri, you're choosing a friendly, experienced technician who listens to your concerns, understands your unique needs, and tailors solutions that align with your goals.</p>
-        <div class="tags">
-          <span class="tag">A friendly, experienced technician</span>
-          <span class="tag">Solutions tailored to your goals</span>
-          <span class="tag">Real relationships, not tickets</span>
+    <!-- About & Approach -->
+    <section id="about" class="section section-compact">
+      <div class="wrap">
+        <div class="two-col-row">
+          <div class="notecard-wrap">
+            <div class="tape" style="top:-14px; left:50%; transform:translateX(-50%) rotate(-3deg);"></div>
+            <div class="notecard">
+              <h2>About Me</h2>
+              <p>Yuwri isn't just a company name. I'm your trusted partner in resolving all your PC issues swiftly and efficiently. Started out of a passion for technology and a commitment to exceptional service, I've been proudly serving individuals and businesses in Seixal since 2023.</p>
+            </div>
+            <div class="stamp mono">
+              <div class="year">2023</div>
+              <div class="place">SEIXAL</div>
+            </div>
+          </div>
+
+          <div id="approach" class="band band-card">
+            <h2>Personalized Approach</h2>
+            <p>What sets me apart is my personalized approach to IT solutions. I believe in building relationships, not just fixing computers. When you choose Yuwri, you're choosing a friendly, experienced technician who listens to your concerns, understands your unique needs, and tailors solutions that align with your goals.</p>
+            <div class="tags">
+              <span class="tag">A friendly, experienced technician</span>
+              <span class="tag">Solutions tailored to your goals</span>
+              <span class="tag">Real relationships, not tickets</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Testimonials -->
-    <section id="testimonials" class="section">
+    <section id="testimonials" class="section section-compact">
       <div class="wrap">
         <div class="section-heading">
           <h2>What Clients Say</h2>
@@ -282,7 +297,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section">
+    <section id="contact" class="section section-compact">
       <div class="wrap">
         <div class="row align-items-center">
           <div class="col-md-6 contact-copy">
@@ -298,7 +313,7 @@
                     <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></svg>
                     +351 924 129 893
                   </a>
-                  <a href="https://wa.me/351924129893" class="mono" target="_blank" rel="noopener">
+                  <a href="https://wa.me/351924129893?text=Hi%21%20I%20found%20your%20site%20and%20I%27d%20like%20some%20help%20with%20my%20computer." class="mono" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2 2 0 0 1 6 3.5h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-4 3.5v-3.5H6a2 2 0 0 1-2-2z"/></svg>
                     WhatsApp
                   </a>

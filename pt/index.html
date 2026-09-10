@@ -57,6 +57,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 
   <link href="../css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
@@ -84,7 +86,7 @@
           <a class="link-underline" href="#servicos">Serviços</a>
           <a class="link-underline" href="software/">Software</a>
           <a class="link-underline" href="blog/">Dicas</a>
-          <a class="link-underline" href="troubleshoot/">Diagnosticar</a>
+          <a class="link-underline" href="resources/">Recursos</a>
           <a class="link-underline" href="#sobre">Sobre</a>
           <a class="link-underline" href="#contacto">Contactos</a>
         </div>
@@ -158,7 +160,7 @@
     </section>
 
     <!-- Serviços -->
-    <section id="servicos" class="section">
+    <section id="servicos" class="section section-compact">
       <div class="wrap">
         <div class="section-heading">
           <h2>Os Meus Serviços</h2>
@@ -226,49 +228,62 @@
       </div>
     </section>
 
-    <!-- Software teaser -->
-    <section class="section">
+    <!-- Software + Extras gratuitos -->
+    <section class="section section-compact">
       <div class="wrap">
-        <div class="teaser-card">
-          <h2>Não sabe o que instalar?</h2>
-          <p>Aqui está o antivírus, VPN, backup e software de limpeza que eu próprio uso e recomendo aos meus clientes.</p>
-          <a href="software/" class="link-underline" style="color:var(--accent); font-weight:700; font-size:15px;">Ver as minhas recomendações &rarr;</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sobre -->
-    <section id="sobre" class="section">
-      <div class="wrap">
-        <div class="notecard-wrap">
-          <div class="tape" style="top:-14px; left:50%; transform:translateX(-50%) rotate(-3deg);"></div>
-          <div class="notecard">
-            <h2>Sobre Mim</h2>
-            <p>A Yuwri não é apenas um nome de empresa. Sou o seu parceiro de confiança na resolução rápida e eficiente de todos os problemas do seu computador. Comecei por paixão pela tecnologia e um compromisso com um serviço de excelência, e tenho o orgulho de servir particulares e empresas no Seixal desde 2023.</p>
+        <div class="two-col-row">
+          <div class="teaser-card">
+            <h2>Não sabe o que instalar?</h2>
+            <p>Aqui está o antivírus, VPN, backup e software de limpeza que eu próprio uso e recomendo aos meus clientes.</p>
+            <a href="software/" class="link-underline" style="color:var(--accent); font-weight:700; font-size:15px;">Ver as minhas recomendações &rarr;</a>
           </div>
-          <div class="stamp mono">
-            <div class="year">2023</div>
-            <div class="place">SEIXAL</div>
+
+          <div class="teaser-card">
+            <h2>Alguns Extras Gratuitos</h2>
+            <p>Quer me contrate ou não: um assistente de diagnóstico, um teste de reparar-ou-substituir, checklists imprimíveis, um glossário em linguagem simples, e um quadro para tudo o que vale a pena assinalar agora.</p>
+            <div class="tool-links">
+              <a href="troubleshoot/" class="tool-pill">Assistente de Diagnóstico</a>
+              <a href="repair-or-replace/" class="tool-pill">Reparar ou Substituir?</a>
+              <a href="cheat-sheets/" class="tool-pill">Checklists</a>
+              <a href="glossary/" class="tool-pill">Glossário</a>
+              <a href="heads-up/" class="tool-pill">Avisos</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Abordagem Personalizada -->
-    <section id="abordagem" class="band">
-      <div class="wrap band-inner">
-        <h2>Abordagem Personalizada</h2>
-        <p>O que me distingue é a minha abordagem personalizada às soluções informáticas. Acredito em construir relações, não apenas em reparar computadores. Ao escolher a Yuwri, está a escolher um técnico simpático e experiente, que ouve as suas preocupações, compreende as suas necessidades e cria soluções à medida dos seus objetivos.</p>
-        <div class="tags">
-          <span class="tag">Um técnico simpático e experiente</span>
-          <span class="tag">Soluções à medida dos seus objetivos</span>
-          <span class="tag">Relações verdadeiras, não apenas tickets</span>
+    <!-- Sobre & Abordagem -->
+    <section id="sobre" class="section section-compact">
+      <div class="wrap">
+        <div class="two-col-row">
+          <div class="notecard-wrap">
+            <div class="tape" style="top:-14px; left:50%; transform:translateX(-50%) rotate(-3deg);"></div>
+            <div class="notecard">
+              <h2>Sobre Mim</h2>
+              <p>A Yuwri não é apenas um nome de empresa. Sou o seu parceiro de confiança na resolução rápida e eficiente de todos os problemas do seu computador. Comecei por paixão pela tecnologia e um compromisso com um serviço de excelência, e tenho o orgulho de servir particulares e empresas no Seixal desde 2023.</p>
+            </div>
+            <div class="stamp mono">
+              <div class="year">2023</div>
+              <div class="place">SEIXAL</div>
+            </div>
+          </div>
+
+          <div id="abordagem" class="band band-card">
+            <h2>Abordagem Personalizada</h2>
+            <p>O que me distingue é a minha abordagem personalizada às soluções informáticas. Acredito em construir relações, não apenas em reparar computadores. Ao escolher a Yuwri, está a escolher um técnico simpático e experiente, que ouve as suas preocupações, compreende as suas necessidades e cria soluções à medida dos seus objetivos.</p>
+            <div class="tags">
+              <span class="tag">Um técnico simpático e experiente</span>
+              <span class="tag">Soluções à medida dos seus objetivos</span>
+              <span class="tag">Relações verdadeiras, não apenas tickets</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Testemunhos -->
-    <section id="testemunhos" class="section">
+    <section id="testemunhos" class="section section-compact">
       <div class="wrap">
         <div class="section-heading">
           <h2>O Que Dizem os Clientes</h2>
@@ -282,7 +297,7 @@
     </section>
 
     <!-- Contacto -->
-    <section id="contacto" class="section">
+    <section id="contacto" class="section section-compact">
       <div class="wrap">
         <div class="row align-items-center">
           <div class="col-md-6 contact-copy">
@@ -298,7 +313,7 @@
                     <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></svg>
                     +351 924 129 893
                   </a>
-                  <a href="https://wa.me/351924129893" class="mono" target="_blank" rel="noopener">
+                  <a href="https://wa.me/351924129893?text=Ol%C3%A1%21%20Encontrei%20o%20seu%20site%20e%20gostava%20de%20ajuda%20com%20o%20meu%20computador." class="mono" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2 2 0 0 1 6 3.5h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-4 3.5v-3.5H6a2 2 0 0 1-2-2z"/></svg>
                     WhatsApp
                   </a>
