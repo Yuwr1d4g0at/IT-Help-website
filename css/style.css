@@ -66,6 +66,20 @@
   align-items: center;
 }
 
+/* Generic two-column row: side by side on wider screens, stacks on narrow
+   ones once two 320px columns plus the gap no longer fit. */
+.two-col-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 28px;
+}
+
+.two-col-row > * {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
 html,
 body {
   margin: 0;
@@ -194,6 +208,21 @@ button:focus-visible {
   border-color: var(--accent);
 }
 
+/* .lang-switch is normally an <a>; the 404 page's language toggle uses
+   <button> instead since it swaps content in place rather than navigating. */
+button.lang-switch {
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+button.lang-switch[aria-pressed="true"] {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 /* -------------------------------------------------------------------------
    Buttons
    ------------------------------------------------------------------------- */
@@ -248,7 +277,7 @@ button:focus-visible {
    ------------------------------------------------------------------------- */
 
 .hero {
-  padding: 56px 0 84px;
+  padding: 40px 0 56px;
   text-align: center;
 }
 
@@ -269,13 +298,13 @@ button:focus-visible {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 }
 
 .hero-title {
   font-size: clamp(40px, 6vw + 20px, 72px);
   line-height: 1.02;
-  margin: 0 0 22px;
+  margin: 0 0 14px;
 }
 
 .hero-title .highlight {
@@ -297,7 +326,7 @@ button:focus-visible {
   line-height: 1.6;
   color: var(--ink-muted);
   max-width: 46ch;
-  margin: 24px auto 20px;
+  margin: 14px auto 14px;
 }
 
 .logistics-row {
@@ -305,7 +334,7 @@ button:focus-visible {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px 24px;
-  margin: 0 auto 48px;
+  margin: 0 auto 28px;
   color: var(--ink-muted);
   font-size: 14px;
   font-weight: 600;
@@ -327,7 +356,7 @@ button:focus-visible {
   gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 52px;
+  margin-bottom: 32px;
 }
 
 .sticker-row {
@@ -394,9 +423,15 @@ button:focus-visible {
   padding-top: 20px;
 }
 
+/* Homepage only: the shared .section padding is generous for long-form
+   sub-pages, but stacks up fast down a single-page layout. */
+.section-compact {
+  padding: 52px 0;
+}
+
 .section-heading {
   max-width: 560px;
-  margin-bottom: 44px;
+  margin-bottom: 28px;
 }
 
 .section-heading h2 {
@@ -406,16 +441,16 @@ button:focus-visible {
 .bento {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-auto-rows: minmax(190px, auto);
-  gap: 20px;
+  grid-auto-rows: minmax(160px, auto);
+  gap: 16px;
 }
 
 .tile {
   border-radius: 22px;
-  padding: 28px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
@@ -471,9 +506,20 @@ button:focus-visible {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 20px;
-  padding: 40px 44px;
+  padding: 32px 36px;
   text-align: center;
   box-shadow: 0 14px 28px -22px rgba(46, 42, 61, 0.3);
+}
+
+/* Two side by side in a .two-col-row: fill the column instead of
+   centering at a fixed max-width, and stay vertically centered. */
+.two-col-row .teaser-card {
+  max-width: none;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .teaser-card h2 {
@@ -485,10 +531,34 @@ button:focus-visible {
   font-size: 15.5px;
   line-height: 1.6;
   color: var(--ink-muted);
-  margin: 0 0 20px;
+  margin: 0 0 14px;
   max-width: 52ch;
   margin-left: auto;
   margin-right: auto;
+}
+
+.tool-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tool-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 13.5px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.tool-pill:hover {
+  background: var(--accent);
+  color: var(--bg);
 }
 
 /* -------------------------------------------------------------------------
@@ -694,20 +764,25 @@ button:focus-visible {
   max-width: 640px;
   width: 100%;
   margin: 0 auto;
+  display: flex;
 }
 
 .notecard {
   position: relative;
+  width: 100%;
   background: var(--surface);
   border-radius: 20px;
-  padding: 48px 44px;
+  padding: 36px 38px;
   box-shadow: 0 20px 40px -28px rgba(46, 42, 61, 0.35);
   transform: rotate(-0.8deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .notecard h2 {
   font-size: 32px;
-  margin: 0 0 18px;
+  margin: 0 0 12px;
 }
 
 .notecard p {
@@ -758,6 +833,16 @@ button:focus-visible {
   text-align: center;
 }
 
+/* Contained variant: sits as a rounded card next to About Me in a
+   .two-col-row, instead of the full-bleed edge-to-edge band. */
+.band-card {
+  border-radius: 24px;
+  padding: 36px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .band-inner {
   max-width: 760px;
   margin: 0 auto;
@@ -765,7 +850,7 @@ button:focus-visible {
 
 .band h2 {
   font-size: 34px;
-  margin: 0 0 20px;
+  margin: 0 0 14px;
   color: #fff;
 }
 
@@ -773,7 +858,7 @@ button:focus-visible {
   font-size: 17px;
   line-height: 1.7;
   color: var(--band-muted);
-  margin: 0 auto 32px;
+  margin: 0 auto 20px;
   max-width: 56ch;
 }
 
@@ -985,11 +1070,32 @@ button:focus-visible {
   margin-bottom: 28px;
 }
 
-.article-back {
-  display: inline-block;
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
   margin-bottom: 24px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.breadcrumbs a {
+  color: var(--ink-muted);
+}
+
+.breadcrumbs a:hover {
+  color: var(--accent);
+}
+
+.breadcrumbs .sep {
+  color: var(--ink-muted);
+  opacity: 0.5;
+}
+
+.breadcrumbs .current {
+  color: var(--ink);
 }
 
 /* -------------------------------------------------------------------------
@@ -1112,6 +1218,191 @@ button:focus-visible {
 
 .wizard-back:hover {
   color: var(--accent);
+}
+
+/* -------------------------------------------------------------------------
+   Glossary
+   ------------------------------------------------------------------------- */
+
+.glossary-list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.glossary-term {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.glossary-term:first-child {
+  padding-top: 0;
+}
+
+.glossary-term:last-child {
+  border-bottom: none;
+}
+
+.glossary-term h3 {
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+
+.glossary-term p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+.glossary-term p a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------------------------
+   Heads-up board
+   ------------------------------------------------------------------------- */
+
+.headsup-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 720px;
+  margin: 0 auto 24px;
+}
+
+.headsup-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 26px 28px;
+}
+
+.headsup-status {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.headsup-status-active {
+  background: var(--tile-peach);
+  color: var(--ink);
+}
+
+.headsup-status-resolved {
+  background: var(--tile-mint);
+  color: var(--ink);
+}
+
+.headsup-date {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+}
+
+.headsup-card h3 {
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+
+.headsup-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin: 0 0 14px;
+  max-width: 60ch;
+}
+
+.headsup-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.headsup-note {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: var(--ink-muted);
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------
+   Cheat sheets
+   ------------------------------------------------------------------------- */
+
+.cheat-sheet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.cheat-sheet-toolbar {
+  max-width: 680px;
+  margin: 0 auto 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cheat-sheet-body {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.cheat-sheet-body h2 {
+  font-size: 20px;
+  margin: 32px 0 12px;
+}
+
+.cheat-sheet-body h2:first-child {
+  margin-top: 0;
+}
+
+.cheat-sheet-body ul {
+  margin: 0 0 6px;
+  padding-left: 22px;
+}
+
+.cheat-sheet-body li {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.cheat-sheet-body li strong {
+  color: var(--ink);
+}
+
+@media print {
+  .tape-stripe,
+  .site-nav,
+  .site-footer,
+  .cheat-sheet-toolbar,
+  .breadcrumbs,
+  .page-intro p {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .section {
+    padding: 0 !important;
+  }
+
+  .cheat-sheet-body {
+    max-width: 100%;
+  }
 }
 
 /* -------------------------------------------------------------------------

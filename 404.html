@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="robots" content="noindex" />
+
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+  <title>Page Not Found | Yuwri</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link href="/css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+  <div id="top">
+
+    <!-- Washi tape stripe -->
+    <div class="tape-stripe">
+      <div style="background:var(--tile-lavender);"></div>
+      <div style="background:var(--tile-mint);"></div>
+      <div style="background:var(--tile-peach);"></div>
+      <div style="background:var(--tile-sky);"></div>
+      <div style="background:var(--tile-butter);"></div>
+      <div style="background:var(--tile-blush);"></div>
+    </div>
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="/">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button type="button" id="lang-en" class="lang-switch mono" aria-pressed="true">EN</button>
+          <button type="button" id="lang-pt" class="lang-switch mono" aria-pressed="false">PT</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 404 -->
+    <section class="section section-compact">
+      <div class="wrap">
+        <div class="teaser-card" style="max-width:560px;">
+
+          <div id="err-en">
+            <div class="eyebrow mono" style="margin-bottom:16px;">404</div>
+            <h2>This Page Wandered Off</h2>
+            <p>Whatever you were looking for isn't here, maybe it moved, maybe it never existed, maybe I renamed it and forgot to update a link. Let's get you back on track.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:8px;">
+              <a href="/" class="btn btn-primary">Back to Home</a>
+              <a href="/resources/" class="btn btn-outline">Free Tools</a>
+            </div>
+          </div>
+
+          <div id="err-pt" hidden>
+            <div class="eyebrow mono" style="margin-bottom:16px;">404</div>
+            <h2>Esta Página Perdeu-se</h2>
+            <p>O que procurava não está aqui, pode ter mudado de sítio, nunca ter existido, ou posso tê-la renomeado e esquecido de atualizar um link. Vamos encontrar o caminho.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:8px;">
+              <a href="/pt/" class="btn btn-primary">Voltar ao Início</a>
+              <a href="/pt/resources/" class="btn btn-outline">Ferramentas Gratuitas</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    (function () {
+      var en = document.getElementById('err-en');
+      var pt = document.getElementById('err-pt');
+      var btnEn = document.getElementById('lang-en');
+      var btnPt = document.getElementById('lang-pt');
+
+      function show(lang) {
+        en.hidden = lang !== 'en';
+        pt.hidden = lang !== 'pt';
+        btnEn.setAttribute('aria-pressed', String(lang === 'en'));
+        btnPt.setAttribute('aria-pressed', String(lang === 'pt'));
+      }
+
+      btnEn.addEventListener('click', function () { show('en'); });
+      btnPt.addEventListener('click', function () { show('pt'); });
+
+      if ((navigator.language || '').toLowerCase().indexOf('pt') === 0) {
+        show('pt');
+      }
+    })();
+  </script>
+
+</body>
+
+</html>

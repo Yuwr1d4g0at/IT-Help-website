@@ -1,11 +1,11 @@
-// Troubleshooting wizard (troubleshoot/ + pt/troubleshoot/).
-// Content (the tree + UI strings) is defined per-language in an inline
-// <script> on each page as `window.TROUBLESHOOT_DATA`, before this file
-// loads — this file is just the shared renderer/state machine.
+// Shared question-tree wizard engine, used by troubleshoot/, repair-or-replace/,
+// and their pt/ mirrors. Content (the tree + UI strings) is defined
+// per-language in an inline <script> on each page as `window.WIZARD_DATA`,
+// before this file loads — this file is just the renderer/state machine.
 (function () {
   "use strict";
 
-  var data = window.TROUBLESHOOT_DATA;
+  var data = window.WIZARD_DATA;
   var root = document.getElementById("wizard-root");
   if (!data || !root) return;
 

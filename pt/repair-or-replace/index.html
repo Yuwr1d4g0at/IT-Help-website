@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="reparar ou substituir computador, vale a pena arranjar o meu PC, portátil antigo lento, suporte informático Seixal" />
+  <meta name="description" content="Uma resposta direta sobre reparar o seu computador ou substituí-lo, com base na idade e no que realmente está avariado." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Reparar ou Substituir? | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/repair-or-replace/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/repair-or-replace/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/repair-or-replace/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuwri.pt/pt/repair-or-replace/" />
+  <meta property="og:title" content="Yuwri | Reparar ou Substituir?" />
+  <meta property="og:description" content="Uma resposta direta, com base na idade do computador e no que realmente está avariado." />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:locale:alternate" content="en" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Yuwri | Reparar ou Substituir?" />
+  <meta name="twitter:description" content="Deve arranjá-lo, ou é altura de um novo? Responda a algumas perguntas para descobrir." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link href="../../css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+  <div id="top">
+
+    <!-- Washi tape stripe -->
+    <div class="tape-stripe">
+      <div style="background:var(--tile-lavender);"></div>
+      <div style="background:var(--tile-mint);"></div>
+      <div style="background:var(--tile-peach);"></div>
+      <div style="background:var(--tile-sky);"></div>
+      <div style="background:var(--tile-butter);"></div>
+      <div style="background:var(--tile-blush);"></div>
+    </div>
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links">
+          <a class="link-underline" href="../#servicos">Serviços</a>
+          <a class="link-underline" href="../software/">Software</a>
+          <a class="link-underline" href="../blog/">Dicas</a>
+          <a class="link-underline" href="../resources/">Recursos</a>
+          <a class="link-underline" href="../#sobre">Sobre</a>
+          <a class="link-underline" href="../#contacto">Contactos</a>
+        </div>
+        <div style="display:flex; align-items:center; gap:18px;">
+          <a href="../../repair-or-replace/" class="lang-switch mono" lang="en" hreflang="en">EN</a>
+          <a href="../#contacto" class="btn btn-primary btn-sm">Contacte-me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <h1>Deve Reparar, ou Substituir?</h1>
+        <p>Responda a algumas perguntas rápidas para uma resposta direta, com base na idade do computador e no que realmente está avariado. Sem venda de nenhum dos lados.</p>
+      </div>
+    </section>
+
+    <!-- Wizard -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="wizard" id="wizard-root"></div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../#servicos">Serviços</a>
+          <a class="link-underline" href="../#sobre">Sobre</a>
+          <a class="link-underline" href="../#contacto">Contactos</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    window.WIZARD_DATA = {
+      ui: {
+        eyebrow: "Reparar ou Substituir",
+        tipEyebrow: "Vale a pena experimentar primeiro",
+        ctaEyebrow: "Vale a pena olhar com atenção",
+        back: "← Voltar",
+        startOver: "Recomeçar",
+        contactCta: "Contacte-me",
+        contactHref: "../#contacto"
+      },
+      tree: {
+        start: {
+          question: "Que idade tem o computador?",
+          options: [
+            { label: "Menos de 3 anos", next: "recent" },
+            { label: "Entre 3 e 6 anos", next: "mid" },
+            { label: "Mais de 6 anos", next: "old" },
+            { label: "Não sei", next: "unsure" }
+          ]
+        },
+        recent: {
+          question: "Qual é o problema principal?",
+          options: [
+            { label: "Está lento", next: "recent_slow" },
+            { label: "Algo está fisicamente avariado (não liga, ecrã partido, dano por líquido)", next: "recent_broken" },
+            { label: "Está a comportar-se mal (crashes, ruídos, sobreaquecimento)", next: "recent_misbehaving" }
+          ]
+        },
+        recent_slow: {
+          result: "tip",
+          title: "Repare, quase de certeza",
+          body: "Um computador tão novo a ficar lento é quase sempre software, não hardware: demasiados programas a iniciar com o Windows, um disco quase cheio, ou um navegador cheio de separadores e extensões. Isso costuma ser uma correção rápida e barata num hardware tão jovem.",
+          link: { href: "../troubleshoot/", text: "Experimente a ferramenta de diagnóstico para passos específicos" }
+        },
+        recent_broken: {
+          result: "cta",
+          title: "Repare. Verifique primeiro a garantia.",
+          body: "Danos físicos e falhas logo à partida num computador tão novo quase sempre valem a pena reparar em vez de substituir. Se ainda estiver dentro da garantia do fabricante, comece por aí. Caso contrário, uma reparação costuma sair bem mais barata do que comprar um novo a esta idade."
+        },
+        recent_misbehaving: {
+          result: "cta",
+          title: "Vale a pena um olhar atento antes de decidir seja o que for",
+          body: "Crashes, ruídos, ou sobreaquecimento em hardware mais novo costumam ser uma peça avariada (uma ventoinha, um módulo de RAM, um disco a falhar), não a máquina toda a desistir. Substituir essa peça costuma sair bem mais barato do que substituir o computador."
+        },
+        mid: {
+          question: "Qual é o problema principal?",
+          options: [
+            { label: "Está lento", next: "mid_slow" },
+            { label: "Algo está fisicamente avariado (não liga, ecrã partido, dano por líquido)", next: "mid_broken" },
+            { label: "Está a comportar-se mal (crashes, ruídos, sobreaquecimento)", next: "mid_misbehaving" }
+          ]
+        },
+        mid_slow: {
+          result: "tip",
+          title: "Uma reparação ou um pequeno upgrade ainda costuma valer a pena",
+          body: "Uma lentidão a esta idade resolve-se muitas vezes com mais RAM, ou a mudar para um SSD se ainda não tiver um, ambos baratos comparados com um computador novo. Só vale mais a pena substituir se já lhe estiver a pedir mais do que aquilo para que foi feito, como edição de vídeo pesada ou jogos mais recentes.",
+          link: { href: "../software/", text: "Veja ferramentas gratuitas para limpar primeiro" }
+        },
+        mid_broken: {
+          result: "cta",
+          title: "Peça um orçamento antes de decidir",
+          body: "Danos físicos costumam ainda ser reparáveis a esta idade, mas as contas importam mais agora. Peça primeiro um orçamento: uma reparação grande nalguns portáteis de idade intermédia pode aproximar-se do custo de um substituto de nível de entrada, e vale a pena saber isso antes de se comprometer."
+        },
+        mid_misbehaving: {
+          result: "cta",
+          title: "Normalmente ainda vale a pena reparar",
+          body: "Falhas de hardware a esta idade costumam ainda ser uma única peça, não o computador todo a falhar. Um diagnóstico rápido diz-lhe qual, e reparar uma peça quase sempre compensa mais do que substituir a máquina toda."
+        },
+        old: {
+          question: "Qual é o problema principal?",
+          options: [
+            { label: "Está lento", next: "old_slow" },
+            { label: "Algo está fisicamente avariado (não liga, ecrã partido, dano por líquido)", next: "old_broken" },
+            { label: "Está a comportar-se mal (crashes, ruídos, sobreaquecimento)", next: "old_misbehaving" }
+          ]
+        },
+        old_slow: {
+          result: "tip",
+          title: "Provavelmente altura de substituir, a menos que seja só uma coisa",
+          body: "Isto costuma ser a idade a pesar: um disco a envelhecer, ou pouca RAM para o que o software moderno espera. Se tudo o resto estiver bem, um upgrade para SSD por si só pode fazê-lo parecer novo outra vez, e sai barato. Se várias coisas estiverem a falhar ao mesmo tempo, uma fatura de reparação começa a aproximar-se de um substituto de nível de entrada, e provavelmente estaria de volta aqui dentro de um ano.",
+          link: { href: "../software/", text: "Veja ferramentas de limpeza gratuitas que vale a pena tentar primeiro" }
+        },
+        old_broken: {
+          result: "cta",
+          title: "Peça um orçamento, mas conte com a possibilidade de substituir",
+          body: "Reparar danos físicos num computador com esta idade raramente compensa financeiramente, a não ser que seja uma correção pequena e barata como um teclado ou uma bateria. Vale a pena perguntar, mas conte com a possibilidade de a resposta ser substituir."
+        },
+        old_misbehaving: {
+          result: "cta",
+          title: "Provavelmente altura de substituir, mas pergunte primeiro",
+          body: "As falhas de hardware tendem a acumular-se a esta idade, e as peças para máquinas mais antigas tornam-se mais difíceis de encontrar. Um diagnóstico rápido diz-lhe depressa se vale a pena reparar, sem adivinhar."
+        },
+        unsure: {
+          result: "cta",
+          title: "Verifique a idade, ou pergunte simplesmente",
+          body: "A idade é o que mais pesa nesta decisão. Se conseguir encontrar a data de compra ou o ano de lançamento do modelo (nas Definições, ou numa etiqueta por baixo), isso já lhe diz muito por si só. Se preferir não andar à procura, uma vista de olhos rápida diz-me tudo o que preciso para lhe dar uma resposta direta em vez de um palpite."
+        }
+      }
+    };
+  </script>
+  <script src="../../js/wizard.js"></script>
+</body>
+
+</html>

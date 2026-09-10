@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="repair or replace computer, is my PC worth fixing, old laptop slow, Seixal IT support" />
+  <meta name="description" content="A straight answer on whether to repair your computer or replace it, based on its age and what's actually wrong." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Repair or Replace? | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/repair-or-replace/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/repair-or-replace/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/repair-or-replace/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuwri.pt/repair-or-replace/" />
+  <meta property="og:title" content="Yuwri | Repair or Replace?" />
+  <meta property="og:description" content="A straight answer, based on the computer's age and what's actually wrong with it." />
+  <meta property="og:locale" content="en" />
+  <meta property="og:locale:alternate" content="pt_PT" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Yuwri | Repair or Replace?" />
+  <meta name="twitter:description" content="Should you fix it, or is it time for a new one? Answer a couple of questions to find out." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link href="../css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+  <div id="top">
+
+    <!-- Washi tape stripe -->
+    <div class="tape-stripe">
+      <div style="background:var(--tile-lavender);"></div>
+      <div style="background:var(--tile-mint);"></div>
+      <div style="background:var(--tile-peach);"></div>
+      <div style="background:var(--tile-sky);"></div>
+      <div style="background:var(--tile-butter);"></div>
+      <div style="background:var(--tile-blush);"></div>
+    </div>
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links">
+          <a class="link-underline" href="../#services">Services</a>
+          <a class="link-underline" href="../software/">Software</a>
+          <a class="link-underline" href="../blog/">Tips</a>
+          <a class="link-underline" href="../resources/">Resources</a>
+          <a class="link-underline" href="../#about">About</a>
+          <a class="link-underline" href="../#contact">Contact</a>
+        </div>
+        <div style="display:flex; align-items:center; gap:18px;">
+          <a href="../pt/repair-or-replace/" class="lang-switch mono" lang="pt-PT" hreflang="pt-PT">PT</a>
+          <a href="../#contact" class="btn btn-primary btn-sm">Contact Me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <h1>Should You Repair It, or Replace It?</h1>
+        <p>Answer a couple of quick questions for a straight answer, based on the computer's age and what's actually wrong with it. No upsell either way.</p>
+      </div>
+    </section>
+
+    <!-- Wizard -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="wizard" id="wizard-root"></div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../#services">Services</a>
+          <a class="link-underline" href="../#about">About</a>
+          <a class="link-underline" href="../#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    window.WIZARD_DATA = {
+      ui: {
+        eyebrow: "Repair or Replace",
+        tipEyebrow: "Worth trying first",
+        ctaEyebrow: "Worth a proper look",
+        back: "← Back",
+        startOver: "Start over",
+        contactCta: "Contact Me",
+        contactHref: "../#contact"
+      },
+      tree: {
+        start: {
+          question: "How old is the computer?",
+          options: [
+            { label: "Less than 3 years", next: "recent" },
+            { label: "3 to 6 years", next: "mid" },
+            { label: "Older than 6 years", next: "old" },
+            { label: "Not sure", next: "unsure" }
+          ]
+        },
+        recent: {
+          question: "What's the main problem?",
+          options: [
+            { label: "It's running slow", next: "recent_slow" },
+            { label: "Something's physically broken (won't turn on, cracked screen, liquid damage)", next: "recent_broken" },
+            { label: "It's misbehaving (crashes, noises, overheating)", next: "recent_misbehaving" }
+          ]
+        },
+        recent_slow: {
+          result: "tip",
+          title: "Repair it, almost certainly",
+          body: "A computer this new slowing down is nearly always software, not hardware: too much starting up with Windows, a nearly full drive, or a browser choked with tabs and extensions. That's usually a quick, inexpensive fix on hardware this young.",
+          link: { href: "../troubleshoot/", text: "Try the troubleshooting tool for specific steps" }
+        },
+        recent_broken: {
+          result: "cta",
+          title: "Repair it. Check the warranty first.",
+          body: "Physical damage and dead-on-arrival issues on a computer this new are almost always worth fixing rather than replacing. If it's still under manufacturer warranty, start there. Otherwise a repair is normally far cheaper than buying new at this age."
+        },
+        recent_misbehaving: {
+          result: "cta",
+          title: "Worth a proper look before deciding anything",
+          body: "Crashes, noises, or overheating on newer hardware are usually one faulty part (a fan, a stick of RAM, a failing drive), not the whole machine giving up. Replacing that one part is normally far cheaper than replacing the computer."
+        },
+        mid: {
+          question: "What's the main problem?",
+          options: [
+            { label: "It's running slow", next: "mid_slow" },
+            { label: "Something's physically broken (won't turn on, cracked screen, liquid damage)", next: "mid_broken" },
+            { label: "It's misbehaving (crashes, noises, overheating)", next: "mid_misbehaving" }
+          ]
+        },
+        mid_slow: {
+          result: "tip",
+          title: "A repair or a small upgrade is usually still worth it",
+          body: "A slowdown at this age is often fixed with more RAM, or switching to an SSD if it doesn't already have one, both inexpensive next to a new computer. It's more worth replacing only if you're already asking it to do more than it was built for, like heavy video editing or newer games.",
+          link: { href: "../software/", text: "See free tools for cleaning it up first" }
+        },
+        mid_broken: {
+          result: "cta",
+          title: "Get a repair quote before deciding",
+          body: "Physical damage is usually still fixable at this age, but the numbers matter more now. Ask for a quote first: a big repair on some mid-age laptops can get close to the cost of an entry-level replacement, and it's worth knowing that before committing."
+        },
+        mid_misbehaving: {
+          result: "cta",
+          title: "Usually still worth repairing",
+          body: "Hardware faults at this age are still normally a single part rather than the whole computer failing. A quick diagnosis tells you which, and fixing one part almost always beats replacing the whole machine."
+        },
+        old: {
+          question: "What's the main problem?",
+          options: [
+            { label: "It's running slow", next: "old_slow" },
+            { label: "Something's physically broken (won't turn on, cracked screen, liquid damage)", next: "old_broken" },
+            { label: "It's misbehaving (crashes, noises, overheating)", next: "old_misbehaving" }
+          ]
+        },
+        old_slow: {
+          result: "tip",
+          title: "Probably time to replace, unless it's just one thing",
+          body: "This is usually old age catching up: an aging drive, or not enough RAM for what modern software expects. If everything else about it is fine, an SSD upgrade alone can make it feel new again cheaply. If several things are struggling at once, a repair bill starts to rival an entry-level replacement, and you'd likely be back here again within a year.",
+          link: { href: "../software/", text: "See free cleanup tools worth trying first" }
+        },
+        old_broken: {
+          result: "cta",
+          title: "Ask for a quote, but budget for replacing it",
+          body: "Repairing physical damage on a computer this old rarely makes financial sense, unless it's a small, cheap fix like a keyboard or a battery. Worth asking, but go in expecting the answer might be to replace it instead."
+        },
+        old_misbehaving: {
+          result: "cta",
+          title: "Probably time to replace, but ask first",
+          body: "Hardware failures tend to compound at this age, and parts for older machines get harder to find. A quick diagnosis will tell you fast whether it's worth fixing, without any guesswork."
+        },
+        unsure: {
+          result: "cta",
+          title: "Check the age, or just ask",
+          body: "The age matters most for this decision. If you can find the purchase date or the model's release year (in Settings, or on a sticker underneath), that tells you a lot on its own. If you'd rather not dig for it, a quick look tells me everything I need to give you a straight answer instead of a guess."
+        }
+      }
+    };
+  </script>
+  <script src="../js/wizard.js"></script>
+</body>
+
+</html>
