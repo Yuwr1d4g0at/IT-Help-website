@@ -147,6 +147,13 @@ button:focus-visible {
   flex: 1;
 }
 
+.tape-stripe > div:nth-child(1) { background: var(--tile-lavender); }
+.tape-stripe > div:nth-child(2) { background: var(--tile-mint); }
+.tape-stripe > div:nth-child(3) { background: var(--tile-peach); }
+.tape-stripe > div:nth-child(4) { background: var(--tile-sky); }
+.tape-stripe > div:nth-child(5) { background: var(--tile-butter); }
+.tape-stripe > div:nth-child(6) { background: var(--tile-blush); }
+
 /* -------------------------------------------------------------------------
    Nav
    ------------------------------------------------------------------------- */
@@ -190,6 +197,30 @@ button:focus-visible {
   gap: 34px;
   font-size: 15px;
   font-weight: 600;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Mobile menu toggle — hidden on desktop, shown only under the
+   .nav-links breakpoint below. Sits next to the lang switch/CTA. */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 4px;
+  margin: 0;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  color: var(--accent);
 }
 
 .lang-switch {
@@ -721,6 +752,23 @@ button.lang-switch[aria-pressed="true"] {
   align-items: center;
   gap: 6px;
 }
+
+.app-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 7px;
+  flex-shrink: 0;
+}
+
+.app-icon.mint { background: var(--tile-mint); }
+.app-icon.peach { background: var(--tile-peach); }
+.app-icon.sky { background: var(--tile-sky); }
+.app-icon.lavender { background: var(--tile-lavender); }
+.app-icon.butter { background: var(--tile-butter); }
+.app-icon.blush { background: var(--tile-blush); }
 
 .app-name {
   font-size: 13px;
@@ -1465,8 +1513,37 @@ button.lang-switch[aria-pressed="true"] {
     font-size: 28px !important;
   }
 
+  .site-nav {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 84px;
+    padding: 14px 0;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
   .nav-links {
-    display: none !important;
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    order: 3;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
   }
 
   .notecard {
