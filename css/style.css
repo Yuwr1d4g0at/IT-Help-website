@@ -558,6 +558,14 @@ button.lang-switch[aria-pressed="true"] {
   margin: 0 0 10px;
 }
 
+/* Decorative SVG illustrations dropped into a teaser-card (404 page,
+   the empty Testimonials state). Purely inline-block so text-align:
+   center on the card handles the positioning. */
+.teaser-card svg[aria-hidden="true"] {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
 .teaser-card p {
   font-size: 15.5px;
   line-height: 1.6;
