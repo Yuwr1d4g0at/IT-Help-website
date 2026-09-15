@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="password generator, strong password, random password, secure password generator, Seixal IT support" />
+  <meta name="description" content="Generate a random, strong password right in your browser. Nothing is sent anywhere, and it disappears when you leave the page." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Strong Password Generator | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/password-generator/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/password-generator/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/password-generator/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuwri.pt/tools/password-generator/" />
+  <meta property="og:title" content="Yuwri | Strong Password Generator" />
+  <meta property="og:description" content="Generate a random, strong password right in your browser. Nothing is sent anywhere." />
+  <meta property="og:locale" content="en" />
+  <meta property="og:locale:alternate" content="pt_PT" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Yuwri | Strong Password Generator" />
+  <meta name="twitter:description" content="Generate a random, strong password right in your browser. Nothing is sent anywhere." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yuwri.pt/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://yuwri.pt/resources/" },
+      { "@type": "ListItem", "position": 3, "name": "Strong Password Generator", "item": "https://yuwri.pt/tools/password-generator/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link href="../../css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+  <div id="top">
+
+    <!-- Washi tape stripe -->
+    <div class="tape-stripe">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a class="link-underline" href="../../#services">Services</a>
+          <a class="link-underline" href="../../software/">Software</a>
+          <a class="link-underline" href="../../blog/">Tips</a>
+          <a class="link-underline" href="../../resources/">Resources</a>
+          <a class="link-underline" href="../../#about">About</a>
+          <a class="link-underline" href="../../#contact">Contact</a>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="nav-actions">
+          <a href="../../pt/tools/password-generator/" class="lang-switch mono" lang="pt-PT" hreflang="pt-PT">PT</a>
+          <a href="../../#contact" class="btn btn-primary btn-sm">Contact Me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../../">Home</a>
+          <span class="sep">/</span>
+          <a href="../../resources/">Resources</a>
+          <span class="sep">/</span>
+          <span class="current">Password Generator</span>
+        </nav>
+        <h1>Strong Password Generator</h1>
+        <p>A random password, generated on your own device. Nothing is sent anywhere, and it's gone the moment you leave this page.</p>
+      </div>
+    </section>
+
+    <!-- Tool -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="wizard" id="pwgen-root">
+          <div class="wizard-eyebrow">Password Generator</div>
+
+          <div class="tool-output-row">
+            <input type="text" id="pwgen-output" readonly aria-label="Generated password">
+            <button type="button" class="btn btn-outline btn-sm" id="pwgen-copy">Copy</button>
+          </div>
+          <p class="tool-status" id="pwgen-status" aria-live="polite"></p>
+
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label for="pwgen-length">Length</label>
+              <input type="number" id="pwgen-length" value="16" min="4" max="64">
+            </div>
+            <div class="calc-field calc-field-checkbox">
+              <input type="checkbox" id="pwgen-lower" checked>
+              <label for="pwgen-lower">Lowercase (a&ndash;z)</label>
+            </div>
+            <div class="calc-field calc-field-checkbox">
+              <input type="checkbox" id="pwgen-upper" checked>
+              <label for="pwgen-upper">Uppercase (A&ndash;Z)</label>
+            </div>
+            <div class="calc-field calc-field-checkbox">
+              <input type="checkbox" id="pwgen-numbers" checked>
+              <label for="pwgen-numbers">Numbers (0&ndash;9)</label>
+            </div>
+            <div class="calc-field calc-field-checkbox">
+              <input type="checkbox" id="pwgen-symbols" checked>
+              <label for="pwgen-symbols">Symbols (!@#&hellip;)</label>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-sm" id="pwgen-generate">Generate a New Password</button>
+
+          <p class="tool-note" style="margin-top:18px;">Made entirely in your browser using your device's random number generator, the same kind used for encryption. Consider a <a href="../../glossary/#password-manager" style="color:var(--accent); font-weight:600;">password manager</a> to actually store it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../../#services">Services</a>
+          <a class="link-underline" href="../../#about">About</a>
+          <a class="link-underline" href="../../#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    window.PWGEN_DATA = {
+      ui: {
+        noCharsets: "Pick at least one character type.",
+        strengthWeak: "weak",
+        strengthOkay: "okay",
+        strengthStrong: "strong",
+        strengthTemplate: "~{bits} bits of entropy — {label}",
+        copied: "Copied to clipboard.",
+        copyFailed: "Couldn't copy automatically — select the text and copy it manually."
+      }
+    };
+  </script>
+  <script src="../../js/password-generator.js"></script>
+<script src="../../js/nav.js"></script>
+
+</body>
+
+</html>

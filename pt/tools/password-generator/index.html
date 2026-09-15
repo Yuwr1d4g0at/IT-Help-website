@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../../../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="gerador de palavras-passe, palavra-passe forte, palavra-passe aleatória, gerador seguro, suporte informático Seixal" />
+  <meta name="description" content="Gere uma palavra-passe aleatória e forte diretamente no seu navegador. Nada é enviado para lado nenhum, e desaparece quando sai da página." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Gerador de Palavras-Passe Fortes | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/password-generator/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/password-generator/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/password-generator/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuwri.pt/pt/tools/password-generator/" />
+  <meta property="og:title" content="Yuwri | Gerador de Palavras-Passe Fortes" />
+  <meta property="og:description" content="Gere uma palavra-passe aleatória e forte diretamente no seu navegador. Nada é enviado para lado nenhum." />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:locale:alternate" content="en" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Yuwri | Gerador de Palavras-Passe Fortes" />
+  <meta name="twitter:description" content="Gere uma palavra-passe aleatória e forte diretamente no seu navegador. Nada é enviado para lado nenhum." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://yuwri.pt/pt/" },
+      { "@type": "ListItem", "position": 2, "name": "Recursos", "item": "https://yuwri.pt/pt/resources/" },
+      { "@type": "ListItem", "position": 3, "name": "Gerador de Palavras-Passe Fortes", "item": "https://yuwri.pt/pt/tools/password-generator/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link href="../../../css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+  <div id="top">
+
+    <!-- Washi tape stripe -->
+    <div class="tape-stripe">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a class="link-underline" href="../../#servicos">Serviços</a>
+          <a class="link-underline" href="../../software/">Software</a>
+          <a class="link-underline" href="../../blog/">Dicas</a>
+          <a class="link-underline" href="../../resources/">Recursos</a>
+          <a class="link-underline" href="../../#sobre">Sobre</a>
+          <a class="link-underline" href="../../#contacto">Contactos</a>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="nav-actions">
+          <a href="../../../tools/password-generator/" class="lang-switch mono" lang="en" hreflang="en">EN</a>
+          <a href="../../#contacto" class="btn btn-primary btn-sm">Contacte-me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../../">Início</a>
+          <span class="sep">/</span>
+          <a href="../../resources/">Recursos</a>
+          <span class="sep">/</span>
+          <span class="current">Gerador de Palavras-Passe</span>
+        </nav>
+        <h1>Gerador de Palavras-Passe Fortes</h1>
+        <p>Uma palavra-passe aleatória, gerada no seu próprio dispositivo. Nada é enviado para lado nenhum, e desaparece assim que sair desta página.</p>
+      </div>
+    </section>
+
+    <!-- Ferramenta -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="wizard" id="pwgen-root">
+          <div class="wizard-eyebrow">Gerador de Palavras-Passe</div>
+
+          <div class="tool-output-row">
+            <input type="text" id="pwgen-output" readonly aria-label="Palavra-passe gerada">
+            <button type="button" class="btn btn-outline btn-sm" id="pwgen-copy">Copiar</button>
+          </div>
+          <p class="tool-status" id="pwgen-status" aria-live="polite"></p>
+
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label for="pwgen-length">Comprimento</label>
+              <input type="number" id="pwgen-length" value="16" min="4" max="64">
+            </div>
+            <div class="calc-field calc-field-checkbox">
+              <input type="checkbox" id="pwgen-lower" checked>
+              <label for="pwgen-lower">Minúsculas (a&ndash;z)</label>
+            </div>
+            <div class="calc-field calc-field-checkbox">
+              <input type="checkbox" id="pwgen-upper" checked>
+              <label for="pwgen-upper">Maiúsculas (A&ndash;Z)</label>
+            </div>
+            <div class="calc-field calc-field-checkbox">
+              <input type="checkbox" id="pwgen-numbers" checked>
+              <label for="pwgen-numbers">Números (0&ndash;9)</label>
+            </div>
+            <div class="calc-field calc-field-checkbox">
+              <input type="checkbox" id="pwgen-symbols" checked>
+              <label for="pwgen-symbols">Símbolos (!@#&hellip;)</label>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-sm" id="pwgen-generate">Gerar Nova Palavra-Passe</button>
+
+          <p class="tool-note" style="margin-top:18px;">Feita inteiramente no seu navegador, usando o gerador de números aleatórios do seu dispositivo, o mesmo tipo usado em encriptação. Considere um <a href="../../glossary/#password-manager" style="color:var(--accent); font-weight:600;">gestor de palavras-passe</a> para a guardar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../../#servicos">Serviços</a>
+          <a class="link-underline" href="../../#sobre">Sobre</a>
+          <a class="link-underline" href="../../#contacto">Contactos</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    window.PWGEN_DATA = {
+      ui: {
+        noCharsets: "Escolha pelo menos um tipo de caráter.",
+        strengthWeak: "fraca",
+        strengthOkay: "razoável",
+        strengthStrong: "forte",
+        strengthTemplate: "~{bits} bits de entropia — {label}",
+        copied: "Copiada para a área de transferência.",
+        copyFailed: "Não foi possível copiar automaticamente — selecione o texto e copie manualmente."
+      }
+    };
+  </script>
+  <script src="../../../js/password-generator.js"></script>
+<script src="../../../js/nav.js"></script>
+
+</body>
+
+</html>
