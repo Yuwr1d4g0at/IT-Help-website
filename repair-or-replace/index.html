@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
-  <meta name="keywords" content="repair or replace computer, is my PC worth fixing, old laptop slow, Seixal IT support" />
-  <meta name="description" content="A straight answer on whether to repair your computer or replace it, based on its age and what's actually wrong." />
+  <meta name="keywords" content="repair or replace computer, is my PC worth fixing, old laptop slow, repair cost calculator, Seixal IT support" />
+  <meta name="description" content="A straight answer on whether to repair your computer or replace it, based on its age and what's actually wrong, plus a calculator for when you already have a quote." />
   <meta name="author" content="Yuwri" />
 
   <title>Repair or Replace? | Yuwri</title>
@@ -78,7 +78,7 @@
     <section class="page-intro">
       <div class="wrap">
         <h1>Should You Repair It, or Replace It?</h1>
-        <p>Answer a couple of quick questions for a straight answer, based on the computer's age and what's actually wrong with it. No upsell either way.</p>
+        <p>Answer a couple of quick questions for a straight answer, based on the computer's age and what's actually wrong with it. Already got a repair quote? Skip to the calculator below and run the actual numbers. No upsell either way.</p>
       </div>
     </section>
 
@@ -86,6 +86,14 @@
     <section class="section section-tight">
       <div class="wrap">
         <div class="wizard" id="wizard-root"></div>
+      </div>
+    </section>
+
+    <!-- Cost calculator -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="calc-divider"></div>
+        <div class="wizard" id="calc-root"></div>
       </div>
     </section>
 
@@ -205,6 +213,51 @@
     };
   </script>
   <script src="../js/wizard.js"></script>
+
+  <script>
+    window.CALC_DATA = {
+      ui: {
+        eyebrow: "Cost Calculator",
+        heading: "Already have a repair quote?",
+        ageLabel: "Device age (years)",
+        agePlaceholder: "e.g. 4",
+        repairLabel: "Estimated repair cost (€)",
+        repairPlaceholder: "e.g. 90",
+        replacementLabel: "Replacement cost (€)",
+        replacementPlaceholder: "e.g. 550",
+        calculateCta: "Calculate",
+        recalculateCta: "Calculate again",
+        contactCta: "Contact Me",
+        contactHref: "../#contact",
+        validationError: "Enter the age and both costs (greater than zero) to get a recommendation.",
+        badgeLabels: { repair: "Repair", replace: "Replace" },
+        locale: "en-US",
+        results: {
+          replaceCostly: {
+            type: "replace",
+            title: "Replace it",
+            body: "{repairCost} to fix a computer worth {replacementCost} new works out to about {percent}% of the price of a new one. Once a repair gets that close to the replacement cost, it's replacement territory almost regardless of age."
+          },
+          replaceOldAndCostly: {
+            type: "replace",
+            title: "Replace it",
+            body: "At {age} years old, a repair already running to about {percent}% of a new computer's price rarely pays for itself for long. You'd likely be back here again before too long."
+          },
+          repairOldButCheap: {
+            type: "repair",
+            title: "Repair it",
+            body: "{repairCost} is only about {percent}% of buying new, and that's still the better deal even at {age} years old. It's worth keeping an eye on other parts as it ages, but this fix alone is worth doing."
+          },
+          repairAffordable: {
+            type: "repair",
+            title: "Repair it",
+            body: "{repairCost} is about {percent}% of a {replacementCost} replacement, and at {age} years old this computer isn't a bad bet yet. Get it fixed."
+          }
+        }
+      }
+    };
+  </script>
+  <script src="../js/repair-calculator.js"></script>
 <script src="../js/nav.js"></script>
 
 </body>
