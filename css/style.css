@@ -1546,6 +1546,10 @@ button.lang-switch[aria-pressed="true"] {
 }
 
 @media print {
+  @page {
+    margin: 1.6cm;
+  }
+
   .tape-stripe,
   .site-nav,
   .site-footer,
@@ -1559,12 +1563,36 @@ button.lang-switch[aria-pressed="true"] {
     background: #fff;
   }
 
+  .wrap {
+    padding: 0;
+  }
+
   .section {
     padding: 0 !important;
   }
 
   .cheat-sheet-body {
     max-width: 100%;
+  }
+
+  /* Keep a heading with the list under it, and a checklist item off of a
+     page-break split, so a printed sheet doesn't cut mid-item. */
+  .cheat-sheet-body h2 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .cheat-sheet-body ul,
+  .cheat-sheet-body li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Links still print, but the accent color can wash out on some
+     printers, so underline them too, same as .article-body already does. */
+  .cheat-sheet-body a {
+    color: var(--ink);
+    text-decoration: underline;
   }
 }
 
