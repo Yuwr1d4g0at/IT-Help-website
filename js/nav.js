@@ -30,6 +30,6 @@
   });
 
   window.addEventListener("resize", function () {
-    if (window.innerWidth > 600) setOpen(false);
+    if (window.innerWidth > 960) setOpen(false);
   });
 })();

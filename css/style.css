@@ -510,6 +510,8 @@ button.lang-switch[aria-pressed="true"] {
 .tile-half h3 { font-size: 18px; }
 .tile-half p { font-size: 14px; line-height: 1.5; color: var(--ink); opacity: 0.7; margin: 0; }
 .tile-half.mint { background: var(--tile-mint); }
+.tile-half.sky { background: var(--tile-sky); }
+.tile-half.blush { background: var(--tile-blush); }
 .tile-half.peach { background: var(--tile-peach); }
 
 .tile-third { grid-column: span 2; }
@@ -1632,6 +1634,132 @@ button.lang-switch[aria-pressed="true"] {
   color: var(--ink);
 }
 
+/* Prices page */
+.price-stack > .wizard + .wizard {
+  margin-top: 24px;
+}
+
+.price-heading {
+  font-size: 21px;
+  margin: 0 0 14px;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  margin: 0 0 14px;
+}
+
+.price-table td {
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.price-table tr:last-child td {
+  border-bottom: none;
+}
+
+.price-table td:first-child {
+  font-weight: 700;
+}
+
+.price-table td:last-child {
+  text-align: right;
+  white-space: nowrap;
+  padding-left: 16px;
+  font-family: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.price-sub {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.price-unit {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.price-notes {
+  margin: 0 0 22px;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.price-notes li {
+  margin-bottom: 8px;
+}
+
+/* Where I work (homepage) */
+.services-footer {
+  text-align: center;
+  margin: 26px 0 0;
+}
+
+.area-link {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.area-card h2 {
+  margin-bottom: 12px;
+}
+
+.area-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.area-list li {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--tile-lavender);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hours-list {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto 16px;
+  font-size: 15px;
+}
+
+.hours-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.hours-list div:last-child {
+  border-bottom: none;
+}
+
+.hours-list dt {
+  font-weight: 700;
+}
+
+.hours-list dd {
+  margin: 0;
+  font-family: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+}
+
 @media print {
   @page {
     margin: 1.6cm;
@@ -1687,6 +1815,42 @@ button.lang-switch[aria-pressed="true"] {
    Responsive
    ------------------------------------------------------------------------- */
 
+/* Collapse the nav into the hamburger once all seven links no longer fit */
+@media (max-width: 960px) {
+  .site-nav {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 84px;
+    padding: 14px 0;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    order: 3;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+
 @media (max-width: 900px) {
   .tile-lead,
   .tile-half {
@@ -1741,39 +1905,6 @@ button.lang-switch[aria-pressed="true"] {
   .band h2,
   .contact-copy h2 {
     font-size: 28px !important;
-  }
-
-  .site-nav {
-    flex-wrap: wrap;
-    height: auto;
-    min-height: 84px;
-    padding: 14px 0;
-  }
-
-  .nav-toggle {
-    display: inline-flex;
-  }
-
-  .nav-links {
-    display: none;
-    flex-basis: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-    order: 3;
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid var(--line);
-  }
-
-  .nav-links.is-open {
-    display: flex;
-  }
-
-  .nav-links a {
-    display: block;
-    width: 100%;
-    padding: 10px 0;
   }
 
   .notecard {
