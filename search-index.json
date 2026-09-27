@@ -1,7 +1,8 @@
 {
-  "generated": "2026-09-15",
+  "generated": "2026-09-27",
   "entries": [
     { "title": "Yuwri | Computer Repair & IT Support in Seixal", "url": "/", "category": "Home", "excerpt": "Friendly, personalized computer repair and IT support in Seixal: repairs, PC building, virus removal, backups, OS installs, and website creation & maintenance.", "keywords": "home services contact about seixal repair pc building virus removal backup os install website" },
+    { "title": "Prices", "url": "/prices/", "category": "Services", "excerpt": "An hourly rate for general help, fixed prices for common jobs like virus removal and Windows reinstalls, and no surprises.", "keywords": "prices cost how much rate hourly quote virus removal windows reinstall ssd upgrade backup pc build diagnosis travel mb way cash payment hours seixal almada barreiro moita" },
     { "title": "Recommended Software", "url": "/software/", "category": "Software", "excerpt": "The antivirus, VPN, and productivity software Yuwri actually recommends: trusted picks, not filler.", "keywords": "antivirus vpn remote desktop password manager office suite ad blocker email client cloud storage calendar media player file archiver uninstaller file search screen capture messaging app photo editor note taking malwarebytes bleachbit hwinfo winget" },
     { "title": "Tips (Blog)", "url": "/blog/", "category": "Blog", "excerpt": "Plain-language notes on keeping your computer running well.", "keywords": "blog tips articles" },
     { "title": "Windows 10 Is No Longer Supported: Here's What That Actually Means", "url": "/blog/windows-10-end-of-life/", "category": "Blog", "excerpt": "Microsoft stopped supporting Windows 10 in October 2025. If you're still on it, here's what changed and what your real options are.", "keywords": "windows 10 end of life eol support ended security updates windows 11 upgrade extended security updates" },
