@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="Windows 11 compatibility checker, is my PC ready for Windows 11, Windows 11 requirements, TPM 2.0, Secure Boot, upgrade from Windows 10, Seixal IT support" />
+  <meta name="description" content="Check if your PC can run Windows 11 in five quick questions: processor, TPM 2.0, Secure Boot, RAM, and storage, with plain-language steps for finding each answer." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Is My PC Ready for Windows 11? | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/windows-11-checker/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/windows-11-checker/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/windows-11-checker/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuwri.pt/tools/windows-11-checker/" />
+  <meta property="og:title" content="Yuwri | Is My PC Ready for Windows 11?" />
+  <meta property="og:description" content="Five quick questions to find out if your PC can upgrade to Windows 11, and what to do if it can't." />
+  <meta property="og:locale" content="en" />
+  <meta property="og:locale:alternate" content="pt_PT" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Yuwri | Is My PC Ready for Windows 11?" />
+  <meta name="twitter:description" content="Five quick questions to find out if your PC can upgrade to Windows 11, and what to do if it can't." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yuwri.pt/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://yuwri.pt/resources/" },
+      { "@type": "ListItem", "position": 3, "name": "Is My PC Ready for Windows 11?", "item": "https://yuwri.pt/tools/windows-11-checker/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link href="../../css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+  <div id="top">
+
+    <!-- Washi tape stripe -->
+    <div class="tape-stripe">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a class="link-underline" href="../../#services">Services</a>
+          <a class="link-underline" href="../../prices/">Prices</a>
+          <a class="link-underline" href="../../software/">Software</a>
+          <a class="link-underline" href="../../blog/">Tips</a>
+          <a class="link-underline" href="../../resources/">Resources</a>
+          <a class="link-underline" href="../../#about">About</a>
+          <a class="link-underline" href="../../#contact">Contact</a>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="nav-actions">
+          <a href="../../pt/tools/windows-11-checker/" class="lang-switch mono" lang="pt-PT" hreflang="pt-PT">PT</a>
+          <a href="../../#contact" class="btn btn-primary btn-sm">Contact Me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../../">Home</a>
+          <span class="sep">/</span>
+          <a href="../../resources/">Resources</a>
+          <span class="sep">/</span>
+          <span class="current">Windows 11 Checker</span>
+        </nav>
+        <h1>Is My PC Ready for Windows 11?</h1>
+        <p>Five quick questions about your computer, each with simple steps for finding the answer. Your result updates as you go, and nothing is sent anywhere.</p>
+      </div>
+    </section>
+
+    <!-- Tool -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="wizard" id="w11-root">
+          <div class="wizard-eyebrow">Windows 11 Checker</div>
+          <p class="tool-note">A website can't see inside your computer, so this is a checklist you fill in yourself. Not sure about something? Open "How do I check?" under that question, or just pick "Not sure".</p>
+
+          <form id="w11-form" class="w11-form" novalidate>
+
+            <fieldset class="w11-item">
+              <legend class="w11-legend"><span class="w11-num">1</span> Is the processor an Intel Core 8th generation or newer, or an AMD Ryzen 2000 series or newer?</legend>
+              <div class="w11-choices">
+                <input type="radio" name="w11-cpu" id="w11-cpu-yes" value="yes"><label for="w11-cpu-yes">Yes</label>
+                <input type="radio" name="w11-cpu" id="w11-cpu-no" value="no"><label for="w11-cpu-no">No</label>
+                <input type="radio" name="w11-cpu" id="w11-cpu-unsure" value="unsure"><label for="w11-cpu-unsure">Not sure</label>
+              </div>
+              <details class="w11-hint">
+                <summary>How do I check?</summary>
+                <p>Open <strong>Settings &gt; System &gt; About</strong> and look at "Processor".</p>
+                <p>On Intel, the first digit after i3, i5, i7, or i9 is usually the generation: an i5-8250U is 8th gen (a Yes), an i5-7200U is 7th gen (a No). From 10th gen on it's two digits, like i7-10510U. Newer "Core Ultra" and "Core 5 / Core 7" chips count as a Yes.</p>
+                <p>On AMD, the first digit of the Ryzen model number is the series: a Ryzen 5 3500U is 3000 series (a Yes).</p>
+                <p>Pentium, Celeron, Atom, or still unsure? Microsoft's free <strong>PC Health Check</strong> app will check it for you.</p>
+              </details>
+            </fieldset>
+
+            <fieldset class="w11-item">
+              <legend class="w11-legend"><span class="w11-num">2</span> Does it have TPM 2.0?</legend>
+              <div class="w11-choices">
+                <input type="radio" name="w11-tpm" id="w11-tpm-yes" value="yes"><label for="w11-tpm-yes">Yes</label>
+                <input type="radio" name="w11-tpm" id="w11-tpm-no" value="no"><label for="w11-tpm-no">No</label>
+                <input type="radio" name="w11-tpm" id="w11-tpm-unsure" value="unsure"><label for="w11-tpm-unsure">Not sure</label>
+              </div>
+              <details class="w11-hint">
+                <summary>How do I check?</summary>
+                <p>TPM is a small security chip. Press <strong>Windows key + R</strong>, type <code>tpm.msc</code>, and press Enter.</p>
+                <p>Under "TPM Manufacturer Information", look for <strong>"Specification Version: 2.0"</strong>. That's a Yes. If it says "Compatible TPM cannot be found", answer No: it's often just switched off.</p>
+              </details>
+            </fieldset>
+
+            <fieldset class="w11-item">
+              <legend class="w11-legend"><span class="w11-num">3</span> Does it use UEFI and support Secure Boot?</legend>
+              <div class="w11-choices">
+                <input type="radio" name="w11-boot" id="w11-boot-yes" value="yes"><label for="w11-boot-yes">Yes</label>
+                <input type="radio" name="w11-boot" id="w11-boot-no" value="no"><label for="w11-boot-no">No</label>
+                <input type="radio" name="w11-boot" id="w11-boot-unsure" value="unsure"><label for="w11-boot-unsure">Not sure</label>
+              </div>
+              <details class="w11-hint">
+                <summary>How do I check?</summary>
+                <p>Press <strong>Windows key + R</strong>, type <code>msinfo32</code>, and press Enter. Stay on "System Summary".</p>
+                <p>If <strong>"BIOS Mode"</strong> says UEFI and <strong>"Secure Boot State"</strong> says On or Off, answer Yes (Off just means it's supported but not switched on yet). If BIOS Mode says Legacy, or Secure Boot State says Unsupported, answer No.</p>
+              </details>
+            </fieldset>
+
+            <fieldset class="w11-item">
+              <legend class="w11-legend"><span class="w11-num">4</span> Does it have at least 4 GB of RAM?</legend>
+              <div class="w11-choices">
+                <input type="radio" name="w11-ram" id="w11-ram-yes" value="yes"><label for="w11-ram-yes">Yes</label>
+                <input type="radio" name="w11-ram" id="w11-ram-no" value="no"><label for="w11-ram-no">No</label>
+                <input type="radio" name="w11-ram" id="w11-ram-unsure" value="unsure"><label for="w11-ram-unsure">Not sure</label>
+              </div>
+              <details class="w11-hint">
+                <summary>How do I check?</summary>
+                <p>Open <strong>Settings &gt; System &gt; About</strong> and look at <strong>"Installed RAM"</strong>. 4 GB is the minimum; 8 GB or more makes Windows 11 much more comfortable to use.</p>
+              </details>
+            </fieldset>
+
+            <fieldset class="w11-item">
+              <legend class="w11-legend"><span class="w11-num">5</span> Is the main drive at least 64 GB?</legend>
+              <div class="w11-choices">
+                <input type="radio" name="w11-storage" id="w11-storage-yes" value="yes"><label for="w11-storage-yes">Yes</label>
+                <input type="radio" name="w11-storage" id="w11-storage-no" value="no"><label for="w11-storage-no">No</label>
+                <input type="radio" name="w11-storage" id="w11-storage-unsure" value="unsure"><label for="w11-storage-unsure">Not sure</label>
+              </div>
+              <details class="w11-hint">
+                <summary>How do I check?</summary>
+                <p>Open <strong>File Explorer</strong> and click <strong>This PC</strong>. Under the C: drive it says something like "120 GB free of 237 GB": the second number is the drive's size. If it's nearly full, you'll also want to free up some space before upgrading.</p>
+              </details>
+            </fieldset>
+
+          </form>
+
+          <div class="w11-result" id="w11-result" aria-live="polite"></div>
+        </div>
+
+        <p class="tool-note w11-footnote">These are Microsoft's minimum requirements for installing Windows 11 through the normal upgrade. For the full walk-through, see the <a href="../../blog/windows-11-upgrade-guide/" style="color:var(--accent); font-weight:600;">Windows 11 upgrade guide</a>.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../../#services">Services</a>
+          <a class="link-underline" href="../../#about">About</a>
+          <a class="link-underline" href="../../#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    window.W11_DATA = {
+      ui: {
+        eyebrow: "Your result",
+        startOver: "Start over",
+        contactCta: "Contact Me",
+        contactHref: "../../#contact",
+        badgeLabels: {
+          repair: "Ready",
+          replace: "Not supported",
+          fixable: "Probably fixable",
+          unsure: "Check a few things"
+        },
+        results: {
+          pending: { title: "Answer all five to see where you stand" },
+          ready: { title: "Your PC is ready for Windows 11" },
+          notSupported: { title: "Windows 11 doesn't officially support this processor" },
+          fixableFirmware: { title: "Not yet, but it's probably just a setting" },
+          fixableHardware: { title: "Close: a small upgrade should get it there" },
+          fixableBoth: { title: "Not yet, but it's likely fixable" },
+          unsure: { title: "Nearly there: a few answers to confirm" }
+        },
+        paragraphs: {
+          pendingBody: "Pick Yes, No, or Not sure for each question above. The result appears here as soon as there's enough to go on.",
+          readyBody: "Going by your answers, it meets all of Windows 11's requirements, and the upgrade is free. Look for it in Settings > Windows Update (it can take a little while to be offered). Before you start, back up your files, just in case.",
+          cpuBody: "The other requirements can often be fixed, but on most computers the processor can't be swapped. Windows 10 no longer gets regular security updates, so your realistic options are: stay on Windows 10 with Extended Security Updates for now, a paid, time-limited stopgap; replace the computer; or, if it still runs well, switch to a free system like Linux Mint or ChromeOS Flex, both of which are happy on older hardware.",
+          firmwareBody: "TPM and Secure Boot are often built in but switched off in the computer's BIOS/UEFI settings, and can usually be turned on. It's normally a quick job. If \"BIOS Mode\" says Legacy, switching to UEFI can also mean converting the drive, which takes a bit more care, so back up your files first.",
+          hardwareBody: "Too little RAM or storage is often fixable with an inexpensive upgrade: more memory, or a bigger SSD, which on an older computer usually makes it feel faster too.",
+          alsoCheckBody: "Some questions are still unanswered or marked Not sure. Worth checking those too, so there are no surprises.",
+          unsureBody: "Nothing you've answered rules it out. Use the \"How do I check?\" steps for the ones you weren't sure about, or run Microsoft's free PC Health Check app, which checks everything at once. Or get in touch and I'll check it for you."
+        },
+        links: {
+          backup: { href: "../../blog/how-to-back-up-your-computer/", text: "How to back up your computer" },
+          upgradeGuide: { href: "../../blog/windows-11-upgrade-guide/", text: "Read the Windows 11 upgrade guide" },
+          win10: { href: "../../blog/windows-10-end-of-life/", text: "What Windows 10 end of support means" },
+          repairOrReplace: { href: "../../repair-or-replace/", text: "Repair or replace? Take the quiz" }
+        }
+      }
+    };
+  </script>
+  <script src="../../js/windows-11-checker.js"></script>
+<script src="../../js/nav.js"></script>
+
+</body>
+
+</html>
