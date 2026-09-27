@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../../../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="conversor de tamanho de ficheiros, bytes para megabytes, conversor KB MB GB TB, binário vs decimal, suporte informático Seixal" />
+  <meta name="description" content="Converta entre bytes, KB, MB, GB, TB e PB, decimal ou binário, gratuito e totalmente no seu navegador." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Conversor de Tamanho de Ficheiros | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/file-size-converter/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/file-size-converter/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/file-size-converter/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuwri.pt/pt/tools/file-size-converter/" />
+  <meta property="og:title" content="Yuwri | Conversor de Tamanho de Ficheiros" />
+  <meta property="og:description" content="Converta entre bytes, KB, MB, GB, TB e PB, decimal ou binário." />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:locale:alternate" content="en" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Yuwri | Conversor de Tamanho de Ficheiros" />
+  <meta name="twitter:description" content="Converta entre bytes, KB, MB, GB, TB e PB, decimal ou binário." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://yuwri.pt/pt/" },
+      { "@type": "ListItem", "position": 2, "name": "Recursos", "item": "https://yuwri.pt/pt/resources/" },
+      { "@type": "ListItem", "position": 3, "name": "Conversor de Tamanho de Ficheiros", "item": "https://yuwri.pt/pt/tools/file-size-converter/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link href="../../../css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+  <div id="top">
+
+    <!-- Washi tape stripe -->
+    <div class="tape-stripe">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a class="link-underline" href="../../#servicos">Serviços</a>
+          <a class="link-underline" href="../../software/">Software</a>
+          <a class="link-underline" href="../../blog/">Dicas</a>
+          <a class="link-underline" href="../../resources/">Recursos</a>
+          <a class="link-underline" href="../../#sobre">Sobre</a>
+          <a class="link-underline" href="../../#contacto">Contactos</a>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="nav-actions">
+          <a href="../../../tools/file-size-converter/" class="lang-switch mono" lang="en" hreflang="en">EN</a>
+          <a href="../../#contacto" class="btn btn-primary btn-sm">Contacte-me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../../">Início</a>
+          <span class="sep">/</span>
+          <a href="../../resources/">Recursos</a>
+          <span class="sep">/</span>
+          <span class="current">Conversor de Tamanho de Ficheiros</span>
+        </nav>
+        <h1>Conversor de Tamanho de Ficheiros</h1>
+        <p>Bytes, KB, MB, GB, TB e PB, decimal ou binário, convertidos enquanto escreve. Sem precisar de uma folha de cálculo.</p>
+      </div>
+    </section>
+
+    <!-- Ferramenta -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="wizard" id="fsc-root">
+          <div class="wizard-eyebrow">Conversor de Tamanho de Ficheiros</div>
+
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label for="fsc-value">Quantidade</label>
+              <input type="number" id="fsc-value" value="1" min="0" step="any" inputmode="decimal">
+            </div>
+            <div class="calc-field">
+              <label for="fsc-unit">Unidade</label>
+              <select id="fsc-unit">
+                <option value="B">Bytes (B)</option>
+                <option value="KB" selected>Kilobytes (KB)</option>
+                <option value="MB">Megabytes (MB)</option>
+                <option value="GB">Gigabytes (GB)</option>
+                <option value="TB">Terabytes (TB)</option>
+                <option value="PB">Petabytes (PB)</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label for="fsc-standard">Sistema</label>
+              <select id="fsc-standard">
+                <option value="decimal">Decimal (base 1000)</option>
+                <option value="binary">Binário (base 1024)</option>
+              </select>
+            </div>
+          </div>
+
+          <table class="tool-table">
+            <tbody id="fsc-results"></tbody>
+          </table>
+
+          <p class="tool-note">O decimal é o que vem impresso na caixa de um disco e o que os planos de armazenamento móvel ou na nuvem normalmente significam. O binário é o que o Windows mostra no Explorador de Ficheiros, e é por isso que um disco de "512 GB" aparece lá como cerca de 477 GB: os mesmos bytes, contas diferentes, não faltam 35 GB.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../../#servicos">Serviços</a>
+          <a class="link-underline" href="../../#sobre">Sobre</a>
+          <a class="link-underline" href="../../#contacto">Contactos</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="../../../js/file-size-converter.js"></script>
+<script src="../../../js/nav.js"></script>
+
+</body>
+
+</html>

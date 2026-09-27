@@ -78,7 +78,7 @@
     <section class="page-intro">
       <div class="wrap">
         <h1>Deve Reparar, ou Substituir?</h1>
-        <p>Responda a algumas perguntas rápidas para uma resposta direta, com base na idade do computador e no que realmente está avariado. Sem venda de nenhum dos lados.</p>
+        <p>Responda a algumas perguntas rápidas para uma resposta direta, com base na idade do computador e no que realmente está avariado. Já tem um orçamento de reparação? Avance para a calculadora abaixo e faça as contas reais. Sem venda de nenhum dos lados.</p>
       </div>
     </section>
 
@@ -86,6 +86,14 @@
     <section class="section section-tight">
       <div class="wrap">
         <div class="wizard" id="wizard-root"></div>
+      </div>
+    </section>
+
+    <!-- Calculadora de custos -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="calc-divider"></div>
+        <div class="wizard" id="calc-root"></div>
       </div>
     </section>
 
@@ -205,6 +213,51 @@
     };
   </script>
   <script src="../../js/wizard.js"></script>
+
+  <script>
+    window.CALC_DATA = {
+      ui: {
+        eyebrow: "Calculadora de Custos",
+        heading: "Já tem um orçamento de reparação?",
+        ageLabel: "Idade do dispositivo (anos)",
+        agePlaceholder: "ex.: 4",
+        repairLabel: "Custo estimado da reparação (€)",
+        repairPlaceholder: "ex.: 90",
+        replacementLabel: "Custo de substituição (€)",
+        replacementPlaceholder: "ex.: 550",
+        calculateCta: "Calcular",
+        recalculateCta: "Calcular de novo",
+        contactCta: "Contacte-me",
+        contactHref: "../#contacto",
+        validationError: "Indique a idade e ambos os custos (maiores que zero) para obter uma recomendação.",
+        badgeLabels: { repair: "Reparar", replace: "Substituir" },
+        locale: "pt-PT",
+        results: {
+          replaceCostly: {
+            type: "replace",
+            title: "Substitua-o",
+            body: "{repairCost} para reparar um computador que custaria {replacementCost} novo equivale a cerca de {percent}% do preço de um novo. Quando uma reparação chega tão perto do custo de substituição, é praticamente sempre altura de substituir, seja qual for a idade."
+          },
+          replaceOldAndCostly: {
+            type: "replace",
+            title: "Substitua-o",
+            body: "Com {age} anos, uma reparação que já anda perto de {percent}% do preço de um computador novo raramente se paga a si própria por muito tempo. Provavelmente estaria de volta aqui em breve."
+          },
+          repairOldButCheap: {
+            type: "repair",
+            title: "Repare-o",
+            body: "{repairCost} é apenas cerca de {percent}% do preço de um novo, e isso ainda é o melhor negócio mesmo com {age} anos. Vale a pena ficar atento a outras peças à medida que envelhece, mas esta reparação sozinha vale a pena."
+          },
+          repairAffordable: {
+            type: "repair",
+            title: "Repare-o",
+            body: "{repairCost} é cerca de {percent}% de um substituto de {replacementCost}, e com {age} anos este computador ainda não é uma má aposta. Mande reparar."
+          }
+        }
+      }
+    };
+  </script>
+  <script src="../../js/repair-calculator.js"></script>
 <script src="../../js/nav.js"></script>
 
 </body>

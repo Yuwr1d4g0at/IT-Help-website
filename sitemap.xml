@@ -225,4 +225,46 @@
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/troubleshoot/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/troubleshoot/" />
   </url>
+  <url>
+    <loc>https://yuwri.pt/search/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/search/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/search/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/search/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/pt/search/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/search/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/search/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/search/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/tools/file-size-converter/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/file-size-converter/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/file-size-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/file-size-converter/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/pt/tools/file-size-converter/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/file-size-converter/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/file-size-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/file-size-converter/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/tools/password-generator/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/password-generator/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/pt/tools/password-generator/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/password-generator/" />
+  </url>
 </urlset>

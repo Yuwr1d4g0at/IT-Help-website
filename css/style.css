@@ -1277,6 +1277,173 @@ button.lang-switch[aria-pressed="true"] {
 }
 
 /* -------------------------------------------------------------------------
+   Repair-or-replace cost calculator
+   ------------------------------------------------------------------------- */
+
+.calc-divider {
+  max-width: 620px;
+  margin: 0 auto 44px;
+  border-top: 1px solid var(--line);
+}
+
+.calc-fields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 18px 0 20px;
+}
+
+.calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calc-field label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+
+.calc-field input,
+.calc-field select {
+  font-family: inherit;
+  font-size: 15px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--ink);
+  width: 100%;
+}
+
+.calc-field input:focus-visible,
+.calc-field select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.calc-field-checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.calc-field-checkbox input {
+  width: auto;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.calc-field-checkbox label {
+  color: var(--ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.calc-error {
+  font-size: 13.5px;
+  color: var(--accent);
+  margin: 0 0 16px;
+}
+
+.calc-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-family: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.calc-badge-repair {
+  background: var(--tile-mint);
+  color: var(--ink);
+}
+
+.calc-badge-replace {
+  background: var(--tile-peach);
+  color: var(--ink);
+}
+
+@media (max-width: 600px) {
+  .calc-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Free tools (file size converter, password generator)
+   ------------------------------------------------------------------------- */
+
+.tool-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  margin: 4px 0 18px;
+}
+
+.tool-table td {
+  padding: 9px 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tool-table td:first-child {
+  font-weight: 700;
+  width: 90px;
+}
+
+.tool-table td:last-child {
+  text-align: right;
+  font-family: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+.tool-table tr:last-child td {
+  border-bottom: none;
+}
+
+.tool-row-current td {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.tool-output-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tool-output-row input {
+  flex: 1;
+  min-width: 0;
+  font-family: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+  font-size: 15px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.tool-note {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin: 0 0 18px;
+}
+
+.tool-status {
+  font-size: 12.5px;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 4px;
+  min-height: 1.4em;
+}
+
+/* -------------------------------------------------------------------------
    Glossary
    ------------------------------------------------------------------------- */
 
@@ -1313,6 +1480,33 @@ button.lang-switch[aria-pressed="true"] {
 .glossary-term p a {
   color: var(--accent);
   font-weight: 600;
+}
+
+/* -------------------------------------------------------------------------
+   Site-wide search
+   ------------------------------------------------------------------------- */
+
+.search-box-lg {
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto 12px;
+  padding: 12px 20px;
+}
+
+.search-box-lg input {
+  font-size: 15.5px;
+}
+
+.search-status {
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--ink-muted);
+  min-height: 1.4em;
+  margin: 0 0 28px;
+}
+
+.search-results.blog-list {
+  margin-top: 0;
 }
 
 /* -------------------------------------------------------------------------
@@ -1439,6 +1633,10 @@ button.lang-switch[aria-pressed="true"] {
 }
 
 @media print {
+  @page {
+    margin: 1.6cm;
+  }
+
   .tape-stripe,
   .site-nav,
   .site-footer,
@@ -1452,12 +1650,36 @@ button.lang-switch[aria-pressed="true"] {
     background: #fff;
   }
 
+  .wrap {
+    padding: 0;
+  }
+
   .section {
     padding: 0 !important;
   }
 
   .cheat-sheet-body {
     max-width: 100%;
+  }
+
+  /* Keep a heading with the list under it, and a checklist item off of a
+     page-break split, so a printed sheet doesn't cut mid-item. */
+  .cheat-sheet-body h2 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .cheat-sheet-body ul,
+  .cheat-sheet-body li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Links still print, but the accent color can wash out on some
+     printers, so underline them too, same as .article-body already does. */
+  .cheat-sheet-body a {
+    color: var(--ink);
+    text-decoration: underline;
   }
 }
 
