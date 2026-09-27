@@ -1,7 +1,9 @@
 // "Build Your Own Setup" picker (software/ + pt/software/).
-// Generates a plain .bat file that calls winget for each checked app.
-// Nothing is downloaded or hosted here — winget just fetches straight
-// from Microsoft's own public package repository.
+// Generates a plain .bat file that installs each checked app.
+// Windows 10/11 mode calls winget; Windows 7/8.1 mode calls Chocolatey
+// with each app pinned to its last release that still runs there (rows
+// carry data-choco / data-choco-version). Nothing is downloaded or hosted
+// here: both tools fetch straight from their own public repositories.
 (function () {
   "use strict";
 
@@ -12,14 +14,33 @@
   var scriptEl = document.getElementById("picker-script");
   var downloadLink = document.getElementById("picker-download");
   var copyBtn = document.getElementById("picker-copy");
+  var modeButtons = Array.prototype.slice.call(document.querySelectorAll(".picker-mode-btn"));
+  var modeBlocks = Array.prototype.slice.call(document.querySelectorAll("[data-show-mode]"));
 
   if (!checks.length || !countEl || !generateBtn) return;
 
   var currentUrl = null;
+  var mode = "modern";
+
+  // Show the pinned version next to each app in Windows 7 mode.
+  checks.forEach(function (c) {
+    if (!c.dataset.choco) return;
+    var label = c.dataset.chocoLabel || c.dataset.chocoVersion;
+    if (!label) return;
+    var tag = document.createElement("span");
+    tag.className = "pick-version mono";
+    tag.textContent = label;
+    tag.hidden = true;
+    c.parentNode.appendChild(tag);
+  });
+
+  function available(c) {
+    return mode === "modern" || !!c.dataset.choco;
+  }
 
   function selected() {
     return checks.filter(function (c) {
-      return c.checked;
+      return c.checked && available(c);
     });
   }
 
@@ -33,7 +54,30 @@
     }
   }
 
-  function buildScript(picks) {
+  function setMode(next) {
+    mode = next;
+    modeButtons.forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.mode === mode));
+    });
+    modeBlocks.forEach(function (el) {
+      el.hidden = el.dataset.showMode !== mode;
+    });
+    checks.forEach(function (c) {
+      var ok = available(c);
+      c.disabled = !ok;
+      c.parentNode.classList.toggle("pick-unavailable", !ok);
+      var tag = c.parentNode.querySelector(".pick-version");
+      if (tag) tag.hidden = mode !== "legacy";
+    });
+    downloadLink.setAttribute(
+      "download",
+      mode === "legacy" ? downloadLink.dataset.fileLegacy : downloadLink.dataset.fileModern
+    );
+    output.hidden = true;
+    updateCount();
+  }
+
+  function buildWingetScript(picks) {
     var lines = ["@echo off", "echo Installing your picks with winget...", "echo."];
     picks.forEach(function (c) {
       lines.push("echo -- " + c.dataset.name);
@@ -50,11 +94,74 @@
     return lines.join("\r\n");
   }
 
+  // Windows 7/8.1: check the prerequisites (PowerShell 3+ for TLS 1.2,
+  // .NET 4.8 for Chocolatey 2.x), bootstrap Chocolatey, then install
+  // each pick pinned so a later "choco upgrade all" can't break it.
+  function buildChocoScript(picks) {
+    var ps = "\"%PS%\" -NoProfile -ExecutionPolicy Bypass -Command ";
+    var lines = [
+      "@echo off",
+      "setlocal",
+      "echo Installing your picks for Windows 7 / 8.1 with Chocolatey...",
+      "echo.",
+      "net session >nul 2>&1",
+      "if errorlevel 1 goto :needadmin",
+      "set \"PS=%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\"",
+      ps +
+        "\"if ($PSVersionTable.PSVersion.Major -lt 3) { exit 2 }; " +
+        "$r = (Get-ItemProperty 'HKLM:\\SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full' -ErrorAction SilentlyContinue).Release; " +
+        "if ($r -lt 528040) { exit 3 }; exit 0\"",
+      "if %errorlevel%==2 goto :needwmf",
+      "if %errorlevel%==3 goto :needdotnet",
+      "where choco >nul 2>&1",
+      "if not errorlevel 1 goto :install",
+      "echo -- Chocolatey",
+      ps.replace("-NoProfile ", "-NoProfile -InputFormat None ") +
+        "\"[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; " +
+        "iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))\"",
+      "set \"PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin\"",
+      "choco -v >nul 2>&1",
+      "if errorlevel 1 goto :chocofail",
+      "echo.",
+      ":install"
+    ];
+    picks.forEach(function (c) {
+      lines.push("echo -- " + c.dataset.name);
+      lines.push(
+        "choco install " +
+          c.dataset.choco +
+          (c.dataset.chocoVersion ? " --version " + c.dataset.chocoVersion + " --pin" : "") +
+          " -y --no-progress"
+      );
+      lines.push("echo.");
+    });
+    lines.push(
+      "echo Done. Some apps may ask for a restart. Press any key to close.",
+      "goto :end",
+      ":needadmin",
+      "echo Right-click this file and choose \"Run as administrator\".",
+      "goto :end",
+      ":needwmf",
+      "echo PowerShell is too old. Install .NET Framework 4.8 and then",
+      "echo Windows Management Framework 5.1, restart, and run this again.",
+      "goto :end",
+      ":needdotnet",
+      "echo Install .NET Framework 4.8 first, restart, and run this again.",
+      "goto :end",
+      ":chocofail",
+      "echo Chocolatey could not be installed. Check the internet connection",
+      "echo and that Windows is fully updated, then run this again.",
+      ":end",
+      "pause >nul"
+    );
+    return lines.join("\r\n");
+  }
+
   generateBtn.addEventListener("click", function () {
     var picks = selected();
     if (!picks.length) return;
 
-    var text = buildScript(picks);
+    var text = mode === "legacy" ? buildChocoScript(picks) : buildWingetScript(picks);
     scriptEl.textContent = text;
 
     if (currentUrl) {
@@ -85,7 +192,13 @@
     c.addEventListener("change", updateCount);
   });
 
-  updateCount();
+  modeButtons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (b.dataset.mode !== mode) setMode(b.dataset.mode);
+    });
+  });
+
+  setMode(mode);
 })();
 
 // Search filter (software/ + pt/software/).

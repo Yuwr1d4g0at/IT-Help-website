@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 
-  <link href="../css/style.css" rel="stylesheet" />
+  <link href="../css/style.css?v=2" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
@@ -90,18 +90,37 @@
         <div class="picker-bar">
           <div class="picker-info">
             <strong id="picker-count" data-singular="{n} selected" data-plural="{n} selected">0 selected</strong>
-            <span class="picker-hint">Tick anything with a checkbox below, then get one script that installs it all. It runs on winget, already built into Windows 10/11, and nothing is hosted or bundled by me.</span>
+            <span class="picker-hint" data-show-mode="modern">Tick anything with a checkbox below, then get one script that installs it all. It runs on winget, already built into Windows 10/11, and nothing is hosted or bundled by me.</span>
+            <span class="picker-hint" data-show-mode="legacy" hidden>On Windows 7 / 8.1 the script uses Chocolatey instead of winget, and pins each app to its last version that still runs there. Greyed-out apps have no version that still works, so they're left out.</span>
           </div>
-          <button type="button" class="btn btn-primary btn-sm" id="picker-generate" disabled>Generate Install Script</button>
+          <div class="picker-actions">
+            <div class="picker-mode" role="group" aria-label="Which Windows?">
+              <button type="button" class="picker-mode-btn" data-mode="modern" aria-pressed="true">Windows 10 / 11</button>
+              <button type="button" class="picker-mode-btn" data-mode="legacy" aria-pressed="false">Windows 7 / 8.1</button>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" id="picker-generate" disabled>Generate Install Script</button>
+          </div>
+        </div>
+
+        <div class="legacy-panel" data-show-mode="legacy" hidden>
+          <p class="legacy-warning"><strong>Heads up:</strong> Windows 7 and 8.1 no longer get security updates, and most of these apps are frozen on old versions too. That's fine for an offline PC or one kept for a single old program, but not for banking or email. The real fix is an upgrade: <a class="link-underline" href="../tools/windows-11-checker/">check if yours can run Windows 11</a>, or <a class="link-underline" href="../#contact">ask me</a>.</p>
+          <h3>Before you run the script (one time only)</h3>
+          <ol>
+            <li>Make sure Windows 7 has <strong>Service Pack 1</strong> and every update Windows Update still offers. To check, open Start, right-click Computer and choose Properties.</li>
+            <li>Install <a class="link-underline" href="https://go.microsoft.com/fwlink/?linkid=2088631" target="_blank" rel="noopener">.NET Framework 4.8</a> (Microsoft's offline installer), then restart.</li>
+            <li>Windows 7 only: install <a class="link-underline" href="https://go.microsoft.com/fwlink/?linkid=839523" target="_blank" rel="noopener">Windows Management Framework 5.1</a> (or the <a class="link-underline" href="https://go.microsoft.com/fwlink/?linkid=839522" target="_blank" rel="noopener">32-bit version</a>). Unzip it, double-click the .msu file inside, then restart. <a class="link-underline" href="https://learn.microsoft.com/en-us/previous-versions/powershell/scripting/windows-powershell/wmf/setup/install-configure" target="_blank" rel="noopener">Microsoft's steps</a> if you get stuck.</li>
+          </ol>
+          <p>Without these, Windows 7 can't make the secure connection Chocolatey needs. The script checks for them first and tells you what's missing instead of failing halfway.</p>
         </div>
 
         <div class="picker-output" id="picker-output" hidden>
           <pre id="picker-script" class="mono"></pre>
           <div class="picker-output-actions">
-            <a href="#" id="picker-download" class="btn btn-primary btn-sm" download="install-picks.bat">Download install-picks.bat</a>
+            <a href="#" id="picker-download" class="btn btn-primary btn-sm" download="install-picks.bat" data-file-modern="install-picks.bat" data-file-legacy="install-picks-win7.bat"><span data-show-mode="modern">Download install-picks.bat</span><span data-show-mode="legacy" hidden>Download install-picks-win7.bat</span></a>
             <button type="button" class="btn btn-outline btn-sm" id="picker-copy">Copy script</button>
           </div>
-          <p class="picker-note">Needs winget (already on Windows 10 2018+ and Windows 11). Double-click the file, and choose "More info &rarr; Run anyway" if Windows SmartScreen asks. That's normal for any unsigned script, same as one you'd write yourself, and it installs everything with no further prompts.</p>
+          <p class="picker-note" data-show-mode="modern">Needs winget (already on Windows 10 2018+ and Windows 11). Double-click the file, and choose "More info &rarr; Run anyway" if Windows SmartScreen asks. That's normal for any unsigned script, same as one you'd write yourself, and it installs everything with no further prompts.</p>
+          <p class="picker-note" data-show-mode="legacy" hidden>Right-click the file and choose "Run as administrator". It checks the steps above, installs <a class="link-underline" href="https://chocolatey.org/" target="_blank" rel="noopener">Chocolatey</a> (a free, open-source package manager) if needed, then your picks, each pinned to its Windows 7 version. Big ones like LibreOffice take a while.</p>
         </div>
 
         <div class="software-sections">
@@ -156,7 +175,7 @@
                 <a href="https://proton.me/pass" class="app-name" target="_blank" rel="noopener" title="Proton's own password manager, built into the same privacy-focused account as Mail, Calendar, and Drive. Worth it if you want everything under one login.">Proton Pass</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="DominikReichl.KeePass" data-name="KeePass" aria-label="Include KeePass in the installer">
+                <input type="checkbox" class="pick-check" data-winget="DominikReichl.KeePass" data-choco="keepass.install" data-choco-version="2.61.1" data-choco-label="2.61.1" data-name="KeePass" aria-label="Include KeePass in the installer">
                 <span class="app-icon mint"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="4"/><path d="M12 12h9"/><path d="M17 12v3"/><path d="M20 12v2"/></svg></span>
                 <a href="https://keepass.info/" class="app-name" target="_blank" rel="noopener" title="A local password manager that keeps everything in a single encrypted file on your own PC, with nothing synced to the cloud unless you set that up yourself. A more hands-on, fully offline alternative to Bitwarden.">KeePass</a>
               </div>
@@ -178,7 +197,7 @@
             <h3 class="software-category-title">Browser</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="Mozilla.Firefox" data-name="Firefox" aria-label="Include Firefox in the installer">
+                <input type="checkbox" class="pick-check" data-winget="Mozilla.Firefox" data-choco="firefoxesr" data-choco-version="115.15.0" data-choco-label="115 ESR" data-name="Firefox" aria-label="Include Firefox in the installer">
                 <span class="app-icon mint"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18"/></svg></span>
                 <a href="https://www.mozilla.org/firefox/" class="app-name" target="_blank" rel="noopener" title="A fast, independent browser that isn't trying to sell you anything else.">Firefox</a>
               </div>
@@ -204,7 +223,7 @@
             <h3 class="software-category-title">Office Suite</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="TheDocumentFoundation.LibreOffice" data-name="LibreOffice" aria-label="Include LibreOffice in the installer">
+                <input type="checkbox" class="pick-check" data-winget="TheDocumentFoundation.LibreOffice" data-choco="libreoffice-still" data-choco-version="25.2.7" data-choco-label="25.2" data-name="LibreOffice" aria-label="Include LibreOffice in the installer">
                 <span class="app-icon sky"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
                 <a href="https://www.libreoffice.org/" class="app-name" target="_blank" rel="noopener" title="A full office suite (word processor, spreadsheets, presentations) that opens and saves Microsoft Office files without the subscription.">LibreOffice</a>
               </div>
@@ -215,7 +234,7 @@
             <h3 class="software-category-title">Photo Editing</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="GIMP.GIMP" data-name="GIMP" aria-label="Include GIMP in the installer">
+                <input type="checkbox" class="pick-check" data-winget="GIMP.GIMP" data-choco="gimp" data-choco-version="2.10.36.1" data-choco-label="2.10.36" data-name="GIMP" aria-label="Include GIMP in the installer">
                 <span class="app-icon peach"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-4 4-3-3-5 5"/></svg></span>
                 <a href="https://www.gimp.org/" class="app-name" target="_blank" rel="noopener" title="A full photo editor that rivals Photoshop for most everyday edits: retouching, layers, filters. Completely free.">GIMP</a>
               </div>
@@ -237,7 +256,7 @@
             <h3 class="software-category-title">Media</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="VideoLAN.VLC" data-name="VLC Media Player" aria-label="Include VLC Media Player in the installer">
+                <input type="checkbox" class="pick-check" data-winget="VideoLAN.VLC" data-choco="vlc.install" data-choco-version="3.0.24" data-choco-label="3.0.24" data-name="VLC Media Player" aria-label="Include VLC Media Player in the installer">
                 <span class="app-icon sky"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4V8z"/></svg></span>
                 <a href="https://www.videolan.org/vlc/" class="app-name" target="_blank" rel="noopener" title="Plays literally any video or audio format, no codec packs, no ads. About as safe and universal a &quot;just install this&quot; pick as exists.">VLC Media Player</a>
               </div>
@@ -253,7 +272,7 @@
             <h3 class="software-category-title">Archiving</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="7zip.7zip" data-name="7-Zip" aria-label="Include 7-Zip in the installer">
+                <input type="checkbox" class="pick-check" data-winget="7zip.7zip" data-choco="7zip.install" data-choco-version="26.3.0" data-choco-label="26.03" data-name="7-Zip" aria-label="Include 7-Zip in the installer">
                 <span class="app-icon blush"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M3 7l1.5-3h15L21 7"/><path d="M10 12h4"/></svg></span>
                 <a href="https://www.7-zip.org/" class="app-name" target="_blank" rel="noopener" title="A free, open-source archiver that opens and creates every compressed format. No nag screens like the WinRAR &quot;trial&quot; you've probably seen.">7-Zip</a>
               </div>
@@ -322,7 +341,7 @@
             <h3 class="software-category-title">Remote Connection</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="AnyDeskSoftwareGmbH.AnyDesk" data-name="AnyDesk" aria-label="Include AnyDesk in the installer">
+                <input type="checkbox" class="pick-check" data-winget="AnyDeskSoftwareGmbH.AnyDesk" data-choco="anydesk.install" data-name="AnyDesk" aria-label="Include AnyDesk in the installer">
                 <span class="app-icon butter"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8"/><path d="M12 16v4"/></svg></span>
                 <a href="https://anydesk.com/" class="app-name" target="_blank" rel="noopener" title="What I use for remote support sessions: lightweight, fast to set up, and safe to close once we're done.">AnyDesk</a>
               </div>
@@ -338,7 +357,7 @@
             <h3 class="software-category-title">Screen Capture</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="ShareX.ShareX" data-name="ShareX" aria-label="Include ShareX in the installer">
+                <input type="checkbox" class="pick-check" data-winget="ShareX.ShareX" data-choco="sharex" data-choco-version="17.1.0" data-choco-label="17.1" data-name="ShareX" aria-label="Include ShareX in the installer">
                 <span class="app-icon butter"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 1 2-2h1l1.2-1.6A2 2 0 0 1 9.8 3.6h4.4a2 2 0 0 1 1.6.8L17 6h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.3"/></svg></span>
                 <a href="https://getsharex.com/" class="app-name" target="_blank" rel="noopener" title="Free, open-source screen capture and recording, with a proper annotation tool built in. What I ask clients to use when they need to show me a problem.">ShareX</a>
               </div>
@@ -354,12 +373,12 @@
             <h3 class="software-category-title">Cleanup &amp; Uninstall</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="BleachBit.BleachBit" data-name="BleachBit" aria-label="Include BleachBit in the installer">
+                <input type="checkbox" class="pick-check" data-winget="BleachBit.BleachBit" data-choco="bleachbit.install" data-choco-version="4.6.2" data-choco-label="4.6.2" data-name="BleachBit" aria-label="Include BleachBit in the installer">
                 <span class="app-icon blush"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></span>
                 <a href="https://www.bleachbit.org/" class="app-name" target="_blank" rel="noopener" title="An honest, open-source alternative to the cleanup tools that got a bad reputation over the years.">BleachBit</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="RevoUninstaller.RevoUninstaller" data-name="Revo Uninstaller" aria-label="Include Revo Uninstaller in the installer">
+                <input type="checkbox" class="pick-check" data-winget="RevoUninstaller.RevoUninstaller" data-choco="revo-uninstaller" data-choco-version="2.4.5" data-choco-label="2.4.5" data-name="Revo Uninstaller" aria-label="Include Revo Uninstaller in the installer">
                 <span class="app-icon mint"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/></svg></span>
                 <a href="https://www.revouninstaller.com/" class="app-name" target="_blank" rel="noopener" title="Removes a program AND the leftover files and registry entries a normal uninstall leaves behind. Pairs well with BleachBit for a proper spring clean.">Revo Uninstaller</a>
               </div>
@@ -380,7 +399,7 @@
                 <a href="https://learn.microsoft.com/en-us/windows/powertoys/install" class="app-name" target="_blank" rel="noopener" title="Official Microsoft utilities: window snapping, batch file rename, a color picker, and more. Genuinely useful, and free straight from Microsoft.">Microsoft PowerToys</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="voidtools.Everything" data-name="Everything" aria-label="Include Everything in the installer">
+                <input type="checkbox" class="pick-check" data-winget="voidtools.Everything" data-choco="everything" data-choco-version="1.4.11032" data-choco-label="1.4.1" data-name="Everything" aria-label="Include Everything in the installer">
                 <span class="app-icon sky"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><circle cx="15" cy="13" r="2.2"/><path d="M16.6 14.6 18.5 16.5"/></svg></span>
                 <a href="https://www.voidtools.com/" class="app-name" target="_blank" rel="noopener" title="Finds any file on your PC instantly, by name, as you type. Once you use it, Windows' own search feels broken by comparison.">Everything</a>
               </div>
@@ -422,7 +441,7 @@
                 <a href="https://www.hwinfo.com/" class="app-name" target="_blank" rel="noopener" title="Deep hardware diagnostics: temperatures, voltages, drive health, all of it. What I check first when a PC is running hot or acting up.">HWiNFO</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="CPUID.CPU-Z" data-name="CPU-Z" aria-label="Include CPU-Z in the installer">
+                <input type="checkbox" class="pick-check" data-winget="CPUID.CPU-Z" data-choco="cpu-z.install" data-choco-version="3.1.0" data-choco-label="3.01" data-name="CPU-Z" aria-label="Include CPU-Z in the installer">
                 <span class="app-icon lavender"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg></span>
                 <a href="https://www.cpuid.com/softwares/cpu-z.html" class="app-name" target="_blank" rel="noopener" title="Every detail about your CPU, motherboard, and RAM on one screen. The first thing I check to confirm what's actually inside a machine.">CPU-Z</a>
               </div>
@@ -449,12 +468,12 @@
             <h3 class="software-category-title">Disk Usage</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="WinDirStat.WinDirStat" data-name="WinDirStat" aria-label="Include WinDirStat in the installer">
+                <input type="checkbox" class="pick-check" data-winget="WinDirStat.WinDirStat" data-choco="windirstat" data-choco-version="2.9.0" data-choco-label="2.9.0" data-name="WinDirStat" aria-label="Include WinDirStat in the installer">
                 <span class="app-icon peach"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="5"/><rect x="13" y="10" width="8" height="4"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="16" width="8" height="5"/></svg></span>
                 <a href="https://windirstat.net/" class="app-name" target="_blank" rel="noopener" title="A visual map of what's actually eating your disk space, folder by folder. The fastest way to find out why a drive is suddenly full.">WinDirStat</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="AntibodySoftware.WizTree" data-name="WizTree" aria-label="Include WizTree in the installer">
+                <input type="checkbox" class="pick-check" data-winget="AntibodySoftware.WizTree" data-choco="wiztree" data-choco-version="4.33.0" data-choco-label="4.33" data-name="WizTree" aria-label="Include WizTree in the installer">
                 <span class="app-icon sky"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="12" y="3" width="4" height="8" rx="1"/><rect x="18" y="3" width="3" height="8" rx="1"/><rect x="12" y="13" width="9" height="8" rx="1"/></svg></span>
                 <a href="https://diskanalyzer.com/" class="app-name" target="_blank" rel="noopener" title="Shows what's eating your disk space just like WinDirStat above, but reads the drive's file table directly, so it finishes in seconds instead of minutes on a full drive.">WizTree</a>
               </div>
@@ -529,12 +548,12 @@
             <h3 class="software-category-title">Creative &amp; Design</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="BlenderFoundation.Blender" data-name="Blender" aria-label="Include Blender in the installer">
+                <input type="checkbox" class="pick-check" data-winget="BlenderFoundation.Blender" data-choco="blender" data-choco-version="2.92.0" data-choco-label="2.92" data-name="Blender" aria-label="Include Blender in the installer">
                 <span class="app-icon butter"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="9" ry="4"/></svg></span>
                 <a href="https://www.blender.org/" class="app-name" target="_blank" rel="noopener" title="A full, free 3D modeling, animation, and rendering suite used everywhere from hobby projects to professional film studios. Steep learning curve, but there's nothing it can't do.">Blender</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="Inkscape.Inkscape" data-name="Inkscape" aria-label="Include Inkscape in the installer">
+                <input type="checkbox" class="pick-check" data-winget="Inkscape.Inkscape" data-choco="inkscape" data-choco-version="1.2.2.20230220" data-choco-label="1.2.2" data-name="Inkscape" aria-label="Include Inkscape in the installer">
                 <span class="app-icon blush"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 7-9 9-4 1 1-4z"/><path d="M14.5 5.5l4 4"/></svg></span>
                 <a href="https://inkscape.org/" class="app-name" target="_blank" rel="noopener" title="A free vector graphics editor for logos, icons, and illustrations, the open-source answer to Adobe Illustrator. Saves and exports SVG natively.">Inkscape</a>
               </div>
@@ -594,7 +613,7 @@
 
   </div>
 
-  <script src="../js/software-picker.js"></script>
+  <script src="../js/software-picker.js?v=2"></script>
 <script src="../js/nav.js"></script>
 
 </body>

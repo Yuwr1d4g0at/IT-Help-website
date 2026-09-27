@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 
-  <link href="../../css/style.css" rel="stylesheet" />
+  <link href="../../css/style.css?v=2" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
@@ -90,18 +90,37 @@
         <div class="picker-bar">
           <div class="picker-info">
             <strong id="picker-count" data-singular="{n} selecionado" data-plural="{n} selecionados">0 selecionados</strong>
-            <span class="picker-hint">Marque o que quiser na lista abaixo e receba um único script que instala tudo. Corre em winget, já incluído no Windows 10/11, e não hospedo nem agrupo nada por conta própria.</span>
+            <span class="picker-hint" data-show-mode="modern">Marque o que quiser na lista abaixo e receba um único script que instala tudo. Corre em winget, já incluído no Windows 10/11, e não hospedo nem agrupo nada por conta própria.</span>
+            <span class="picker-hint" data-show-mode="legacy" hidden>No Windows 7 / 8.1 o script usa o Chocolatey em vez do winget, e fixa cada programa na última versão que ainda funciona. Os programas a cinzento já não têm versão compatível, por isso ficam de fora.</span>
           </div>
-          <button type="button" class="btn btn-primary btn-sm" id="picker-generate" disabled>Gerar Script de Instalação</button>
+          <div class="picker-actions">
+            <div class="picker-mode" role="group" aria-label="Qual Windows?">
+              <button type="button" class="picker-mode-btn" data-mode="modern" aria-pressed="true">Windows 10 / 11</button>
+              <button type="button" class="picker-mode-btn" data-mode="legacy" aria-pressed="false">Windows 7 / 8.1</button>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" id="picker-generate" disabled>Gerar Script de Instalação</button>
+          </div>
+        </div>
+
+        <div class="legacy-panel" data-show-mode="legacy" hidden>
+          <p class="legacy-warning"><strong>Atenção:</strong> o Windows 7 e 8.1 já não recebem atualizações de segurança, e a maioria destes programas também fica presa em versões antigas. Serve para um PC sem internet ou guardado para um programa antigo, mas não para o banco nem para o email. A solução a sério é atualizar: <a class="link-underline" href="../tools/windows-11-checker/">veja se o seu PC aguenta o Windows 11</a>, ou <a class="link-underline" href="../#contact">fale comigo</a>.</p>
+          <h3>Antes de correr o script (só uma vez)</h3>
+          <ol>
+            <li>Confirme que o Windows 7 tem o <strong>Service Pack 1</strong> e todas as atualizações que o Windows Update ainda oferece. Para ver, abra o Iniciar, clique com o botão direito em Computador e escolha Propriedades.</li>
+            <li>Instale o <a class="link-underline" href="https://go.microsoft.com/fwlink/?linkid=2088631" target="_blank" rel="noopener">.NET Framework 4.8</a> (o instalador offline da Microsoft) e reinicie.</li>
+            <li>Só no Windows 7: instale o <a class="link-underline" href="https://go.microsoft.com/fwlink/?linkid=839523" target="_blank" rel="noopener">Windows Management Framework 5.1</a> (ou a <a class="link-underline" href="https://go.microsoft.com/fwlink/?linkid=839522" target="_blank" rel="noopener">versão de 32 bits</a>). Extraia o zip, faça duplo clique no ficheiro .msu e reinicie. <a class="link-underline" href="https://learn.microsoft.com/pt-pt/previous-versions/powershell/scripting/windows-powershell/wmf/setup/install-configure" target="_blank" rel="noopener">Passos da Microsoft</a> se tiver dúvidas.</li>
+          </ol>
+          <p>Sem isto, o Windows 7 não consegue fazer a ligação segura de que o Chocolatey precisa. O script verifica estes passos primeiro e diz-lhe o que falta, em vez de falhar a meio.</p>
         </div>
 
         <div class="picker-output" id="picker-output" hidden>
           <pre id="picker-script" class="mono"></pre>
           <div class="picker-output-actions">
-            <a href="#" id="picker-download" class="btn btn-primary btn-sm" download="instalar-selecionados.bat">Descarregar instalar-selecionados.bat</a>
+            <a href="#" id="picker-download" class="btn btn-primary btn-sm" download="instalar-selecionados.bat" data-file-modern="instalar-selecionados.bat" data-file-legacy="instalar-selecionados-win7.bat"><span data-show-mode="modern">Descarregar instalar-selecionados.bat</span><span data-show-mode="legacy" hidden>Descarregar instalar-selecionados-win7.bat</span></a>
             <button type="button" class="btn btn-outline btn-sm" id="picker-copy">Copiar script</button>
           </div>
-          <p class="picker-note">Precisa do winget (já incluído no Windows 10 2018+ e Windows 11). Faça duplo clique no ficheiro, e escolha "Mais informações &rarr; Executar mesmo assim" se o Windows SmartScreen perguntar. É normal para qualquer script não assinado, como um que escrevesse você mesmo, e instala tudo sem mais avisos.</p>
+          <p class="picker-note" data-show-mode="modern">Precisa do winget (já incluído no Windows 10 2018+ e Windows 11). Faça duplo clique no ficheiro, e escolha "Mais informações &rarr; Executar mesmo assim" se o Windows SmartScreen perguntar. É normal para qualquer script não assinado, como um que escrevesse você mesmo, e instala tudo sem mais avisos.</p>
+          <p class="picker-note" data-show-mode="legacy" hidden>Clique com o botão direito no ficheiro e escolha "Executar como administrador". Verifica os passos acima, instala o <a class="link-underline" href="https://chocolatey.org/" target="_blank" rel="noopener">Chocolatey</a> (um gestor de pacotes gratuito e open-source) se for preciso, e depois os seus programas, cada um fixo na versão para Windows 7. Os maiores, como o LibreOffice, demoram um bocado.</p>
         </div>
 
         <div class="software-sections">
@@ -156,7 +175,7 @@
                 <a href="https://proton.me/pass" class="app-name" target="_blank" rel="noopener" title="O gestor de palavras-passe da própria Proton, integrado na mesma conta focada em privacidade que o Mail, o Calendar e o Drive. Vale a pena se quiser tudo sob um único login.">Proton Pass</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="DominikReichl.KeePass" data-name="KeePass" aria-label="Incluir o KeePass no instalador">
+                <input type="checkbox" class="pick-check" data-winget="DominikReichl.KeePass" data-choco="keepass.install" data-choco-version="2.61.1" data-choco-label="2.61.1" data-name="KeePass" aria-label="Incluir o KeePass no instalador">
                 <span class="app-icon mint"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="4"/><path d="M12 12h9"/><path d="M17 12v3"/><path d="M20 12v2"/></svg></span>
                 <a href="https://keepass.info/" class="app-name" target="_blank" rel="noopener" title="Um gestor de palavras-passe local que guarda tudo num único ficheiro encriptado no seu próprio PC, sem nada sincronizado com a nuvem a menos que configure isso você mesmo. Uma alternativa mais manual e totalmente offline ao Bitwarden.">KeePass</a>
               </div>
@@ -178,7 +197,7 @@
             <h3 class="software-category-title">Navegador</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="Mozilla.Firefox" data-name="Firefox" aria-label="Incluir o Firefox no instalador">
+                <input type="checkbox" class="pick-check" data-winget="Mozilla.Firefox" data-choco="firefoxesr" data-choco-version="115.15.0" data-choco-label="115 ESR" data-name="Firefox" aria-label="Incluir o Firefox no instalador">
                 <span class="app-icon mint"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18"/></svg></span>
                 <a href="https://www.mozilla.org/pt-PT/firefox/" class="app-name" target="_blank" rel="noopener" title="Um navegador rápido e independente que não está a tentar vender-lhe mais nada.">Firefox</a>
               </div>
@@ -204,7 +223,7 @@
             <h3 class="software-category-title">Suite de Escritório</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="TheDocumentFoundation.LibreOffice" data-name="LibreOffice" aria-label="Incluir o LibreOffice no instalador">
+                <input type="checkbox" class="pick-check" data-winget="TheDocumentFoundation.LibreOffice" data-choco="libreoffice-still" data-choco-version="25.2.7" data-choco-label="25.2" data-name="LibreOffice" aria-label="Incluir o LibreOffice no instalador">
                 <span class="app-icon sky"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
                 <a href="https://www.libreoffice.org/" class="app-name" target="_blank" rel="noopener" title="Uma suite de escritório completa (processador de texto, folhas de cálculo, apresentações) que abre e guarda ficheiros do Microsoft Office sem precisar de subscrição.">LibreOffice</a>
               </div>
@@ -215,7 +234,7 @@
             <h3 class="software-category-title">Edição de Fotos</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="GIMP.GIMP" data-name="GIMP" aria-label="Incluir o GIMP no instalador">
+                <input type="checkbox" class="pick-check" data-winget="GIMP.GIMP" data-choco="gimp" data-choco-version="2.10.36.1" data-choco-label="2.10.36" data-name="GIMP" aria-label="Incluir o GIMP no instalador">
                 <span class="app-icon peach"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-4 4-3-3-5 5"/></svg></span>
                 <a href="https://www.gimp.org/" class="app-name" target="_blank" rel="noopener" title="Um editor de fotos completo que rivaliza com o Photoshop para a maioria das edições do dia a dia: retoque, camadas, filtros. Completamente gratuito.">GIMP</a>
               </div>
@@ -237,7 +256,7 @@
             <h3 class="software-category-title">Multimédia</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="VideoLAN.VLC" data-name="VLC Media Player" aria-label="Incluir o VLC Media Player no instalador">
+                <input type="checkbox" class="pick-check" data-winget="VideoLAN.VLC" data-choco="vlc.install" data-choco-version="3.0.24" data-choco-label="3.0.24" data-name="VLC Media Player" aria-label="Incluir o VLC Media Player no instalador">
                 <span class="app-icon sky"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4V8z"/></svg></span>
                 <a href="https://www.videolan.org/vlc/" class="app-name" target="_blank" rel="noopener" title="Reproduz literalmente qualquer formato de vídeo ou áudio, sem pacotes de codecs, sem anúncios. Uma escolha tão segura e universal quanto possível.">VLC Media Player</a>
               </div>
@@ -253,7 +272,7 @@
             <h3 class="software-category-title">Compactação</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="7zip.7zip" data-name="7-Zip" aria-label="Incluir o 7-Zip no instalador">
+                <input type="checkbox" class="pick-check" data-winget="7zip.7zip" data-choco="7zip.install" data-choco-version="26.3.0" data-choco-label="26.03" data-name="7-Zip" aria-label="Incluir o 7-Zip no instalador">
                 <span class="app-icon blush"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M3 7l1.5-3h15L21 7"/><path d="M10 12h4"/></svg></span>
                 <a href="https://www.7-zip.org/" class="app-name" target="_blank" rel="noopener" title="Um compactador gratuito e open-source que abre e cria qualquer formato comprimido. Sem os avisos constantes do &quot;teste&quot; do WinRAR que provavelmente já viu.">7-Zip</a>
               </div>
@@ -322,7 +341,7 @@
             <h3 class="software-category-title">Ligação Remota</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="AnyDeskSoftwareGmbH.AnyDesk" data-name="AnyDesk" aria-label="Incluir o AnyDesk no instalador">
+                <input type="checkbox" class="pick-check" data-winget="AnyDeskSoftwareGmbH.AnyDesk" data-choco="anydesk.install" data-name="AnyDesk" aria-label="Incluir o AnyDesk no instalador">
                 <span class="app-icon butter"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8"/><path d="M12 16v4"/></svg></span>
                 <a href="https://anydesk.com/" class="app-name" target="_blank" rel="noopener" title="É o que uso nas sessões de suporte remoto: leve, rápido de configurar, e seguro de fechar quando terminamos.">AnyDesk</a>
               </div>
@@ -338,7 +357,7 @@
             <h3 class="software-category-title">Captura de Ecrã</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="ShareX.ShareX" data-name="ShareX" aria-label="Incluir o ShareX no instalador">
+                <input type="checkbox" class="pick-check" data-winget="ShareX.ShareX" data-choco="sharex" data-choco-version="17.1.0" data-choco-label="17.1" data-name="ShareX" aria-label="Incluir o ShareX no instalador">
                 <span class="app-icon butter"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 1 2-2h1l1.2-1.6A2 2 0 0 1 9.8 3.6h4.4a2 2 0 0 1 1.6.8L17 6h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.3"/></svg></span>
                 <a href="https://getsharex.com/" class="app-name" target="_blank" rel="noopener" title="Captura e gravação de ecrã gratuita e open-source, com uma ferramenta de anotação incluída. O que peço aos clientes para usarem quando precisam de me mostrar um problema.">ShareX</a>
               </div>
@@ -354,12 +373,12 @@
             <h3 class="software-category-title">Limpeza e Desinstalação</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="BleachBit.BleachBit" data-name="BleachBit" aria-label="Incluir o BleachBit no instalador">
+                <input type="checkbox" class="pick-check" data-winget="BleachBit.BleachBit" data-choco="bleachbit.install" data-choco-version="4.6.2" data-choco-label="4.6.2" data-name="BleachBit" aria-label="Incluir o BleachBit no instalador">
                 <span class="app-icon blush"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></span>
                 <a href="https://www.bleachbit.org/" class="app-name" target="_blank" rel="noopener" title="Uma alternativa honesta e open-source às ferramentas de limpeza que ganharam má reputação ao longo dos anos.">BleachBit</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="RevoUninstaller.RevoUninstaller" data-name="Revo Uninstaller" aria-label="Incluir o Revo Uninstaller no instalador">
+                <input type="checkbox" class="pick-check" data-winget="RevoUninstaller.RevoUninstaller" data-choco="revo-uninstaller" data-choco-version="2.4.5" data-choco-label="2.4.5" data-name="Revo Uninstaller" aria-label="Incluir o Revo Uninstaller no instalador">
                 <span class="app-icon mint"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/></svg></span>
                 <a href="https://www.revouninstaller.com/" class="app-name" target="_blank" rel="noopener" title="Remove um programa E os ficheiros e entradas de registo que uma desinstalação normal deixa para trás. Combina bem com o BleachBit para uma limpeza a sério.">Revo Uninstaller</a>
               </div>
@@ -380,7 +399,7 @@
                 <a href="https://learn.microsoft.com/en-us/windows/powertoys/install" class="app-name" target="_blank" rel="noopener" title="Utilitários oficiais da Microsoft: organização de janelas, mudança de nome em lote, seletor de cores, e mais. Genuinamente úteis, e gratuitos diretamente da Microsoft.">Microsoft PowerToys</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="voidtools.Everything" data-name="Everything" aria-label="Incluir o Everything no instalador">
+                <input type="checkbox" class="pick-check" data-winget="voidtools.Everything" data-choco="everything" data-choco-version="1.4.11032" data-choco-label="1.4.1" data-name="Everything" aria-label="Incluir o Everything no instalador">
                 <span class="app-icon sky"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><circle cx="15" cy="13" r="2.2"/><path d="M16.6 14.6 18.5 16.5"/></svg></span>
                 <a href="https://www.voidtools.com/" class="app-name" target="_blank" rel="noopener" title="Encontra qualquer ficheiro no seu PC instantaneamente, pelo nome, à medida que escreve. Depois de o usar, a pesquisa do Windows parece avariada em comparação.">Everything</a>
               </div>
@@ -422,7 +441,7 @@
                 <a href="https://www.hwinfo.com/" class="app-name" target="_blank" rel="noopener" title="Diagnóstico profundo de hardware: temperaturas, voltagens, saúde dos discos, tudo. O que verifico primeiro quando um PC aquece ou começa a comportar-se mal.">HWiNFO</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="CPUID.CPU-Z" data-name="CPU-Z" aria-label="Incluir o CPU-Z no instalador">
+                <input type="checkbox" class="pick-check" data-winget="CPUID.CPU-Z" data-choco="cpu-z.install" data-choco-version="3.1.0" data-choco-label="3.01" data-name="CPU-Z" aria-label="Incluir o CPU-Z no instalador">
                 <span class="app-icon lavender"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg></span>
                 <a href="https://www.cpuid.com/softwares/cpu-z.html" class="app-name" target="_blank" rel="noopener" title="Todos os detalhes sobre o processador, placa-mãe e memória RAM num único ecrã. A primeira coisa que verifico para confirmar o que está realmente dentro de uma máquina.">CPU-Z</a>
               </div>
@@ -449,12 +468,12 @@
             <h3 class="software-category-title">Uso do Disco</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="WinDirStat.WinDirStat" data-name="WinDirStat" aria-label="Incluir o WinDirStat no instalador">
+                <input type="checkbox" class="pick-check" data-winget="WinDirStat.WinDirStat" data-choco="windirstat" data-choco-version="2.9.0" data-choco-label="2.9.0" data-name="WinDirStat" aria-label="Incluir o WinDirStat no instalador">
                 <span class="app-icon peach"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="5"/><rect x="13" y="10" width="8" height="4"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="16" width="8" height="5"/></svg></span>
                 <a href="https://windirstat.net/" class="app-name" target="_blank" rel="noopener" title="Um mapa visual do que está realmente a ocupar o espaço do disco, pasta a pasta. A forma mais rápida de perceber porque é que um disco ficou cheio de repente.">WinDirStat</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="AntibodySoftware.WizTree" data-name="WizTree" aria-label="Incluir o WizTree no instalador">
+                <input type="checkbox" class="pick-check" data-winget="AntibodySoftware.WizTree" data-choco="wiztree" data-choco-version="4.33.0" data-choco-label="4.33" data-name="WizTree" aria-label="Incluir o WizTree no instalador">
                 <span class="app-icon sky"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="12" y="3" width="4" height="8" rx="1"/><rect x="18" y="3" width="3" height="8" rx="1"/><rect x="12" y="13" width="9" height="8" rx="1"/></svg></span>
                 <a href="https://diskanalyzer.com/" class="app-name" target="_blank" rel="noopener" title="Mostra o que está a ocupar o espaço do disco tal como o WinDirStat acima, mas lê diretamente a tabela de ficheiros do disco, por isso termina em segundos em vez de minutos num disco cheio.">WizTree</a>
               </div>
@@ -529,12 +548,12 @@
             <h3 class="software-category-title">Criação e Design</h3>
             <div class="software-list">
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="BlenderFoundation.Blender" data-name="Blender" aria-label="Incluir o Blender no instalador">
+                <input type="checkbox" class="pick-check" data-winget="BlenderFoundation.Blender" data-choco="blender" data-choco-version="2.92.0" data-choco-label="2.92" data-name="Blender" aria-label="Incluir o Blender no instalador">
                 <span class="app-icon butter"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="9" ry="4"/></svg></span>
                 <a href="https://www.blender.org/" class="app-name" target="_blank" rel="noopener" title="Uma suite completa e gratuita de modelação 3D, animação e renderização, usada desde projetos de hobby até estúdios de cinema profissionais. Curva de aprendizagem acentuada, mas não há nada que não consiga fazer.">Blender</a>
               </div>
               <div class="app-row">
-                <input type="checkbox" class="pick-check" data-winget="Inkscape.Inkscape" data-name="Inkscape" aria-label="Incluir o Inkscape no instalador">
+                <input type="checkbox" class="pick-check" data-winget="Inkscape.Inkscape" data-choco="inkscape" data-choco-version="1.2.2.20230220" data-choco-label="1.2.2" data-name="Inkscape" aria-label="Incluir o Inkscape no instalador">
                 <span class="app-icon blush"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 7-9 9-4 1 1-4z"/><path d="M14.5 5.5l4 4"/></svg></span>
                 <a href="https://inkscape.org/" class="app-name" target="_blank" rel="noopener" title="Um editor de gráficos vetoriais gratuito para logótipos, ícones e ilustrações, a resposta open-source ao Adobe Illustrator. Guarda e exporta SVG nativamente.">Inkscape</a>
               </div>
@@ -594,7 +613,7 @@
 
   </div>
 
-  <script src="../../js/software-picker.js"></script>
+  <script src="../../js/software-picker.js?v=2"></script>
 <script src="../../js/nav.js"></script>
 
 </body>
