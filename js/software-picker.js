@@ -2,8 +2,10 @@
 // Generates a plain .bat file that installs each checked app.
 // Windows 10/11 mode calls winget; Windows 7/8.1 mode calls Chocolatey
 // with each app pinned to its last release that still runs there (rows
-// carry data-choco / data-choco-version). Nothing is downloaded or hosted
-// here: both tools fetch straight from their own public repositories.
+// carry data-choco / data-choco-version). macOS mode builds a .sh that
+// calls Homebrew casks (data-brew); rows marked data-only-mode="mac" are
+// Mac-only picks, hidden in the Windows modes. Nothing is downloaded or
+// hosted here: every tool fetches straight from its own public repository.
 (function () {
   "use strict";
 
@@ -19,23 +21,35 @@
 
   if (!checks.length || !countEl || !generateBtn) return;
 
+  var titles = Array.prototype.slice.call(document.querySelectorAll("[data-title-mac]"));
   var currentUrl = null;
   var mode = "modern";
 
-  // Show the pinned version next to each app in Windows 7 mode.
-  checks.forEach(function (c) {
-    if (!c.dataset.choco) return;
-    var label = c.dataset.chocoLabel || c.dataset.chocoVersion;
+  // Which data attribute holds each mode's package id.
+  var PACKAGE = { modern: "winget", legacy: "choco", mac: "brew" };
+
+  // Small tags next to an app: the pinned version in Windows 7 mode, or the
+  // Mac substitute's name (e.g. KeePass -> KeePassXC) in macOS mode.
+  function addTag(c, label, tagMode) {
     if (!label) return;
     var tag = document.createElement("span");
     tag.className = "pick-version mono";
     tag.textContent = label;
+    tag.dataset.tagMode = tagMode;
     tag.hidden = true;
     c.parentNode.appendChild(tag);
+  }
+  checks.forEach(function (c) {
+    if (c.dataset.choco) addTag(c, c.dataset.chocoLabel || c.dataset.chocoVersion, "legacy");
+    if (c.dataset.brew) addTag(c, c.dataset.brewLabel, "mac");
+  });
+
+  titles.forEach(function (t) {
+    t.dataset.titleDefault = t.textContent;
   });
 
   function available(c) {
-    return mode === "modern" || !!c.dataset.choco;
+    return !!c.dataset[PACKAGE[mode]];
   }
 
   function selected() {
@@ -63,18 +77,27 @@
       el.hidden = el.dataset.showMode !== mode;
     });
     checks.forEach(function (c) {
+      var row = c.parentNode;
       var ok = available(c);
       c.disabled = !ok;
-      c.parentNode.classList.toggle("pick-unavailable", !ok);
-      var tag = c.parentNode.querySelector(".pick-version");
-      if (tag) tag.hidden = mode !== "legacy";
+      row.classList.toggle("pick-unavailable", !ok);
+      var only = row.dataset.onlyMode;
+      row.classList.toggle("mode-hidden", !!only && only !== mode);
+      Array.prototype.forEach.call(row.querySelectorAll(".pick-version"), function (tag) {
+        tag.hidden = tag.dataset.tagMode !== mode;
+      });
     });
-    downloadLink.setAttribute(
-      "download",
-      mode === "legacy" ? downloadLink.dataset.fileLegacy : downloadLink.dataset.fileModern
-    );
+    titles.forEach(function (t) {
+      t.textContent = mode === "mac" ? t.dataset.titleMac : t.dataset.titleDefault;
+    });
+    var file = { modern: "fileModern", legacy: "fileLegacy", mac: "fileMac" }[mode];
+    downloadLink.setAttribute("download", downloadLink.dataset[file]);
     output.hidden = true;
     updateCount();
+
+    // Re-run any active search so Mac-only rows appear or drop out of it.
+    var search = document.getElementById("software-search");
+    if (search) search.dispatchEvent(new Event("input"));
   }
 
   function buildWingetScript(picks) {
@@ -157,11 +180,48 @@
     return lines.join("\r\n");
   }
 
+  // macOS: find or install Homebrew, then install each pick as a cask.
+  // Run with "bash file.sh" from Terminal, not pasted: Homebrew's installer
+  // reads its prompts from the terminal and would eat the pasted lines.
+  function buildBrewScript(picks) {
+    var findBrew =
+      "for b in /opt/homebrew/bin/brew /usr/local/bin/brew; do\n" +
+      "  [ -x \"$b\" ] && eval \"$(\"$b\" shellenv)\" && break\n" +
+      "done";
+    var lines = [
+      "#!/bin/bash",
+      "echo \"Installing your picks with Homebrew...\"",
+      "echo",
+      findBrew,
+      "if ! command -v brew >/dev/null 2>&1; then",
+      "  echo \"-- Homebrew (it will ask for your Mac password)\"",
+      "  /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"",
+      "  " + findBrew.replace(/\n/g, "\n  "),
+      "fi",
+      "if ! command -v brew >/dev/null 2>&1; then",
+      "  echo \"Homebrew could not be installed. Check the internet connection\"",
+      "  echo \"and that this is an administrator account, then run this again.\"",
+      "  exit 1",
+      "fi",
+      "echo"
+    ];
+    picks.forEach(function (c) {
+      lines.push("echo \"-- " + (c.dataset.brewLabel || c.dataset.name) + "\"");
+      lines.push("brew install --cask " + c.dataset.brew);
+      lines.push("echo");
+    });
+    lines.push("echo \"Done. Your new apps are in the Applications folder.\"");
+    return lines.join("\n") + "\n";
+  }
+
   generateBtn.addEventListener("click", function () {
     var picks = selected();
     if (!picks.length) return;
 
-    var text = mode === "legacy" ? buildChocoScript(picks) : buildWingetScript(picks);
+    var text =
+      mode === "legacy" ? buildChocoScript(picks) :
+      mode === "mac" ? buildBrewScript(picks) :
+      buildWingetScript(picks);
     scriptEl.textContent = text;
 
     if (currentUrl) {
@@ -221,7 +281,9 @@
       var rows = Array.prototype.slice.call(card.querySelectorAll(".app-row"));
       var cardHasMatch = false;
       rows.forEach(function (row) {
-        var match = !query || row.textContent.toLowerCase().indexOf(query) !== -1;
+        var match =
+          !row.classList.contains("mode-hidden") &&
+          (!query || row.textContent.toLowerCase().indexOf(query) !== -1);
         row.hidden = !match;
         if (match) cardHasMatch = true;
       });

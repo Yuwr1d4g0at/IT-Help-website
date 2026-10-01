@@ -702,7 +702,7 @@ button.lang-switch[aria-pressed="true"] {
   justify-content: flex-end;
 }
 
-/* Windows 10/11 vs Windows 7/8.1 switch */
+/* Windows 10/11 vs Windows 7/8.1 vs macOS switch */
 .picker-mode {
   display: inline-flex;
   background: var(--bg);
@@ -757,6 +757,21 @@ button.lang-switch[aria-pressed="true"] {
 .pick-version[hidden],
 .legacy-panel[hidden] {
   display: none;
+}
+
+/* Mac-only picks, hidden while a Windows mode is on */
+.app-row.mode-hidden {
+  display: none;
+}
+
+.picker-note kbd,
+.picker-note code {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11.5px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0 4px;
 }
 
 .legacy-panel {
