@@ -20,12 +20,12 @@
   var L = isPT
     ? { min: "Minimizar", max: "Ampliar", close: "Fechar", loading: "A abrir…",
         hello: "Bem-vindo à Yuwri", helloSub: "Abra o que quiser a partir da Dock, lá em baixo.",
-        newMsg: "Nova mensagem", about: "Sobre a Yuwri", services: "Ver serviços", wallpaper: "Fundo",
+        newMsg: "Nova mensagem", bookVisit: "Marcar visita", searchApps: "Pesquisar", about: "Sobre a Yuwri", services: "Ver serviços", wallpaper: "Fundo",
         cleanUp: "Arrumar janelas",
         walls: { "": "Pôr do sol", ocean: "Oceano", dusk: "Crepúsculo", graphite: "Grafite" } }
     : { min: "Minimize", max: "Zoom", close: "Close", loading: "Opening…",
         hello: "Welcome to Yuwri", helloSub: "Open anything from the Dock at the bottom of the screen.",
-        newMsg: "New Message", about: "About Yuwri", services: "Show Services", wallpaper: "Wallpaper",
+        newMsg: "New Message", bookVisit: "Book a Visit", searchApps: "Search", about: "About Yuwri", services: "Show Services", wallpaper: "Wallpaper",
         cleanUp: "Clean Up Windows",
         walls: { "": "Sunset", ocean: "Ocean", dusk: "Dusk", graphite: "Graphite" } };
 
@@ -52,6 +52,9 @@
   var contactId = isPT ? "contacto" : "contact";
   var aboutId = isPT ? "sobre" : "about";
   var servicesId = isPT ? "servicos" : "services";
+  var bookId = isPT ? "marcar" : "book";
+  var UI = window.YuwriUI || { sound: { play: function () {} }, setWallpaper: function () {} };
+  var mission = false;
   var wins = {};
   var order = [];
   var active = null;
@@ -261,8 +264,21 @@
       else close(w);
     });
 
-    el.addEventListener("pointerdown", function () {
+    el.addEventListener("pointerdown", function (e) {
+      if (mission) {
+        e.preventDefault();
+        e.stopPropagation();
+        setMission(false, w);
+        return;
+      }
       focus(w);
+    }, true);
+
+    el.addEventListener("click", function (e) {
+      if (body.classList.contains("mission-out")) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
     }, true);
 
     el.addEventListener("focusin", function () {
@@ -359,7 +375,10 @@
     removeTile(w);
     w.el.hidden = false;
     focus(w);
-    if (wasHidden) animateOpen(w.el, fromRect);
+    if (wasHidden) {
+      animateOpen(w.el, fromRect);
+      UI.sound.play("open");
+    }
     w.el.focus({ preventScroll: true });
     updateDock();
     if (!w.app && w.id !== "welcome" && history.replaceState) {
@@ -374,6 +393,7 @@
     updateDock();
     var target = w.tile.getBoundingClientRect();
     w.el.classList.remove("is-active");
+    UI.sound.play("minimize");
     animateMinimize(w.el, target, function () {
       w.el.hidden = true;
       w.busy = false;
@@ -385,6 +405,7 @@
     if (w.busy) return;
     w.busy = true;
     w.el.classList.remove("is-active");
+    UI.sound.play("close");
     animateClose(w.el, function () {
       w.busy = false;
       w.el.hidden = true;
@@ -461,9 +482,11 @@
   // ---------------------------------------------------------------------
 
   function startDrag(w, bar, e) {
-    if (e.button !== 0 || e.target.closest("button") || isNarrow() || w.el.classList.contains("is-max")) return;
+    if (e.button !== 0 || e.target.closest("button") || isNarrow() || mission || w.el.classList.contains("is-max")) return;
     e.preventDefault();
     var el = w.el;
+    var deskRect = desk.getBoundingClientRect();
+    var snap = null;
     var startX = e.clientX;
     var startY = e.clientY;
     var left = el.offsetLeft;
@@ -481,6 +504,12 @@
       y = Math.min(Math.max(y, 0), d.h - 40);
       el.style.left = x + "px";
       el.style.top = y + "px";
+
+      // Push against the left/right edge to fill that half, the top to zoom
+      var px = ev.clientX - deskRect.left;
+      var py = ev.clientY - deskRect.top;
+      snap = px <= 6 ? "left" : px >= d.w - 6 ? "right" : py <= 2 ? "max" : null;
+      showSnap(snap);
     }
 
     function up() {
@@ -488,12 +517,37 @@
       bar.removeEventListener("pointerup", up);
       bar.removeEventListener("pointercancel", up);
       body.classList.remove("dragging");
-      if (el.offsetLeft !== left || el.offsetTop !== top) saveGeo(w, false);
+      showSnap(null);
+      if (snap === "max") {
+        el.style.left = left + "px";
+        el.style.top = top + "px";
+        toggleMax(w);
+      } else if (snap) {
+        el.style.left = (snap === "left" ? 0 : Math.round(d.w / 2)) + "px";
+        el.style.top = "0px";
+        el.style.width = Math.round(d.w / 2) + "px";
+        el.style.height = d.h + "px";
+        saveGeo(w, true);
+      } else if (el.offsetLeft !== left || el.offsetTop !== top) {
+        saveGeo(w, false);
+      }
     }
 
     bar.addEventListener("pointermove", move);
     bar.addEventListener("pointerup", up);
     bar.addEventListener("pointercancel", up);
+  }
+
+  var snapBox = document.createElement("div");
+  snapBox.className = "snap-preview";
+  snapBox.hidden = true;
+  desk.appendChild(snapBox);
+
+  function showSnap(where) {
+    snapBox.hidden = !where;
+    if (!where) return;
+    snapBox.style.left = where === "right" ? "50%" : "0";
+    snapBox.style.width = where === "max" ? "100%" : "50%";
   }
 
   // Resizing uses the browser's own resize grip (CSS `resize: both`);
@@ -645,9 +699,7 @@
   }
 
   function setWallpaper(name) {
-    if (name) root.setAttribute("data-wall", name);
-    else root.removeAttribute("data-wall");
-    store("yuwri-wall", name || null);
+    UI.setWallpaper(name);
   }
 
   function cleanUp() {
@@ -688,6 +740,7 @@
     };
 
     item(L.newMsg, function () { open(wins[contactId]); });
+    item(L.bookVisit, function () { open(wins[bookId]); });
     item(L.services, function () { open(wins[servicesId]); });
     item(L.about, function () { open(wins[aboutId]); });
     rule();
@@ -700,6 +753,8 @@
       item(L.walls[k], function () { setWallpaper(k); }, k === current ? "is-current" : "");
     });
     rule();
+    item("Mission Control", function () { setMission(true); });
+    item("Launchpad", function () { setLaunchpad(true); });
     item(L.cleanUp, cleanUp);
 
     body.appendChild(ctx);
@@ -771,12 +826,269 @@
       '<svg class="boot-logo" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
       '<path d="M6 4l6 8 6-8 M12 12v8"/></svg><div class="boot-bar"><span></span></div>';
     body.appendChild(screen);
-    setTimeout(function () {
+    var finished = false;
+    var finish = function () {
+      if (finished) return;
+      finished = true;
       screen.classList.add("is-done");
+      UI.sound.play("chime");
       then();
       setTimeout(function () { screen.remove(); }, 600);
-    }, 1650);
+    };
+    screen.addEventListener("pointerdown", finish);
+    document.addEventListener("keydown", finish, { once: true });
+    setTimeout(finish, 1300);
   }
+
+  // ---------------------------------------------------------------------
+  // Mission Control: every open window, spread out side by side
+  // ---------------------------------------------------------------------
+
+  function setMission(on, pick) {
+    var visible = order.filter(function (w) { return !w.el.hidden; });
+    if (on && (mission || !visible.length)) return;
+    if (!on && !mission) return;
+    closeCtx();
+    setLaunchpad(false);
+    mission = on;
+    body.classList.toggle("mission", on);
+    var d = deskSize();
+    var n = visible.length;
+    var cols = Math.ceil(Math.sqrt(n));
+    var rows = Math.ceil(n / cols);
+    var pad = 36;
+    var cellW = (d.w - pad * 2) / cols;
+    var cellH = (d.h - pad * 2) / rows;
+
+    visible.forEach(function (w, idx) {
+      var el = w.el;
+      el.style.transition = reduceMotion ? "none" : "transform 0.38s cubic-bezier(0.2, 0.9, 0.25, 1)";
+      if (!on) {
+        el.style.transform = "";
+        return;
+      }
+      var col = idx % cols;
+      var row = Math.floor(idx / cols);
+      var ww = el.offsetWidth;
+      var hh = el.offsetHeight;
+      var sc = Math.min((cellW * 0.86) / ww, (cellH * 0.8) / hh, 1);
+      var cx = pad + cellW * (col + 0.5);
+      var cy = pad + cellH * (row + 0.5);
+      var tx = cx - (el.offsetLeft + ww / 2);
+      var ty = cy - (el.offsetTop + hh / 2);
+      el.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + sc + ")";
+    });
+
+    if (!on) {
+      body.classList.add("mission-out");
+      setTimeout(function () {
+        body.classList.remove("mission-out");
+        visible.forEach(function (w) { w.el.style.transition = ""; });
+      }, 420);
+      if (pick) focus(pick);
+    }
+    UI.sound.play("pop");
+  }
+
+  desk.addEventListener("pointerdown", function (e) {
+    if (mission && (e.target === desk || e.target === shelf)) setMission(false);
+  });
+
+  // ---------------------------------------------------------------------
+  // Launchpad: every page and tool in one grid
+  // ---------------------------------------------------------------------
+
+  var APPS = [
+    ["#" + servicesId, "services", isPT ? "Serviços" : "Services"],
+    ["prices/", "prices", isPT ? "Preços" : "Prices"],
+    ["#" + bookId, "book", L.bookVisit],
+    ["software/", "software", "Software"],
+    ["blog/", "tips", isPT ? "Dicas" : "Tips"],
+    ["troubleshoot/", "help", isPT ? "Assistente" : "Troubleshooter"],
+    ["repair-or-replace/", "pc", isPT ? "Reparar ou Substituir" : "Repair or Replace"],
+    ["cheat-sheets/", "checklist", isPT ? "Checklists" : "Cheat Sheets"],
+    ["glossary/", "glossary", isPT ? "Glossário" : "Glossary"],
+    ["heads-up/", "warning", isPT ? "Avisos" : "Heads Up"],
+    ["tools/windows-11-checker/", "w11", isPT ? "Pronto para o Windows 11?" : "Windows 11 Check"],
+    ["tools/password-generator/", "key", isPT ? "Gerador de Palavras-passe" : "Passwords"],
+    ["tools/file-size-converter/", "ruler", isPT ? "Conversor de Tamanhos" : "File Sizes"],
+    ["resources/", "tools", isPT ? "Recursos" : "Resources"],
+    ["#" + (isPT ? "testemunhos" : "testimonials"), "reviews", isPT ? "Opiniões" : "Reviews"],
+    ["#" + aboutId, "user", isPT ? "Sobre" : "About"],
+    ["#" + contactId, "contact", isPT ? "Contacto" : "Contact"],
+    ["search/", "search", isPT ? "Pesquisa" : "Search"]
+  ];
+
+  var pad = document.createElement("div");
+  pad.className = "launchpad";
+  pad.setAttribute("role", "dialog");
+  pad.setAttribute("aria-modal", "true");
+  pad.setAttribute("aria-label", "Launchpad");
+  pad.hidden = true;
+  var padSearch = document.createElement("input");
+  padSearch.type = "search";
+  padSearch.className = "launch-search";
+  padSearch.placeholder = L.searchApps;
+  padSearch.setAttribute("aria-label", L.searchApps);
+  var padGrid = document.createElement("ul");
+  padGrid.className = "launch-grid";
+  APPS.forEach(function (app) {
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.href = app[0];
+    a.className = "launch-app";
+    a.appendChild(iconFor(app[1], 72));
+    var span = document.createElement("span");
+    span.textContent = app[2];
+    a.appendChild(span);
+    li.appendChild(a);
+    padGrid.appendChild(li);
+  });
+  pad.appendChild(padSearch);
+  pad.appendChild(padGrid);
+  body.appendChild(pad);
+
+  function setLaunchpad(on) {
+    if (on === !pad.hidden) return;
+    if (on) {
+      closeCtx();
+      if (mission) setMission(false);
+      pad.hidden = false;
+      padSearch.value = "";
+      filterApps();
+      padSearch.focus();
+      UI.sound.play("pop");
+    } else {
+      pad.hidden = true;
+    }
+  }
+
+  function filterApps() {
+    var q = padSearch.value.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
+    padGrid.querySelectorAll("li").forEach(function (li) {
+      var t = li.textContent.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+      li.hidden = q && t.indexOf(q) === -1;
+    });
+  }
+
+  padSearch.addEventListener("input", filterApps);
+  padSearch.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      var first = padGrid.querySelector("li:not([hidden]) a");
+      if (first) first.click();
+    }
+  });
+  pad.addEventListener("click", function (e) {
+    if (e.target.closest("a")) setLaunchpad(false);
+    else if (e.target === pad || e.target === padGrid) setLaunchpad(false);
+  });
+
+  // Launchpad's own Dock icon, first in the row
+  var lpItem = document.createElement("li");
+  var lpLink = document.createElement("a");
+  lpLink.href = "#launchpad";
+  lpLink.className = "desk-icon dock-launchpad";
+  lpLink.appendChild(iconFor("launchpad", 52));
+  var lpLabel = document.createElement("span");
+  lpLabel.textContent = "Launchpad";
+  lpLink.appendChild(lpLabel);
+  lpItem.appendChild(lpLink);
+  icons.insertBefore(lpItem, icons.firstChild);
+  lpLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    setLaunchpad(pad.hidden);
+  });
+
+  document.addEventListener("yuwri:mission", function () { setMission(!mission); });
+  document.addEventListener("yuwri:launchpad", function () { setLaunchpad(pad.hidden); });
+
+  // ---------------------------------------------------------------------
+  // Files on the desktop (wide screens): click to select, double-click
+  // (or Enter, or a tap) to open
+  // ---------------------------------------------------------------------
+
+  var FILE_ART = {
+    drive: '<svg viewBox="0 0 64 48" aria-hidden="true"><rect x="4" y="10" width="56" height="30" rx="5" fill="#E2E2E7" stroke="#A9A9B0"/><rect x="4" y="28" width="56" height="12" rx="4" fill="#C4C4CC"/><circle cx="50" cy="34" r="2.4" fill="#34C759"/></svg>',
+    doc: '<svg viewBox="0 0 48 60" aria-hidden="true"><path d="M6 2h26l12 12v42a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" fill="#FFFFFF" stroke="#C8C8CE"/><path d="M32 2v12h12" fill="#ECECF1" stroke="#C8C8CE"/><path d="M12 28h24M12 34h24M12 40h16" stroke="#B0B0B8" stroke-width="2.5" stroke-linecap="round"/></svg>',
+    folder: '<svg viewBox="0 0 64 52" aria-hidden="true"><path d="M4 10a4 4 0 0 1 4-4h15l5 5h28a4 4 0 0 1 4 4v29a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z" fill="#3E95EC"/><path d="M4 18a3 3 0 0 1 3-3h50a3 3 0 0 1 3 3v26a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z" fill="#6DB7F7"/></svg>'
+  };
+  var FILES = [
+    ["drive", "#" + aboutId, "Yuwri HD"],
+    ["doc", "prices/", isPT ? "Tabela de Preços" : "Price List"],
+    ["doc", "#" + (isPT ? "abordagem" : "approach"), isPT ? "Leia-me" : "Read Me"],
+    ["folder", "cheat-sheets/", isPT ? "Checklists" : "Cheat Sheets"],
+    ["folder", "#" + (isPT ? "ferramentas" : "tools"), isPT ? "Extras" : "Free Tools"]
+  ];
+
+  var files = document.createElement("div");
+  files.className = "desk-files";
+  var lastPointer = "mouse";
+  FILES.forEach(function (f) {
+    var a = document.createElement("a");
+    a.className = "desk-file";
+    a.href = f[1];
+    a.innerHTML = FILE_ART[f[0]];
+    var label = document.createElement("span");
+    label.textContent = f[2];
+    a.appendChild(label);
+    a.addEventListener("pointerdown", function (e) { lastPointer = e.pointerType; });
+    a.addEventListener("click", function (e) {
+      // Mouse single click only selects; keyboard (detail 0) and taps open
+      if (e.detail === 1 && lastPointer !== "touch") {
+        e.preventDefault();
+        e.stopPropagation();
+        files.querySelectorAll(".desk-file").forEach(function (x) { x.classList.toggle("is-selected", x === a); });
+      }
+    });
+    a.addEventListener("dblclick", function (e) {
+      e.preventDefault();
+      route(new URL(a.getAttribute("href"), location.href), f[2], a);
+    });
+    files.appendChild(a);
+  });
+  desk.insertBefore(files, desk.firstChild);
+
+  desk.addEventListener("pointerdown", function (e) {
+    if (e.target === desk || e.target === shelf) {
+      files.querySelectorAll(".is-selected").forEach(function (x) { x.classList.remove("is-selected"); });
+    }
+  });
+
+  // ---------------------------------------------------------------------
+  // Keyboard shortcuts. Cmd+W / Cmd+M belong to the browser, so the
+  // window ones use Option (Alt): Option+W close, Option+M minimize,
+  // Option+` next window. F3 / Ctrl+Up Mission Control, F4 Launchpad.
+  // ---------------------------------------------------------------------
+
+  document.addEventListener("keydown", function (e) {
+    var typing = /^(INPUT|TEXTAREA|SELECT)$/.test((e.target && e.target.tagName) || "");
+    if (e.key === "F3" || (e.ctrlKey && e.key === "ArrowUp")) {
+      e.preventDefault();
+      setMission(!mission);
+    } else if (e.key === "F4") {
+      e.preventDefault();
+      setLaunchpad(pad.hidden);
+    } else if (e.key === "Escape") {
+      if (!pad.hidden) setLaunchpad(false);
+      else if (mission) setMission(false);
+    } else if (e.altKey && !e.metaKey && !e.ctrlKey && !typing && active) {
+      if (e.code === "KeyW") {
+        e.preventDefault();
+        close(active);
+      } else if (e.code === "KeyM") {
+        e.preventDefault();
+        minimize(active);
+      } else if (e.code === "Backquote") {
+        e.preventDefault();
+        var visible = order.filter(function (w) { return !w.el.hidden; });
+        if (visible.length > 1) {
+          focus(visible[0]);
+          visible[0].el.focus({ preventScroll: true });
+        }
+      }
+    }
+  });
 
   // ---------------------------------------------------------------------
   // Start up

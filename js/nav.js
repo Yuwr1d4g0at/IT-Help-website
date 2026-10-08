@@ -51,18 +51,332 @@
 
   root.classList.add("js");
 
-  // Wallpaper picked on the homepage desktop, kept across pages
-  try {
-    var wall = localStorage.getItem("yuwri-wall");
-    if (wall) root.setAttribute("data-wall", wall);
-  } catch (e) {
-    /* storage blocked: default wallpaper */
-  }
-
   var brand = document.querySelector(".site-nav .brand");
   var links = document.getElementById("nav-links");
   var tray = document.querySelector(".nav-actions");
   var homeHref = brand ? brand.getAttribute("href") : "/";
+  var onHome = document.body.classList.contains("home");
+  var contactHref = (homeHref === "#top" ? "" : homeHref) + (isPT ? "#contacto" : "#contact");
+
+  function remember(key, value) {
+    try {
+      if (value === null) localStorage.removeItem(key);
+      else localStorage.setItem(key, value);
+    } catch (e) {
+      /* storage blocked: the choice lasts for this page only */
+    }
+  }
+
+  function recall(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // Set an attribute on this page and on any site page open in a window
+  function setRootAttr(name, value) {
+    var docs = [document];
+    document.querySelectorAll("iframe").forEach(function (f) {
+      try {
+        if (f.contentDocument) docs.push(f.contentDocument);
+      } catch (e) {
+        /* not ours */
+      }
+    });
+    docs.forEach(function (d) {
+      if (value) d.documentElement.setAttribute(name, value);
+      else d.documentElement.removeAttribute(name);
+    });
+  }
+
+  function setTheme(v) {
+    setRootAttr("data-theme", v === "light" || v === "dark" ? v : null);
+    remember("yuwri-theme", v === "light" || v === "dark" ? v : null);
+  }
+
+  function setWallpaper(v) {
+    setRootAttr("data-wall", v || null);
+    remember("yuwri-wall", v || null);
+  }
+
+  // ---------------------------------------------------------------------
+  // Sound effects, synthesized (no audio files), off unless switched on
+  // ---------------------------------------------------------------------
+  var Sound = (function () {
+    var ctx = null;
+
+    function audio() {
+      if (!ctx) {
+        var C = window.AudioContext || window.webkitAudioContext;
+        if (!C) return null;
+        ctx = new C();
+      }
+      if (ctx.state === "suspended") ctx.resume();
+      return ctx;
+    }
+
+    function note(c, freq, start, dur, type, vol, toFreq) {
+      var o = c.createOscillator();
+      var g = c.createGain();
+      o.type = type || "sine";
+      o.frequency.setValueAtTime(freq, start);
+      if (toFreq) o.frequency.exponentialRampToValueAtTime(toFreq, start + dur);
+      g.gain.setValueAtTime(0.0001, start);
+      g.gain.exponentialRampToValueAtTime(vol, start + 0.015);
+      g.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+      o.connect(g);
+      g.connect(c.destination);
+      o.start(start);
+      o.stop(start + dur + 0.05);
+    }
+
+    var sounds = {
+      chime: function (c, t) {
+        [261.6, 329.6, 392, 523.3, 659.3].forEach(function (f, i) {
+          note(c, f, t + i * 0.012, 1.8, "sine", 0.05);
+        });
+      },
+      open: function (c, t) { note(c, 620, t, 0.16, "sine", 0.045, 900); },
+      minimize: function (c, t) { note(c, 700, t, 0.32, "sine", 0.05, 160); },
+      close: function (c, t) { note(c, 520, t, 0.12, "triangle", 0.04, 300); },
+      pop: function (c, t) { note(c, 980, t, 0.09, "sine", 0.05); }
+    };
+
+    return {
+      enabled: function () {
+        return recall("yuwri-sound") === "on";
+      },
+      set: function (on) {
+        remember("yuwri-sound", on ? "on" : null);
+        if (on) this.play("pop", true);
+      },
+      play: function (name, force) {
+        if (!force && !this.enabled()) return;
+        var c = audio();
+        if (c && sounds[name]) sounds[name](c, c.currentTime + 0.01);
+      }
+    };
+  })();
+
+  window.YuwriUI = { sound: Sound, setTheme: setTheme, setWallpaper: setWallpaper };
+
+  // ---------------------------------------------------------------------
+  // Live availability (Lisbon time): weekdays 18-22, weekends 10-20
+  // ---------------------------------------------------------------------
+  function availability() {
+    var parts = {};
+    try {
+      new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Europe/Lisbon", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+      }).formatToParts(new Date()).forEach(function (p) { parts[p.type] = p.value; });
+    } catch (e) {
+      return null;
+    }
+    var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    var day = days.indexOf(parts.weekday);
+    var mins = parseInt(parts.hour, 10) * 60 + parseInt(parts.minute, 10);
+    var hoursFor = function (d) {
+      return d === 0 || d === 6 ? [10, 20] : [18, 22];
+    };
+    var h = hoursFor(day);
+    if (mins >= h[0] * 60 && mins < h[1] * 60) return { open: true };
+    if (mins < h[0] * 60) return { open: false, when: "today", at: h[0] };
+    var next = (day + 1) % 7;
+    return { open: false, when: "tomorrow", at: hoursFor(next)[0] };
+  }
+
+  var statusLink = null;
+  function renderStatus() {
+    if (!statusLink) return;
+    var a = availability();
+    if (!a) return;
+    var at = (a.at < 10 ? "0" : "") + a.at + ":00";
+    statusLink.classList.toggle("is-open", a.open);
+    statusLink.lastChild.textContent = a.open
+      ? (isPT ? "Disponível agora" : "Available now")
+      : a.when === "today"
+        ? (isPT ? "Volto às " + at : "Back at " + at)
+        : (isPT ? "Volto amanhã às " + at : "Back tomorrow " + at);
+    statusLink.title = statusLink.lastChild.textContent;
+  }
+
+  if (tray) {
+    statusLink = document.createElement("a");
+    statusLink.className = "status-pill";
+    statusLink.href = contactHref;
+    var dot = document.createElement("span");
+    dot.className = "status-dot";
+    dot.setAttribute("aria-hidden", "true");
+    statusLink.appendChild(dot);
+    statusLink.appendChild(document.createElement("span"));
+    tray.insertBefore(statusLink, tray.firstChild);
+    renderStatus();
+    setInterval(renderStatus, 60000);
+  }
+
+  // ---------------------------------------------------------------------
+  // Control Center
+  // ---------------------------------------------------------------------
+  if (tray) {
+    var C = isPT
+      ? { title: "Centro de Controlo", look: "Aspeto", auto: "Auto", light: "Claro", dark: "Escuro",
+          wall: "Fundo", lang: "Idioma", sound: "Efeitos sonoros", mission: "Mission Control", launch: "Launchpad",
+          keys: "Atalhos", walls: { "": "Pôr do sol", ocean: "Oceano", dusk: "Crepúsculo", graphite: "Grafite" } }
+      : { title: "Control Center", look: "Appearance", auto: "Auto", light: "Light", dark: "Dark",
+          wall: "Wallpaper", lang: "Language", sound: "Sound effects", mission: "Mission Control", launch: "Launchpad",
+          keys: "Shortcuts", walls: { "": "Sunset", ocean: "Ocean", dusk: "Dusk", graphite: "Graphite" } };
+
+    var ccBtn = document.createElement("button");
+    ccBtn.type = "button";
+    ccBtn.className = "spot-btn cc-btn";
+    ccBtn.setAttribute("aria-label", C.title);
+    ccBtn.setAttribute("aria-expanded", "false");
+    ccBtn.title = C.title;
+    ccBtn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10 M18 7h2 M4 17h2 M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>';
+    tray.insertBefore(ccBtn, statusLink ? statusLink.nextSibling : tray.firstChild);
+
+    var cc = document.createElement("div");
+    cc.className = "cc-panel";
+    cc.setAttribute("role", "dialog");
+    cc.setAttribute("aria-label", C.title);
+
+    var section = function (label) {
+      var box = document.createElement("div");
+      box.className = "cc-tile";
+      var h = document.createElement("p");
+      h.className = "cc-label";
+      h.textContent = label;
+      box.appendChild(h);
+      cc.appendChild(box);
+      return box;
+    };
+
+    // Appearance
+    var lookRow = document.createElement("div");
+    lookRow.className = "cc-seg";
+    var currentTheme = root.getAttribute("data-theme") || "auto";
+    [["auto", C.auto], ["light", C.light], ["dark", C.dark]].forEach(function (o) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.textContent = o[1];
+      b.setAttribute("aria-pressed", String(o[0] === currentTheme));
+      b.addEventListener("click", function () {
+        setTheme(o[0]);
+        lookRow.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        Sound.play("pop");
+      });
+      lookRow.appendChild(b);
+    });
+    section(C.look).appendChild(lookRow);
+
+    // Wallpaper
+    var wallRow = document.createElement("div");
+    wallRow.className = "cc-swatches";
+    var currentWall = root.getAttribute("data-wall") || "";
+    Object.keys(C.walls).forEach(function (k) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "cc-swatch";
+      b.setAttribute("data-wall-swatch", k || "sunset");
+      b.setAttribute("aria-label", C.walls[k]);
+      b.setAttribute("aria-pressed", String(k === currentWall));
+      b.title = C.walls[k];
+      b.addEventListener("click", function () {
+        setWallpaper(k);
+        wallRow.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        Sound.play("pop");
+      });
+      wallRow.appendChild(b);
+    });
+    section(C.wall).appendChild(wallRow);
+
+    // Language + sound, side by side
+    var duo = document.createElement("div");
+    duo.className = "cc-duo";
+    cc.appendChild(duo);
+
+    var langBox = document.createElement("div");
+    langBox.className = "cc-tile";
+    langBox.innerHTML = '<p class="cc-label"></p><div class="cc-seg"></div>';
+    langBox.firstChild.textContent = C.lang;
+    var switcher = document.querySelector(".lang-switch");
+    var here = document.createElement("span");
+    here.textContent = isPT ? "PT" : "EN";
+    here.setAttribute("aria-current", "true");
+    var there = document.createElement("a");
+    there.textContent = isPT ? "EN" : "PT";
+    there.href = switcher && switcher.getAttribute("href") ? switcher.getAttribute("href") : "#";
+    langBox.lastChild.appendChild(isPT ? there : here);
+    langBox.lastChild.appendChild(isPT ? here : there);
+    duo.appendChild(langBox);
+
+    var soundBox = document.createElement("div");
+    soundBox.className = "cc-tile";
+    var sw = document.createElement("button");
+    sw.type = "button";
+    sw.className = "cc-switch";
+    sw.setAttribute("role", "switch");
+    sw.setAttribute("aria-checked", String(Sound.enabled()));
+    sw.innerHTML = '<span class="cc-label"></span><span class="cc-knob" aria-hidden="true"></span>';
+    sw.firstChild.textContent = C.sound;
+    sw.addEventListener("click", function () {
+      var on = sw.getAttribute("aria-checked") !== "true";
+      sw.setAttribute("aria-checked", String(on));
+      Sound.set(on);
+    });
+    soundBox.appendChild(sw);
+    duo.appendChild(soundBox);
+
+    // Desktop-only actions
+    if (onHome) {
+      var acts = document.createElement("div");
+      acts.className = "cc-duo cc-actions";
+      [["yuwri:mission", C.mission], ["yuwri:launchpad", C.launch]].forEach(function (o) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "cc-tile cc-action";
+        b.textContent = o[1];
+        b.addEventListener("click", function () {
+          setCC(false);
+          document.dispatchEvent(new CustomEvent(o[0]));
+        });
+        acts.appendChild(b);
+      });
+      cc.appendChild(acts);
+
+      var keys = document.createElement("p");
+      keys.className = "cc-keys";
+      keys.textContent = C.keys + ": ⌘K Spotlight · F3 " + C.mission + " · F4 " + C.launch +
+        " · ⌥W " + (isPT ? "fechar" : "close") + " · ⌥M " + (isPT ? "minimizar" : "minimize") +
+        " · ⌥` " + (isPT ? "próxima janela" : "next window");
+      cc.appendChild(keys);
+    }
+
+    tray.parentNode.appendChild(cc);
+
+    var setCC = function (open) {
+      cc.classList.toggle("is-open", open);
+      ccBtn.setAttribute("aria-expanded", String(open));
+      ccBtn.classList.toggle("is-pressed", open);
+    };
+
+    ccBtn.addEventListener("click", function () {
+      setCC(!cc.classList.contains("is-open"));
+    });
+
+    document.addEventListener("pointerdown", function (e) {
+      if (cc.classList.contains("is-open") && !cc.contains(e.target) && !ccBtn.contains(e.target)) setCC(false);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && cc.classList.contains("is-open")) {
+        setCC(false);
+        ccBtn.focus();
+      }
+    });
+  }
 
   // ---------------------------------------------------------------------
   // Clock: "Thu 8 Oct  17:20"
@@ -107,7 +421,7 @@
     spotBtn.setAttribute("aria-label", S.label + " (⌘K)");
     spotBtn.title = S.label + " (⌘K)";
     spotBtn.innerHTML = lens;
-    tray.insertBefore(spotBtn, tray.firstChild);
+    tray.insertBefore(spotBtn, tray.querySelector(".cc-btn") || tray.firstChild);
 
     var spot = document.createElement("div");
     spot.className = "spotlight";
