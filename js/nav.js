@@ -51,6 +51,14 @@
 
   root.classList.add("js");
 
+  // Wallpaper picked on the homepage desktop, kept across pages
+  try {
+    var wall = localStorage.getItem("yuwri-wall");
+    if (wall) root.setAttribute("data-wall", wall);
+  } catch (e) {
+    /* storage blocked: default wallpaper */
+  }
+
   var brand = document.querySelector(".site-nav .brand");
   var links = document.getElementById("nav-links");
   var tray = document.querySelector(".nav-actions");
@@ -82,6 +90,156 @@
     };
     tick();
     setInterval(tick, 15000);
+  }
+
+  // ---------------------------------------------------------------------
+  // Spotlight: search the whole site from the menu bar or with Cmd/Ctrl+K
+  // ---------------------------------------------------------------------
+  if (tray) {
+    var S = isPT
+      ? { label: "Pesquisa", placeholder: "Pesquisar na Yuwri", none: "Sem resultados." }
+      : { label: "Search", placeholder: "Search Yuwri", none: "No results." };
+    var lens = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.6-4.6"/></svg>';
+
+    var spotBtn = document.createElement("button");
+    spotBtn.type = "button";
+    spotBtn.className = "spot-btn";
+    spotBtn.setAttribute("aria-label", S.label + " (⌘K)");
+    spotBtn.title = S.label + " (⌘K)";
+    spotBtn.innerHTML = lens;
+    tray.insertBefore(spotBtn, tray.firstChild);
+
+    var spot = document.createElement("div");
+    spot.className = "spotlight";
+    spot.innerHTML =
+      '<div class="spot-panel" role="dialog" aria-modal="true" aria-label="' + S.label + '">' +
+      '<label class="spot-field">' + lens.replace('width="15" height="15"', 'width="22" height="22"') +
+      '<input type="search" autocomplete="off" spellcheck="false" aria-controls="spot-results"></label>' +
+      '<ul class="spot-results" id="spot-results" role="listbox"></ul></div>';
+    document.body.appendChild(spot);
+
+    var input = spot.querySelector("input");
+    var list = spot.querySelector(".spot-results");
+    input.placeholder = S.placeholder;
+    var entries = null;
+    var picked = 0;
+
+    var loadIndex = function () {
+      if (entries) return Promise.resolve(entries);
+      return fetch(isPT ? "/pt/search-index.json" : "/search-index.json")
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          entries = d.entries || [];
+          return entries;
+        })
+        .catch(function () {
+          entries = [];
+          return entries;
+        });
+    };
+
+    var norm = function (t) {
+      return (t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+    };
+
+    var render = function () {
+      var q = norm(input.value).trim();
+      list.innerHTML = "";
+      picked = 0;
+      if (!q || !entries) return;
+      var words = q.split(/\s+/);
+      var hits = entries
+        .map(function (e) {
+          var title = norm(e.title);
+          var hay = title + " " + norm(e.keywords) + " " + norm(e.excerpt) + " " + norm(e.category);
+          if (!words.every(function (w) { return hay.indexOf(w) !== -1; })) return null;
+          var score = words.reduce(function (n, w) { return n + (title.indexOf(w) !== -1 ? 3 : 1); }, 0);
+          return { e: e, score: score };
+        })
+        .filter(Boolean)
+        .sort(function (a, b) { return b.score - a.score; })
+        .slice(0, 8);
+
+      if (!hits.length) {
+        var li0 = document.createElement("li");
+        li0.className = "spot-empty";
+        li0.textContent = S.none;
+        list.appendChild(li0);
+        return;
+      }
+
+      hits.forEach(function (h, i) {
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.href = h.e.url;
+        a.setAttribute("role", "option");
+        if (i === 0) a.classList.add("is-selected");
+        var left = document.createElement("span");
+        var t = document.createElement("span");
+        t.className = "spot-title";
+        t.textContent = h.e.title.replace(/\s*\|\s*Yuwri\s*$/, "").replace(/^Yuwri\s*\|\s*/, "");
+        var ex = document.createElement("span");
+        ex.className = "spot-excerpt";
+        ex.textContent = h.e.excerpt || "";
+        left.appendChild(t);
+        left.appendChild(ex);
+        var cat = document.createElement("span");
+        cat.className = "spot-cat";
+        cat.textContent = h.e.category || "";
+        a.appendChild(left);
+        a.appendChild(cat);
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+    };
+
+    var openSpot = function () {
+      spot.classList.add("is-open");
+      input.value = "";
+      list.innerHTML = "";
+      input.focus();
+      loadIndex().then(render);
+    };
+
+    var closeSpot = function () {
+      spot.classList.remove("is-open");
+    };
+
+    var move = function (step) {
+      var items = list.querySelectorAll("a");
+      if (!items.length) return;
+      items[picked].classList.remove("is-selected");
+      picked = (picked + step + items.length) % items.length;
+      items[picked].classList.add("is-selected");
+      items[picked].scrollIntoView({ block: "nearest" });
+    };
+
+    spotBtn.addEventListener("click", openSpot);
+    input.addEventListener("input", render);
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown") { e.preventDefault(); move(1); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); move(-1); }
+      else if (e.key === "Enter") {
+        var cur = list.querySelectorAll("a")[picked];
+        if (cur) { e.preventDefault(); closeSpot(); cur.click(); }
+      }
+    });
+    list.addEventListener("click", function (e) {
+      if (e.target.closest("a")) closeSpot();
+    });
+    spot.addEventListener("pointerdown", function (e) {
+      if (e.target === spot) closeSpot();
+    });
+    document.addEventListener("keydown", function (e) {
+      if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K")) {
+        e.preventDefault();
+        if (spot.classList.contains("is-open")) closeSpot();
+        else openSpot();
+      } else if (e.key === "Escape" && spot.classList.contains("is-open")) {
+        closeSpot();
+        spotBtn.focus();
+      }
+    });
   }
 
   // ---------------------------------------------------------------------

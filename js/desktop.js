@@ -1,26 +1,33 @@
 // Homepage desktop: turns the stacked homepage windows into real ones.
-// Windows open from the Dock, the logo menu and in-page links, can be
-// dragged by the title bar, resized from the corner, minimized into the
-// Dock, zoomed and closed. Links to other pages of the site open inside a
-// window instead of navigating away.
+// Windows open from the Dock, the logo menu, Spotlight and in-page links,
+// can be dragged by the title bar, resized from the corner, minimized into
+// the Dock, zoomed and closed, and remember where they were left. Links to
+// other pages of the site open inside a window instead of navigating away.
 //
 // Without JavaScript (and for search engines) the homepage stays a normal
 // scrolling page; everything here is an enhancement on top of it.
 (function () {
   "use strict";
 
+  var root = document.documentElement;
   var body = document.body;
   var desk = document.querySelector(".desktop");
   var shelf = document.querySelector(".windows");
   var icons = document.querySelector(".desk-icons");
   if (!body.classList.contains("home") || !desk || !shelf || !icons) return;
 
-  var isPT = (document.documentElement.lang || "").toLowerCase().indexOf("pt") === 0;
+  var isPT = (root.lang || "").toLowerCase().indexOf("pt") === 0;
   var L = isPT
     ? { min: "Minimizar", max: "Ampliar", close: "Fechar", loading: "A abrir…",
-        hello: "Bem-vindo à Yuwri", helloSub: "Abra o que quiser a partir da Dock, lá em baixo." }
+        hello: "Bem-vindo à Yuwri", helloSub: "Abra o que quiser a partir da Dock, lá em baixo.",
+        newMsg: "Nova mensagem", about: "Sobre a Yuwri", services: "Ver serviços", wallpaper: "Fundo",
+        cleanUp: "Arrumar janelas",
+        walls: { "": "Pôr do sol", ocean: "Oceano", dusk: "Crepúsculo", graphite: "Grafite" } }
     : { min: "Minimize", max: "Zoom", close: "Close", loading: "Opening…",
-        hello: "Welcome to Yuwri", helloSub: "Open anything from the Dock at the bottom of the screen." };
+        hello: "Welcome to Yuwri", helloSub: "Open anything from the Dock at the bottom of the screen.",
+        newMsg: "New Message", about: "About Yuwri", services: "Show Services", wallpaper: "Wallpaper",
+        cleanUp: "Clean Up Windows",
+        walls: { "": "Sunset", ocean: "Ocean", dusk: "Dusk", graphite: "Graphite" } };
 
   // Same window, the other language's anchor (links from embedded pages
   // in the other language still land on the right window).
@@ -38,8 +45,13 @@
     glossary: "glossary", "heads-up": "warning", tools: "tools", search: "help"
   };
 
+  var GEO_KEY = "yuwri-geo-v1";
   var narrowMQ = window.matchMedia("(max-width: 760px)");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var menuApp = document.querySelector(".menu-app");
+  var contactId = isPT ? "contacto" : "contact";
+  var aboutId = isPT ? "sobre" : "about";
+  var servicesId = isPT ? "servicos" : "services";
   var wins = {};
   var order = [];
   var active = null;
@@ -50,19 +62,26 @@
   body.classList.toggle("narrow", narrowMQ.matches);
 
   // ---------------------------------------------------------------------
-  // The Dock: the desktop icons, plus a tray for minimized windows
+  // Small helpers
   // ---------------------------------------------------------------------
-  var dock = document.createElement("nav");
-  dock.className = "dock";
-  dock.setAttribute("aria-label", "Dock");
-  var sep = document.createElement("div");
-  sep.className = "dock-sep";
-  var tray = document.createElement("div");
-  tray.className = "dock-tray";
-  dock.appendChild(icons);
-  dock.appendChild(sep);
-  dock.appendChild(tray);
-  body.appendChild(dock);
+
+  function store(key, value) {
+    try {
+      if (value === null) localStorage.removeItem(key);
+      else localStorage.setItem(key, typeof value === "string" ? value : JSON.stringify(value));
+    } catch (e) {
+      /* storage blocked: nothing is remembered, everything still works */
+    }
+  }
+
+  function recall(key, json) {
+    try {
+      var v = localStorage.getItem(key);
+      return json ? JSON.parse(v || "null") : v;
+    } catch (e) {
+      return null;
+    }
+  }
 
   function deskSize() {
     return { w: desk.clientWidth, h: desk.clientHeight };
@@ -76,6 +95,7 @@
     var src = document.querySelector('[data-icon="' + name + '"]');
     if (!src) return document.createElement("span");
     var ico = src.cloneNode(true);
+    ico.style.transform = "";
     ico.style.width = size + "px";
     ico.style.height = size + "px";
     return ico;
@@ -86,11 +106,136 @@
   }
 
   // ---------------------------------------------------------------------
+  // The Dock: the desktop icons, plus a tray for minimized windows
+  // ---------------------------------------------------------------------
+
+  var dock = document.createElement("nav");
+  dock.className = "dock";
+  dock.setAttribute("aria-label", "Dock");
+  var sep = document.createElement("div");
+  sep.className = "dock-sep";
+  var tray = document.createElement("div");
+  tray.className = "dock-tray";
+  dock.appendChild(icons);
+  dock.appendChild(sep);
+  dock.appendChild(tray);
+  body.appendChild(dock);
+
+  // Magnification: icons near the pointer grow, in a wave
+  function magnify(x) {
+    icons.querySelectorAll(".desk-icon").forEach(function (a) {
+      var r = a.getBoundingClientRect();
+      var d = Math.abs(x - (r.left + r.width / 2));
+      var f = Math.max(0, 1 - d / 150);
+      f = f * f * (3 - 2 * f);
+      a.querySelector(".ico").style.transform =
+        f > 0 ? "translateY(" + (-12 * f).toFixed(1) + "px) scale(" + (1 + 0.42 * f).toFixed(3) + ")" : "";
+    });
+  }
+
+  dock.addEventListener("pointermove", function (e) {
+    if (isNarrow() || reduceMotion || e.pointerType === "touch") return;
+    dock.classList.add("fisheye");
+    magnify(e.clientX);
+  });
+
+  dock.addEventListener("pointerleave", function () {
+    dock.classList.remove("fisheye");
+    icons.querySelectorAll(".desk-icon .ico").forEach(function (i) {
+      i.style.transform = "";
+    });
+  });
+
+  // ---------------------------------------------------------------------
+  // Animations
+  // ---------------------------------------------------------------------
+
+  function centerDelta(from, to) {
+    return {
+      dx: from.left + from.width / 2 - (to.left + to.width / 2),
+      dy: from.top + from.height / 2 - (to.top + to.height / 2),
+      s: Math.max(0.05, Math.min(1, from.width / Math.max(1, to.width)))
+    };
+  }
+
+  // Zoom a window out of wherever it was opened from
+  function animateOpen(el, fromRect) {
+    if (reduceMotion || !el.animate) return;
+    var r = el.getBoundingClientRect();
+    if (fromRect) {
+      var d = centerDelta(fromRect, r);
+      el.animate(
+        [
+          { transform: "translate(" + d.dx + "px," + d.dy + "px) scale(" + d.s + ")", opacity: 0.2 },
+          { transform: "none", opacity: 1 }
+        ],
+        { duration: 340, easing: "cubic-bezier(0.2, 0.9, 0.25, 1)" }
+      );
+    } else {
+      el.animate(
+        [{ transform: "scale(0.94) translateY(10px)", opacity: 0 }, { transform: "none", opacity: 1 }],
+        { duration: 240, easing: "cubic-bezier(0.2, 0.9, 0.3, 1.1)" }
+      );
+    }
+  }
+
+  // Squeeze a window down into its Dock tile ("genie"-style)
+  function animateMinimize(el, toRect, done) {
+    if (reduceMotion || !el.animate) return done();
+    var d = centerDelta(toRect, el.getBoundingClientRect());
+    var anim = el.animate(
+      [
+        { transform: "none", opacity: 1 },
+        { transform: "translate(" + d.dx * 0.3 + "px," + d.dy * 0.55 + "px) scale(0.8, 0.45)", opacity: 0.95, offset: 0.45 },
+        { transform: "translate(" + d.dx + "px," + d.dy + "px) scale(" + d.s + ")", opacity: 0.2 }
+      ],
+      { duration: 430, easing: "cubic-bezier(0.55, 0, 0.7, 0.4)" }
+    );
+    anim.onfinish = done;
+  }
+
+  function animateClose(el, done) {
+    if (reduceMotion || !el.animate) return done();
+    var anim = el.animate(
+      [{ transform: "none", opacity: 1 }, { transform: "scale(0.94)", opacity: 0 }],
+      { duration: 160, easing: "ease-in" }
+    );
+    anim.onfinish = done;
+  }
+
+  function bounce(icon) {
+    if (!icon || reduceMotion) return;
+    icon.classList.remove("is-bouncing");
+    void icon.offsetWidth;
+    icon.classList.add("is-bouncing");
+    setTimeout(function () {
+      icon.classList.remove("is-bouncing");
+    }, 950);
+  }
+
+  // ---------------------------------------------------------------------
+  // Remembered positions
+  // ---------------------------------------------------------------------
+
+  var geo = recall(GEO_KEY, true) || {};
+
+  function saveGeo(w, sized) {
+    if (isNarrow() || w.el.classList.contains("is-max")) return;
+    var g = geo[w.id] || {};
+    g.x = w.el.offsetLeft;
+    g.y = w.el.offsetTop;
+    g.w = w.el.offsetWidth;
+    if (sized) g.h = w.el.offsetHeight;
+    geo[w.id] = g;
+    store(GEO_KEY, geo);
+  }
+
+  // ---------------------------------------------------------------------
   // Window setup
   // ---------------------------------------------------------------------
 
   function register(el, id) {
-    var w = { id: id, el: el, tile: null, placed: false, app: el.classList.contains("win-app") };
+    var w = { id: id, el: el, tile: null, placed: false, busy: false, app: el.classList.contains("win-app") };
     wins[id] = w;
     el.hidden = true;
     el.tabIndex = -1;
@@ -139,22 +284,29 @@
     var d = deskSize();
     var el = w.el;
     var width = Math.min(+el.getAttribute("data-w") || 600, d.w - 16);
-    var x, y;
+    var x, y, h = null;
+    var saved = geo[w.id];
 
-    if (w.id === "welcome") {
+    if (saved && saved.x < d.w - 80 && saved.y < d.h - 40) {
+      x = saved.x;
+      y = saved.y;
+      width = Math.min(saved.w || width, d.w);
+      if (saved.h) h = Math.min(saved.h, d.h - y);
+    } else if (w.id === "welcome") {
       x = (d.w - width) / 2;
       y = Math.max(14, Math.round(d.h * 0.08));
     } else {
       var step = cascade++ % 7;
       x = Math.max(16, d.w * 0.12) + step * 30;
       y = 18 + step * 26;
+      if (x + width > d.w - 8) x = Math.max(8, d.w - width - 8);
     }
-    if (x + width > d.w - 8) x = Math.max(8, d.w - width - 8);
 
     el.style.width = width + "px";
     el.style.left = Math.round(x) + "px";
-    el.style.top = y + "px";
-    if (w.app) el.style.height = Math.max(260, d.h - y - 12) + "px";
+    el.style.top = Math.round(y) + "px";
+    if (h) el.style.height = h + "px";
+    else if (w.app) el.style.height = Math.max(260, d.h - y - 12) + "px";
     w.placed = true;
   }
 
@@ -184,17 +336,30 @@
     if (menuApp) menuApp.textContent = "Yuwri";
   }
 
-  function open(w) {
+  function dockIconFor(w) {
+    var match = null;
+    icons.querySelectorAll(".desk-icon").forEach(function (a) {
+      var url = new URL(a.getAttribute("href"), location.href);
+      var target = sameDoc(url) ? windowFor(url.hash) : wins["page:" + url.pathname];
+      if (target === w) match = a;
+    });
+    return match;
+  }
+
+  function open(w, fromEl) {
+    if (w.busy) return;
     var wasHidden = w.el.hidden;
+    var fromRect = null;
+    if (wasHidden) {
+      var src = w.tile || fromEl;
+      if (src) fromRect = (src.querySelector(".ico") || src).getBoundingClientRect();
+      if (!w.tile) bounce(fromEl && fromEl.closest(".dock") ? fromEl : dockIconFor(w));
+    }
     if (!w.placed) place(w);
     removeTile(w);
     w.el.hidden = false;
-    if (wasHidden) {
-      w.el.classList.remove("is-opening");
-      void w.el.offsetWidth;
-      w.el.classList.add("is-opening");
-    }
     focus(w);
+    if (wasHidden) animateOpen(w.el, fromRect);
     w.el.focus({ preventScroll: true });
     updateDock();
     if (!w.app && w.id !== "welcome" && history.replaceState) {
@@ -203,31 +368,57 @@
   }
 
   function minimize(w) {
-    w.el.hidden = true;
-    w.el.classList.remove("is-active");
+    if (w.busy) return;
+    w.busy = true;
     addTile(w);
-    focusNext();
     updateDock();
+    var target = w.tile.getBoundingClientRect();
+    w.el.classList.remove("is-active");
+    animateMinimize(w.el, target, function () {
+      w.el.hidden = true;
+      w.busy = false;
+      focusNext();
+    });
   }
 
   function close(w) {
-    w.el.hidden = true;
+    if (w.busy) return;
+    w.busy = true;
     w.el.classList.remove("is-active");
-    removeTile(w);
-    order = order.filter(function (o) { return o !== w; });
-    if (w.app) {
-      w.el.remove();
-      delete wins[w.id];
-    }
-    if (location.hash === "#" + w.id && history.replaceState) {
-      history.replaceState(null, "", location.pathname + location.search);
-    }
-    focusNext();
-    updateDock();
+    animateClose(w.el, function () {
+      w.busy = false;
+      w.el.hidden = true;
+      removeTile(w);
+      order = order.filter(function (o) { return o !== w; });
+      if (w.app) {
+        w.el.remove();
+        delete wins[w.id];
+      }
+      if (location.hash === "#" + w.id && history.replaceState) {
+        history.replaceState(null, "", location.pathname + location.search);
+      }
+      focusNext();
+      updateDock();
+    });
   }
 
   function toggleMax(w) {
-    w.el.classList.toggle("is-max");
+    var el = w.el;
+    var before = el.getBoundingClientRect();
+    el.classList.toggle("is-max");
+    if (reduceMotion || !el.animate) return;
+    var after = el.getBoundingClientRect();
+    el.animate(
+      [
+        {
+          transformOrigin: "0 0",
+          transform: "translate(" + (before.left - after.left) + "px," + (before.top - after.top) + "px) scale(" +
+            before.width / after.width + "," + before.height / after.height + ")"
+        },
+        { transformOrigin: "0 0", transform: "none" }
+      ],
+      { duration: 260, easing: "cubic-bezier(0.2, 0.9, 0.25, 1)" }
+    );
   }
 
   // Minimized windows sit at the right end of the Dock
@@ -261,13 +452,12 @@
     icons.querySelectorAll(".desk-icon").forEach(function (a) {
       var url = new URL(a.getAttribute("href"), location.href);
       var w = sameDoc(url) ? windowFor(url.hash) : wins["page:" + url.pathname];
-      var running = !!w && (!w.el.hidden || !!w.tile);
-      a.classList.toggle("is-running", running);
+      a.classList.toggle("is-running", !!w && (!w.el.hidden || !!w.tile));
     });
   }
 
   // ---------------------------------------------------------------------
-  // Dragging (title bar)
+  // Dragging (title bar) and resizing (corner)
   // ---------------------------------------------------------------------
 
   function startDrag(w, bar, e) {
@@ -298,6 +488,7 @@
       bar.removeEventListener("pointerup", up);
       bar.removeEventListener("pointercancel", up);
       body.classList.remove("dragging");
+      if (el.offsetLeft !== left || el.offsetTop !== top) saveGeo(w, false);
     }
 
     bar.addEventListener("pointermove", move);
@@ -306,14 +497,22 @@
   }
 
   // Resizing uses the browser's own resize grip (CSS `resize: both`);
-  // stop iframes from swallowing the pointer while it's held.
+  // stop iframes from swallowing the pointer while it's held, and remember
+  // the new size afterwards.
   desk.addEventListener("pointerdown", function (e) {
-    var win = e.target.closest(".win");
-    if (!win || e.target !== win) return;
+    var winEl = e.target.closest(".win");
+    if (!winEl || e.target !== winEl) return;
+    var w = null;
+    Object.keys(wins).forEach(function (k) {
+      if (wins[k].el === winEl) w = wins[k];
+    });
+    var w0 = winEl.offsetWidth;
+    var h0 = winEl.offsetHeight;
     body.classList.add("dragging");
     document.addEventListener("pointerup", function done() {
       body.classList.remove("dragging");
       document.removeEventListener("pointerup", done);
+      if (w && (winEl.offsetWidth !== w0 || winEl.offsetHeight !== h0)) saveGeo(w, true);
     });
   });
 
@@ -326,13 +525,13 @@
     return PAGE_ICONS[seg] || "globe";
   }
 
-  function openPage(url, label) {
+  function openPage(url, label, fromEl) {
     var key = "page:" + url.pathname;
     var w = wins[key];
     if (w) {
       var frame = w.el.querySelector("iframe");
       if (url.hash && frame) frame.src = url.href;
-      open(w);
+      open(w, fromEl);
       return;
     }
 
@@ -382,11 +581,11 @@
       }
     });
 
-    open(w);
+    open(w, fromEl);
   }
 
   // ---------------------------------------------------------------------
-  // Opening things: links, Dock, menus, messages from embedded pages
+  // Opening things: links, Dock, menus, Spotlight, embedded pages
   // ---------------------------------------------------------------------
 
   function sameDoc(url) {
@@ -403,14 +602,13 @@
     return url.origin === location.origin && /(\/|\.html)$/.test(url.pathname) && !/404\.html$/.test(url.pathname);
   }
 
-  function route(url, label) {
+  function route(url, label, fromEl) {
     if (sameDoc(url) || /^\/(pt\/)?(index\.html)?$/.test(url.pathname)) {
-      var w = windowFor(url.hash) || wins.welcome;
-      open(w);
+      open(windowFor(url.hash) || wins.welcome, fromEl);
       return true;
     }
     if (isSitePage(url)) {
-      openPage(url, label);
+      openPage(url, label, fromEl);
       return true;
     }
     return false;
@@ -424,8 +622,8 @@
     var url = new URL(a.getAttribute("href"), location.href);
     if (url.origin !== location.origin) return;
 
-    var label = a.textContent.trim().replace(/\s+/g, " ");
-    if (route(url, label)) e.preventDefault();
+    var label = (a.querySelector(".spot-title") || a).textContent.trim().replace(/\s+/g, " ");
+    if (route(url, label, a)) e.preventDefault();
   });
 
   window.addEventListener("message", function (e) {
@@ -434,19 +632,117 @@
   });
 
   // ---------------------------------------------------------------------
-  // Welcome notification on the first visit
+  // Right-click on the wallpaper
   // ---------------------------------------------------------------------
 
-  function notify() {
-    var seen = false;
+  var ctx = null;
+
+  function closeCtx() {
+    if (ctx) {
+      ctx.remove();
+      ctx = null;
+    }
+  }
+
+  function setWallpaper(name) {
+    if (name) root.setAttribute("data-wall", name);
+    else root.removeAttribute("data-wall");
+    store("yuwri-wall", name || null);
+  }
+
+  function cleanUp() {
+    geo = {};
+    store(GEO_KEY, null);
+    cascade = 0;
+    order.forEach(function (w) {
+      if (w.el.hidden) {
+        w.placed = false;
+        return;
+      }
+      w.el.classList.remove("is-max");
+      w.el.style.height = "";
+      place(w);
+    });
+  }
+
+  function showCtx(x, y) {
+    closeCtx();
+    ctx = document.createElement("div");
+    ctx.className = "ctx-menu";
+    ctx.setAttribute("role", "menu");
+
+    var item = function (text, fn, cls) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("role", "menuitem");
+      b.textContent = text;
+      if (cls) b.className = cls;
+      b.addEventListener("click", function () {
+        closeCtx();
+        fn();
+      });
+      ctx.appendChild(b);
+    };
+    var rule = function () {
+      ctx.appendChild(document.createElement("hr"));
+    };
+
+    item(L.newMsg, function () { open(wins[contactId]); });
+    item(L.services, function () { open(wins[servicesId]); });
+    item(L.about, function () { open(wins[aboutId]); });
+    rule();
+    var label = document.createElement("div");
+    label.className = "ctx-label";
+    label.textContent = L.wallpaper;
+    ctx.appendChild(label);
+    var current = root.getAttribute("data-wall") || "";
+    Object.keys(L.walls).forEach(function (k) {
+      item(L.walls[k], function () { setWallpaper(k); }, k === current ? "is-current" : "");
+    });
+    rule();
+    item(L.cleanUp, cleanUp);
+
+    body.appendChild(ctx);
+    var r = ctx.getBoundingClientRect();
+    ctx.style.left = Math.min(x, window.innerWidth - r.width - 6) + "px";
+    ctx.style.top = Math.min(y, window.innerHeight - r.height - 6) + "px";
+    ctx.querySelector("button").focus();
+  }
+
+  desk.addEventListener("contextmenu", function (e) {
+    if (e.target !== desk && e.target !== shelf) return;
+    e.preventDefault();
+    showCtx(e.clientX, e.clientY);
+  });
+
+  document.addEventListener("pointerdown", function (e) {
+    if (ctx && !ctx.contains(e.target)) closeCtx();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeCtx();
+  });
+
+  window.addEventListener("blur", closeCtx);
+
+  // ---------------------------------------------------------------------
+  // Welcome notification and startup screen (first visit of a session)
+  // ---------------------------------------------------------------------
+
+  function firstVisit() {
+    var seen;
     try {
       seen = sessionStorage.getItem("yuwri-hello") === "1";
       sessionStorage.setItem("yuwri-hello", "1");
     } catch (err) {
-      seen = false;
+      /* no session storage: treat as seen, skip the extras */
+      seen = true;
     }
-    if (seen) return;
+    return !seen;
+  }
 
+  function notify() {
+    if (isNarrow()) return;
     var n = document.createElement("div");
     n.className = "notice";
     n.setAttribute("role", "status");
@@ -467,18 +763,41 @@
     setTimeout(dismiss, 8000);
   }
 
+  function boot(then) {
+    var screen = document.createElement("div");
+    screen.className = "boot";
+    screen.setAttribute("aria-hidden", "true");
+    screen.innerHTML =
+      '<svg class="boot-logo" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M6 4l6 8 6-8 M12 12v8"/></svg><div class="boot-bar"><span></span></div>';
+    body.appendChild(screen);
+    setTimeout(function () {
+      screen.classList.add("is-done");
+      then();
+      setTimeout(function () { screen.remove(); }, 600);
+    }, 1650);
+  }
+
   // ---------------------------------------------------------------------
-  // Boot
+  // Start up
   // ---------------------------------------------------------------------
 
   shelf.querySelectorAll(".win").forEach(function (el) {
     register(el, el.id);
   });
 
-  open(wins.welcome);
-  var start = windowFor(location.hash);
-  if (start && start !== wins.welcome) open(start);
-  notify();
+  function start(showNotice) {
+    open(wins.welcome);
+    var first = windowFor(location.hash);
+    if (first && first !== wins.welcome) open(first);
+    if (showNotice) setTimeout(notify, 500);
+  }
+
+  if (firstVisit() && !reduceMotion) {
+    boot(function () { start(true); });
+  } else {
+    start(false);
+  }
 
   if (narrowMQ.addEventListener) {
     narrowMQ.addEventListener("change", function () {
@@ -488,6 +807,7 @@
 
   // Keep title bars reachable when the browser window shrinks
   window.addEventListener("resize", function () {
+    closeCtx();
     var d = deskSize();
     Object.keys(wins).forEach(function (k) {
       var el = wins[k].el;
