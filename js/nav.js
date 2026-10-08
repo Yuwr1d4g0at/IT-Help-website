@@ -1,19 +1,20 @@
-// Taskbar behaviour (all pages):
-// - the Yuwri button opens the Start menu (the .nav-links list),
-// - a clock in the system tray,
-// - a taskbar button for the current page, and working minimize /
-//   maximize / close buttons on the page's window,
+// Menu bar behaviour (all pages):
+// - the logo opens a menu with every page,
+// - the bold name next to it shows what's in front,
+// - date and time on the right,
+// - working red / yellow / green buttons on a sub-page's window,
 // - when a page is opened inside a window on the homepage desktop
-//   ("embedded"), the taskbar and page chrome are hidden and links back to
+//   ("embedded"), the menu bar and page chrome are hidden and links back to
 //   the homepage open the matching window there instead.
 (function () {
   "use strict";
 
   var root = document.documentElement;
   var isPT = (root.lang || "").toLowerCase().indexOf("pt") === 0;
+  var locale = isPT ? "pt-PT" : "en-GB";
   var L = isPT
-    ? { desktop: "Ambiente de trabalho", min: "Minimizar", max: "Maximizar", close: "Fechar", start: "Iniciar" }
-    : { desktop: "Desktop", min: "Minimize", max: "Maximize", close: "Close", start: "Start" };
+    ? { desktop: "Ambiente de trabalho", about: "Sobre a Yuwri", min: "Minimizar", max: "Ampliar", close: "Fechar", menu: "Menu Yuwri" }
+    : { desktop: "Desktop", about: "About Yuwri", min: "Minimize", max: "Zoom", close: "Close", menu: "Yuwri menu" };
 
   // Home is "/" or "/pt/" (optionally with index.html)
   function isHomePath(path) {
@@ -50,87 +51,113 @@
 
   root.classList.add("js");
 
-  var nav = document.querySelector(".site-nav");
   var brand = document.querySelector(".site-nav .brand");
   var links = document.getElementById("nav-links");
   var tray = document.querySelector(".nav-actions");
   var homeHref = brand ? brand.getAttribute("href") : "/";
 
   // ---------------------------------------------------------------------
-  // Clock
+  // Clock: "Thu 8 Oct  17:20"
   // ---------------------------------------------------------------------
   if (tray) {
     var clock = document.createElement("span");
     clock.className = "tray-clock";
     clock.setAttribute("aria-hidden", "true");
+    var day = document.createElement("span");
+    day.className = "clock-date";
+    var time = document.createElement("span");
+    clock.appendChild(day);
+    clock.appendChild(time);
     tray.appendChild(clock);
 
     var tick = function () {
       var now = new Date();
-      clock.textContent =
-        String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
+      try {
+        day.textContent =
+          now.toLocaleDateString(locale, { weekday: "short", day: "numeric", month: "short" }).replace(/[.,]/g, "") + " ";
+      } catch (e) {
+        day.textContent = "";
+      }
+      time.textContent = String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
     };
     tick();
     setInterval(tick, 15000);
   }
 
   // ---------------------------------------------------------------------
-  // Task button strip (the homepage desktop fills it with its windows)
+  // Bold "app name" next to the logo
   // ---------------------------------------------------------------------
-  var tasks = null;
-  if (nav && brand) {
-    tasks = document.createElement("div");
-    tasks.className = "tasks";
-    brand.insertAdjacentElement("afterend", tasks);
+  var h1 = document.querySelector(".page-intro h1");
+  if (brand) {
+    var app = document.createElement("span");
+    app.className = "menu-app";
+    app.textContent = h1 ? h1.textContent.trim() : "Yuwri";
+    brand.insertAdjacentElement("afterend", app);
   }
 
   // ---------------------------------------------------------------------
-  // Start menu
+  // Logo menu
   // ---------------------------------------------------------------------
   if (brand && links) {
-    var onHome = document.body.classList.contains("home");
+    var menu = document.createElement("div");
+    menu.className = "brand-menu";
+    menu.id = "brand-menu";
+    menu.setAttribute("role", "menu");
 
-    if (!onHome) {
-      var home = document.createElement("a");
-      home.href = homeHref;
-      home.className = "start-home";
-      home.textContent = L.desktop;
-      links.insertBefore(home, links.firstChild);
-    }
+    var add = function (href, text) {
+      var a = document.createElement("a");
+      a.href = href;
+      a.textContent = text;
+      a.setAttribute("role", "menuitem");
+      menu.appendChild(a);
+      return a;
+    };
+
+    var aboutLink = links.querySelector('a[href$="#about"], a[href$="#sobre"]');
+    if (aboutLink) add(aboutLink.getAttribute("href"), L.about);
+    menu.appendChild(document.createElement("hr"));
+    links.querySelectorAll("a").forEach(function (a) {
+      add(a.getAttribute("href"), a.textContent.trim());
+    });
+    menu.appendChild(document.createElement("hr"));
+    add(homeHref, L.desktop);
+
+    brand.parentNode.appendChild(menu);
 
     brand.setAttribute("role", "button");
     brand.setAttribute("aria-haspopup", "true");
     brand.setAttribute("aria-expanded", "false");
-    brand.setAttribute("aria-controls", "nav-links");
-    brand.setAttribute("title", L.start);
+    brand.setAttribute("aria-controls", "brand-menu");
+    brand.setAttribute("aria-label", L.menu);
 
     var setOpen = function (open) {
-      links.classList.toggle("is-open", open);
+      menu.classList.toggle("is-open", open);
       brand.setAttribute("aria-expanded", String(open));
       brand.classList.toggle("is-pressed", open);
     };
 
     brand.addEventListener("click", function (e) {
       e.preventDefault();
-      setOpen(!links.classList.contains("is-open"));
-      if (links.classList.contains("is-open")) {
-        var first = links.querySelector("a");
+      var open = !menu.classList.contains("is-open");
+      setOpen(open);
+      if (open) {
+        var first = menu.querySelector("a");
         if (first) first.focus();
       }
     });
 
-    links.addEventListener("click", function (e) {
+    menu.addEventListener("click", function (e) {
       if (e.target.closest("a")) setOpen(false);
     });
 
     document.addEventListener("pointerdown", function (e) {
-      if (!links.classList.contains("is-open")) return;
-      if (links.contains(e.target) || brand.contains(e.target)) return;
+      if (!menu.classList.contains("is-open")) return;
+      if (menu.contains(e.target) || brand.contains(e.target)) return;
       setOpen(false);
     });
 
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && links.classList.contains("is-open")) {
+      if (e.key === "Escape" && menu.classList.contains("is-open")) {
         setOpen(false);
         brand.focus();
       }
@@ -138,42 +165,18 @@
   }
 
   // ---------------------------------------------------------------------
-  // Sub-pages: the page is one window, so give it a task button and make
-  // its title-bar buttons work.
+  // Sub-pages: the page is one window; make its buttons work.
+  // Red and yellow take you back to the desktop, green widens the window.
   // ---------------------------------------------------------------------
-  var h1 = document.querySelector(".page-intro h1");
-  if (!h1 || !tasks) return;
+  if (!h1) return;
 
   var body = document.body;
-  var pageTitle = h1.textContent.trim();
 
-  var task = document.createElement("button");
-  task.type = "button";
-  task.className = "task";
-  task.setAttribute("aria-pressed", "true");
-  var mark = document.createElement("span");
-  mark.className = "task-mark";
-  mark.setAttribute("aria-hidden", "true");
-  var label = document.createElement("span");
-  label.textContent = pageTitle;
-  task.appendChild(mark);
-  task.appendChild(label);
-  tasks.appendChild(task);
-
-  var setMin = function (min) {
-    body.classList.toggle("page-min", min);
-    task.setAttribute("aria-pressed", String(!min));
-  };
-
-  task.addEventListener("click", function () {
-    setMin(!body.classList.contains("page-min"));
-  });
-
-  var controls = document.createElement("span");
   // A sibling of the h1 (not inside it) so the heading's text stays just
-  // the page title; CSS places it over the right end of the title bar.
+  // the page title; CSS places it at the left end of the title bar.
+  var controls = document.createElement("span");
   controls.className = "win-controls page-controls";
-  [["min", "_", L.min], ["max", "□", L.max], ["close", "×", L.close]].forEach(function (c) {
+  [["close", "×", L.close], ["min", "−", L.min], ["max", "+", L.max]].forEach(function (c) {
     var b = document.createElement("button");
     b.type = "button";
     b.className = "wc-" + c[0];
@@ -188,12 +191,11 @@
   controls.addEventListener("click", function (e) {
     var b = e.target.closest("button");
     if (!b) return;
-    if (b.classList.contains("wc-min")) setMin(true);
     if (b.classList.contains("wc-max")) body.classList.toggle("page-max");
-    if (b.classList.contains("wc-close")) location.href = homeHref;
+    else location.href = homeHref;
   });
 
-  h1.addEventListener("dblclick", function (e) {
-    if (!e.target.closest("button")) body.classList.toggle("page-max");
+  h1.addEventListener("dblclick", function () {
+    body.classList.toggle("page-max");
   });
 })();

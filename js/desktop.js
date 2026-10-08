@@ -1,8 +1,8 @@
 // Homepage desktop: turns the stacked homepage windows into real ones.
-// Windows open from the desktop icons, Start menu and in-page links, can be
-// dragged by the title bar, resized from the corner, minimized to the
-// taskbar, maximized and closed. Links to other pages of the site open
-// inside a window instead of navigating away.
+// Windows open from the Dock, the logo menu and in-page links, can be
+// dragged by the title bar, resized from the corner, minimized into the
+// Dock, zoomed and closed. Links to other pages of the site open inside a
+// window instead of navigating away.
 //
 // Without JavaScript (and for search engines) the homepage stays a normal
 // scrolling page; everything here is an enhancement on top of it.
@@ -12,15 +12,15 @@
   var body = document.body;
   var desk = document.querySelector(".desktop");
   var shelf = document.querySelector(".windows");
-  var tasks = document.querySelector(".tasks");
-  if (!body.classList.contains("home") || !desk || !shelf || !tasks) return;
+  var icons = document.querySelector(".desk-icons");
+  if (!body.classList.contains("home") || !desk || !shelf || !icons) return;
 
   var isPT = (document.documentElement.lang || "").toLowerCase().indexOf("pt") === 0;
   var L = isPT
-    ? { min: "Minimizar", max: "Maximizar", close: "Fechar", loading: "A abrir…",
-        begin: "Clique aqui para começar", beginSub: "ou nos ícones do ambiente de trabalho." }
-    : { min: "Minimize", max: "Maximize", close: "Close", loading: "Opening…",
-        begin: "Click here to begin", beginSub: "or on the icons on the desktop." };
+    ? { min: "Minimizar", max: "Ampliar", close: "Fechar", loading: "A abrir…",
+        hello: "Bem-vindo à Yuwri", helloSub: "Abra o que quiser a partir da Dock, lá em baixo." }
+    : { min: "Minimize", max: "Zoom", close: "Close", loading: "Opening…",
+        hello: "Welcome to Yuwri", helloSub: "Open anything from the Dock at the bottom of the screen." };
 
   // Same window, the other language's anchor (links from embedded pages
   // in the other language still land on the right window).
@@ -33,12 +33,13 @@
 
   // Icon for a page opened in a window, by its first path segment
   var PAGE_ICONS = {
-    prices: "notepad", software: "floppy", blog: "book", resources: "folder",
-    troubleshoot: "help", "repair-or-replace": "pc", "cheat-sheets": "notepad",
-    glossary: "book", "heads-up": "warning", tools: "folder", search: "help"
+    prices: "prices", software: "software", blog: "tips", resources: "tools",
+    troubleshoot: "help", "repair-or-replace": "pc", "cheat-sheets": "checklist",
+    glossary: "glossary", "heads-up": "warning", tools: "tools", search: "help"
   };
 
   var narrowMQ = window.matchMedia("(max-width: 760px)");
+  var menuApp = document.querySelector(".menu-app");
   var wins = {};
   var order = [];
   var active = null;
@@ -48,6 +49,21 @@
   body.classList.add("os");
   body.classList.toggle("narrow", narrowMQ.matches);
 
+  // ---------------------------------------------------------------------
+  // The Dock: the desktop icons, plus a tray for minimized windows
+  // ---------------------------------------------------------------------
+  var dock = document.createElement("nav");
+  dock.className = "dock";
+  dock.setAttribute("aria-label", "Dock");
+  var sep = document.createElement("div");
+  sep.className = "dock-sep";
+  var tray = document.createElement("div");
+  tray.className = "dock-tray";
+  dock.appendChild(icons);
+  dock.appendChild(sep);
+  dock.appendChild(tray);
+  body.appendChild(dock);
+
   function deskSize() {
     return { w: desk.clientWidth, h: desk.clientHeight };
   }
@@ -56,13 +72,13 @@
     return narrowMQ.matches;
   }
 
-  function iconSvg(name) {
-    var svg = document.querySelector('svg[data-icon="' + name + '"]');
-    if (!svg) return document.createElement("span");
-    svg = svg.cloneNode(true);
-    svg.setAttribute("width", "16");
-    svg.setAttribute("height", "16");
-    return svg;
+  function iconFor(name, size) {
+    var src = document.querySelector('[data-icon="' + name + '"]');
+    if (!src) return document.createElement("span");
+    var ico = src.cloneNode(true);
+    ico.style.width = size + "px";
+    ico.style.height = size + "px";
+    return ico;
   }
 
   function titleText(w) {
@@ -74,7 +90,7 @@
   // ---------------------------------------------------------------------
 
   function register(el, id) {
-    var w = { id: id, el: el, task: null, placed: false, app: el.classList.contains("win-app") };
+    var w = { id: id, el: el, tile: null, placed: false, app: el.classList.contains("win-app") };
     wins[id] = w;
     el.hidden = true;
     el.tabIndex = -1;
@@ -82,7 +98,7 @@
     var ctr = el.querySelector(".win-controls");
     ctr.removeAttribute("aria-hidden");
     ctr.innerHTML = "";
-    [["min", "_", L.min], ["max", "□", L.max], ["close", "×", L.close]].forEach(function (c) {
+    [["close", "×", L.close], ["min", "−", L.min], ["max", "+", L.max]].forEach(function (c) {
       var b = document.createElement("button");
       b.type = "button";
       b.className = "wc-" + c[0];
@@ -126,19 +142,19 @@
     var x, y;
 
     if (w.id === "welcome") {
-      x = Math.max(110, (d.w - width) / 2 + 40);
-      y = Math.max(12, Math.round(d.h * 0.07));
+      x = (d.w - width) / 2;
+      y = Math.max(14, Math.round(d.h * 0.08));
     } else {
       var step = cascade++ % 7;
-      x = 130 + step * 32;
-      y = 14 + step * 28;
+      x = Math.max(16, d.w * 0.12) + step * 30;
+      y = 18 + step * 26;
     }
     if (x + width > d.w - 8) x = Math.max(8, d.w - width - 8);
 
     el.style.width = width + "px";
-    el.style.left = x + "px";
+    el.style.left = Math.round(x) + "px";
     el.style.top = y + "px";
-    if (w.app) el.style.height = Math.max(260, d.h - y - 14) + "px";
+    if (w.app) el.style.height = Math.max(260, d.h - y - 12) + "px";
     w.placed = true;
   }
 
@@ -147,16 +163,13 @@
   // ---------------------------------------------------------------------
 
   function focus(w) {
-    if (active && active !== w) {
-      active.el.classList.remove("is-active");
-      if (active.task) active.task.setAttribute("aria-pressed", "false");
-    }
+    if (active && active !== w) active.el.classList.remove("is-active");
     active = w;
     w.el.classList.add("is-active");
     w.el.style.zIndex = ++z;
-    if (w.task) w.task.setAttribute("aria-pressed", "true");
     order = order.filter(function (o) { return o !== w; });
     order.push(w);
+    if (menuApp) menuApp.textContent = titleText(w);
   }
 
   // Hand focus to the top-most window still showing
@@ -168,14 +181,22 @@
         return;
       }
     }
+    if (menuApp) menuApp.textContent = "Yuwri";
   }
 
   function open(w) {
+    var wasHidden = w.el.hidden;
     if (!w.placed) place(w);
+    removeTile(w);
     w.el.hidden = false;
-    if (!w.task) w.task = makeTask(w);
+    if (wasHidden) {
+      w.el.classList.remove("is-opening");
+      void w.el.offsetWidth;
+      w.el.classList.add("is-opening");
+    }
     focus(w);
     w.el.focus({ preventScroll: true });
+    updateDock();
     if (!w.app && w.id !== "welcome" && history.replaceState) {
       history.replaceState(null, "", "#" + w.id);
     }
@@ -184,17 +205,15 @@
   function minimize(w) {
     w.el.hidden = true;
     w.el.classList.remove("is-active");
-    if (w.task) w.task.setAttribute("aria-pressed", "false");
+    addTile(w);
     focusNext();
+    updateDock();
   }
 
   function close(w) {
     w.el.hidden = true;
     w.el.classList.remove("is-active");
-    if (w.task) {
-      w.task.remove();
-      w.task = null;
-    }
+    removeTile(w);
     order = order.filter(function (o) { return o !== w; });
     if (w.app) {
       w.el.remove();
@@ -204,33 +223,47 @@
       history.replaceState(null, "", location.pathname + location.search);
     }
     focusNext();
+    updateDock();
   }
 
   function toggleMax(w) {
-    var max = !w.el.classList.contains("is-max");
-    w.el.classList.toggle("is-max", max);
-    var b = w.el.querySelector(".wc-max");
-    if (b) b.textContent = max ? "❐" : "□";
+    w.el.classList.toggle("is-max");
   }
 
-  function makeTask(w) {
+  // Minimized windows sit at the right end of the Dock
+  function addTile(w) {
+    if (w.tile) return;
     var b = document.createElement("button");
     b.type = "button";
-    b.className = "task";
-    b.setAttribute("aria-pressed", "false");
-    var icon = w.el.querySelector(".win-title svg");
-    if (icon) b.appendChild(icon.cloneNode(true));
-    var s = document.createElement("span");
-    s.textContent = titleText(w);
-    b.appendChild(s);
-    b.title = s.textContent;
+    b.className = "dock-min";
+    b.title = titleText(w);
+    b.setAttribute("aria-label", titleText(w));
+    var icon = w.el.querySelector(".win-title .ico");
+    b.appendChild(iconFor(icon ? icon.getAttribute("data-icon") : "logo", 36));
     b.addEventListener("click", function () {
-      if (w.el.hidden) open(w);
-      else if (active === w) minimize(w);
-      else focus(w);
+      open(w);
     });
-    tasks.appendChild(b);
-    return b;
+    tray.appendChild(b);
+    w.tile = b;
+    dock.classList.add("has-min");
+  }
+
+  function removeTile(w) {
+    if (w.tile) {
+      w.tile.remove();
+      w.tile = null;
+    }
+    dock.classList.toggle("has-min", tray.children.length > 0);
+  }
+
+  // Dot under each Dock icon whose window is open (or minimized)
+  function updateDock() {
+    icons.querySelectorAll(".desk-icon").forEach(function (a) {
+      var url = new URL(a.getAttribute("href"), location.href);
+      var w = sameDoc(url) ? windowFor(url.hash) : wins["page:" + url.pathname];
+      var running = !!w && (!w.el.hidden || !!w.tile);
+      a.classList.toggle("is-running", running);
+    });
   }
 
   // ---------------------------------------------------------------------
@@ -254,8 +287,8 @@
     function move(ev) {
       var x = left + ev.clientX - startX;
       var y = top + ev.clientY - startY;
-      x = Math.min(Math.max(x, 60 - width), d.w - 60);
-      y = Math.min(Math.max(y, 0), d.h - 30);
+      x = Math.min(Math.max(x, 80 - width), d.w - 80);
+      y = Math.min(Math.max(y, 0), d.h - 40);
       el.style.left = x + "px";
       el.style.top = y + "px";
     }
@@ -305,11 +338,11 @@
 
     var el = document.createElement("section");
     el.className = "win win-app";
-    el.setAttribute("data-w", "960");
+    el.setAttribute("data-w", "980");
 
     var bar = document.createElement("div");
     bar.className = "win-title";
-    bar.appendChild(iconSvg(pageIcon(url)));
+    bar.appendChild(iconFor(pageIcon(url), 16));
     var t = document.createElement("span");
     t.className = "win-title-text";
     t.textContent = label || L.loading;
@@ -342,9 +375,10 @@
       if (!name) return;
       t.textContent = name;
       frame2.title = name;
-      if (w.task) {
-        w.task.querySelector("span").textContent = name;
-        w.task.title = name;
+      if (active === w && menuApp) menuApp.textContent = name;
+      if (w.tile) {
+        w.tile.title = name;
+        w.tile.setAttribute("aria-label", name);
       }
     });
 
@@ -352,7 +386,7 @@
   }
 
   // ---------------------------------------------------------------------
-  // Opening things: links, icons, Start menu, messages from embedded pages
+  // Opening things: links, Dock, menus, messages from embedded pages
   // ---------------------------------------------------------------------
 
   function sameDoc(url) {
@@ -386,14 +420,9 @@
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     var a = e.target.closest("a[href]");
     if (!a || a.target === "_blank" || a.hasAttribute("download")) return;
-    if (a.classList.contains("lang-switch")) return;
-    if (a.classList.contains("brand")) return;
+    if (a.classList.contains("lang-switch") || a.classList.contains("brand")) return;
     var url = new URL(a.getAttribute("href"), location.href);
     if (url.origin !== location.origin) return;
-
-    // Icons get selected like on a real desktop
-    var icon = a.closest(".desk-icon");
-    selectIcon(icon);
 
     var label = a.textContent.trim().replace(/\s+/g, " ");
     if (route(url, label)) e.preventDefault();
@@ -404,46 +433,38 @@
     route(new URL(e.data.href, location.href));
   });
 
-  function selectIcon(icon) {
-    desk.querySelectorAll(".desk-icon.is-selected").forEach(function (i) {
-      if (i !== icon) i.classList.remove("is-selected");
-    });
-    if (icon) icon.classList.add("is-selected");
-  }
-
-  // Clicking empty desktop clears the selection
-  desk.addEventListener("pointerdown", function (e) {
-    if (e.target === desk || e.target === shelf) selectIcon(null);
-  });
-
   // ---------------------------------------------------------------------
-  // "Click here to begin" balloon on the first visit
+  // Welcome notification on the first visit
   // ---------------------------------------------------------------------
 
-  function balloon() {
+  function notify() {
     var seen = false;
     try {
-      seen = sessionStorage.getItem("yuwri-begin") === "1";
-      sessionStorage.setItem("yuwri-begin", "1");
+      seen = sessionStorage.getItem("yuwri-hello") === "1";
+      sessionStorage.setItem("yuwri-hello", "1");
     } catch (err) {
       seen = false;
     }
     if (seen) return;
 
-    var tip = document.createElement("div");
-    tip.className = "balloon";
-    tip.setAttribute("role", "status");
-    tip.innerHTML = "<strong></strong><span></span>";
-    tip.querySelector("strong").textContent = L.begin;
-    tip.querySelector("span").textContent = L.beginSub;
-    document.body.appendChild(tip);
+    var n = document.createElement("div");
+    n.className = "notice";
+    n.setAttribute("role", "status");
+    n.appendChild(iconFor("logo", 38));
+    var txt = document.createElement("div");
+    var strong = document.createElement("strong");
+    strong.textContent = L.hello;
+    txt.appendChild(strong);
+    txt.appendChild(document.createTextNode(L.helloSub));
+    n.appendChild(txt);
+    body.appendChild(n);
 
     var dismiss = function () {
-      tip.remove();
+      n.remove();
       document.removeEventListener("pointerdown", dismiss);
     };
     document.addEventListener("pointerdown", dismiss);
-    setTimeout(dismiss, 9000);
+    setTimeout(dismiss, 8000);
   }
 
   // ---------------------------------------------------------------------
@@ -457,20 +478,21 @@
   open(wins.welcome);
   var start = windowFor(location.hash);
   if (start && start !== wins.welcome) open(start);
-  balloon();
+  notify();
 
-  function onNarrowChange() {
-    body.classList.toggle("narrow", isNarrow());
+  if (narrowMQ.addEventListener) {
+    narrowMQ.addEventListener("change", function () {
+      body.classList.toggle("narrow", isNarrow());
+    });
   }
-  if (narrowMQ.addEventListener) narrowMQ.addEventListener("change", onNarrowChange);
 
   // Keep title bars reachable when the browser window shrinks
   window.addEventListener("resize", function () {
     var d = deskSize();
     Object.keys(wins).forEach(function (k) {
       var el = wins[k].el;
-      if (el.offsetLeft > d.w - 60) el.style.left = Math.max(0, d.w - el.offsetWidth) + "px";
-      if (el.offsetTop > d.h - 30) el.style.top = Math.max(0, d.h - 60) + "px";
+      if (el.offsetLeft > d.w - 80) el.style.left = Math.max(0, d.w - el.offsetWidth) + "px";
+      if (el.offsetTop > d.h - 40) el.style.top = Math.max(0, d.h - 80) + "px";
     });
   });
 })();
