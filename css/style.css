@@ -109,22 +109,28 @@ summary:focus-visible {
    Taskbar (site nav, every page)
    ------------------------------------------------------------------------- */
 
+/* The taskbar lives along the bottom of the screen, like the real thing */
+body {
+  padding-bottom: 46px;
+}
+
 #top > header {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 50;
   max-width: none;
-  padding: 0 max(12px, calc((100% - 1180px) / 2 + 12px));
+  padding: 0 6px;
   background: var(--face);
-  box-shadow: inset 0 1px var(--hilite), inset 0 -1px var(--dark), inset 0 -2px var(--shade);
+  box-shadow: inset 0 1px var(--face-light), inset 0 2px var(--hilite);
 }
 
 .site-nav {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
   height: 46px;
 }
 
@@ -140,7 +146,8 @@ summary:focus-visible {
   flex-shrink: 0;
 }
 
-.brand:active {
+.brand:active,
+.brand.is-pressed {
   box-shadow: var(--sunken);
 }
 
@@ -159,12 +166,16 @@ summary:focus-visible {
   font-size: 18px;
 }
 
+/* Without JavaScript the links simply sit in the taskbar */
 .nav-links {
   display: flex;
   align-items: center;
   gap: 2px;
+  min-width: 0;
+  overflow-x: auto;
   font-size: 14.5px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .nav-links a {
@@ -184,6 +195,117 @@ summary:focus-visible {
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* With JavaScript: the Yuwri button opens a Start menu */
+.js .nav-toggle {
+  display: none !important;
+}
+
+.js .nav-links {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: calc(100% - 3px);
+  z-index: 60;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  min-width: 250px;
+  padding: 3px 3px 3px 34px;
+  overflow: visible;
+  background: var(--face);
+  box-shadow: var(--raised), 3px 3px 0 rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+}
+
+.js .nav-links.is-open {
+  display: flex;
+}
+
+/* Vertical brand stripe down the side of the Start menu */
+.js .nav-links::before {
+  content: "Yuwri";
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: 28px;
+  padding-top: 8px;
+  background: linear-gradient(0deg, var(--title-a), var(--title-b));
+  color: #fff;
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 28px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.js .nav-links a {
+  display: block;
+  padding: 10px 14px;
+}
+
+.js .nav-links .start-home {
+  font-weight: 700;
+  box-shadow: inset 0 -1px var(--shade), inset 0 -2px var(--hilite);
+  margin-bottom: 2px;
+}
+
+/* Task buttons, one per open window */
+.tasks {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.task {
+  flex: 0 1 190px;
+  min-width: 40px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+  border: 0;
+  background: var(--face);
+  box-shadow: var(--raised);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.task span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.task[aria-pressed="true"] {
+  box-shadow: var(--sunken);
+  background: repeating-conic-gradient(var(--face) 0 25%, var(--hilite) 0 50%) 0 0 / 2px 2px;
+}
+
+.task-mark {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: linear-gradient(90deg, var(--title-a), var(--title-b));
+  box-shadow: inset 0 3px var(--title-a), 0 0 0 1px var(--dark);
 }
 
 /* Language switch + clock sit in a sunken "system tray" */
@@ -362,8 +484,34 @@ button.lang-switch[aria-pressed="true"] {
   text-align: center;
 }
 
-.win-controls span:last-child {
+.win-controls span:last-child,
+.win-controls button:last-child {
   margin-left: 2px;
+}
+
+.win-controls button {
+  width: 18px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  background: var(--face);
+  box-shadow: var(--raised);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.win-controls button:active {
+  box-shadow: var(--sunken);
+}
+
+.win-controls button:focus-visible {
+  outline: 1px dotted var(--ink);
+  outline-offset: -4px;
 }
 
 .win-menu {
@@ -454,7 +602,7 @@ button.lang-switch[aria-pressed="true"] {
 
 .desk-icons {
   position: sticky;
-  top: 70px;
+  top: 24px;
   align-self: start;
   display: flex;
   flex-direction: column;
@@ -1226,7 +1374,7 @@ button.lang-switch[aria-pressed="true"] {
   padding: 12px 16px;
   margin-bottom: 22px;
   position: sticky;
-  top: 58px;
+  top: 10px;
   z-index: 30;
 }
 
@@ -2451,63 +2599,7 @@ button.lang-switch[aria-pressed="true"] {
    Responsive
    ------------------------------------------------------------------------- */
 
-/* Collapse the nav into a Start menu once all seven links no longer fit */
 @media (max-width: 960px) {
-  .nav-toggle {
-    display: inline-flex;
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: calc(100% - 2px);
-    left: 0;
-    flex-direction: column;
-    align-items: stretch;
-    min-width: 230px;
-    padding: 3px 3px 3px 34px;
-    background: var(--face);
-    box-shadow: var(--raised), 3px 3px 0 rgba(0, 0, 0, 0.3);
-    font-size: 16px;
-  }
-
-  /* Vertical brand stripe down the side, like the old Start menu */
-  .nav-links::before {
-    content: "Yuwri";
-    position: absolute;
-    top: 3px;
-    bottom: 3px;
-    left: 3px;
-    width: 28px;
-    padding-top: 8px;
-    background: linear-gradient(0deg, var(--title-a), var(--title-b));
-    color: #fff;
-    font-family: var(--font-pixel);
-    font-weight: 700;
-    font-size: 19px;
-    line-height: 28px;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-  }
-
-  .nav-links.is-open {
-    display: flex;
-  }
-
-  .nav-links a {
-    display: block;
-    width: 100%;
-    padding: 10px 14px;
-  }
-
-  .site-nav {
-    justify-content: flex-start;
-  }
-
-  .nav-actions {
-    margin-left: auto;
-  }
-
   .desktop {
     grid-template-columns: minmax(0, 1fr);
     gap: 20px;
@@ -2560,10 +2652,6 @@ button.lang-switch[aria-pressed="true"] {
 
   .wrap {
     padding: 0 16px;
-  }
-
-  #top > header {
-    padding: 0 8px;
   }
 
   .tray-clock {
@@ -2714,4 +2802,317 @@ button.lang-switch[aria-pressed="true"] {
 
 .error-win .win-actions {
   justify-content: flex-start;
+}
+
+/* -------------------------------------------------------------------------
+   Desktop mode (homepage with JavaScript): real, movable windows
+   ------------------------------------------------------------------------- */
+
+.os {
+  overflow: hidden;
+}
+
+.os .desktop {
+  position: fixed;
+  inset: 0 0 46px 0;
+  z-index: 1;
+  display: block;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.os .site-footer {
+  display: none;
+}
+
+.os .desk-icons {
+  position: absolute;
+  top: 12px;
+  left: 8px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 10px 6px;
+}
+
+.os .desk-icon {
+  width: 92px;
+}
+
+.os .desk-icon.is-selected span {
+  background: var(--select);
+  outline: 1px dotted #fff;
+}
+
+.os .windows,
+.os .win-row {
+  display: contents;
+}
+
+.os .win {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  min-height: 140px;
+  max-width: 100%;
+  max-height: calc(100% - 6px);
+  overflow: hidden;
+  resize: both;
+  box-shadow: var(--raised), 3px 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+.os .win[hidden] {
+  display: none;
+}
+
+.os .win:focus {
+  outline: none;
+}
+
+.os .win-title {
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+/* Windows in the background get the grey title bar */
+.os .win:not(.is-active) .win-title {
+  background: linear-gradient(90deg, #808080, #B5B5B5);
+  color: #D8D8D8;
+}
+
+.os .win-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.os .win-content > .win-status {
+  margin-top: auto;
+}
+
+.os .win.is-max {
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none;
+  resize: none;
+  box-shadow: var(--raised);
+}
+
+.os.dragging,
+.os.dragging * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.os.dragging iframe {
+  pointer-events: none;
+}
+
+/* A site page opened inside a window */
+.win-app iframe {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border: 0;
+  margin-top: 3px;
+  background: var(--face);
+  box-shadow: var(--sunken);
+  padding: 2px;
+}
+
+/* Phones: one full-screen window at a time, like a pocket PC */
+.os.narrow .win {
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0;
+  max-height: none;
+  resize: none;
+  box-shadow: none;
+}
+
+.os.narrow .wc-max {
+  display: none;
+}
+
+.os.narrow .desk-icons {
+  right: 8px;
+  bottom: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+}
+
+.os.narrow .desk-icon {
+  width: auto;
+}
+
+.os.narrow .nav-actions .btn {
+  display: none;
+}
+
+.os.narrow .task {
+  flex: 0 0 40px;
+  justify-content: center;
+  padding: 0;
+}
+
+.os.narrow .task span {
+  display: none;
+}
+
+/* "Click here to begin" */
+.balloon {
+  position: fixed;
+  left: 8px;
+  bottom: 56px;
+  z-index: 70;
+  max-width: 260px;
+  padding: 9px 12px;
+  background: var(--tooltip);
+  border: 1px solid var(--dark);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.4;
+  animation: balloon-in 0.5s steps(4) both;
+}
+
+.balloon strong {
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 17px;
+}
+
+.balloon::before,
+.balloon::after {
+  content: "";
+  position: absolute;
+  left: 24px;
+  border: 10px solid transparent;
+  border-bottom: 0;
+}
+
+.balloon::before {
+  bottom: -11px;
+  border-top-color: var(--dark);
+}
+
+.balloon::after {
+  bottom: -9px;
+  border-top-color: var(--tooltip);
+}
+
+@keyframes balloon-in {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Sub-page window buttons and states
+   ------------------------------------------------------------------------- */
+
+.page-intro > .wrap {
+  position: relative;
+}
+
+.page-intro h1.has-controls {
+  padding-right: 76px;
+}
+
+.page-intro h1.has-controls::after {
+  content: none;
+}
+
+.page-controls {
+  position: absolute;
+  top: 11px;
+  right: 9px;
+}
+
+.page-max .page-intro > .wrap,
+.page-max .page-intro ~ section > .wrap {
+  max-width: none;
+  margin: 0 8px;
+}
+
+.page-max .page-intro {
+  padding-top: 8px;
+}
+
+.page-min .page-intro,
+.page-min .page-intro ~ section,
+.page-min .site-footer {
+  display: none;
+}
+
+.page-min #top {
+  min-height: calc(100vh - 46px);
+}
+
+/* -------------------------------------------------------------------------
+   Embedded: a page shown inside a desktop window. The window supplies the
+   title bar and the taskbar already exists, so drop the page's own.
+   ------------------------------------------------------------------------- */
+
+.embedded body {
+  background: var(--face);
+  padding-bottom: 0;
+}
+
+.embedded #top > header,
+.embedded .site-footer,
+.embedded .page-intro h1 {
+  display: none;
+}
+
+.embedded .page-intro {
+  padding: 0;
+  margin: 0;
+}
+
+.embedded .page-intro > .wrap,
+.embedded .page-intro ~ section > .wrap,
+.embedded .page-intro ~ section:last-of-type > .wrap {
+  max-width: none;
+  border: 0;
+  box-shadow: none;
+  clip-path: none;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.embedded .page-intro > .wrap {
+  padding-top: 14px;
+}
+
+.embedded .page-intro ~ section:last-of-type {
+  padding-bottom: 0;
+}
+
+.embedded .picker-bar {
+  top: 0;
+}
+
+.os .mail-body,
+.os .notepad,
+.os .tab-panel {
+  flex: 1 0 auto;
+}
+
+.os,
+.js .site-nav {
+  -webkit-tap-highlight-color: transparent;
 }
