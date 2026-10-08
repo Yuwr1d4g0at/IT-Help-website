@@ -1,7 +1,10 @@
-"""Generate the retro-desktop homepage body for EN and PT.
+"""Generate the desktop-style homepage body for EN and PT.
 
 Run from the repo root. Replaces everything between <body> and </body> in
 index.html and pt/index.html, leaving <head> alone.
+
+Add real client reviews to REVIEWS (near the bottom), then run:
+    python3 scripts/build_home.py
 """
 import re
 from urllib.parse import quote
