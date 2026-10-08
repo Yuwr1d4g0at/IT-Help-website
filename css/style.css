@@ -1,27 +1,38 @@
 /* ==========================================================================
    Yuwri — IT support & computer repair (Seixal)
-   Pastel "corkboard & stickers" design
+   Warm & friendly design: cream paper, terracotta accent, serif headings
    ========================================================================== */
 
 :root {
-  --bg: #FBF6F1;
-  --surface: #FFFFFF;
-  --ink: #2E2A3D;
-  --ink-muted: #726C82;
-  --line: #EAE2F1;
-  --accent: #5F4B9E;
-  --accent-tint: #DCD3F5;
+  --bg: #FAF4EC;
+  --surface: #FFFCF7;
+  --ink: #2D221C;
+  --ink-muted: #6F6158;
+  --line: #EBDFD2;
+  --accent: #A4461F;
+  --accent-hover: #8A3818;
+  --accent-tint: #F5DFD3;
 
-  --tile-lavender: #DCD3F5;
-  --tile-mint: #CFEEDD;
-  --tile-peach: #F7DAC0;
-  --tile-sky: #CFE4F5;
-  --tile-butter: #F7EAC0;
-  --tile-blush: #F5D6E4;
+  /* Tile colors. The names are kept from the old pastel palette because
+     markup references them (classes like .mint and inline var(--tile-*)),
+     but the values are now warm, earthy tones. */
+  --tile-lavender: #F3DFD2; /* clay */
+  --tile-mint: #DFE6D4;     /* sage */
+  --tile-peach: #F4E1C9;    /* apricot */
+  --tile-sky: #DDE5E4;      /* dusty blue */
+  --tile-butter: #F1E6C9;   /* sand */
+  --tile-blush: #F1DAD5;    /* rose */
 
-  --band: var(--accent);
-  --band-text: #FBF6F1;
-  --band-muted: #D9D0F2;
+  --band: #3A2A22;
+  --band-text: #FAF4EC;
+  --band-muted: #D8C8BA;
+
+  --shadow-soft: 0 1px 2px rgba(58, 42, 34, 0.04), 0 12px 28px -18px rgba(58, 42, 34, 0.28);
+  --shadow-lift: 0 2px 4px rgba(58, 42, 34, 0.05), 0 22px 40px -22px rgba(58, 42, 34, 0.38);
+  --radius: 18px;
+
+  --font-body: 'DM Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
 }
 
 * {
@@ -88,7 +99,8 @@ body {
 }
 
 body {
-  font-family: 'Nunito Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -96,9 +108,10 @@ body {
 h1,
 h2,
 h3 {
-  font-family: 'Fredoka', ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: -0.01em;
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
   text-wrap: balance;
   margin: 0;
 }
@@ -140,19 +153,18 @@ button:focus-visible {
 
 .tape-stripe {
   display: flex;
-  height: 6px;
+  height: 4px;
 }
 
 .tape-stripe > div {
   flex: 1;
+  background: var(--accent);
 }
 
-.tape-stripe > div:nth-child(1) { background: var(--tile-lavender); }
-.tape-stripe > div:nth-child(2) { background: var(--tile-mint); }
-.tape-stripe > div:nth-child(3) { background: var(--tile-peach); }
-.tape-stripe > div:nth-child(4) { background: var(--tile-sky); }
-.tape-stripe > div:nth-child(5) { background: var(--tile-butter); }
-.tape-stripe > div:nth-child(6) { background: var(--tile-blush); }
+.tape-stripe > div:nth-child(even) {
+  background: #C86A3F;
+}
+
 
 /* -------------------------------------------------------------------------
    Nav
@@ -174,29 +186,31 @@ button:focus-visible {
 .brand-mark {
   width: 36px;
   height: 36px;
-  border-radius: 11px;
+  border-radius: 50%;
   background: var(--accent);
   color: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  padding-bottom: 2px;
 }
 
 .brand-name {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 21px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 23px;
+  letter-spacing: -0.02em;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 34px;
+  gap: 30px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .nav-actions {
@@ -262,9 +276,9 @@ button.lang-switch[aria-pressed="true"] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 15px 30px;
-  border-radius: 999px;
-  font-family: 'Fredoka', sans-serif;
+  padding: 15px 26px;
+  border-radius: 12px;
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 16px;
   line-height: 1;
@@ -279,18 +293,21 @@ button.lang-switch[aria-pressed="true"] {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px -10px rgba(95, 75, 158, 0.55);
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px -12px rgba(164, 70, 31, 0.6);
 }
 
 .btn-outline {
-  border: 1.5px solid var(--accent);
-  color: var(--accent);
+  border: 1.5px solid var(--line);
+  color: var(--ink);
   background: transparent;
 }
 
 .btn-outline:hover {
-  background: var(--accent-tint);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--surface);
 }
 
 .btn-sm {
@@ -308,7 +325,7 @@ button.lang-switch[aria-pressed="true"] {
    ------------------------------------------------------------------------- */
 
 .hero {
-  padding: 40px 0 56px;
+  padding: 56px 0 64px;
   text-align: center;
 }
 
@@ -321,9 +338,9 @@ button.lang-switch[aria-pressed="true"] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--tile-lavender);
+  background: var(--accent-tint);
   color: var(--accent);
-  padding: 6px 16px;
+  padding: 6px 14px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 600;
@@ -334,7 +351,9 @@ button.lang-switch[aria-pressed="true"] {
 
 .hero-title {
   font-size: clamp(40px, 6vw + 20px, 72px);
-  line-height: 1.02;
+  line-height: 1.04;
+  font-weight: 500;
+  letter-spacing: -0.03em;
   margin: 0 0 14px;
 }
 
@@ -342,6 +361,8 @@ button.lang-switch[aria-pressed="true"] {
   position: relative;
   display: inline-block;
   color: var(--accent);
+  font-style: italic;
+  font-weight: 500;
 }
 
 .hero-title .highlight svg {
@@ -356,7 +377,7 @@ button.lang-switch[aria-pressed="true"] {
   font-size: 19px;
   line-height: 1.6;
   color: var(--ink-muted);
-  max-width: 46ch;
+  max-width: 44ch;
   margin: 14px auto 14px;
 }
 
@@ -401,24 +422,24 @@ button.lang-switch[aria-pressed="true"] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px 10px 12px;
+  padding: 9px 15px 9px 12px;
   border-radius: 999px;
-  font-family: 'Fredoka', sans-serif;
+  font-family: var(--font-body);
   font-weight: 500;
   font-size: 14px;
-  box-shadow: 0 4px 10px -6px rgba(46, 42, 61, 0.25);
+  border: 1px solid rgba(58, 42, 34, 0.08);
 }
 
 .sticker svg {
   stroke: var(--ink);
 }
 
-.sticker-lavender { background: var(--tile-lavender); transform: rotate(-4deg); }
-.sticker-mint { background: var(--tile-mint); transform: rotate(3deg); }
-.sticker-peach { background: var(--tile-peach); transform: rotate(-3deg); }
-.sticker-sky { background: var(--tile-sky); transform: rotate(4deg); }
-.sticker-butter { background: var(--tile-butter); transform: rotate(-2deg); }
-.sticker-blush { background: var(--tile-blush); transform: rotate(5deg); }
+.sticker-lavender { background: var(--tile-lavender); }
+.sticker-mint { background: var(--tile-mint); }
+.sticker-peach { background: var(--tile-peach); }
+.sticker-sky { background: var(--tile-sky); }
+.sticker-butter { background: var(--tile-butter); }
+.sticker-blush { background: var(--tile-blush); }
 
 /* -------------------------------------------------------------------------
    Page intro (sub-pages, e.g. /software/)
@@ -466,7 +487,7 @@ button.lang-switch[aria-pressed="true"] {
 }
 
 .section-heading h2 {
-  font-size: 34px;
+  font-size: 38px;
 }
 
 .bento {
@@ -477,8 +498,9 @@ button.lang-switch[aria-pressed="true"] {
 }
 
 .tile {
-  border-radius: 22px;
-  padding: 22px;
+  border-radius: var(--radius);
+  padding: 24px;
+  border: 1px solid rgba(58, 42, 34, 0.06);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -486,13 +508,14 @@ button.lang-switch[aria-pressed="true"] {
 }
 
 .tile:hover {
-  transform: translateY(-3px) rotate(-0.3deg);
-  box-shadow: 0 18px 28px -18px rgba(46, 42, 61, 0.28);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
 }
 
 .tile-icon {
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 252, 247, 0.7);
+  color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -524,6 +547,7 @@ button.lang-switch[aria-pressed="true"] {
 
 .tile-cta {
   margin-top: auto;
+  color: var(--accent);
   font-weight: 700;
   font-size: 14px;
   width: fit-content;
@@ -538,10 +562,10 @@ button.lang-switch[aria-pressed="true"] {
   margin: 0 auto;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: var(--radius);
   padding: 32px 36px;
   text-align: center;
-  box-shadow: 0 14px 28px -22px rgba(46, 42, 61, 0.3);
+  box-shadow: var(--shadow-soft);
 }
 
 /* Two side by side in a .two-col-row: fill the column instead of
@@ -590,16 +614,18 @@ button.lang-switch[aria-pressed="true"] {
   align-items: center;
   padding: 9px 18px;
   border-radius: 999px;
-  border: 1.5px solid var(--accent);
-  color: var(--accent);
-  font-weight: 700;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font-weight: 600;
   font-size: 13.5px;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .tool-pill:hover {
-  background: var(--accent);
-  color: var(--bg);
+  border-color: var(--accent);
+  background: var(--accent-tint);
+  color: var(--accent);
 }
 
 /* -------------------------------------------------------------------------
@@ -619,7 +645,7 @@ button.lang-switch[aria-pressed="true"] {
   position: sticky;
   top: 12px;
   z-index: 30;
-  box-shadow: 0 14px 28px -22px rgba(46, 42, 61, 0.3);
+  box-shadow: var(--shadow-soft);
 }
 
 .picker-info {
@@ -930,13 +956,16 @@ button.lang-switch[aria-pressed="true"] {
    About — pinned notecard
    ------------------------------------------------------------------------- */
 
+/* Washi tape pieces from the old design; hidden but kept so the markup
+   stays harmless. */
 .tape {
+  display: none;
   position: absolute;
   width: 74px;
   height: 26px;
   background: #f3e6c4;
   border: 1px solid #d8c393;
-  box-shadow: 0 2px 6px rgba(46, 42, 61, 0.08);
+  box-shadow: 0 2px 6px rgba(58, 42, 34, 0.08);
   opacity: 0.9;
 }
 
@@ -952,10 +981,10 @@ button.lang-switch[aria-pressed="true"] {
   position: relative;
   width: 100%;
   background: var(--surface);
-  border-radius: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   padding: 36px 38px;
-  box-shadow: 0 20px 40px -28px rgba(46, 42, 61, 0.35);
-  transform: rotate(-0.8deg);
+  box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -981,13 +1010,14 @@ button.lang-switch[aria-pressed="true"] {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: var(--tile-butter);
-  border: 2px dashed #a89a63;
+  background: var(--accent);
+  color: var(--bg);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 1.5px var(--accent);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: rotate(9deg);
 }
 
 .stamp .year {
@@ -1017,7 +1047,7 @@ button.lang-switch[aria-pressed="true"] {
 /* Contained variant: sits as a rounded card next to About Me in a
    .two-col-row, instead of the full-bleed edge-to-edge band. */
 .band-card {
-  border-radius: 24px;
+  border-radius: var(--radius);
   padding: 36px 34px;
   display: flex;
   flex-direction: column;
@@ -1032,7 +1062,7 @@ button.lang-switch[aria-pressed="true"] {
 .band h2 {
   font-size: 34px;
   margin: 0 0 14px;
-  color: #fff;
+  color: var(--band-text);
 }
 
 .band p {
@@ -1055,9 +1085,9 @@ button.lang-switch[aria-pressed="true"] {
   padding: 10px 18px;
   border-radius: 999px;
   font-size: 14px;
-  font-weight: 700;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  font-weight: 600;
+  background: rgba(250, 244, 236, 0.08);
+  border: 1px solid rgba(250, 244, 236, 0.22);
   color: var(--band-text);
 }
 
@@ -1086,11 +1116,12 @@ button.lang-switch[aria-pressed="true"] {
 }
 
 .contact-note {
-  background: var(--tile-peach);
-  border-radius: 18px;
-  padding: 38px 32px;
-  transform: rotate(1.2deg);
-  box-shadow: 0 20px 36px -26px rgba(46, 42, 61, 0.35);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 34px 30px;
+  box-shadow: var(--shadow-lift);
 }
 
 .contact-links {
@@ -1115,6 +1146,7 @@ button.lang-switch[aria-pressed="true"] {
 
 .contact-links svg {
   flex-shrink: 0;
+  color: var(--accent);
 }
 
 /* -------------------------------------------------------------------------
@@ -1123,6 +1155,7 @@ button.lang-switch[aria-pressed="true"] {
 
 .site-footer {
   border-top: 1px solid var(--line);
+  margin-top: 24px;
   padding: 28px 0;
 }
 
@@ -1171,7 +1204,7 @@ button.lang-switch[aria-pressed="true"] {
 
 .blog-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 30px -22px rgba(46, 42, 61, 0.28);
+  box-shadow: var(--shadow-lift);
 }
 
 .blog-card-featured {
@@ -1288,9 +1321,9 @@ button.lang-switch[aria-pressed="true"] {
   margin: 0 auto;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: var(--radius);
   padding: 36px 40px;
-  box-shadow: 0 18px 32px -26px rgba(46, 42, 61, 0.3);
+  box-shadow: var(--shadow-soft);
 }
 
 .wizard-eyebrow {
@@ -1334,7 +1367,7 @@ button.lang-switch[aria-pressed="true"] {
 }
 
 .wizard-option:hover {
-  background: var(--tile-lavender);
+  background: var(--accent-tint);
   border-color: transparent;
 }
 
@@ -1850,9 +1883,9 @@ button.lang-switch[aria-pressed="true"] {
 .area-list li {
   padding: 6px 14px;
   border-radius: 999px;
-  background: var(--tile-lavender);
+  background: var(--accent-tint);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .hours-list {
