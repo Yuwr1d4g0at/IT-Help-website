@@ -22,6 +22,40 @@
   }
 
   // ---------------------------------------------------------------------
+  // Counting the actions that matter (GoatCounter events, no cookies):
+  // calls, WhatsApp, email, and which windows people open.
+  // ---------------------------------------------------------------------
+  function track(name, title) {
+    try {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: name, title: title || name, event: true });
+      }
+    } catch (e) {
+      /* analytics blocked: nothing to do */
+    }
+  }
+
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[href]");
+    if (!a) return;
+    var href = a.getAttribute("href");
+    if (/^tel:/.test(href)) track("click-call");
+    else if (/wa\.me\//.test(href)) track("click-whatsapp");
+    else if (/^mailto:/.test(href)) track("click-email");
+
+    // Remember a deliberate language choice (the homepage sends
+    // Portuguese browsers to /pt/ unless English was picked)
+    var lang = a.getAttribute("hreflang");
+    if (lang && (a.classList.contains("lang-switch") || a.classList.contains("cc-lang"))) {
+      try {
+        localStorage.setItem("yuwri-lang", lang.indexOf("pt") === 0 ? "pt" : "en");
+      } catch (err) {
+        /* storage blocked */
+      }
+    }
+  }, true);
+
+  // ---------------------------------------------------------------------
   // Embedded in a desktop window?
   // ---------------------------------------------------------------------
   var embedded = false;
@@ -160,7 +194,10 @@
     };
   })();
 
-  window.YuwriUI = { sound: Sound, setTheme: setTheme, setWallpaper: setWallpaper };
+  window.YuwriUI = {
+    sound: Sound, setTheme: setTheme, setWallpaper: setWallpaper, track: track,
+    availability: function () { return availability(); }
+  };
 
   // ---------------------------------------------------------------------
   // Live availability (Lisbon time): weekdays 18-22, weekends 10-20
@@ -308,6 +345,8 @@
     var there = document.createElement("a");
     there.textContent = isPT ? "EN" : "PT";
     there.href = switcher && switcher.getAttribute("href") ? switcher.getAttribute("href") : "#";
+    there.className = "cc-lang";
+    there.setAttribute("hreflang", isPT ? "en" : "pt-PT");
     langBox.lastChild.appendChild(isPT ? there : here);
     langBox.lastChild.appendChild(isPT ? here : there);
     duo.appendChild(langBox);

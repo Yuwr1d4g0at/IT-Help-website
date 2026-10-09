@@ -53,6 +53,8 @@
   }
 
   function send(form, via, subject, text) {
+    var ui = window.YuwriUI;
+    if (ui && ui.track) ui.track((form.classList.contains("book-form") ? "book-" : "message-") + via);
     if (via === "whatsapp") {
       status(form, T.openingWa);
       window.open(waUrl(form.getAttribute("data-wa"), text), "_blank", "noopener");

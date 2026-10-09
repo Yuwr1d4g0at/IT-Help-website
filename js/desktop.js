@@ -378,6 +378,10 @@
     if (wasHidden) {
       animateOpen(w.el, fromRect);
       UI.sound.play("open");
+      if (!w.counted && UI.track) {
+        w.counted = true;
+        UI.track("window-" + w.id.replace(/^page:/, "").replace(/\//g, "-").replace(/^-|-$/g, ""), titleText(w));
+      }
     }
     w.el.focus({ preventScroll: true });
     updateDock();
@@ -1054,6 +1058,109 @@
       files.querySelectorAll(".is-selected").forEach(function (x) { x.classList.remove("is-selected"); });
     }
   });
+
+  // ---------------------------------------------------------------------
+  // Desktop widgets (wide screens): clock, availability, next free slot
+  // ---------------------------------------------------------------------
+
+  var W = isPT
+    ? { avail: "Disponível agora", back: "Volto às ", backTomorrow: "Volto amanhã às ",
+        replies: "Respondo normalmente no mesmo dia.", message: "Mensagem", next: "Próxima vaga",
+        today: "Hoje", tomorrow: "Amanhã", bookIt: "Marcar" }
+    : { avail: "Available now", back: "Back at ", backTomorrow: "Back tomorrow at ",
+        replies: "I usually reply the same day.", message: "Message", next: "Next free slot",
+        today: "Today", tomorrow: "Tomorrow", bookIt: "Book it" };
+
+  // Lisbon date/time as numbers
+  function lisbon(date) {
+    var parts = {};
+    new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Lisbon", year: "numeric", month: "2-digit", day: "2-digit",
+      weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+    }).formatToParts(date).forEach(function (p) { parts[p.type] = p.value; });
+    return {
+      y: +parts.year, m: +parts.month, d: +parts.day, h: +parts.hour, min: +parts.minute,
+      wd: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(parts.weekday)
+    };
+  }
+
+  // First bookable start time (same hours as the Book a Visit window)
+  function nextSlot() {
+    var now = lisbon(new Date());
+    for (var add = 0; add < 8; add++) {
+      var day = new Date(Date.UTC(now.y, now.m - 1, now.d + add));
+      var wd = day.getUTCDay();
+      var first = wd === 0 || wd === 6 ? 10 : 18;
+      var last = wd === 0 || wd === 6 ? 19 : 21;
+      var start = add === 0 ? Math.max(first, now.h + 1) : first;
+      if (start <= last) {
+        return {
+          add: add, hour: start, date: day,
+          iso: day.toISOString().slice(0, 10),
+          time: (start < 10 ? "0" : "") + start + ":00"
+        };
+      }
+    }
+    return null;
+  }
+
+  var widgets = document.createElement("div");
+  widgets.className = "widgets";
+  widgets.innerHTML =
+    '<div class="widget widget-clock" aria-hidden="true"><div class="w-time"></div><div class="w-date"></div></div>' +
+    '<div class="widget widget-status"><p class="w-head"><span class="status-dot" aria-hidden="true"></span><strong class="w-status"></strong></p>' +
+    '<p class="w-sub"></p><a class="btn btn-sm" href="#' + contactId + '"></a></div>' +
+    '<div class="widget widget-slot"><p class="w-label"></p><strong class="w-slot"></strong>' +
+    '<button type="button" class="btn btn-sm btn-primary"></button></div>';
+  widgets.querySelector(".w-sub").textContent = W.replies;
+  widgets.querySelector(".widget-status a").textContent = W.message;
+  widgets.querySelector(".w-label").textContent = W.next;
+  widgets.querySelector(".widget-slot button").textContent = W.bookIt;
+  desk.insertBefore(widgets, desk.firstChild);
+
+  var slot = null;
+
+  function renderWidgets() {
+    var now = new Date();
+    widgets.querySelector(".w-time").textContent =
+      String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
+    widgets.querySelector(".w-date").textContent =
+      now.toLocaleDateString(isPT ? "pt-PT" : "en-GB", { weekday: "long", day: "numeric", month: "long" });
+
+    var a = UI.availability ? UI.availability() : null;
+    var statusBox = widgets.querySelector(".widget-status");
+    if (a) {
+      var at = (a.at < 10 ? "0" : "") + a.at + ":00";
+      statusBox.classList.toggle("is-open", a.open);
+      widgets.querySelector(".w-status").textContent = a.open ? W.avail : (a.when === "today" ? W.back : W.backTomorrow) + at;
+    }
+
+    slot = nextSlot();
+    var slotBox = widgets.querySelector(".widget-slot");
+    slotBox.hidden = !slot;
+    if (slot) {
+      var dayName = slot.add === 0 ? W.today : slot.add === 1 ? W.tomorrow :
+        slot.date.toLocaleDateString(isPT ? "pt-PT" : "en-GB", { weekday: "long", timeZone: "UTC" });
+      widgets.querySelector(".w-slot").textContent = dayName + " · " + slot.time;
+    }
+  }
+
+  // "Book it": open Book a Visit with that day and time filled in
+  widgets.querySelector(".widget-slot button").addEventListener("click", function (e) {
+    var w = wins[bookId];
+    if (!w) return;
+    open(w, e.currentTarget);
+    var form = w.el.querySelector(".book-form");
+    if (form && slot) {
+      form.elements.day.value = slot.iso;
+      form.elements.day.dispatchEvent(new Event("change"));
+      form.elements.time.value = slot.time;
+      form.elements.problem.focus();
+    }
+  });
+
+  renderWidgets();
+  setInterval(renderWidgets, 30000);
 
   // ---------------------------------------------------------------------
   // Keyboard shortcuts. Cmd+W / Cmd+M belong to the browser, so the
