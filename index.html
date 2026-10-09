@@ -23,7 +23,12 @@
   <meta property="og:description" content="Friendly, personalized computer repair and IT support in Seixal, Almada, Barreiro and Moita. Repairs, PC building, virus removal, OS installs, and website creation &amp; maintenance." />
   <meta property="og:locale" content="en" />
   <meta property="og:locale:alternate" content="pt_PT" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Computer Repair in Seixal" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Yuwri | Computer Repair &amp; IT Support in Seixal" />
   <meta name="twitter:description" content="Friendly, personalized computer repair and IT support in Seixal." />
 
@@ -68,29 +73,18 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 
+  <script>try{var yl=localStorage.getItem("yuwri-lang"),yn=((navigator.languages&&navigator.languages[0])||navigator.language||"").toLowerCase();if(yl!=="en"&&(yl==="pt"||yn.indexOf("pt")===0))location.replace("pt/"+location.hash)}catch(e){}</script>
+  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
   <link href="css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
-<body>
+<body class="home">
 
   <div id="top">
-
-    <!-- Washi tape stripe -->
-    <div class="tape-stripe">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-
-    <!-- Nav -->
+    <!-- Taskbar -->
     <header class="wrap">
       <nav class="site-nav">
         <a class="brand" href="#top">
@@ -98,300 +92,319 @@
           <span class="brand-name">Yuwri</span>
         </a>
         <div class="nav-links" id="nav-links">
-          <a class="link-underline" href="#services">Services</a>
-          <a class="link-underline" href="prices/">Prices</a>
-          <a class="link-underline" href="software/">Software</a>
-          <a class="link-underline" href="blog/">Tips</a>
-          <a class="link-underline" href="resources/">Resources</a>
-          <a class="link-underline" href="#about">About</a>
-          <a class="link-underline" href="#contact">Contact</a>
+          <a href="#services">Services</a>
+          <a href="prices/">Prices</a>
+          <a href="software/">Software</a>
+          <a href="blog/">Tips</a>
+          <a href="resources/">Resources</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
         </div>
         <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-          </button>
-          <div class="nav-actions">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="nav-actions">
           <a href="pt/" class="lang-switch mono" lang="pt-PT" hreflang="pt-PT">PT</a>
           <a href="#contact" class="btn btn-primary btn-sm">Contact Me</a>
         </div>
       </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="wrap hero-inner">
-        <div class="eyebrow mono">IT Support &middot; Seixal</div>
-        <h1 class="hero-title">
-          Computer<br>
-          <span class="highlight">
-            Repair
-            <svg viewBox="0 0 160 18" width="150" height="17">
-              <path d="M4 10 Q 25 -2, 45 9 T 85 9 T 125 9 T 156 8" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
-            </svg>
-          </span>
-        </h1>
-        <p class="hero-tagline">If your computer is too slow, doesn't work properly, or doesn't work at all, talk to me.</p>
-        <div class="logistics-row">
-          <div class="logistics-item">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
-            Home &amp; office visits
-          </div>
-          <div class="logistics-item">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8"/><path d="M12 16v4"/></svg>
-            Remote sessions
-          </div>
-          <div class="logistics-item">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="1.5"/><path d="M4 8l3-4h10l3 4"/><path d="M12 8v12"/></svg>
-            Pick-up &amp; return
-          </div>
-        </div>
-        <div class="hero-actions">
-          <a href="#services" class="btn btn-primary">Read More</a>
-          <a href="#contact" class="btn btn-outline">Contact Me</a>
-        </div>
+    <main class="desktop">
 
-        <div class="sticker-row">
-          <div class="sticker sticker-lavender">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1M18.5 18.5l-2.1-2.1M7.6 7.6 5.5 5.5"/></svg>
-            Repair
-          </div>
-          <div class="sticker sticker-mint">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
-            Build
-          </div>
-          <div class="sticker sticker-peach">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
-            Security
-          </div>
-          <div class="sticker sticker-sky">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11"/><path d="M8 10l4 4 4-4"/><path d="M4 18.5h16"/></svg>
-            Install
-          </div>
-          <div class="sticker sticker-blush">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.2M20 12a8 8 0 0 1-14 5.2"/><path d="M17 3v4h-4"/><path d="M7 21v-4h4"/></svg>
-            System
-          </div>
-        </div>
-      </div>
-    </section>
+      <!-- Desktop icons -->
+      <ul class="desk-icons">
+        <li><a class="desk-icon" href="#services"><span class="ico ico-app" data-icon="services" aria-hidden="true" style="width:40px;height:40px;--c1:#8F8CFF;--c2:#5856D6"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.6 17.4a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></span><span>My Services</span></a></li>
+        <li><a class="desk-icon" href="prices/"><span class="ico ico-app" data-icon="prices" aria-hidden="true" style="width:40px;height:40px;--c1:#4CD964;--c2:#1F9D45"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z M7.5 6a1.5 1.5 0 1 0 0 3 1.5 1.5 0 1 0 0-3z"/></svg></span><span>Prices</span></a></li>
+        <li><a class="desk-icon" href="#book"><span class="ico ico-app" data-icon="book" aria-hidden="true" style="width:40px;height:40px;--c1:#FF7B7B;--c2:#E5383B"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16v14H4z M4 10h16 M8 3v4 M16 3v4 M8 14h3 M13 14h3 M8 17h3"/></svg></span><span>Book a Visit</span></a></li>
+        <li><a class="desk-icon" href="software/"><span class="ico ico-app" data-icon="software" aria-hidden="true" style="width:40px;height:40px;--c1:#C77DFF;--c2:#7D3CC8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12 M7 10l5 5 5-5 M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span><span>Software</span></a></li>
+        <li><a class="desk-icon" href="blog/"><span class="ico ico-app" data-icon="tips" aria-hidden="true" style="width:40px;height:40px;--c1:#FFD54A;--c2:#FF9F0A"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6 M10 21h4 M12 3a6 6 0 0 0-3.8 10.6c.6.5.8 1.2.8 1.9V16h6v-.5c0-.7.3-1.4.8-1.9A6 6 0 0 0 12 3z"/></svg></span><span>Tips</span></a></li>
+        <li><a class="desk-icon" href="#tools"><span class="ico ico-app" data-icon="tools" aria-hidden="true" style="width:40px;height:40px;--c1:#A1A1A8;--c2:#5A5A60"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z"/></svg></span><span>Free Tools</span></a></li>
+        <li><a class="desk-icon" href="#contact"><span class="ico ico-app" data-icon="contact" aria-hidden="true" style="width:40px;height:40px;--c1:#5AC8FA;--c2:#0A6CFF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h18v12H3z M3.5 6.5 12 13l8.5-6.5"/></svg></span><span>Contact</span></a></li>
+      </ul>
 
-    <!-- Services -->
-    <section id="services" class="section section-compact">
-      <div class="wrap">
-        <div class="section-heading">
-          <h2>My Services</h2>
-        </div>
+      <div class="windows">
 
-        <div class="bento">
-          <div class="tile tile-lead">
-            <div class="tile-icon">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1M18.5 18.5l-2.1-2.1M7.6 7.6 5.5 5.5"/></svg>
-            </div>
-            <h3>Computer Repair</h3>
-            <p>Your computer doesn't work properly? I'll diagnose the issue and get it running again fast.</p>
-            <a href="#contact" class="link-underline tile-cta">Contact Me &rarr;</a>
-          </div>
-
-          <div class="tile tile-lead sky">
-            <div class="tile-icon">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M8 14l-2 2 2 2"/><path d="M13 14l2 2-2 2"/></svg>
-            </div>
-            <h3>Website Creation &amp; Maintenance</h3>
-            <p>A clean, fast website built around what your business needs, plus ongoing updates so it keeps working long after launch.</p>
-            <a href="#contact" class="link-underline tile-cta">Contact Me &rarr;</a>
-          </div>
-
-          <div class="tile tile-half mint">
-            <div class="tile-icon">
-              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
-            </div>
-            <h3>PC Building</h3>
-            <p>A custom-built PC tailored to your needs and your budget.</p>
-          </div>
-
-          <div class="tile tile-half peach">
-            <div class="tile-icon">
-              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
-            </div>
-            <h3>Virus Removal</h3>
-            <p>Get rid of viruses or malware slowing your machine down.</p>
-          </div>
-
-          <div class="tile tile-half sky">
-            <div class="tile-icon">
-              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11"/><path d="M8 10l4 4 4-4"/><path d="M4 18.5h16"/></svg>
-            </div>
-            <h3>Program Installation</h3>
-            <p>Programs installed safely, and set up right the first time.</p>
-          </div>
-
-          <div class="tile tile-half blush">
-            <div class="tile-icon">
-              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.2M20 12a8 8 0 0 1-14 5.2"/><path d="M17 3v4h-4"/><path d="M7 21v-4h4"/></svg>
-            </div>
-            <h3>Formatting / OS Install</h3>
-            <p>A fresh format, or a whole new operating system.</p>
-          </div>
-        </div>
-        <p class="services-footer"><a href="prices/" class="link-underline area-link">See prices &rarr;</a></p>
-      </div>
-    </section>
-
-    <!-- Where & when -->
-    <section id="area" class="section section-compact">
-      <div class="wrap">
-        <div class="two-col-row">
-          <div class="teaser-card area-card">
-            <h2>Where I Work</h2>
-            <p>Home and office visits, plus pick-up and return, across:</p>
-            <ul class="area-list">
-              <li>Seixal</li>
-              <li>Amora</li>
-              <li>Corroios</li>
-              <li>Fernão Ferro</li>
-              <li>Arrentela</li>
-              <li>Paio Pires</li>
-              <li>Almada</li>
-              <li>Barreiro</li>
-              <li>Moita</li>
-            </ul>
-            <p>Remote sessions anywhere in Portugal.</p>
-          </div>
-
-          <div class="teaser-card area-card">
-            <h2>When</h2>
-            <dl class="hours-list">
-              <div><dt>Monday to Friday</dt><dd>18:00–22:00</dd></div>
-              <div><dt>Saturday &amp; Sunday</dt><dd>10:00–20:00</dd></div>
-            </dl>
-            <p>Feel free to message outside these hours. I'll get back to you as soon as I can.</p>
-            <a href="prices/" class="link-underline area-link">See prices &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Software + Free tools -->
-    <section class="section section-compact">
-      <div class="wrap">
-        <div class="two-col-row">
-          <div class="teaser-card">
-            <h2>Not sure what to install?</h2>
-            <p>Here's the antivirus, VPN, backup, and cleanup software I actually use and recommend to clients.</p>
-            <a href="software/" class="link-underline" style="color:var(--accent); font-weight:700; font-size:15px;">See my recommendations &rarr;</a>
-          </div>
-
-          <div class="teaser-card">
-            <h2>A Few Free Extras</h2>
-            <p>Whether or not you ever hire me: a troubleshooting wizard, a repair-or-replace quiz, printable cheat sheets, a plain-language glossary, and a board for anything worth flagging right now.</p>
-            <div class="tool-links">
-              <a href="troubleshoot/" class="tool-pill">Troubleshooting Wizard</a>
-              <a href="repair-or-replace/" class="tool-pill">Repair or Replace?</a>
-              <a href="cheat-sheets/" class="tool-pill">Cheat Sheets</a>
-              <a href="glossary/" class="tool-pill">Glossary</a>
-              <a href="heads-up/" class="tool-pill">Heads Up</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About & Approach -->
-    <section id="about" class="section section-compact">
-      <div class="wrap">
-        <div class="two-col-row">
-          <div class="notecard-wrap">
-            <div class="tape" style="top:-14px; left:50%; transform:translateX(-50%) rotate(-3deg);"></div>
-            <div class="notecard">
-              <h2>About Me</h2>
-              <p>Yuwri isn't just a company name. I'm your trusted partner in resolving all your PC issues swiftly and efficiently. Started out of a passion for technology and a commitment to exceptional service, I've been proudly serving individuals and businesses in Seixal since 2023.</p>
-            </div>
-            <div class="stamp mono">
-              <div class="year">2023</div>
-              <div class="place">SEIXAL</div>
-            </div>
-          </div>
-
-          <div id="approach" class="band band-card">
-            <h2>Personalized Approach</h2>
-            <p>What sets me apart is my personalized approach to IT solutions. I believe in building relationships, not just fixing computers. When you choose Yuwri, you're choosing a friendly, experienced technician who listens to your concerns, understands your unique needs, and tailors solutions that align with your goals.</p>
-            <div class="tags">
-              <span class="tag">A friendly, experienced technician</span>
-              <span class="tag">Solutions tailored to your goals</span>
-              <span class="tag">Real relationships, not tickets</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section id="testimonials" class="section section-compact">
-      <div class="wrap">
-        <div class="section-heading">
-          <h2>What Clients Say</h2>
-        </div>
-        <div class="teaser-card">
-          <svg width="140" height="117" viewBox="0 0 180 150" fill="none" aria-hidden="true">
-            <rect x="35" y="35" width="110" height="80" rx="10" fill="var(--tile-peach)" transform="rotate(-6 90 75)"/>
-            <rect x="35" y="35" width="110" height="80" rx="10" fill="var(--tile-mint)" transform="rotate(4 90 75)"/>
-            <rect x="35" y="35" width="110" height="80" rx="10" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
-            <rect x="70" y="20" width="40" height="16" rx="2" fill="#f3e6c4" stroke="#d8c393" opacity="0.9"/>
-            <g stroke="var(--ink-muted)" stroke-width="2.5" stroke-linecap="round" opacity="0.55">
-              <line x1="55" y1="65" x2="95" y2="65"/>
-              <line x1="55" y1="80" x2="120" y2="80"/>
-              <line x1="55" y1="95" x2="80" y2="95"/>
-            </g>
-            <line x1="88" y1="95" x2="120" y2="95" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 7" opacity="0.6"/>
-          </svg>
-          <h2>New here, honestly.</h2>
-          <p>I haven't set up a way to collect reviews on the site yet, so there's nothing to show here but a blank space. I'd rather leave it empty than fill it with anything that isn't real. If you'd like to hear from someone I've actually helped, just ask when you reach out.</p>
-          <a href="#contact" class="link-underline" style="color:var(--accent); font-weight:700; font-size:15px;">Get in touch &rarr;</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section section-compact">
-      <div class="wrap">
-        <div class="row align-items-center">
-          <div class="col-md-6 contact-copy">
-            <h2>Let's talk.</h2>
-            <p>I'd love to hear from you. Reach out through any of the ways on the note. I usually reply the same day.</p>
-          </div>
-          <div class="col-md-6 d-flex justify-content-center">
-            <div class="contact-note-wrap">
-              <div class="tape" style="top:-14px; left:50%; transform:translateX(-50%) rotate(2deg);"></div>
-              <div class="contact-note">
-                <div class="contact-links">
-                  <a href="tel:+351924129893" class="mono">
-                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></svg>
-                    +351 924 129 893
-                  </a>
-                  <a href="https://wa.me/351924129893?text=Hi%21%20I%20found%20your%20site%20and%20I%27d%20like%20some%20help%20with%20my%20computer." class="mono" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2 2 0 0 1 6 3.5h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-4 3.5v-3.5H6a2 2 0 0 1-2-2z"/></svg>
-                    WhatsApp
-                  </a>
-                  <a href="mailto:yuwrim4il@pm.me" class="mono email">
-                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
-                    yuwrim4il@pm.me
-                  </a>
+        <!-- Welcome -->
+        <section id="welcome" class="win" data-w="740" aria-labelledby="welcome-title">
+          <div class="win-title"><span class="ico ico-app" data-icon="logo" aria-hidden="true" style="width:16px;height:16px;--c1:#FF7A45;--c2:#B84DFF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 4l6 8 6-8 M12 12v8"/></svg></span><span class="win-title-text">Welcome</span><div class="win-controls" aria-hidden="true"><span>&times;</span><span>&minus;</span><span>+</span></div></div>
+          <div class="win-content">
+          <div class="welcome">
+            <div>
+              <p class="welcome-kicker">Welcome to <strong>Yuwri</strong> &middot; IT support in Seixal</p>
+              <h1 class="welcome-title" id="welcome-title">Computer <span class="accent">Repair</span></h1>
+              <div class="field tip">
+                <span class="ico ico-app" data-icon="bulb" aria-hidden="true" style="width:40px;height:40px;--c1:#FFD54A;--c2:#FF9F0A"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6 M10 21h4 M12 3a6 6 0 0 0-3.8 10.6c.6.5.8 1.2.8 1.9V16h6v-.5c0-.7.3-1.4.8-1.9A6 6 0 0 0 12 3z"/></svg></span>
+                <div>
+                  <p class="tip-head">Did you know&hellip;</p>
+                  <p>If your computer is too slow, doesn't work properly, or doesn't work at all, talk to me.</p>
                 </div>
-                <a href="mailto:yuwrim4il@pm.me" class="btn btn-primary btn-block">Send an Email</a>
+              </div>
+              <ul class="checklist">
+                <li><svg class="ico" data-icon="p-check" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Home &amp; office visits</li>
+                <li><svg class="ico" data-icon="p-check" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Remote sessions</li>
+                <li><svg class="ico" data-icon="p-check" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Pick-up &amp; return</li>
+              </ul>
+            </div>
+            <div class="welcome-actions">
+              <a href="#contact" class="btn btn-primary">Contact Me</a>
+              <a href="#services" class="btn">My Services</a>
+              <a href="prices/" class="btn">See Prices</a>
+              <a href="#tools" class="btn">Free Tools</a>
+            </div>
+            <p class="welcome-foot"><svg class="ico" data-icon="p-wrench" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.6 17.4a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg>Repairs &middot; PC builds &middot; Virus removal &middot; Installs &middot; Websites</p>
+          </div>
+          </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="win" data-w="840" aria-labelledby="services-title">
+          <div class="win-title"><span class="ico ico-app" data-icon="services" aria-hidden="true" style="width:16px;height:16px;--c1:#8F8CFF;--c2:#5856D6"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.6 17.4a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></span><h2 class="win-title-text" id="services-title">My Services</h2><div class="win-controls" aria-hidden="true"><span>&times;</span><span>&minus;</span><span>+</span></div></div>
+          <div class="win-content">
+          <ul class="icon-view field">
+            <li class="icon-item">
+              <span class="ico ico-app" data-icon="gear" aria-hidden="true" style="width:40px;height:40px;--c1:#A1A1A8;--c2:#5A5A60"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 9a3 3 0 1 0 0 6 3 3 0 1 0 0-6z M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1M18.5 18.5l-2.1-2.1M7.6 7.6 5.5 5.5"/></svg></span>
+              <div>
+                <h3>Computer Repair</h3>
+                <p>Your computer doesn't work properly? I'll diagnose the issue and get it running again fast.</p>
+                <a href="#contact">Contact Me &rarr;</a>
+              </div>
+            </li>
+            <li class="icon-item">
+              <span class="ico ico-app" data-icon="code" aria-hidden="true" style="width:40px;height:40px;--c1:#5AC8FA;--c2:#0A6CFF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 5h18v14H3z M3 9h18 M9 13l-2 2 2 2 M15 13l2 2-2 2"/></svg></span>
+              <div>
+                <h3>Website Creation &amp; Maintenance</h3>
+                <p>A clean, fast website built around what your business needs, plus ongoing updates so it keeps working long after launch.</p>
+                <a href="#contact">Contact Me &rarr;</a>
+              </div>
+            </li>
+            <li class="icon-item">
+              <span class="ico ico-app" data-icon="chip" aria-hidden="true" style="width:40px;height:40px;--c1:#4CD964;--c2:#1F9D45"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10H7z M10 10h4v4h-4z M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span>
+              <div>
+                <h3>PC Building</h3>
+                <p>A custom-built PC tailored to your needs and your budget.</p>
+              </div>
+            </li>
+            <li class="icon-item">
+              <span class="ico ico-app" data-icon="shield" aria-hidden="true" style="width:40px;height:40px;--c1:#FF7A6E;--c2:#E0352B"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z M9 12l2 2 4-4"/></svg></span>
+              <div>
+                <h3>Virus Removal</h3>
+                <p>Get rid of viruses or malware slowing your machine down.</p>
+              </div>
+            </li>
+            <li class="icon-item">
+              <span class="ico ico-app" data-icon="download" aria-hidden="true" style="width:40px;height:40px;--c1:#C77DFF;--c2:#7D3CC8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v11 M8 10l4 4 4-4 M4 18.5h16"/></svg></span>
+              <div>
+                <h3>Program Installation</h3>
+                <p>Programs installed safely, and set up right the first time.</p>
+              </div>
+            </li>
+            <li class="icon-item">
+              <span class="ico ico-app" data-icon="refresh" aria-hidden="true" style="width:40px;height:40px;--c1:#FFB347;--c2:#FF7A00"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 0 1 14-5.2M20 12a8 8 0 0 1-14 5.2 M17 3v4h-4 M7 21v-4h4"/></svg></span>
+              <div>
+                <h3>Formatting / OS Install</h3>
+                <p>A fresh format, or a whole new operating system.</p>
+              </div>
+            </li>
+          </ul>
+          <div class="win-status"><span>6 items</span><a href="prices/">See prices &rarr;</a></div>
+          </div>
+        </section>
+
+        <div class="win-row">
+          <!-- Where -->
+          <section id="area" class="win" data-w="520" aria-labelledby="area-title">
+            <div class="win-title"><span class="ico ico-app" data-icon="globe" aria-hidden="true" style="width:16px;height:16px;--c1:#4FD1E8;--c2:#0A84FF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z M3 12h18 M12 3c2.8 2.5 2.8 15.5 0 18 M12 3c-2.8 2.5-2.8 15.5 0 18"/></svg></span><h2 class="win-title-text" id="area-title">Where I Work</h2><div class="win-controls" aria-hidden="true"><span>&times;</span><span>&minus;</span><span>+</span></div></div>
+          <div class="win-content">
+            <div class="win-body">
+              <p class="win-copy">Home and office visits, plus pick-up and return, across:</p>
+              <ul class="town-list field">
+                <li><svg class="ico" data-icon="p-pin" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21z M12 7.2a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 1 0 0-4.6z"/></svg>Seixal</li>
+                <li><svg class="ico" data-icon="p-pin" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21z M12 7.2a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 1 0 0-4.6z"/></svg>Amora</li>
+                <li><svg class="ico" data-icon="p-pin" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21z M12 7.2a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 1 0 0-4.6z"/></svg>Corroios</li>
+                <li><svg class="ico" data-icon="p-pin" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21z M12 7.2a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 1 0 0-4.6z"/></svg>Fernão Ferro</li>
+                <li><svg class="ico" data-icon="p-pin" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21z M12 7.2a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 1 0 0-4.6z"/></svg>Arrentela</li>
+                <li><svg class="ico" data-icon="p-pin" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21z M12 7.2a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 1 0 0-4.6z"/></svg>Paio Pires</li>
+                <li><svg class="ico" data-icon="p-pin" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21z M12 7.2a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 1 0 0-4.6z"/></svg>Almada</li>
+                <li><svg class="ico" data-icon="p-pin" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21z M12 7.2a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 1 0 0-4.6z"/></svg>Barreiro</li>
+                <li><svg class="ico" data-icon="p-pin" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21c-4-4.5-7-8-7-11.5A7 7 0 0 1 12 2a7 7 0 0 1 7 7.5C19 13 16 16.5 12 21z M12 7.2a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 1 0 0-4.6z"/></svg>Moita</li>
+              </ul>
+              <p class="note"><svg class="ico" data-icon="p-globe" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z M3 12h18 M12 3c2.8 2.5 2.8 15.5 0 18 M12 3c-2.8 2.5-2.8 15.5 0 18"/></svg>Remote sessions anywhere in Portugal.</p>
+            </div>
+          </div>
+          </section>
+
+          <!-- When -->
+          <section id="hours" class="win" data-w="480" aria-labelledby="hours-title">
+            <div class="win-title"><span class="ico ico-app" data-icon="clock" aria-hidden="true" style="width:16px;height:16px;--c1:#6E6E76;--c2:#2C2C30"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z M12 7v5l3.5 2"/></svg></span><h2 class="win-title-text" id="hours-title">When</h2><div class="win-controls" aria-hidden="true"><span>&times;</span><span>&minus;</span><span>+</span></div></div>
+          <div class="win-content">
+            <div class="win-body">
+              <div class="hours-panel">
+                <span class="ico ico-app" data-icon="clock" aria-hidden="true" style="width:64px;height:64px;--c1:#6E6E76;--c2:#2C2C30"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z M12 7v5l3.5 2"/></svg></span>
+                <dl class="hours-list field">
+                  <div><dt>Monday to Friday</dt><dd>18:00–22:00</dd></div>
+                  <div><dt>Saturday &amp; Sunday</dt><dd>10:00–20:00</dd></div>
+                </dl>
+              </div>
+              <p class="note">Feel free to message outside these hours. I'll get back to you as soon as I can.</p>
+              <div class="win-actions"><a href="prices/" class="btn">See Prices</a></div>
+            </div>
+          </div>
+          </section>
+        </div>
+
+        <div class="win-row">
+          <!-- Software -->
+          <section id="setup" class="win" data-w="580" aria-labelledby="software-title">
+            <div class="win-title"><span class="ico ico-app" data-icon="software" aria-hidden="true" style="width:16px;height:16px;--c1:#C77DFF;--c2:#7D3CC8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12 M7 10l5 5 5-5 M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span><h2 class="win-title-text">Software Setup</h2><div class="win-controls" aria-hidden="true"><span>&times;</span><span>&minus;</span><span>+</span></div></div>
+          <div class="win-content">
+            <div class="installer">
+              <div class="installer-side"><span class="ico ico-app" data-icon="software" aria-hidden="true" style="width:72px;height:72px;--c1:#C77DFF;--c2:#7D3CC8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12 M7 10l5 5 5-5 M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span></div>
+              <div class="installer-main">
+                <h3 id="software-title">Not sure what to install?</h3>
+                <p class="win-copy">Here's the antivirus, VPN, backup, and cleanup software I actually use and recommend to clients.</p>
+                <div class="progress" aria-hidden="true"><div class="progress-fill"></div></div>
+                <p class="progress-label" aria-hidden="true">Picking the good stuff&hellip;</p>
+                <div class="win-actions"><a href="software/" class="btn btn-primary">See my recommendations &gt;</a></div>
               </div>
             </div>
           </div>
+          </section>
+
+          <!-- Free tools -->
+          <section id="tools" class="win" data-w="540" aria-labelledby="tools-title">
+            <div class="win-title"><span class="ico ico-app" data-icon="tools" aria-hidden="true" style="width:16px;height:16px;--c1:#A1A1A8;--c2:#5A5A60"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z"/></svg></span><h2 class="win-title-text" id="tools-title">A Few Free Extras</h2><div class="win-controls" aria-hidden="true"><span>&times;</span><span>&minus;</span><span>+</span></div></div>
+          <div class="win-content">
+            <div class="win-body">
+              <p class="win-copy">Whether or not you ever hire me: a troubleshooting wizard, a repair-or-replace quiz, printable cheat sheets, a plain-language glossary, and a board for anything worth flagging right now.</p>
+              <ul class="program-grid field">
+                <li><a class="program" href="troubleshoot/"><span class="ico ico-app" data-icon="help" aria-hidden="true" style="width:40px;height:40px;--c1:#8F8CFF;--c2:#5856D6"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z M9.5 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-.9.8-.9 1.4v.3 M12 17h.01"/></svg></span><span>Troubleshooting Wizard</span></a></li>
+                <li><a class="program" href="repair-or-replace/"><span class="ico ico-app" data-icon="pc" aria-hidden="true" style="width:40px;height:40px;--c1:#FFB347;--c2:#FF7A00"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h18v12H3z M8 20h8 M12 16v4"/></svg></span><span>Repair or Replace?</span></a></li>
+                <li><a class="program" href="cheat-sheets/"><span class="ico ico-app" data-icon="checklist" aria-hidden="true" style="width:40px;height:40px;--c1:#FFD54A;--c2:#F2A900"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 6h10 M10 12h10 M10 18h10 M4 6l1.2 1.2L7.5 5 M4 12l1.2 1.2L7.5 11 M4 18l1.2 1.2L7.5 17"/></svg></span><span>Cheat Sheets</span></a></li>
+                <li><a class="program" href="glossary/"><span class="ico ico-app" data-icon="glossary" aria-hidden="true" style="width:40px;height:40px;--c1:#FF8F70;--c2:#E5484D"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z M5 19.5A1.5 1.5 0 0 0 6.5 21H19"/></svg></span><span>Glossary</span></a></li>
+                <li><a class="program" href="heads-up/"><span class="ico ico-app" data-icon="warning" aria-hidden="true" style="width:40px;height:40px;--c1:#FFD54A;--c2:#FF9500"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5 21.5 20h-19z M12 10v4 M12 17h.01"/></svg></span><span>Heads Up</span></a></li>
+              </ul>
+            </div>
+          </div>
+          </section>
         </div>
+
+        <div class="win-row">
+          <!-- About -->
+          <section id="about" class="win" data-w="620" aria-labelledby="about-title">
+            <div class="win-title"><span class="ico ico-app" data-icon="user" aria-hidden="true" style="width:16px;height:16px;--c1:#A1A1A8;--c2:#5A5A60"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg></span><h2 class="win-title-text" id="about-title">About Me</h2><div class="win-controls" aria-hidden="true"><span>&times;</span><span>&minus;</span><span>+</span></div></div>
+          <div class="win-content">
+            <div class="tabs" aria-hidden="true"><span class="is-active">General</span><span>Services</span><span>Hours</span></div>
+            <div class="tab-panel">
+              <div class="sysinfo">
+                <span class="ico ico-app" data-icon="logo" aria-hidden="true" style="width:80px;height:80px;--c1:#FF7A45;--c2:#B84DFF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 4l6 8 6-8 M12 12v8"/></svg></span>
+                <div>
+                  <dl>
+                    <dt>System:</dt><dd>Yuwri IT Support</dd>
+                    <dt>Located in:</dt><dd>Seixal, Portugal</dd>
+                    <dt>Since:</dt><dd>2023</dd>
+                  </dl>
+                  <p>Yuwri isn't just a company name. I'm your trusted partner in resolving all your PC issues swiftly and efficiently. Started out of a passion for technology and a commitment to exceptional service, I've been proudly serving individuals and businesses in Seixal since 2023.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </section>
+
+          <!-- Approach -->
+          <section id="approach" class="win" data-w="560" aria-labelledby="approach-title">
+            <div class="win-title"><span class="ico ico-app" data-icon="note" aria-hidden="true" style="width:16px;height:16px;--c1:#FFE066;--c2:#F5B700"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z M14.5 3v4.5H19 M9 12h7 M9 16h5"/></svg></span><h2 class="win-title-text">readme.txt</h2><div class="win-controls" aria-hidden="true"><span>&times;</span><span>&minus;</span><span>+</span></div></div>
+          <div class="win-content">
+            <div class="notepad">
+              <h3 id="approach-title">Personalized Approach</h3>
+              <p>What sets me apart is my personalized approach to IT solutions. I believe in building relationships, not just fixing computers. When you choose Yuwri, you're choosing a friendly, experienced technician who listens to your concerns, understands your unique needs, and tailors solutions that align with your goals.</p>
+              <ul>
+                <li>A friendly, experienced technician</li>
+                <li>Solutions tailored to your goals</li>
+                <li>Real relationships, not tickets</li>
+              </ul>
+            </div>
+          </div>
+          </section>
+        </div>
+
+        <!-- Reviews -->
+        <section id="testimonials" class="win" data-w="580" aria-labelledby="testimonials-title">
+          <div class="win-title"><span class="ico ico-app" data-icon="reviews" aria-hidden="true" style="width:16px;height:16px;--c1:#FFD54A;--c2:#FF9F0A"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span><h2 class="win-title-text" id="testimonials-title">What Clients Say</h2><div class="win-controls" aria-hidden="true"><span>&times;</span><span>&minus;</span><span>+</span></div></div>
+          <div class="win-content">
+          <div class="win-body">
+            <div class="msgbox">
+              <span class="ico ico-app" data-icon="reviews" aria-hidden="true" style="width:52px;height:52px;--c1:#FFD54A;--c2:#FF9F0A"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span>
+              <div>
+                <div class="stars stars-empty" aria-label="No reviews yet">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <h3>New here, honestly.</h3>
+                <p>I haven't set up a way to collect reviews on the site yet, so there's nothing to show here but a blank space. I'd rather leave it empty than fill it with anything that isn't real. If you'd like to hear from someone I've actually helped, just ask when you reach out.</p>
+              </div>
+            </div>
+            <div class="win-actions"><a href="https://wa.me/351924129893?text=Hi%21%20I%27d%20like%20to%20leave%20a%20review%20for%20Yuwri%3A%20" class="btn" target="_blank" rel="noopener">Leave a review</a><a href="#contact" class="btn btn-primary">Get in touch</a></div>
+          </div>
+          </div>
+        </section>
+
+        <!-- Book a visit -->
+        <section id="book" class="win" data-w="600" aria-labelledby="book-title">
+          <div class="win-title"><span class="ico ico-app" data-icon="book" aria-hidden="true" style="width:16px;height:16px;--c1:#FF7B7B;--c2:#E5383B"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16v14H4z M4 10h16 M8 3v4 M16 3v4 M8 14h3 M13 14h3 M8 17h3"/></svg></span><h2 class="win-title-text">Book a Visit</h2><div class="win-controls" aria-hidden="true"><span>&times;</span><span>&minus;</span><span>+</span></div></div>
+          <div class="win-content">
+          <div class="win-body">
+            <h3 class="form-head" id="book-title">Pick a time that suits you</h3>
+            <p class="win-copy">Choose a day and time inside my hours and I'll confirm by message. Nothing is booked until I reply.</p>
+            <form class="book-form form-grid" action="mailto:yuwrim4il@pm.me" method="get" data-wa="351924129893" data-email="yuwrim4il@pm.me">
+              <label for="book-day-en">Day</label><input id="book-day-en" type="date" name="day" required>
+              <label for="book-time-en">Time</label><select id="book-time-en" name="time" required><option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option></select>
+              <label for="book-type-en">Type</label><select id="book-type-en" name="type"><option>Home or office visit</option><option>Remote session</option><option>Pick-up &amp; return</option></select>
+              <label for="book-area-en">Area</label><select id="book-area-en" name="area"><option>Seixal</option><option>Amora</option><option>Corroios</option><option>Fernão Ferro</option><option>Arrentela</option><option>Paio Pires</option><option>Almada</option><option>Barreiro</option><option>Moita</option><option>Other / remote</option></select>
+              <label for="book-problem-en">Problem</label><textarea id="book-problem-en" name="problem" rows="3" placeholder="e.g. laptop very slow since an update" required></textarea>
+              <label for="book-name-en">Name</label><input id="book-name-en" type="text" name="name" autocomplete="name" placeholder="Your name" required>
+              <div class="form-actions"><button type="submit" class="btn" data-via="email">Request via Email</button><button type="submit" class="btn btn-primary" data-via="whatsapp">Request via WhatsApp</button></div>
+            </form>
+          </div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="win" data-w="640" aria-labelledby="contact-title">
+          <div class="win-title"><span class="ico ico-app" data-icon="contact" aria-hidden="true" style="width:16px;height:16px;--c1:#5AC8FA;--c2:#0A6CFF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h18v12H3z M3.5 6.5 12 13l8.5-6.5"/></svg></span><h2 class="win-title-text" id="contact-title">New Message</h2><div class="win-controls" aria-hidden="true"><span>&times;</span><span>&minus;</span><span>+</span></div></div>
+          <div class="win-content">
+          <form class="mail-form" action="mailto:yuwrim4il@pm.me" method="get" data-wa="351924129893" data-email="yuwrim4il@pm.me">
+          <div class="toolbar">
+            <button type="submit" class="tool-btn" data-via="email"><span class="ico ico-app" data-icon="send" aria-hidden="true" style="width:30px;height:30px;--c1:#5AC8FA;--c2:#0A6CFF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 3 3 10.5l7 3 3 7z M10 13.5 21 3"/></svg></span>Send</button>
+            <a class="tool-btn" href="tel:+351924129893"><span class="ico ico-app" data-icon="phone" aria-hidden="true" style="width:30px;height:30px;--c1:#4CD964;--c2:#1F9D45"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></svg></span>Call</a>
+            <a class="tool-btn" href="https://wa.me/351924129893?text=Hi%21%20I%20found%20your%20site%20and%20I%27d%20like%20some%20help%20with%20my%20computer." target="_blank" rel="noopener"><span class="ico ico-app" data-icon="chat" aria-hidden="true" style="width:30px;height:30px;--c1:#4CD964;--c2:#1F9D45"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5A2 2 0 0 1 6 3.5h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-4 3.5v-3.5H6a2 2 0 0 1-2-2z"/></svg></span>WhatsApp</a>
+          </div>
+          <div class="mail-fields">
+            <span>To:</span><a href="mailto:yuwrim4il@pm.me"><svg class="ico" data-icon="p-mail" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h18v12H3z M3.5 6.5 12 13l8.5-6.5"/></svg>yuwrim4il@pm.me</a>
+            <label for="mail-from-en">From:</label><input id="mail-from-en" type="text" name="name" autocomplete="name" placeholder="Your name">
+            <label for="mail-subject-en">Subject:</label><input id="mail-subject-en" type="text" name="subject" placeholder="What's going on?">
+            <span>Phone:</span><a href="tel:+351924129893"><svg class="ico" data-icon="p-phone" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></svg>+351 924 129 893</a>
+          </div>
+          <div class="mail-body">
+            <h3>Let's talk.</h3>
+            <p>I'd love to hear from you. Write your message here and send it by email or WhatsApp. I usually reply the same day.</p>
+            <label class="sr-only" for="mail-body-en">Message</label><textarea id="mail-body-en" name="body" rows="6" placeholder="Tell me what the problem is, what computer you have, and when suits you…" required></textarea>
+            <div class="form-actions"><button type="submit" class="btn" data-via="whatsapp">Send via WhatsApp</button><button type="submit" class="btn btn-primary" data-via="email">Send Email</button></div>
+          </div>
+          </form>
+          </div>
+        </section>
+
       </div>
-    </section>
+    </main>
+
+    <div class="icon-bank" hidden><span class="ico ico-app" data-icon="services" aria-hidden="true" style="width:16px;height:16px;--c1:#8F8CFF;--c2:#5856D6"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.6 17.4a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></span><span class="ico ico-app" data-icon="prices" aria-hidden="true" style="width:16px;height:16px;--c1:#4CD964;--c2:#1F9D45"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z M7.5 6a1.5 1.5 0 1 0 0 3 1.5 1.5 0 1 0 0-3z"/></svg></span><span class="ico ico-app" data-icon="software" aria-hidden="true" style="width:16px;height:16px;--c1:#C77DFF;--c2:#7D3CC8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12 M7 10l5 5 5-5 M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span><span class="ico ico-app" data-icon="tips" aria-hidden="true" style="width:16px;height:16px;--c1:#FFD54A;--c2:#FF9F0A"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6 M10 21h4 M12 3a6 6 0 0 0-3.8 10.6c.6.5.8 1.2.8 1.9V16h6v-.5c0-.7.3-1.4.8-1.9A6 6 0 0 0 12 3z"/></svg></span><span class="ico ico-app" data-icon="tools" aria-hidden="true" style="width:16px;height:16px;--c1:#A1A1A8;--c2:#5A5A60"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z"/></svg></span><span class="ico ico-app" data-icon="contact" aria-hidden="true" style="width:16px;height:16px;--c1:#5AC8FA;--c2:#0A6CFF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h18v12H3z M3.5 6.5 12 13l8.5-6.5"/></svg></span><span class="ico ico-app" data-icon="logo" aria-hidden="true" style="width:16px;height:16px;--c1:#FF7A45;--c2:#B84DFF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 4l6 8 6-8 M12 12v8"/></svg></span><span class="ico ico-app" data-icon="gear" aria-hidden="true" style="width:16px;height:16px;--c1:#A1A1A8;--c2:#5A5A60"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 9a3 3 0 1 0 0 6 3 3 0 1 0 0-6z M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1M18.5 18.5l-2.1-2.1M7.6 7.6 5.5 5.5"/></svg></span><span class="ico ico-app" data-icon="code" aria-hidden="true" style="width:16px;height:16px;--c1:#5AC8FA;--c2:#0A6CFF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 5h18v14H3z M3 9h18 M9 13l-2 2 2 2 M15 13l2 2-2 2"/></svg></span><span class="ico ico-app" data-icon="chip" aria-hidden="true" style="width:16px;height:16px;--c1:#4CD964;--c2:#1F9D45"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10H7z M10 10h4v4h-4z M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span><span class="ico ico-app" data-icon="shield" aria-hidden="true" style="width:16px;height:16px;--c1:#FF7A6E;--c2:#E0352B"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z M9 12l2 2 4-4"/></svg></span><span class="ico ico-app" data-icon="download" aria-hidden="true" style="width:16px;height:16px;--c1:#C77DFF;--c2:#7D3CC8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v11 M8 10l4 4 4-4 M4 18.5h16"/></svg></span><span class="ico ico-app" data-icon="refresh" aria-hidden="true" style="width:16px;height:16px;--c1:#FFB347;--c2:#FF7A00"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 0 1 14-5.2M20 12a8 8 0 0 1-14 5.2 M17 3v4h-4 M7 21v-4h4"/></svg></span><span class="ico ico-app" data-icon="globe" aria-hidden="true" style="width:16px;height:16px;--c1:#4FD1E8;--c2:#0A84FF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z M3 12h18 M12 3c2.8 2.5 2.8 15.5 0 18 M12 3c-2.8 2.5-2.8 15.5 0 18"/></svg></span><span class="ico ico-app" data-icon="clock" aria-hidden="true" style="width:16px;height:16px;--c1:#6E6E76;--c2:#2C2C30"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z M12 7v5l3.5 2"/></svg></span><span class="ico ico-app" data-icon="help" aria-hidden="true" style="width:16px;height:16px;--c1:#8F8CFF;--c2:#5856D6"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z M9.5 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-.9.8-.9 1.4v.3 M12 17h.01"/></svg></span><span class="ico ico-app" data-icon="pc" aria-hidden="true" style="width:16px;height:16px;--c1:#FFB347;--c2:#FF7A00"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h18v12H3z M8 20h8 M12 16v4"/></svg></span><span class="ico ico-app" data-icon="checklist" aria-hidden="true" style="width:16px;height:16px;--c1:#FFD54A;--c2:#F2A900"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 6h10 M10 12h10 M10 18h10 M4 6l1.2 1.2L7.5 5 M4 12l1.2 1.2L7.5 11 M4 18l1.2 1.2L7.5 17"/></svg></span><span class="ico ico-app" data-icon="glossary" aria-hidden="true" style="width:16px;height:16px;--c1:#FF8F70;--c2:#E5484D"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z M5 19.5A1.5 1.5 0 0 0 6.5 21H19"/></svg></span><span class="ico ico-app" data-icon="warning" aria-hidden="true" style="width:16px;height:16px;--c1:#FFD54A;--c2:#FF9500"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5 21.5 20h-19z M12 10v4 M12 17h.01"/></svg></span><span class="ico ico-app" data-icon="info" aria-hidden="true" style="width:16px;height:16px;--c1:#5AC8FA;--c2:#0A6CFF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18z M12 11v6 M12 7.5h.01"/></svg></span><span class="ico ico-app" data-icon="user" aria-hidden="true" style="width:16px;height:16px;--c1:#A1A1A8;--c2:#5A5A60"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg></span><span class="ico ico-app" data-icon="note" aria-hidden="true" style="width:16px;height:16px;--c1:#FFE066;--c2:#F5B700"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z M14.5 3v4.5H19 M9 12h7 M9 16h5"/></svg></span><span class="ico ico-app" data-icon="send" aria-hidden="true" style="width:16px;height:16px;--c1:#5AC8FA;--c2:#0A6CFF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 3 3 10.5l7 3 3 7z M10 13.5 21 3"/></svg></span><span class="ico ico-app" data-icon="phone" aria-hidden="true" style="width:16px;height:16px;--c1:#4CD964;--c2:#1F9D45"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></svg></span><span class="ico ico-app" data-icon="chat" aria-hidden="true" style="width:16px;height:16px;--c1:#4CD964;--c2:#1F9D45"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5A2 2 0 0 1 6 3.5h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-4 3.5v-3.5H6a2 2 0 0 1-2-2z"/></svg></span><span class="ico ico-app" data-icon="bulb" aria-hidden="true" style="width:16px;height:16px;--c1:#FFD54A;--c2:#FF9F0A"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6 M10 21h4 M12 3a6 6 0 0 0-3.8 10.6c.6.5.8 1.2.8 1.9V16h6v-.5c0-.7.3-1.4.8-1.9A6 6 0 0 0 12 3z"/></svg></span><span class="ico ico-app" data-icon="book" aria-hidden="true" style="width:16px;height:16px;--c1:#FF7B7B;--c2:#E5383B"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16v14H4z M4 10h16 M8 3v4 M16 3v4 M8 14h3 M13 14h3 M8 17h3"/></svg></span><span class="ico ico-app" data-icon="reviews" aria-hidden="true" style="width:16px;height:16px;--c1:#FFD54A;--c2:#FF9F0A"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span><span class="ico ico-app" data-icon="launchpad" aria-hidden="true" style="width:16px;height:16px;--c1:#7D96FF;--c2:#3D4FD6"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4h4v4H4z M10 4h4v4h-4z M16 4h4v4h-4z M4 10h4v4H4z M10 10h4v4h-4z M16 10h4v4h-4z M4 16h4v4H4z M10 16h4v4h-4z M16 16h4v4h-4z"/></svg></span><span class="ico ico-app" data-icon="control" aria-hidden="true" style="width:16px;height:16px;--c1:#A1A1A8;--c2:#5A5A60"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h10 M18 7h2 M4 17h2 M10 17h10 M16 5v4 M8 15v4"/></svg></span><span class="ico ico-app" data-icon="mission" aria-hidden="true" style="width:16px;height:16px;--c1:#5AC8FA;--c2:#2C6BD6"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 6h9v7H2z M13 6h9v7h-9z M7 15h10v5H7z"/></svg></span><span class="ico ico-app" data-icon="key" aria-hidden="true" style="width:16px;height:16px;--c1:#8E8E96;--c2:#3A3A40"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3a6 6 0 1 0 0 12 6 6 0 0 0 0-12z M10.8 13.2 3 21 M6 18l2 2 M8.5 15.5l2 2"/></svg></span><span class="ico ico-app" data-icon="ruler" aria-hidden="true" style="width:16px;height:16px;--c1:#64D2FF;--c2:#0A84FF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 17 17 3l4 4L7 21z M7 13l2 2 M10 10l2 2 M13 7l2 2"/></svg></span><span class="ico ico-app" data-icon="w11" aria-hidden="true" style="width:16px;height:16px;--c1:#4FD1E8;--c2:#0A84FF"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16v11H4z M2 20h20 M9 10.5l2 2 4-4"/></svg></span><span class="ico ico-app" data-icon="search" aria-hidden="true" style="width:16px;height:16px;--c1:#A1A1A8;--c2:#5A5A60"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.5 4a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13z M20 20l-4.6-4.6"/></svg></span></div>
 
     <!-- Footer -->
     <footer class="site-footer">
       <div class="wrap footer-row">
         <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
         <div class="footer-links">
-          <a class="link-underline" href="#services">Services</a>
-          <a class="link-underline" href="#about">About</a>
-          <a class="link-underline" href="#contact">Contact</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
     </footer>
@@ -399,6 +412,8 @@
   </div>
 
 <script src="js/nav.js"></script>
+<script src="js/desktop.js"></script>
+<script src="js/forms.js"></script>
 
 </body>
 
