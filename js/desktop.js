@@ -42,7 +42,7 @@
   var PAGE_ICONS = {
     prices: "prices", software: "software", blog: "tips", resources: "tools",
     troubleshoot: "help", "repair-or-replace": "pc", "cheat-sheets": "checklist",
-    glossary: "glossary", "heads-up": "warning", tools: "tools", search: "help"
+    glossary: "glossary", "heads-up": "warning", tools: "tools", search: "help", quote: "note"
   };
 
   var GEO_KEY = "yuwri-geo-v1";
@@ -906,6 +906,7 @@
     ["#" + servicesId, "services", isPT ? "Serviços" : "Services"],
     ["prices/", "prices", isPT ? "Preços" : "Prices"],
     ["#" + bookId, "book", L.bookVisit],
+    ["quote/", "note", isPT ? "Pedir Orçamento" : "Get a Quote"],
     ["software/", "software", "Software"],
     ["blog/", "tips", isPT ? "Dicas" : "Tips"],
     ["troubleshoot/", "help", isPT ? "Assistente" : "Troubleshooter"],
@@ -916,6 +917,7 @@
     ["tools/windows-11-checker/", "w11", isPT ? "Pronto para o Windows 11?" : "Windows 11 Check"],
     ["tools/password-generator/", "key", isPT ? "Gerador de Palavras-passe" : "Passwords"],
     ["tools/file-size-converter/", "ruler", isPT ? "Conversor de Tamanhos" : "File Sizes"],
+    ["tools/safe-temp-cleaner/", "download", isPT ? "Limpeza de Temporários" : "Temp Cleaner"],
     ["resources/", "tools", isPT ? "Recursos" : "Resources"],
     ["#" + (isPT ? "testemunhos" : "testimonials"), "reviews", isPT ? "Opiniões" : "Reviews"],
     ["#" + aboutId, "user", isPT ? "Sobre" : "About"],

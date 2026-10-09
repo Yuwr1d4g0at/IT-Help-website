@@ -4440,3 +4440,156 @@ html.embedded {
     display: none;
   }
 }
+
+/* -------------------------------------------------------------------------
+   Code in articles, the Safe Temp Cleaner download, the quote form
+   ------------------------------------------------------------------------- */
+
+.article-body code {
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: var(--fill);
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  overflow-wrap: anywhere;
+}
+
+.article-body pre {
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--fill);
+  overflow-x: auto;
+  line-height: 1.55;
+}
+
+.article-body pre code {
+  padding: 0;
+  background: none;
+  font-size: 13.5px;
+  overflow-wrap: normal;
+  white-space: pre;
+}
+
+.download-box {
+  margin: 0 0 24px;
+  padding: 18px 20px;
+  border-radius: var(--radius);
+  background: var(--fill);
+}
+
+.download-box .btn {
+  margin-bottom: 12px;
+}
+
+.article-body .download-box .btn-primary {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.download-box p {
+  margin: 0 0 8px;
+  font-size: 14.5px;
+}
+
+.download-box p:last-child {
+  margin-bottom: 0;
+}
+
+.hash {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+.quote-form {
+  margin-top: 6px;
+}
+
+.quote-form .hp-field {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.quote-form .consent {
+  grid-column: 2;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13.5px;
+  text-align: left;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.quote-form .consent input {
+  flex: none;
+  width: auto;
+  margin-top: 3px;
+  padding: 0;
+  box-shadow: none;
+  accent-color: var(--accent);
+}
+
+.quote-form .field-hint {
+  grid-column: 2;
+  margin: -4px 0 0;
+  font-size: 12.5px;
+  color: var(--ink-muted);
+}
+
+.quote-form [aria-invalid="true"] {
+  box-shadow: inset 0 0 0 1px #D70015, 0 0 0 3px rgba(215, 0, 21, 0.15);
+}
+
+.quote-form .form-status {
+  text-align: left;
+  font-size: 14px;
+}
+
+.quote-form .form-status.is-error {
+  color: #D70015;
+}
+
+.quote-form .form-status.is-ok {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.quote-form .form-status a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .quote-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .quote-form > label {
+    text-align: left;
+    padding-top: 0;
+  }
+
+  .quote-form .consent,
+  .quote-form .field-hint {
+    grid-column: 1;
+  }
+}
+
+.mail-body .quote-link {
+  margin-top: -8px;
+  font-size: 14.5px;
+  color: var(--ink-muted);
+}
+
+.mail-body .quote-link a {
+  color: var(--accent);
+  font-weight: 600;
+}

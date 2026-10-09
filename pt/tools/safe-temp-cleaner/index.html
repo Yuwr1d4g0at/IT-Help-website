@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../../../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="limpar ficheiros temporários, apagar temporários Windows, libertar espaço, script PowerShell de limpeza, limpeza segura, suporte informático Seixal" />
+  <meta name="description" content="Um script de PowerShell gratuito que mostra os ficheiros temporários antigos no Windows e só os apaga depois de dizer que sim. Sem registo, sem pastas pessoais, sem ligação à internet." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Limpeza Segura de Temporários (Download Gratuito) | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/safe-temp-cleaner/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/safe-temp-cleaner/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/safe-temp-cleaner/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuwri.pt/pt/tools/safe-temp-cleaner/" />
+  <meta property="og:title" content="Yuwri | Limpeza Segura de Temporários" />
+  <meta property="og:description" content="Um script gratuito que mostra os ficheiros temporários antigos no Windows e só os apaga depois de dizer que sim." />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:locale:alternate" content="en" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yuwri | Limpeza Segura de Temporários" />
+  <meta name="twitter:description" content="Um script gratuito que mostra os ficheiros temporários antigos no Windows e só os apaga depois de dizer que sim." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://yuwri.pt/pt/" },
+      { "@type": "ListItem", "position": 2, "name": "Recursos", "item": "https://yuwri.pt/pt/resources/" },
+      { "@type": "ListItem", "position": 3, "name": "Limpeza Segura de Temporários", "item": "https://yuwri.pt/pt/tools/safe-temp-cleaner/" }
+    ]
+  }
+  </script>
+
+
+  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <link href="../../../css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+  <div id="top">
+
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a class="link-underline" href="../../#servicos">Serviços</a>
+          <a class="link-underline" href="../../prices/">Preços</a>
+          <a class="link-underline" href="../../software/">Software</a>
+          <a class="link-underline" href="../../blog/">Dicas</a>
+          <a class="link-underline" href="../../resources/">Recursos</a>
+          <a class="link-underline" href="../../#sobre">Sobre</a>
+          <a class="link-underline" href="../../#contacto">Contactos</a>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="nav-actions">
+          <a href="../../../tools/safe-temp-cleaner/" class="lang-switch mono" lang="en" hreflang="en">EN</a>
+          <a href="../../#contacto" class="btn btn-primary btn-sm">Contacte-me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../../">Início</a>
+          <span class="sep">/</span>
+          <a href="../../resources/">Recursos</a>
+          <span class="sep">/</span>
+          <span class="current">Limpeza Segura de Temporários</span>
+        </nav>
+        <h1>Limpeza Segura de Temporários</h1>
+        <p>Um pequeno script de PowerShell, gratuito, para Windows 10 e 11. Mostra-lhe que ficheiros temporários antigos podem sair e quanto espaço ocupam, e só os apaga depois de dizer que sim.</p>
+      </div>
+    </section>
+
+    <!-- Download -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="article-body">
+
+          <div class="download-box">
+            <a class="btn btn-primary" href="../../../downloads/yuwri-safe-temp-cleaner.ps1" download>Descarregar a Limpeza Segura de Temporários</a>
+            <p><strong>Ficheiro:</strong> yuwri-safe-temp-cleaner.ps1 (14 KB, versão 1.0, outubro de 2026)</p>
+            <p><strong>SHA-256:</strong> <code class="hash">2e9835b7baa3297352ae2e2fd48f257316b4de695ca8c49d34274b2b3c94b196</code></p>
+            <p>As mensagens do script estão em inglês, mas são simples. Esta página explica tudo o que aparece.</p>
+          </div>
+
+          <h2>O que faz</h2>
+          <ul>
+            <li><strong>Primeiro mostra, sempre.</strong> Por predefinição apenas lista o que iria apagar e o tamanho total. Nada é apagado até escrever <strong>Y</strong> e carregar em Enter. Qualquer outra resposta sai sem mexer em nada.</li>
+            <li><strong>A sua pasta temporária</strong> (<code>%TEMP%</code>): só ficheiros que não foram alterados nas últimas 24 horas.</li>
+            <li><strong>A pasta temporária do Windows</strong> (<code>C:\Windows\Temp</code>): a mesma regra, mas só quando o executa como administrador. Caso contrário, é ignorada, com uma nota a dizê-lo.</li>
+            <li><strong>A cache de transferências do Windows Update</strong>: só se o executar como administrador <em>e</em> o pedir com <code>-IncludeUpdateCache</code>. Primeiro para os serviços Windows Update e BITS, depois esvazia <code>C:\Windows\SoftwareDistribution\Download</code> e no fim volta a iniciar os serviços, mesmo que algo corra mal.</li>
+            <li><strong>Ficheiros em uso são ignorados</strong> e contados, nunca forçados.</li>
+          </ul>
+
+          <h2>O que nunca faz</h2>
+          <ul>
+            <li>Nunca mexe na Reciclagem, nas Transferências, nos Documentos, no Ambiente de Trabalho nem noutras pastas pessoais.</li>
+            <li>Nunca mexe nos perfis dos navegadores, na cache dos navegadores nem em palavras-passe guardadas.</li>
+            <li>Nunca mexe no registo do Windows.</li>
+            <li>Não se liga à internet e não envia nada para lado nenhum.</li>
+            <li>Nunca tenta dar a si próprio direitos de administrador. Se quiser as partes que precisam deles, é o utilizador que escolhe executá-lo como administrador.</li>
+          </ul>
+
+          <h2>Como o usar</h2>
+          <ol>
+            <li>Descarregue o ficheiro e guarde-o num sítio fácil de encontrar, como o Ambiente de Trabalho.</li>
+            <li>Se quiser, abra-o primeiro no Bloco de Notas e leia-o. É texto simples, com comentários a explicar cada parte.</li>
+            <li>Clique no ficheiro com o botão direito e escolha <strong>Executar com o PowerShell</strong>. Vai ver a pré-visualização e depois a pergunta.</li>
+          </ol>
+          <p>Para incluir a <code>C:\Windows\Temp</code>, abra o PowerShell como administrador (clique com o botão direito no botão Iniciar e escolha <strong>Terminal (Administrador)</strong> ou <strong>Windows PowerShell (Administrador)</strong>), vá até à pasta onde o guardou e execute:</p>
+          <pre><code>powershell -ExecutionPolicy Bypass -File .\yuwri-safe-temp-cleaner.ps1</code></pre>
+          <p>O <code>-ExecutionPolicy Bypass</code> só se aplica a essa execução. Não altera nenhuma definição do computador. Acrescente <code>-IncludeUpdateCache</code> no fim para limpar também a cache de transferências do Windows Update, ou <code>-ShowAll</code> para ver todos os ficheiros na pré-visualização, e não só os maiores.</p>
+
+          <h2>Confirme que o ficheiro é o original</h2>
+          <p>Antes de executar um script descarregado da internet, é boa ideia confirmar que não foi alterado pelo caminho. No PowerShell, na pasta onde o guardou, execute:</p>
+          <pre><code>Get-FileHash .\yuwri-safe-temp-cleaner.ps1 -Algorithm SHA256</code></pre>
+          <p>O resultado tem de ser exatamente igual ao SHA-256 indicado acima. Se não for, não o execute e avise-me.</p>
+
+          <h2>Fornecido tal como está</h2>
+          <p>O script é gratuito e fornecido tal como está, sem qualquer garantia. Fi-lo propositadamente cauteloso, mas a utilização é da sua responsabilidade. Se tem ficheiros importantes, confirme que tem uma <a href="../../blog/how-to-back-up-your-computer/">cópia de segurança</a> antes de qualquer limpeza.</p>
+          <p>Quer o panorama completo? O guia para <a href="../../blog/safe-pc-cleanup/">limpar o PC em segurança</a> explica o que mais pode limpar sem riscos, e o que deve deixar estar. E se preferir que seja eu a tratar disso, <a href="../../#contacto">entre em contacto</a>.</p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../../#servicos">Serviços</a>
+          <a class="link-underline" href="../../#sobre">Sobre</a>
+          <a class="link-underline" href="../../#contacto">Contactos</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+<script src="../../../js/nav.js"></script>
+
+</body>
+
+</html>
