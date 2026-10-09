@@ -365,4 +365,46 @@
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/windows-11-checker/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/windows-11-checker/" />
   </url>
+  <url>
+    <loc>https://yuwri.pt/quote/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/quote/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/quote/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/quote/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/pt/quote/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/quote/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/quote/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/quote/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/blog/safe-pc-cleanup/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/safe-pc-cleanup/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/safe-pc-cleanup/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/safe-pc-cleanup/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/pt/blog/safe-pc-cleanup/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/safe-pc-cleanup/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/safe-pc-cleanup/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/safe-pc-cleanup/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/tools/safe-temp-cleaner/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/safe-temp-cleaner/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/safe-temp-cleaner/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/safe-temp-cleaner/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/pt/tools/safe-temp-cleaner/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/safe-temp-cleaner/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/safe-temp-cleaner/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/safe-temp-cleaner/" />
+  </url>
 </urlset>

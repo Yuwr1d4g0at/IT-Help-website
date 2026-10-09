@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="clean up PC safely, free disk space Windows, Disk Cleanup, Storage Sense, delete temp files, duplicate files PowerShell, registry cleaner, Seixal computer repair" />
+  <meta name="description" content="What's actually safe to clean on a Windows PC to free up space, what to leave alone, and why I don't use registry cleaners. Plain-language steps anyone can follow." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Cleaning Up Your PC Safely: What to Delete and What to Leave Alone | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/safe-pc-cleanup/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/safe-pc-cleanup/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/safe-pc-cleanup/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://yuwri.pt/blog/safe-pc-cleanup/" />
+  <meta property="og:title" content="Cleaning Up Your PC Safely: What to Delete and What to Leave Alone" />
+  <meta property="og:description" content="The clean-ups that are safe on any Windows PC, the ones to skip, and why registry cleaners aren't worth it." />
+  <meta property="og:locale" content="en" />
+  <meta property="og:locale:alternate" content="pt_PT" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Computer Repair in Seixal" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cleaning Up Your PC Safely: What to Delete and What to Leave Alone" />
+  <meta name="twitter:description" content="What's safe to clean on Windows, what to skip, and why registry cleaners aren't worth it." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Cleaning Up Your PC Safely",
+    "description": "What's actually safe to clean on a Windows PC to free up space, what to leave alone, and why I don't use registry cleaners. Plain-language steps anyone can follow.",
+    "url": "https://yuwri.pt/blog/safe-pc-cleanup/",
+    "inLanguage": "en",
+    "datePublished": "2026-10-09",
+    "dateModified": "2026-10-09",
+    "author": { "@type": "Organization", "name": "Yuwri", "url": "https://yuwri.pt/" },
+    "publisher": { "@type": "Organization", "name": "Yuwri", "url": "https://yuwri.pt/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yuwri.pt/blog/safe-pc-cleanup/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://yuwri.pt/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tips",
+        "item": "https://yuwri.pt/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Cleaning Up Your PC Safely",
+        "item": "https://yuwri.pt/blog/safe-pc-cleanup/"
+      }
+    ]
+  }
+  </script>
+
+
+  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <link href="../../css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+  <div id="top">
+
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a class="link-underline" href="../../#services">Services</a>
+          <a class="link-underline" href="../../prices/">Prices</a>
+          <a class="link-underline" href="../../software/">Software</a>
+          <a class="link-underline" href="../">Tips</a>
+          <a class="link-underline" href="../../resources/">Resources</a>
+          <a class="link-underline" href="../../#about">About</a>
+          <a class="link-underline" href="../../#contact">Contact</a>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="nav-actions">
+          <a href="../../pt/blog/safe-pc-cleanup/" class="lang-switch mono" lang="pt-PT" hreflang="pt-PT">PT</a>
+          <a href="../../#contact" class="btn btn-primary btn-sm">Contact Me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <h1>Cleaning Up Your PC Safely: What to Delete and What to Leave Alone</h1>
+      </div>
+    </section>
+
+    <!-- Article -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../../">Home</a>
+          <span class="sep">/</span>
+          <a href="../">Tips</a>
+          <span class="sep">/</span>
+          <span class="current">Cleaning Up Your PC Safely</span>
+        </nav>
+        <div class="article-body">
+
+          <div class="article-meta">
+            <span>October 2026</span>
+          </div>
+
+          <p>When a computer runs out of space, the temptation is to start deleting whatever looks big or unfamiliar. That's how people end up with programs that won't open or a Windows that won't start. The good news: the things that are actually safe to clean are easy to get to, and Windows already has most of the tools built in. Here's what I clean on a client's PC, and what I leave alone.</p>
+
+          <p>Before anything else: if there are files on the computer you'd be upset to lose, make sure they're copied somewhere else first. <a href="../how-to-back-up-your-computer/">This guide to backups</a> keeps it simple.</p>
+
+          <h2>1. Let Windows do the heavy lifting: Storage Sense and Disk Cleanup</h2>
+          <p>Go to <strong>Settings &gt; System &gt; Storage</strong>. Windows shows what's using the space and offers <strong>Cleanup recommendations</strong>. Turn on <strong>Storage Sense</strong> too, and Windows will clear out temporary files on its own from then on.</p>
+          <p>The older <strong>Disk Cleanup</strong> tool is still there and still useful. Type "Disk Cleanup" in the Start menu, pick the C: drive, then click <strong>Clean up system files</strong>. That second step is the important one: it unlocks the bigger items, like leftover Windows Update files. Almost everything it offers is safe to tick. Two boxes deserve a second look: <strong>Downloads</strong>, because it really does empty your Downloads folder, and <strong>Previous Windows installation(s)</strong>, because after a big upgrade it removes the option to go back to the old version.</p>
+
+          <h2>2. Temporary files</h2>
+          <p>Programs leave temporary files behind all the time, in two main places: your own temp folder (press <strong>Windows + R</strong>, type <code>%TEMP%</code> and press Enter) and <code>C:\Windows\Temp</code>. Deleting old files from these folders is safe. Some files will be in use and Windows will refuse to delete them. That's fine: tick "Do this for all current items" and choose <strong>Skip</strong>. A restart frees most of them.</p>
+          <p>If you'd rather not do this by hand, I wrote a small free tool for it, the <a href="../../tools/safe-temp-cleaner/">Safe Temp Cleaner</a>. It shows you what it would remove first, and only deletes after you say yes. More on it below.</p>
+
+          <h2>3. Browser caches, from inside the browser</h2>
+          <p>Browsers keep a cache of images and pages to load sites faster. It can grow to a few gigabytes, and clearing it is safe. Do it from the browser's own settings, not by deleting folders: in Chrome, Edge and Firefox, press <strong>Ctrl + Shift + Delete</strong>, choose <strong>Cached images and files</strong> and clear it. Leave <strong>passwords</strong> and <strong>cookies</strong> unticked unless you know you want them gone, otherwise you'll be logged out of everything.</p>
+
+          <h2>4. Old Windows Update files</h2>
+          <p>Windows keeps update files around after installing them. In Disk Cleanup (after clicking "Clean up system files"), tick <strong>Windows Update Cleanup</strong> and <strong>Delivery Optimization Files</strong>: that's the safe way to clear what's no longer needed.</p>
+          <p>The downloads themselves sit in <code>C:\Windows\SoftwareDistribution\Download</code>. That folder can be emptied, but only with the Windows Update service stopped, never while it's working. Don't delete it by hand. My cleaner (below) can do it properly if you ask it to: it stops the service, clears the folder and starts the service again.</p>
+
+          <h2>5. Duplicate files</h2>
+          <p>Photos copied from a phone three times, the same video in Downloads and on the Desktop: duplicates add up. There are tools for this, but you can also check with PowerShell, which is already on your PC. This snippet only <strong>reports</strong> duplicates in your Pictures folder. It doesn't delete, move or change anything:</p>
+          <pre><code>$folder = "$env:USERPROFILE\Pictures"
+Get-ChildItem -Path $folder -File -Recurse -ErrorAction SilentlyContinue |
+  Get-FileHash -Algorithm SHA256 |
+  Group-Object -Property Hash |
+  Where-Object Count -gt 1 |
+  ForEach-Object { "--- $($_.Count) identical files ---"; $_.Group.Path }</code></pre>
+          <p>Open PowerShell from the Start menu, paste it in and press Enter. Change the first line to check a different folder. Each group it prints is a set of files with exactly the same content. Then look through them yourself and decide which copy to keep. On a big folder it can take a few minutes.</p>
+
+          <h2>6. Broken shortcuts</h2>
+          <p>After uninstalling programs, you often end up with shortcuts on the Desktop or in the Start menu that point to nothing. Clicking one gives an error, or Windows asks if you want to delete it. Deleting a shortcut is always safe: it's just a link, not the program itself.</p>
+
+          <h2>7. Programs you don't use</h2>
+          <p>Go to <strong>Settings &gt; Apps &gt; Installed apps</strong> and sort by size. Trial software that came with the computer, games nobody plays, three different PDF readers: uninstall them from here (never by deleting their folder). If you don't recognise a name, search for it before removing it. Things with the name of your computer's brand, or words like "driver", "audio" or "chipset", are usually best left alone.</p>
+
+          <h2>What to leave alone</h2>
+          <ul>
+            <li><strong>The Windows folder</strong>, and especially <code>WinSxS</code> and <code>System32</code>. They look huge, but Windows needs them. Disk Cleanup already trims what can safely go.</li>
+            <li><strong>Program Files</strong> and <strong>AppData</strong>. Removing folders here breaks programs. Uninstall properly instead.</li>
+            <li><strong>pagefile.sys</strong> and <strong>hiberfil.sys</strong>. Windows manages these itself.</li>
+            <li><strong>Anything you don't recognise</strong> just because it's big. When in doubt, ask first.</li>
+          </ul>
+
+          <h2>Why I don't use registry cleaners</h2>
+          <p>Registry cleaners promise a faster PC by "fixing errors" in the registry, the database where Windows keeps its settings. I don't use them, and I don't recommend them:</p>
+          <ul>
+            <li><strong>Microsoft doesn't support them.</strong> Microsoft's own guidance is that it doesn't support registry cleaners, and that problems they cause may not be fixable without reinstalling Windows.</li>
+            <li><strong>There's little or no speed to gain.</strong> A few thousand leftover entries in a database that size make no noticeable difference. The "errors" they count are mostly harmless.</li>
+            <li><strong>They can break things.</strong> Remove the wrong entry and files stop opening with the right program, an app won't start, or an update fails. The risk is real and the reward is close to zero.</li>
+          </ul>
+          <p>If a PC is slow, the cause is almost always somewhere else. The <a href="../slow-pc-what-to-do/">slow PC checklist</a> covers what actually helps.</p>
+
+          <h2>The Safe Temp Cleaner (free)</h2>
+          <p>To make the temp-file part easy, I wrote a small PowerShell script: the <a href="../../tools/safe-temp-cleaner/">Yuwri Safe Temp Cleaner</a>. By default it only <strong>previews</strong>: it lists the temporary files older than 24 hours and how much space they take, and deletes nothing until you type Y. It never touches the Recycle Bin, your personal folders, your browsers or the registry, and it doesn't connect to the internet. The page explains exactly what it does and how to check the file is the original.</p>
+
+          <h2>Rather not do it yourself?</h2>
+          <p>That's completely fine. A tidy-up is something I do all the time, carefully, and I'll tell you what's taking the space before anything gets deleted.</p>
+
+          <p><a href="../../#contact">Get in touch and I'll help you free up some space &rarr;</a></p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../../#services">Services</a>
+          <a class="link-underline" href="../../#about">About</a>
+          <a class="link-underline" href="../../#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+<script src="../../js/nav.js"></script>
+
+</body>
+
+</html>

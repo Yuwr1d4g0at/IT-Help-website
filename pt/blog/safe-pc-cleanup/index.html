@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../../../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="limpar o PC em segurança, libertar espaço Windows, Limpeza do Disco, Sensor de Armazenamento, apagar ficheiros temporários, ficheiros duplicados PowerShell, limpador de registo, reparação de computadores Seixal" />
+  <meta name="description" content="O que é mesmo seguro limpar num PC com Windows para libertar espaço, o que deve deixar estar e porque é que não uso limpadores de registo. Passos simples que qualquer pessoa consegue seguir." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Limpar o PC em Segurança: O Que Apagar e O Que Deixar Estar | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/safe-pc-cleanup/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/safe-pc-cleanup/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/safe-pc-cleanup/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://yuwri.pt/pt/blog/safe-pc-cleanup/" />
+  <meta property="og:title" content="Limpar o PC em Segurança: O Que Apagar e O Que Deixar Estar" />
+  <meta property="og:description" content="As limpezas que são seguras em qualquer PC com Windows, as que deve evitar e porque é que os limpadores de registo não valem a pena." />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:locale:alternate" content="en" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Limpar o PC em Segurança: O Que Apagar e O Que Deixar Estar" />
+  <meta name="twitter:description" content="O que é seguro limpar no Windows, o que evitar e porque é que os limpadores de registo não valem a pena." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Limpar o PC em Segurança",
+    "description": "O que é mesmo seguro limpar num PC com Windows para libertar espaço, o que deve deixar estar e porque é que não uso limpadores de registo. Passos simples que qualquer pessoa consegue seguir.",
+    "url": "https://yuwri.pt/pt/blog/safe-pc-cleanup/",
+    "inLanguage": "pt-PT",
+    "datePublished": "2026-10-09",
+    "dateModified": "2026-10-09",
+    "author": { "@type": "Organization", "name": "Yuwri", "url": "https://yuwri.pt/" },
+    "publisher": { "@type": "Organization", "name": "Yuwri", "url": "https://yuwri.pt/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yuwri.pt/pt/blog/safe-pc-cleanup/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Início",
+        "item": "https://yuwri.pt/pt/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Dicas",
+        "item": "https://yuwri.pt/pt/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Limpar o PC em Segurança",
+        "item": "https://yuwri.pt/pt/blog/safe-pc-cleanup/"
+      }
+    ]
+  }
+  </script>
+
+
+  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <link href="../../../css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+  <div id="top">
+
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a class="link-underline" href="../../#servicos">Serviços</a>
+          <a class="link-underline" href="../../prices/">Preços</a>
+          <a class="link-underline" href="../../software/">Software</a>
+          <a class="link-underline" href="../">Dicas</a>
+          <a class="link-underline" href="../../resources/">Recursos</a>
+          <a class="link-underline" href="../../#sobre">Sobre</a>
+          <a class="link-underline" href="../../#contacto">Contactos</a>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="nav-actions">
+          <a href="../../../blog/safe-pc-cleanup/" class="lang-switch mono" lang="en" hreflang="en">EN</a>
+          <a href="../../#contacto" class="btn btn-primary btn-sm">Contacte-me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <h1>Limpar o PC em Segurança: O Que Apagar e O Que Deixar Estar</h1>
+      </div>
+    </section>
+
+    <!-- Article -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../../">Início</a>
+          <span class="sep">/</span>
+          <a href="../">Dicas</a>
+          <span class="sep">/</span>
+          <span class="current">Limpar o PC em Segurança</span>
+        </nav>
+        <div class="article-body">
+
+          <div class="article-meta">
+            <span>Outubro de 2026</span>
+          </div>
+
+          <p>Quando um computador fica sem espaço, a tentação é começar a apagar tudo o que parece grande ou desconhecido. É assim que se acaba com programas que não abrem ou um Windows que não arranca. A boa notícia: o que é mesmo seguro limpar está à mão, e o Windows já traz quase todas as ferramentas de que precisa. Deixo aqui o que eu limpo no PC de um cliente, e o que deixo estar.</p>
+
+          <p>Antes de mais nada: se há ficheiros no computador que lhe custaria perder, confirme que estão copiados para outro sítio. <a href="../how-to-back-up-your-computer/">Este guia de cópias de segurança</a> explica como, de forma simples.</p>
+
+          <h2>1. Deixe o Windows fazer o trabalho pesado: Sensor de Armazenamento e Limpeza do Disco</h2>
+          <p>Vá a <strong>Definições &gt; Sistema &gt; Armazenamento</strong>. O Windows mostra o que está a ocupar espaço e sugere <strong>Recomendações de limpeza</strong>. Ative também o <strong>Sensor de Armazenamento</strong>, e a partir daí o Windows vai apagando ficheiros temporários sozinho.</p>
+          <p>A ferramenta mais antiga, a <strong>Limpeza do Disco</strong>, continua lá e continua a ser útil. Escreva "Limpeza do Disco" no menu Iniciar, escolha a unidade C: e clique em <strong>Limpar ficheiros do sistema</strong>. Este segundo passo é o importante: é ele que mostra os itens maiores, como restos de atualizações do Windows. Quase tudo o que aparece é seguro de selecionar. Há duas opções que merecem um segundo olhar: <strong>Transferências</strong>, porque esvazia mesmo a sua pasta de Transferências, e <strong>Instalações anteriores do Windows</strong>, porque depois de uma grande atualização tira-lhe a possibilidade de voltar à versão antiga.</p>
+
+          <h2>2. Ficheiros temporários</h2>
+          <p>Os programas deixam ficheiros temporários para trás a toda a hora, sobretudo em dois sítios: a sua pasta temporária (carregue em <strong>Windows + R</strong>, escreva <code>%TEMP%</code> e carregue em Enter) e <code>C:\Windows\Temp</code>. Apagar ficheiros antigos destas pastas é seguro. Alguns vão estar em uso e o Windows não os deixa apagar. Não faz mal: marque "Fazer isto para todos os itens atuais" e escolha <strong>Ignorar</strong>. Um reinício liberta a maior parte deles.</p>
+          <p>Se preferir não fazer isto à mão, escrevi uma pequena ferramenta gratuita para isso, a <a href="../../tools/safe-temp-cleaner/">Limpeza Segura de Temporários</a>. Primeiro mostra-lhe o que iria apagar, e só apaga depois de dizer que sim. Falo mais dela abaixo.</p>
+
+          <h2>3. Cache do navegador, a partir do próprio navegador</h2>
+          <p>Os navegadores guardam uma cache de imagens e páginas para os sites abrirem mais depressa. Pode chegar a alguns gigabytes, e limpá-la é seguro. Faça-o nas definições do próprio navegador, não apagando pastas: no Chrome, no Edge e no Firefox, carregue em <strong>Ctrl + Shift + Delete</strong>, escolha <strong>Imagens e ficheiros em cache</strong> e limpe. Deixe as <strong>palavras-passe</strong> e os <strong>cookies</strong> por marcar, a não ser que queira mesmo apagá-los, senão a sessão termina em todo o lado.</p>
+
+          <h2>4. Ficheiros antigos do Windows Update</h2>
+          <p>O Windows guarda os ficheiros das atualizações depois de as instalar. Na Limpeza do Disco (depois de clicar em "Limpar ficheiros do sistema"), marque <strong>Limpeza do Windows Update</strong> e <strong>Ficheiros de Otimização da Entrega</strong>: é a forma segura de apagar o que já não é preciso.</p>
+          <p>As transferências em si ficam em <code>C:\Windows\SoftwareDistribution\Download</code>. Essa pasta pode ser esvaziada, mas só com o serviço Windows Update parado, nunca enquanto está a trabalhar. Não a apague à mão. A minha ferramenta (mais abaixo) faz isso como deve ser, se lho pedir: para o serviço, limpa a pasta e volta a iniciá-lo.</p>
+
+          <h2>5. Ficheiros duplicados</h2>
+          <p>Fotografias copiadas do telemóvel três vezes, o mesmo vídeo nas Transferências e no Ambiente de Trabalho: os duplicados vão-se acumulando. Há programas para isto, mas também pode verificar com o PowerShell, que já vem no seu PC. Este excerto apenas <strong>mostra</strong> os duplicados da sua pasta Imagens. Não apaga, não move e não altera nada:</p>
+          <pre><code>$folder = "$env:USERPROFILE\Pictures"
+Get-ChildItem -Path $folder -File -Recurse -ErrorAction SilentlyContinue |
+  Get-FileHash -Algorithm SHA256 |
+  Group-Object -Property Hash |
+  Where-Object Count -gt 1 |
+  ForEach-Object { "--- $($_.Count) identical files ---"; $_.Group.Path }</code></pre>
+          <p>Abra o PowerShell a partir do menu Iniciar, cole o excerto e carregue em Enter. Mude a primeira linha para verificar outra pasta (a pasta Imagens chama-se <code>Pictures</code> por baixo, mesmo com o Windows em português). Cada grupo que aparece é um conjunto de ficheiros com exatamente o mesmo conteúdo. Depois veja-os com calma e decida qual cópia quer guardar. Numa pasta grande pode demorar alguns minutos.</p>
+
+          <h2>6. Atalhos que já não funcionam</h2>
+          <p>Depois de desinstalar programas, é comum ficarem atalhos no Ambiente de Trabalho ou no menu Iniciar que não apontam para nada. Ao clicar dá erro, ou o Windows pergunta se o quer apagar. Apagar um atalho é sempre seguro: é só uma ligação, não é o programa.</p>
+
+          <h2>7. Programas que não usa</h2>
+          <p>Vá a <strong>Definições &gt; Aplicações &gt; Aplicações instaladas</strong> e ordene por tamanho. Versões de avaliação que vieram com o computador, jogos que ninguém joga, três leitores de PDF diferentes: desinstale-os a partir daqui (nunca apagando a pasta deles). Se não reconhece um nome, pesquise antes de o remover. O que tiver o nome da marca do computador, ou palavras como "driver", "audio" ou "chipset", é normalmente melhor deixar estar.</p>
+
+          <h2>O que deve deixar estar</h2>
+          <ul>
+            <li><strong>A pasta Windows</strong>, e sobretudo a <code>WinSxS</code> e a <code>System32</code>. Parecem enormes, mas o Windows precisa delas. A Limpeza do Disco já reduz o que pode sair em segurança.</li>
+            <li><strong>Program Files</strong> e <strong>AppData</strong>. Apagar pastas aqui estraga programas. Desinstale-os como deve ser.</li>
+            <li><strong>pagefile.sys</strong> e <strong>hiberfil.sys</strong>. O Windows gere estes ficheiros sozinho.</li>
+            <li><strong>Tudo o que não reconhece</strong> só por ser grande. Na dúvida, pergunte primeiro.</li>
+          </ul>
+
+          <h2>Porque é que não uso limpadores de registo</h2>
+          <p>Os limpadores de registo prometem um PC mais rápido a "corrigir erros" no registo, a base de dados onde o Windows guarda as definições. Eu não os uso nem os recomendo:</p>
+          <ul>
+            <li><strong>A Microsoft não os suporta.</strong> A própria Microsoft diz que não dá suporte a limpadores de registo, e que os problemas que causam podem não ter solução sem reinstalar o Windows.</li>
+            <li><strong>Há pouca ou nenhuma velocidade a ganhar.</strong> Uns milhares de entradas esquecidas numa base de dados daquele tamanho não fazem diferença que se note. Os "erros" que contam são, na maioria, inofensivos.</li>
+            <li><strong>Podem estragar coisas.</strong> Se apagarem a entrada errada, os ficheiros deixam de abrir com o programa certo, uma aplicação não arranca ou uma atualização falha. O risco é real e o ganho é quase nenhum.</li>
+          </ul>
+          <p>Se um PC está lento, a causa quase sempre está noutro lado. A <a href="../slow-pc-what-to-do/">lista para um PC lento</a> explica o que ajuda de facto.</p>
+
+          <h2>A Limpeza Segura de Temporários (gratuita)</h2>
+          <p>Para facilitar a parte dos ficheiros temporários, escrevi um pequeno script de PowerShell: a <a href="../../tools/safe-temp-cleaner/">Limpeza Segura de Temporários da Yuwri</a>. Por predefinição só faz uma <strong>pré-visualização</strong>: mostra os ficheiros temporários com mais de 24 horas e quanto espaço ocupam, e não apaga nada até escrever Y. Nunca mexe na Reciclagem, nas suas pastas pessoais, nos navegadores nem no registo, e não se liga à internet. A página explica exatamente o que faz e como confirmar que o ficheiro é o original.</p>
+
+          <h2>Prefere que seja eu a tratar disso?</h2>
+          <p>Não há problema nenhum. Arrumar um computador é algo que faço muitas vezes, com cuidado, e digo-lhe o que está a ocupar espaço antes de se apagar o que quer que seja.</p>
+
+          <p><a href="../../#contacto">Contacte-me e ajudo-o a libertar espaço &rarr;</a></p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../../#servicos">Serviços</a>
+          <a class="link-underline" href="../../#sobre">Sobre</a>
+          <a class="link-underline" href="../../#contacto">Contactos</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+<script src="../../../js/nav.js"></script>
+
+</body>
+
+</html>

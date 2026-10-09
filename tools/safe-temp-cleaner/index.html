@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="../../images/favicon.svg" type="image/svg+xml" />
+  <meta name="keywords" content="temp file cleaner, delete temporary files Windows, free disk space, PowerShell cleanup script, safe cleaner, Seixal IT support" />
+  <meta name="description" content="A free PowerShell script that previews old temporary files on Windows and only deletes them after you say yes. No registry, no personal folders, no internet connection." />
+  <meta name="author" content="Yuwri" />
+
+  <title>Safe Temp Cleaner (Free Download) | Yuwri</title>
+
+  <link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/safe-temp-cleaner/" />
+  <link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/safe-temp-cleaner/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/safe-temp-cleaner/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuwri.pt/tools/safe-temp-cleaner/" />
+  <meta property="og:title" content="Yuwri | Safe Temp Cleaner" />
+  <meta property="og:description" content="A free script that shows you old temporary files on Windows and only deletes them after you say yes." />
+  <meta property="og:locale" content="en" />
+  <meta property="og:locale:alternate" content="pt_PT" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Computer Repair in Seixal" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yuwri | Safe Temp Cleaner" />
+  <meta name="twitter:description" content="A free script that shows you old temporary files on Windows and only deletes them after you say yes." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yuwri.pt/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://yuwri.pt/resources/" },
+      { "@type": "ListItem", "position": 3, "name": "Safe Temp Cleaner", "item": "https://yuwri.pt/tools/safe-temp-cleaner/" }
+    ]
+  }
+  </script>
+
+
+  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <link href="../../css/style.css" rel="stylesheet" />
+  <script data-goatcounter="https://yuwri.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+  <div id="top">
+
+
+    <!-- Nav -->
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="../../">
+          <span class="brand-mark">Y</span>
+          <span class="brand-name">Yuwri</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a class="link-underline" href="../../#services">Services</a>
+          <a class="link-underline" href="../../prices/">Prices</a>
+          <a class="link-underline" href="../../software/">Software</a>
+          <a class="link-underline" href="../../blog/">Tips</a>
+          <a class="link-underline" href="../../resources/">Resources</a>
+          <a class="link-underline" href="../../#about">About</a>
+          <a class="link-underline" href="../../#contact">Contact</a>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="nav-actions">
+          <a href="../../pt/tools/safe-temp-cleaner/" class="lang-switch mono" lang="pt-PT" hreflang="pt-PT">PT</a>
+          <a href="../../#contact" class="btn btn-primary btn-sm">Contact Me</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../../">Home</a>
+          <span class="sep">/</span>
+          <a href="../../resources/">Resources</a>
+          <span class="sep">/</span>
+          <span class="current">Safe Temp Cleaner</span>
+        </nav>
+        <h1>Safe Temp Cleaner</h1>
+        <p>A small, free PowerShell script for Windows 10 and 11. It shows you which old temporary files can go and how much space they take, and only deletes them after you say yes.</p>
+      </div>
+    </section>
+
+    <!-- Download -->
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="article-body">
+
+          <div class="download-box">
+            <a class="btn btn-primary" href="../../downloads/yuwri-safe-temp-cleaner.ps1" download>Download the Safe Temp Cleaner</a>
+            <p><strong>File:</strong> yuwri-safe-temp-cleaner.ps1 (14 KB, version 1.0, October 2026)</p>
+            <p><strong>SHA-256:</strong> <code class="hash">2e9835b7baa3297352ae2e2fd48f257316b4de695ca8c49d34274b2b3c94b196</code></p>
+          </div>
+
+          <h2>What it does</h2>
+          <ul>
+            <li><strong>Preview first, always.</strong> By default it only lists what it would remove and the total size. Nothing is deleted until you type <strong>Y</strong> and press Enter. Anything else quits without touching a thing.</li>
+            <li><strong>Your temp folder</strong> (<code>%TEMP%</code>): only files that haven't changed in the last 24 hours.</li>
+            <li><strong>The Windows temp folder</strong> (<code>C:\Windows\Temp</code>): same rule, but only when you run it as administrator. Otherwise it's skipped, with a note saying so.</li>
+            <li><strong>The Windows Update download cache</strong>: only if you run it as administrator <em>and</em> ask for it with <code>-IncludeUpdateCache</code>. It stops the Windows Update and BITS services first, empties <code>C:\Windows\SoftwareDistribution\Download</code>, and starts the services again afterwards, even if something goes wrong.</li>
+            <li><strong>Files in use are skipped</strong> and counted, never forced.</li>
+          </ul>
+
+          <h2>What it never does</h2>
+          <ul>
+            <li>It never touches the Recycle Bin, your Downloads, Documents, Desktop or other personal folders.</li>
+            <li>It never touches browser profiles, browser caches or saved passwords.</li>
+            <li>It never touches the registry.</li>
+            <li>It makes no internet connections and sends nothing anywhere.</li>
+            <li>It never tries to give itself administrator rights. If you want the admin-only parts, you choose to run it as administrator.</li>
+          </ul>
+
+          <h2>How to run it</h2>
+          <ol>
+            <li>Download the file and save it somewhere easy to find, like your Desktop.</li>
+            <li>If you like, open it in Notepad first and read it. It's plain text, with comments explaining each part.</li>
+            <li>Right-click the file and choose <strong>Run with PowerShell</strong>. You'll see the preview, then the question.</li>
+          </ol>
+          <p>To include <code>C:\Windows\Temp</code>, open PowerShell as administrator (right-click the Start button, then <strong>Terminal (Admin)</strong> or <strong>Windows PowerShell (Admin)</strong>), go to the folder where you saved it and run:</p>
+          <pre><code>powershell -ExecutionPolicy Bypass -File .\yuwri-safe-temp-cleaner.ps1</code></pre>
+          <p><code>-ExecutionPolicy Bypass</code> only applies to that one run. It doesn't change any setting on your computer. Add <code>-IncludeUpdateCache</code> at the end to also clear the Windows Update download cache, or <code>-ShowAll</code> to list every file in the preview instead of just the largest ones.</p>
+
+          <h2>Check that the file is the original</h2>
+          <p>Before running a script from the internet, it's good practice to check it hasn't been changed along the way. In PowerShell, in the folder where you saved it, run:</p>
+          <pre><code>Get-FileHash .\yuwri-safe-temp-cleaner.ps1 -Algorithm SHA256</code></pre>
+          <p>The result should match the SHA-256 shown above exactly. If it doesn't, don't run it, and let me know.</p>
+
+          <h2>Provided as-is</h2>
+          <p>The script is free and provided as-is, without any warranty. I've kept it deliberately cautious, but you run it at your own risk. If you have important files, make sure they're <a href="../../blog/how-to-back-up-your-computer/">backed up</a> before any kind of clean-up.</p>
+          <p>Want the whole picture? The guide to <a href="../../blog/safe-pc-cleanup/">cleaning up your PC safely</a> covers what else is safe to clear, and what to leave alone. And if you'd rather I took care of it, <a href="../../#contact">get in touch</a>.</p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-copy mono">&copy; 2026 Yuwri &middot; Seixal, Portugal</div>
+        <div class="footer-links">
+          <a class="link-underline" href="../../#services">Services</a>
+          <a class="link-underline" href="../../#about">About</a>
+          <a class="link-underline" href="../../#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+<script src="../../js/nav.js"></script>
+
+</body>
+
+</html>
