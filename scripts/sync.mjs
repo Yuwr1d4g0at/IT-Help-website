@@ -65,7 +65,7 @@ const stripBlock = (s, name) => {
 // Re-insert a block before the font preconnect line, so the markup stays tidy and the run is repeatable.
 const putBlock = (s, name, body) => {
   const [a, b] = mark(name);
-  return s.replace(/^([ \t]*<link rel="preconnect")/m, `  ${a}\n${body}\n  ${b}\n\n$1`);
+  return s.replace(/^([ \t]*<link href="[^"]*css\/style\.css")/m, `  ${a}\n${body}\n  ${b}\n\n$1`);
 };
 
 function headBlock(f) {
@@ -74,6 +74,7 @@ function headBlock(f) {
     `  <meta name="theme-color" content="#2B1D5C" />`,
     `  <link rel="manifest" href="/manifest.webmanifest" />`,
     `  <link rel="apple-touch-icon" href="/images/icon-192.png" />`,
+    `  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />`,
     `  <meta property="og:image" content="${SITE}/images/og-image.png" />`,
     `  <meta property="og:image:width" content="1200" />`,
     `  <meta property="og:image:height" content="630" />`,
@@ -119,6 +120,10 @@ function syncPage(f) {
   let s = orig;
   const is404 = f === "404.html";
   const t = isPt(f) ? T.pt : T.en;
+
+  // Fonts are self-hosted (see css/style.css): remove any Google Fonts links.
+  s = s.replace(/^[ \t]*<link rel="preconnect" href="https:\/\/fonts\.g[^>]*>\n/gm, "");
+  s = s.replace(/^[ \t]*<link href="https:\/\/fonts\.googleapis\.com[^>]*>\n(?:[ \t]*\n)?/gm, "");
 
   if (!is404) {
     // Head block replaces any older twitter:card line so there is only one.

@@ -30,6 +30,7 @@
   <meta name="theme-color" content="#2B1D5C" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <meta property="og:image" content="https://yuwri.pt/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -75,9 +76,6 @@
   }
   </script>
   <!-- /sync:ld -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link href="../css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
@@ -163,7 +161,11 @@
         back: "← Back",
         startOver: "Start over",
         contactCta: "Contact Me",
-        contactHref: "../#contact"
+        contactHref: "../#contact",
+        whatsappUrl: "https://wa.me/351924129893?text=",
+        whatsappCta: "Send this to me on WhatsApp",
+        whatsappIntro: "Hi! I used the repair-or-replace guide on your site.",
+        whatsappResult: "It suggested:"
       },
       tree: {
         start: {
@@ -272,6 +274,13 @@
         recalculateCta: "Calculate again",
         contactCta: "Contact Me",
         contactHref: "../#contact",
+        whatsappUrl: "https://wa.me/351924129893?text=",
+        whatsappCta: "Send this to me on WhatsApp",
+        whatsappIntro: "Hi! I used the repair-or-replace calculator on your site.",
+        whatsappAge: "- Computer age: {age} years",
+        whatsappRepair: "- Repair quote: {repairCost}",
+        whatsappReplacement: "- Cost of a replacement: {replacementCost}",
+        whatsappResult: "It suggested:",
         validationError: "Enter the age and both costs (greater than zero) to get a recommendation.",
         badgeLabels: { repair: "Repair", replace: "Replace" },
         locale: "en-US",
