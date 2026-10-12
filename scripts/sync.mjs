@@ -49,13 +49,15 @@ const descOf = (s) => esc(meta(s, /<meta name="description" content="([^"]*)"/))
 const T = {
   en: {
     skip: "Skip to main content", privacy: "Privacy", home: "Home",
-    alt: "Yuwri: computer repair and IT support in Seixal, Portugal",
+    alt: "Yuwri \u2013 Computer Repair in Seixal", image: "og-image.jpg",
   },
   pt: {
     skip: "Saltar para o conteúdo principal", privacy: "Privacidade", home: "Início",
-    alt: "Yuwri: reparação de computadores e apoio informático no Seixal, Portugal",
+    alt: "Yuwri \u2013 Reparação de Computadores no Seixal", image: "og-image-pt.jpg",
   },
 };
+
+const THEME_SCRIPT = '<script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>';
 
 const mark = (name) => [`<!-- sync:${name} -->`, `<!-- /sync:${name} -->`];
 const stripBlock = (s, name) => {
@@ -75,12 +77,12 @@ function headBlock(f) {
     `  <link rel="manifest" href="/manifest.webmanifest" />`,
     `  <link rel="apple-touch-icon" href="/images/icon-192.png" />`,
     `  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />`,
-    `  <meta property="og:image" content="${SITE}/images/og-image.png" />`,
+    `  <meta property="og:image" content="${SITE}/images/${t.image}" />`,
     `  <meta property="og:image:width" content="1200" />`,
     `  <meta property="og:image:height" content="630" />`,
     `  <meta property="og:image:alt" content="${t.alt}" />`,
     `  <meta name="twitter:card" content="summary_large_image" />`,
-    `  <meta name="twitter:image" content="${SITE}/images/og-image.png" />`,
+    `  <meta name="twitter:image" content="${SITE}/images/${t.image}" />`,
   ].join("\n");
 }
 
@@ -125,9 +127,15 @@ function syncPage(f) {
   s = s.replace(/^[ \t]*<link rel="preconnect" href="https:\/\/fonts\.g[^>]*>\n/gm, "");
   s = s.replace(/^[ \t]*<link href="https:\/\/fonts\.googleapis\.com[^>]*>\n(?:[ \t]*\n)?/gm, "");
 
+  // Every page applies the saved theme and wallpaper before first paint (no flash).
+  if (!/yuwri-theme/.test(s)) {
+    s = s.replace(/^([ \t]*<link href="[^"]*css\/style\.css")/m, `  ${THEME_SCRIPT}\n\n$1`);
+  }
+
   if (!is404) {
     // Head block replaces any older twitter:card line so there is only one.
-    s = s.replace(/^[ \t]*<meta name="twitter:card" content="summary" \/>\n/m, "");
+    // Share-image and card tags live in the head block only: drop any strays.
+    s = s.replace(/^[ \t]*<meta (?:property="og:image[^"]*"|name="twitter:(?:image|card)") [^>]*>\n/gm, "");
     s = stripBlock(stripBlock(s, "head"), "ld");
     s = putBlock(s, "head", headBlock(f));
     // Pages with no structured data of their own get generated JSON-LD.
@@ -197,7 +205,9 @@ for (const f of pages) {
   const text = body.replace(/<[^>]+>/g, " ");
   if (/—|&mdash;/.test(text) || /&mdash;/.test(body)) warn(f, "contains an em-dash");
 }
-if (!existsSync(path.join(ROOT, "images/og-image.png"))) warn("images/og-image.png", "missing");
+for (const img of ["images/og-image.jpg", "images/og-image-pt.jpg"]) {
+  if (!existsSync(path.join(ROOT, img))) warn(img, "missing");
+}
 if (!existsSync(path.join(ROOT, "manifest.webmanifest"))) warn("manifest.webmanifest", "missing");
 
 // sitemap
