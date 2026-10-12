@@ -23,7 +23,6 @@
   <meta property="og:description" content="Reparação de computadores e suporte informático simpático e personalizado no Seixal, Almada, Barreiro e Moita. Reparações, montagem de PCs, remoção de vírus, instalação de sistemas operativos, e criação e manutenção de sites." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
-  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Yuwri | Reparação de Computadores e Suporte Informático no Seixal" />
   <meta name="twitter:description" content="Reparação de computadores e suporte informático simpático e personalizado no Seixal." />
 
@@ -68,6 +67,18 @@
   }
   </script>
 
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri: reparação de computadores e apoio informático no Seixal, Portugal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.png" />
+  <!-- /sync:head -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -77,6 +88,7 @@
 </head>
 
 <body class="home">
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
     <!-- Taskbar -->
@@ -105,7 +117,7 @@
       </nav>
     </header>
 
-    <main class="desktop">
+    <main class="desktop" id="main" tabindex="-1">
 
       <!-- Desktop icons -->
       <ul class="desk-icons">
@@ -372,6 +384,7 @@
           <a href="#servicos">Serviços</a>
           <a href="#sobre">Sobre</a>
           <a href="#contacto">Contactos</a>
+          <a href="privacy/">Privacidade</a>
         </div>
       </div>
     </footer>

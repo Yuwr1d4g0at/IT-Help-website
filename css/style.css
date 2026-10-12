@@ -133,6 +133,28 @@ a {
   border-radius: 6px;
 }
 
+/* Skip link: hidden until a keyboard user tabs to it */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 10000;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+#main:focus {
+  outline: none;
+}
+
 .link-underline:hover {
   text-decoration: underline;
 }
@@ -1728,6 +1750,11 @@ button.lang-switch[aria-pressed="true"] {
 .article-body h2 {
   font-size: 23px;
   margin: 34px 0 12px;
+}
+
+.article-body h3 {
+  font-size: 18px;
+  margin: 24px 0 8px;
 }
 
 .article-body ul,

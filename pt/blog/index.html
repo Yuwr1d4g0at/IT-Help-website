@@ -23,9 +23,58 @@
   <meta property="og:description" content="Dicas em linguagem simples para manter o seu computador a funcionar bem." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
-  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Yuwri | Dicas" />
   <meta name="twitter:description" content="Dicas em linguagem simples para manter o seu computador a funcionar bem." />
+
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri: reparação de computadores e apoio informático no Seixal, Portugal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.png" />
+  <!-- /sync:head -->
+
+  <!-- sync:ld -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Dicas",
+    "description": "Dicas em linguagem simples para manter o seu computador a funcionar bem, da Yuwri, suporte informático no Seixal.",
+    "url": "https://yuwri.pt/pt/blog/",
+    "inLanguage": "pt-PT",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Yuwri",
+      "url": "https://yuwri.pt/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Início",
+        "item": "https://yuwri.pt/pt/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Dicas",
+        "item": "https://yuwri.pt/pt/blog/"
+      }
+    ]
+  }
+  </script>
+  <!-- /sync:ld -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -36,6 +85,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
 
@@ -67,7 +117,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <h1>Dicas</h1>
         <p>Notas em linguagem simples para manter o seu computador a funcionar bem. As mesmas coisas que digo aos clientes pessoalmente.</p>
@@ -83,7 +133,25 @@
             <div class="blog-card-eyebrow">Comece aqui</div>
             <h3>O Windows 10 Já Não Tem Suporte: O Que Isso Significa Na Prática</h3>
             <p>A Microsoft deixou de dar suporte ao Windows 10 em outubro de 2025. Se ainda o usa, aqui está o que mudou e quais são as suas opções reais.</p>
-            <div class="blog-card-date">Atualizado em setembro de 2026</div>
+            <div class="blog-card-date">Atualizado em outubro de 2026</div>
+          </a>
+
+          <a href="buying-a-laptop-in-portugal/" class="blog-card">
+            <h3>Comprar um Portátil em Portugal: O Que Verificar</h3>
+            <p>As especificações que importam, as que não importam, e os seus direitos de garantia ao comprar um portátil em Portugal, novo, recondicionado ou em segunda mão.</p>
+            <div class="blog-card-date">Outubro de 2026</div>
+          </a>
+
+          <a href="fake-microsoft-calls/" class="blog-card">
+            <h3>Chamadas Falsas da Microsoft: Como Funciona a Burla do Suporte Técnico</h3>
+            <p>Uma chamada ou pop-up diz que o computador está infetado. Como funciona a burla do falso suporte técnico, os sinais de alerta, e o que fazer se já os deixou entrar.</p>
+            <div class="blog-card-date">Outubro de 2026</div>
+          </a>
+
+          <a href="is-my-pc-infected/" class="blog-card">
+            <h3>O Meu Computador Está Infetado? 6 Sinais e O Que Fazer</h3>
+            <p>Que sinais apontam para uma infeção real, quais são apenas um PC velho ou sobrecarregado, e o que fazer nos primeiros dez minutos.</p>
+            <div class="blog-card-date">Outubro de 2026</div>
           </a>
 
           <a href="windows-11-upgrade-guide/" class="blog-card">
@@ -140,6 +208,7 @@
           <a class="link-underline" href="../#servicos">Serviços</a>
           <a class="link-underline" href="../#sobre">Sobre</a>
           <a class="link-underline" href="../#contacto">Contactos</a>
+          <a class="link-underline" href="../privacy/">Privacidade</a>
         </div>
       </div>
     </footer>

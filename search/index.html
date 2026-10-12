@@ -23,9 +23,58 @@
   <meta property="og:description" content="One search box for the blog, the glossary, the troubleshooting tool, and every cheat sheet." />
   <meta property="og:locale" content="en" />
   <meta property="og:locale:alternate" content="pt_PT" />
-  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Yuwri | Search" />
   <meta name="twitter:description" content="One search box for the blog, the glossary, the troubleshooting tool, and every cheat sheet." />
+
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri: computer repair and IT support in Seixal, Portugal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.png" />
+  <!-- /sync:head -->
+
+  <!-- sync:ld -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Search",
+    "description": "Search the blog, the tech glossary, the troubleshooting tool, and every printable cheat sheet, all in one box.",
+    "url": "https://yuwri.pt/search/",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Yuwri",
+      "url": "https://yuwri.pt/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://yuwri.pt/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Search",
+        "item": "https://yuwri.pt/search/"
+      }
+    ]
+  }
+  </script>
+  <!-- /sync:ld -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -36,6 +85,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <div id="top">
 
@@ -67,7 +117,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <a href="../">Home</a>
@@ -102,6 +152,7 @@
           <a class="link-underline" href="../#services">Services</a>
           <a class="link-underline" href="../#about">About</a>
           <a class="link-underline" href="../#contact">Contact</a>
+          <a class="link-underline" href="../privacy/">Privacy</a>
         </div>
       </div>
     </footer>

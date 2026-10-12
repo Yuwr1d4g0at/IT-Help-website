@@ -23,7 +23,6 @@
   <meta property="og:description" content="Gere uma palavra-passe aleatória e forte diretamente no seu navegador. Nada é enviado para lado nenhum." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
-  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Yuwri | Gerador de Palavras-Passe Fortes" />
   <meta name="twitter:description" content="Gere uma palavra-passe aleatória e forte diretamente no seu navegador. Nada é enviado para lado nenhum." />
 
@@ -39,6 +38,18 @@
   }
   </script>
 
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri: reparação de computadores e apoio informático no Seixal, Portugal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.png" />
+  <!-- /sync:head -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -48,6 +59,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
 
@@ -79,7 +91,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <a href="../../">Início</a>
@@ -143,6 +155,7 @@
           <a class="link-underline" href="../../#servicos">Serviços</a>
           <a class="link-underline" href="../../#sobre">Sobre</a>
           <a class="link-underline" href="../../#contacto">Contactos</a>
+          <a class="link-underline" href="../../privacy/">Privacidade</a>
         </div>
       </div>
     </footer>

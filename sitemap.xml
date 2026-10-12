@@ -45,14 +45,14 @@
   </url>
   <url>
     <loc>https://yuwri.pt/blog/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/" />
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/" />
   </url>
   <url>
     <loc>https://yuwri.pt/pt/blog/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/" />
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/" />
@@ -101,14 +101,14 @@
   </url>
   <url>
     <loc>https://yuwri.pt/blog/windows-10-end-of-life/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/windows-10-end-of-life/" />
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/windows-10-end-of-life/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/windows-10-end-of-life/" />
   </url>
   <url>
     <loc>https://yuwri.pt/pt/blog/windows-10-end-of-life/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/windows-10-end-of-life/" />
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/windows-10-end-of-life/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/windows-10-end-of-life/" />
@@ -185,14 +185,14 @@
   </url>
   <url>
     <loc>https://yuwri.pt/heads-up/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/heads-up/" />
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/heads-up/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/heads-up/" />
   </url>
   <url>
     <loc>https://yuwri.pt/pt/heads-up/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/heads-up/" />
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/heads-up/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/heads-up/" />
@@ -364,5 +364,61 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/tools/windows-11-checker/" />
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/tools/windows-11-checker/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/tools/windows-11-checker/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/privacy/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/privacy/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/privacy/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/pt/privacy/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/privacy/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/privacy/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/blog/buying-a-laptop-in-portugal/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/buying-a-laptop-in-portugal/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/buying-a-laptop-in-portugal/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/buying-a-laptop-in-portugal/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/blog/fake-microsoft-calls/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/fake-microsoft-calls/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/fake-microsoft-calls/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/fake-microsoft-calls/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/blog/is-my-pc-infected/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/is-my-pc-infected/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/is-my-pc-infected/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/is-my-pc-infected/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/pt/blog/buying-a-laptop-in-portugal/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/buying-a-laptop-in-portugal/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/buying-a-laptop-in-portugal/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/buying-a-laptop-in-portugal/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/pt/blog/fake-microsoft-calls/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/fake-microsoft-calls/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/fake-microsoft-calls/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/fake-microsoft-calls/" />
+  </url>
+  <url>
+    <loc>https://yuwri.pt/pt/blog/is-my-pc-infected/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuwri.pt/blog/is-my-pc-infected/" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://yuwri.pt/pt/blog/is-my-pc-infected/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuwri.pt/blog/is-my-pc-infected/" />
   </url>
 </urlset>

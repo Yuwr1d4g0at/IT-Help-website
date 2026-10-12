@@ -23,9 +23,58 @@
   <meta property="og:description" content="Responda a algumas perguntas rápidas e seja encaminhado para a solução provável." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
-  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Yuwri | Diagnosticar" />
   <meta name="twitter:description" content="O que se passa com o seu PC? Responda a algumas perguntas para descobrir." />
+
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri: reparação de computadores e apoio informático no Seixal, Portugal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.png" />
+  <!-- /sync:head -->
+
+  <!-- sync:ld -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Diagnosticar",
+    "description": "Responda a algumas perguntas rápidas e seja encaminhado para a solução provável, ou descubra quando é altura de trazer o computador.",
+    "url": "https://yuwri.pt/pt/troubleshoot/",
+    "inLanguage": "pt-PT",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Yuwri",
+      "url": "https://yuwri.pt/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Início",
+        "item": "https://yuwri.pt/pt/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Diagnosticar",
+        "item": "https://yuwri.pt/pt/troubleshoot/"
+      }
+    ]
+  }
+  </script>
+  <!-- /sync:ld -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -36,6 +85,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
 
@@ -67,7 +117,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <h1>O Que Se Passa Com o Seu PC?</h1>
         <p>Responda a algumas perguntas rápidas e eu encaminho-o para a solução provável, ou digo-lhe quando é altura de o trazer.</p>
@@ -89,6 +139,7 @@
           <a class="link-underline" href="../#servicos">Serviços</a>
           <a class="link-underline" href="../#sobre">Sobre</a>
           <a class="link-underline" href="../#contacto">Contactos</a>
+          <a class="link-underline" href="../privacy/">Privacidade</a>
         </div>
       </div>
     </footer>

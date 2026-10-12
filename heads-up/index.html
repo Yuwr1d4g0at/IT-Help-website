@@ -23,9 +23,58 @@
   <meta property="og:description" content="What's worth knowing about right now, updated as things come up." />
   <meta property="og:locale" content="en" />
   <meta property="og:locale:alternate" content="pt_PT" />
-  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Yuwri | Heads-Up Board" />
   <meta name="twitter:description" content="What's worth knowing about right now, updated as things come up." />
+
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri: computer repair and IT support in Seixal, Portugal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.png" />
+  <!-- /sync:head -->
+
+  <!-- sync:ld -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Heads-Up Board",
+    "description": "A short, honest list of anything widespread enough to be worth flagging right now: a bad update, an active scam, software reaching end of support.",
+    "url": "https://yuwri.pt/heads-up/",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Yuwri",
+      "url": "https://yuwri.pt/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://yuwri.pt/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Heads-Up Board",
+        "item": "https://yuwri.pt/heads-up/"
+      }
+    ]
+  }
+  </script>
+  <!-- /sync:ld -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -36,6 +85,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <div id="top">
 
@@ -67,7 +117,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <h1>What's Worth Knowing About Right Now</h1>
         <p>A short, honest list of anything widespread enough to be worth flagging: a bad update, an active scam, software reaching end of support. Added as things come up, removed once they stop being relevant.</p>
@@ -83,7 +133,7 @@
             <div class="headsup-status headsup-status-active">Ongoing</div>
             <div class="headsup-date">Since October 14, 2025</div>
             <h3>Windows 10 No Longer Gets Security Updates</h3>
-            <p>Microsoft ended free support for Windows 10 in October 2025. It still runs fine day to day, but any security holes found in it from now on stay open, unless you're enrolled in Extended Security Updates, which are free for home users in Portugal but end on October 13, 2026. If you're still on it, it's worth knowing what your real options are.</p>
+            <p>Microsoft ended free support for Windows 10 in October 2025. It still runs fine day to day, but any security holes found in it from now on stay open, unless you're enrolled in Extended Security Updates, which are free for home users in Portugal but end on October 13, 2026, with no extension after that. If you're still on it, it's worth knowing what your real options are.</p>
             <a href="../blog/windows-10-end-of-life/" class="headsup-link">Read the full breakdown &rarr;</a>
           </div>
 
@@ -101,6 +151,7 @@
           <a class="link-underline" href="../#services">Services</a>
           <a class="link-underline" href="../#about">About</a>
           <a class="link-underline" href="../#contact">Contact</a>
+          <a class="link-underline" href="../privacy/">Privacy</a>
         </div>
       </div>
     </footer>

@@ -23,9 +23,58 @@
   <meta property="og:description" content="Answer a couple of quick questions and get pointed to the likely fix." />
   <meta property="og:locale" content="en" />
   <meta property="og:locale:alternate" content="pt_PT" />
-  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Yuwri | Troubleshoot" />
   <meta name="twitter:description" content="What's wrong with your PC? Answer a couple of questions to find out." />
+
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri: computer repair and IT support in Seixal, Portugal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.png" />
+  <!-- /sync:head -->
+
+  <!-- sync:ld -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Troubleshoot",
+    "description": "Answer a couple of quick questions and get pointed to the likely fix, or find out when it's time to just bring it in.",
+    "url": "https://yuwri.pt/troubleshoot/",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Yuwri",
+      "url": "https://yuwri.pt/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://yuwri.pt/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Troubleshoot",
+        "item": "https://yuwri.pt/troubleshoot/"
+      }
+    ]
+  }
+  </script>
+  <!-- /sync:ld -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -36,6 +85,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <div id="top">
 
@@ -67,7 +117,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <h1>What's Wrong With Your PC?</h1>
         <p>Answer a couple of quick questions and I'll point you to the likely fix, or I'll tell you when it's time to just bring it in.</p>
@@ -89,6 +139,7 @@
           <a class="link-underline" href="../#services">Services</a>
           <a class="link-underline" href="../#about">About</a>
           <a class="link-underline" href="../#contact">Contact</a>
+          <a class="link-underline" href="../privacy/">Privacy</a>
         </div>
       </div>
     </footer>
