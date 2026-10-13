@@ -161,6 +161,11 @@
     };
   }
 
+  // A little overshoot, like a spring settling (falls back to a plain ease)
+  var SPRING = window.CSS && CSS.supports && CSS.supports("animation-timing-function", "linear(0, 1)")
+    ? "linear(0, 0.26 6%, 0.7 13%, 1.03 22%, 1.07 28%, 1.02 40%, 0.995 55%, 1)"
+    : "cubic-bezier(0.2, 0.9, 0.25, 1)";
+
   // Zoom a window out of wherever it was opened from
   function animateOpen(el, fromRect) {
     if (reduceMotion || !el.animate) return;
@@ -172,7 +177,7 @@
           { transform: "translate(" + d.dx + "px," + d.dy + "px) scale(" + d.s + ")", opacity: 0.2 },
           { transform: "none", opacity: 1 }
         ],
-        { duration: 340, easing: "cubic-bezier(0.2, 0.9, 0.25, 1)" }
+        { duration: 520, easing: SPRING }
       );
     } else {
       el.animate(

@@ -23,12 +23,6 @@
   <meta property="og:description" content="Friendly, personalized computer repair and IT support in Seixal, Almada, Barreiro and Moita. Repairs, PC building, virus removal, OS installs, and website creation &amp; maintenance." />
   <meta property="og:locale" content="en" />
   <meta property="og:locale:alternate" content="pt_PT" />
-  <meta property="og:image" content="https://yuwri.pt/images/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Yuwri – Computer Repair in Seixal" />
-  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Yuwri | Computer Repair &amp; IT Support in Seixal" />
   <meta name="twitter:description" content="Friendly, personalized computer repair and IT support in Seixal." />
 
@@ -76,12 +70,26 @@
 
   <script>try{var yl=localStorage.getItem("yuwri-lang"),yn=((navigator.languages&&navigator.languages[0])||navigator.language||"").toLowerCase();if(yl!=="en"&&(yl==="pt"||yn.indexOf("pt")===0))location.replace("pt/"+location.hash)}catch(e){}</script>
   <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Computer Repair in Seixal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.jpg" />
+  <!-- /sync:head -->
+
   <link href="css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body class="home">
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <div id="top">
     <!-- Taskbar -->
@@ -110,7 +118,7 @@
       </nav>
     </header>
 
-    <main class="desktop">
+    <main class="desktop" id="main" tabindex="-1">
 
       <!-- Desktop icons -->
       <ul class="desk-icons">
@@ -405,6 +413,7 @@
           <a href="#services">Services</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
+          <a href="privacy/">Privacy</a>
         </div>
       </div>
     </footer>
@@ -413,6 +422,7 @@
 
 <script src="js/nav.js"></script>
 <script src="js/desktop.js"></script>
+<script src="js/motion.js"></script>
 <script src="js/forms.js"></script>
 
 </body>

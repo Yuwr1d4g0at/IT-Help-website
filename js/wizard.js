@@ -12,7 +12,20 @@
   var tree = data.tree;
   var ui = data.ui;
   var history = [];
+  var path = [];
   var current = "start";
+
+  // A short plain-text summary of the chosen path and result, for the
+  // "send this to me on WhatsApp" button. Built from the visitor's own clicks.
+  function whatsappHref(node) {
+    if (!ui.whatsappUrl) return "";
+    var lines = [ui.whatsappIntro, ""];
+    path.forEach(function (step) {
+      lines.push("- " + step.question + " " + step.answer);
+    });
+    lines.push("", ui.whatsappResult + " " + node.title);
+    return ui.whatsappUrl + encodeURIComponent(lines.join("\n"));
+  }
 
   function esc(str) {
     var div = document.createElement("div");
@@ -51,6 +64,7 @@
       if (backBtn) {
         backBtn.addEventListener("click", function () {
           var prev = history.pop();
+          path.pop();
           render(prev);
         });
       }
@@ -58,6 +72,7 @@
       Array.prototype.slice.call(root.querySelectorAll(".wizard-option")).forEach(function (btn) {
         btn.addEventListener("click", function () {
           history.push(current);
+          path.push({ question: node.question, answer: btn.textContent });
           render(btn.dataset.next);
         });
       });
@@ -73,15 +88,20 @@
         linkHtml +
         '<div class="wizard-actions">' +
         '<a href="' + ui.contactHref + '" class="btn btn-primary btn-sm">' + esc(ui.contactCta) + "</a>" +
+        (ui.whatsappUrl
+          ? '<a href="' + whatsappHref(node) + '" class="btn btn-outline btn-sm" target="_blank" rel="noopener">' + esc(ui.whatsappCta) + "</a>"
+          : "") +
         '<button type="button" class="wizard-restart" id="wizard-restart">' + esc(ui.startOver) + "</button>" +
         "</div>";
 
       document.getElementById("wizard-back").addEventListener("click", function () {
         var prev = history.pop();
+        path.pop();
         render(prev);
       });
       document.getElementById("wizard-restart").addEventListener("click", function () {
         history = [];
+        path = [];
         render("start");
       });
     }

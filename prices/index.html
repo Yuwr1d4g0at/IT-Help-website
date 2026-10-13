@@ -23,12 +23,6 @@
   <meta property="og:description" content="An hourly rate, fixed prices for common jobs, and no surprises." />
   <meta property="og:locale" content="en" />
   <meta property="og:locale:alternate" content="pt_PT" />
-  <meta property="og:image" content="https://yuwri.pt/images/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Yuwri – Computer Repair in Seixal" />
-  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Yuwri | Prices" />
   <meta name="twitter:description" content="An hourly rate, fixed prices for common jobs, and no surprises." />
 
@@ -64,14 +58,27 @@
   }
   </script>
 
-
   <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Computer Repair in Seixal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image.jpg" />
+  <!-- /sync:head -->
+
   <link href="../css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <div id="top">
 
@@ -103,7 +110,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <a href="../">Home</a>
@@ -183,7 +190,7 @@
           <div class="wizard-eyebrow">Good to Know</div>
           <ul class="price-notes">
             <li><strong>Parts are quoted separately.</strong> If something needs replacing, I tell you the price of the part before buying anything.</li>
-            <li><strong>Travel.</strong> Free anywhere in the Seixal municipality. €5 for Almada, Barreiro and Moita.</li>
+            <li><strong>Travel.</strong> Free anywhere in the Seixal municipality. €5 for Almada, Barreiro and Moita. <a href="../areas/">See the areas I cover</a>.</li>
             <li><strong>Payment.</strong> MB WAY or cash, once the job is done.</li>
             <li><strong>When.</strong> Monday to Friday 18:00–22:00, weekends 10:00–20:00.</li>
             <li><strong>Not sure which one you need?</strong> Just describe the problem and I'll tell you what it'll likely cost before anything else.</li>
@@ -203,6 +210,7 @@
           <a class="link-underline" href="../#services">Services</a>
           <a class="link-underline" href="../#about">About</a>
           <a class="link-underline" href="../#contact">Contact</a>
+          <a class="link-underline" href="../privacy/">Privacy</a>
         </div>
       </div>
     </footer>
