@@ -4500,3 +4500,197 @@ html.embedded {
     display: none;
   }
 }
+
+/* -------------------------------------------------------------------------
+   Motion layer (js/motion.js adds the wallpaper lights, rise, glow, ripples)
+   Only transform and opacity animate. Reduced motion switches it all off.
+   ------------------------------------------------------------------------- */
+
+/* Wallpaper lights: drift slowly, lean toward the pointer */
+.aurora {
+  position: fixed;
+  inset: -12%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  translate: calc(var(--px, 0) * 1px) calc(var(--py, 0) * 1px);
+}
+
+.aurora i {
+  position: absolute;
+  width: 62vmax;
+  height: 62vmax;
+  border-radius: 50%;
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.aurora i:nth-child(1) {
+  left: -8%;
+  top: -14%;
+  background: radial-gradient(closest-side, var(--wall-1), transparent);
+  animation: aurora-a 38s ease-in-out infinite alternate;
+}
+
+.aurora i:nth-child(2) {
+  right: -14%;
+  top: 2%;
+  background: radial-gradient(closest-side, var(--wall-2), transparent);
+  animation: aurora-b 46s ease-in-out infinite alternate;
+}
+
+.aurora i:nth-child(3) {
+  left: 24%;
+  bottom: -30%;
+  background: radial-gradient(closest-side, var(--wall-3), transparent);
+  animation: aurora-c 42s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-a {
+  to { transform: translate3d(14vmax, 9vmax, 0) scale(1.15); }
+}
+
+@keyframes aurora-b {
+  to { transform: translate3d(-16vmax, 12vmax, 0) scale(0.9); }
+}
+
+@keyframes aurora-c {
+  to { transform: translate3d(-10vmax, -14vmax, 0) scale(1.2); }
+}
+
+/* Windows: the active one sits higher; one being dragged lifts further */
+.os .win {
+  transition: box-shadow 0.25s ease, scale 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+.os .win.is-lifted {
+  scale: 1.012;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.25), 0 34px 70px -14px rgba(0, 0, 0, 0.5);
+}
+
+/* Content rises into a window as it opens */
+.rise {
+  animation: rise-in 0.55s cubic-bezier(0.2, 0.8, 0.25, 1) backwards;
+  animation-delay: calc(0.12s + var(--i, 0) * 45ms);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Cards and buttons: a light that follows the pointer, and a small lift */
+.os .program,
+.os .icon-item,
+.os .tool-btn,
+.os .tip,
+.os .btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.2), background-color 0.15s ease;
+}
+
+.os .program::before,
+.os .icon-item::before,
+.os .tool-btn::before,
+.os .tip::before,
+.os .btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(150px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.5), transparent 70%);
+  transition: opacity 0.25s ease;
+}
+
+.os .program:hover::before,
+.os .icon-item:hover::before,
+.os .tool-btn:hover::before,
+.os .tip:hover::before,
+.os .btn:hover::before {
+  opacity: 0.55;
+}
+
+.os .program:hover,
+.os .icon-item:hover,
+.os .tool-btn:hover {
+  transform: translateY(-2px);
+}
+
+.os .program:active,
+.os .icon-item:active,
+.os .tool-btn:active,
+.os .btn:active {
+  transform: scale(0.97);
+}
+
+.ripple {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.45);
+  transform: scale(0);
+  animation: ripple-out 0.6s ease-out forwards;
+}
+
+@keyframes ripple-out {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* The Dock slides up after the boot screen, and its dots pop in */
+.os .dock {
+  animation: dock-rise 0.7s cubic-bezier(0.2, 0.9, 0.25, 1.1) 0.1s backwards;
+}
+
+@keyframes dock-rise {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 140%);
+  }
+}
+
+.dock .desk-icon.is-running::after {
+  animation: dot-pop 0.35s cubic-bezier(0.2, 1.6, 0.4, 1) backwards;
+}
+
+@keyframes dot-pop {
+  from {
+    transform: translateX(-50%) scale(0);
+  }
+}
+
+/* Boot screen: the logo settles in and breathes */
+.boot-logo {
+  animation: boot-logo-in 0.9s cubic-bezier(0.2, 0.9, 0.25, 1.1) backwards,
+             boot-breathe 2.4s ease-in-out 0.9s infinite;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.35));
+}
+
+@keyframes boot-logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+
+@keyframes boot-breathe {
+  50% { transform: scale(1.05); }
+}
+
+/* Menu bar: icons answer the pointer */
+.spot-btn svg {
+  transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+}
+
+.spot-btn:hover svg {
+  transform: scale(1.18) rotate(-8deg);
+}
