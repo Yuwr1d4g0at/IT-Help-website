@@ -17,6 +17,11 @@
   var entries = [];
   var ready = false;
 
+  // Lowercase and drop accents so "virus" finds "vírus".
+  function fold(str) {
+    return (str || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
   function esc(str) {
     var div = document.createElement("div");
     div.textContent = str;
@@ -27,9 +32,9 @@
   // which beats a keywords hit, which beats an excerpt hit. Good enough
   // for a few dozen entries with no build step or library involved.
   function scoreEntry(entry, terms) {
-    var title = entry.title.toLowerCase();
-    var keywords = (entry.keywords || "").toLowerCase();
-    var excerpt = (entry.excerpt || "").toLowerCase();
+    var title = fold(entry.title);
+    var keywords = fold(entry.keywords);
+    var excerpt = fold(entry.excerpt);
     var total = 0;
 
     terms.forEach(function (term) {
@@ -44,7 +49,7 @@
   }
 
   function renderResults(query) {
-    var terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var terms = fold(query).split(/\s+/).filter(Boolean);
 
     if (!terms.length) {
       resultsEl.hidden = true;

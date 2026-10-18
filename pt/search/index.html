@@ -23,23 +23,68 @@
   <meta property="og:description" content="Uma única caixa de pesquisa para o blog, o glossário, o assistente de diagnóstico, e todas as checklists." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
+  <meta name="twitter:title" content="Yuwri | Pesquisar" />
+  <meta name="twitter:description" content="Uma única caixa de pesquisa para o blog, o glossário, o assistente de diagnóstico, e todas as checklists." />
+
+  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
-  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Yuwri | Pesquisar" />
-  <meta name="twitter:description" content="Uma única caixa de pesquisa para o blog, o glossário, o assistente de diagnóstico, e todas as checklists." />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <!-- /sync:head -->
 
+  <!-- sync:ld -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Pesquisar",
+    "description": "Pesquise o blog, o glossário tecnológico, o assistente de diagnóstico, e todas as checklists imprimíveis, tudo numa só caixa.",
+    "url": "https://yuwri.pt/pt/search/",
+    "inLanguage": "pt-PT",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Yuwri",
+      "url": "https://yuwri.pt/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Início",
+        "item": "https://yuwri.pt/pt/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Pesquisar",
+        "item": "https://yuwri.pt/pt/search/"
+      }
+    ]
+  }
+  </script>
+  <!-- /sync:ld -->
 
-  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
   <link href="../../css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
 
@@ -71,7 +116,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <a href="../">Início</a>
@@ -90,7 +135,7 @@
       <div class="wrap">
         <div class="search-box search-box-lg">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.35-4.35"/></svg>
-          <input type="search" id="search-input" placeholder="Tente &ldquo;ecrã azul&rdquo;, &ldquo;VPN&rdquo;, ou &ldquo;backup&rdquo;&hellip;" aria-label="Pesquisar no site" autofocus>
+          <input type="search" id="search-input" placeholder="Experimente &ldquo;ecrã azul&rdquo;, &ldquo;VPN&rdquo;, ou &ldquo;backup&rdquo;&hellip;" aria-label="Pesquisar no site" autofocus>
         </div>
         <p class="search-status mono" id="search-status" aria-live="polite"></p>
         <p class="no-results" id="search-no-results" hidden>Sem resultados. Tente outras palavras, ou <a href="../resources/">veja tudo</a> em vez disso.</p>
@@ -106,6 +151,7 @@
           <a class="link-underline" href="../#servicos">Serviços</a>
           <a class="link-underline" href="../#sobre">Sobre</a>
           <a class="link-underline" href="../#contacto">Contactos</a>
+          <a class="link-underline" href="../privacy/">Privacidade</a>
         </div>
       </div>
     </footer>

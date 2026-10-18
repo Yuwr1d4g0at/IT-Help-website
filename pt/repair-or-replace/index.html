@@ -23,23 +23,68 @@
   <meta property="og:description" content="Uma resposta direta, com base na idade do computador e no que realmente está avariado." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
+  <meta name="twitter:title" content="Yuwri | Reparar ou Substituir?" />
+  <meta name="twitter:description" content="Deve arranjá-lo, ou é altura de um novo? Responda a algumas perguntas para descobrir." />
+
+  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
-  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Yuwri | Reparar ou Substituir?" />
-  <meta name="twitter:description" content="Deve arranjá-lo, ou é altura de um novo? Responda a algumas perguntas para descobrir." />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <!-- /sync:head -->
 
+  <!-- sync:ld -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Reparar ou Substituir?",
+    "description": "Uma resposta direta sobre reparar o seu computador ou substituí-lo, com base na idade e no que realmente está avariado.",
+    "url": "https://yuwri.pt/pt/repair-or-replace/",
+    "inLanguage": "pt-PT",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Yuwri",
+      "url": "https://yuwri.pt/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Início",
+        "item": "https://yuwri.pt/pt/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Reparar ou Substituir?",
+        "item": "https://yuwri.pt/pt/repair-or-replace/"
+      }
+    ]
+  }
+  </script>
+  <!-- /sync:ld -->
 
-  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
   <link href="../../css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
 
@@ -71,7 +116,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <h1>Deve Reparar, ou Substituir?</h1>
         <p>Responda a algumas perguntas rápidas para uma resposta direta, com base na idade do computador e no que realmente está avariado. Já tem um orçamento de reparação? Avance para a calculadora abaixo e faça as contas reais. Sem venda de nenhum dos lados.</p>
@@ -101,6 +146,7 @@
           <a class="link-underline" href="../#servicos">Serviços</a>
           <a class="link-underline" href="../#sobre">Sobre</a>
           <a class="link-underline" href="../#contacto">Contactos</a>
+          <a class="link-underline" href="../privacy/">Privacidade</a>
         </div>
       </div>
     </footer>
@@ -116,7 +162,11 @@
         back: "← Voltar",
         startOver: "Recomeçar",
         contactCta: "Contacte-me",
-        contactHref: "../#contacto"
+        contactHref: "../#contacto",
+        whatsappUrl: "https://wa.me/351924129893?text=",
+        whatsappCta: "Enviar-me isto por WhatsApp",
+        whatsappIntro: "Olá! Usei o guia de reparar ou substituir do seu site.",
+        whatsappResult: "Sugeriu:"
       },
       tree: {
         start: {
@@ -225,6 +275,13 @@
         recalculateCta: "Calcular de novo",
         contactCta: "Contacte-me",
         contactHref: "../#contacto",
+        whatsappUrl: "https://wa.me/351924129893?text=",
+        whatsappCta: "Enviar-me isto por WhatsApp",
+        whatsappIntro: "Olá! Usei a calculadora de reparar ou substituir do seu site.",
+        whatsappAge: "- Idade do computador: {age} anos",
+        whatsappRepair: "- Orçamento da reparação: {repairCost}",
+        whatsappReplacement: "- Custo de um substituto: {replacementCost}",
+        whatsappResult: "Sugeriu:",
         validationError: "Indique a idade e ambos os custos (maiores que zero) para obter uma recomendação.",
         badgeLabels: { repair: "Reparar", replace: "Substituir" },
         locale: "pt-PT",

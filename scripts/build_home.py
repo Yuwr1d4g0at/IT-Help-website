@@ -447,7 +447,7 @@ def body(t):
     for href, label in t['footer']:
         a(f'          <a href="{href}">{label}</a>\n')
     a('        </div>\n      </div>\n    </footer>\n\n  </div>\n\n')
-    a(f'<script src="{t["nav_js"]}"></script>\n<script src="{t["nav_js"].replace("nav.js", "desktop.js")}"></script>\n<script src="{t["nav_js"].replace("nav.js", "forms.js")}"></script>\n\n</body>')
+    a(f'<script src="{t["nav_js"]}"></script>\n<script src="{t["nav_js"].replace("nav.js", "desktop.js")}"></script>\n<script src="{t["nav_js"].replace("nav.js", "motion.js")}"></script>\n<script src="{t["nav_js"].replace("nav.js", "forms.js")}"></script>\n\n</body>')
     return ''.join(L)
 
 

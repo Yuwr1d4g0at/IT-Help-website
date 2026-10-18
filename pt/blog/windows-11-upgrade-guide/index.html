@@ -23,12 +23,6 @@
   <meta property="og:description" content="Como verificar se o seu PC consegue correr o Windows 11, como atualizar gratuitamente e o que fazer se não conseguir." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
-  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
-  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Atualizar para o Windows 11" />
   <meta name="twitter:description" content="Como verificar se o seu PC é compatível, como atualizar gratuitamente e o que fazer se não for." />
 
@@ -75,14 +69,27 @@
   }
   </script>
 
-
   <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <!-- /sync:head -->
+
   <link href="../../../css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
 
@@ -114,7 +121,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <h1>Atualizar para o Windows 11: O Seu PC Consegue, e Como Fazer</h1>
       </div>
@@ -152,7 +159,7 @@
           <p>Não precisa de abrir nada. Há várias formas de verificar, da mais fácil à mais detalhada:</p>
           <ul>
             <li><strong>Windows Update.</strong> Vá a Definições &gt; Atualização e Segurança &gt; Windows Update. Se o seu PC for compatível, muitas vezes aparece uma mensagem a oferecer o Windows 11, ou a dizer que cumpre os requisitos. Se não for, normalmente também o diz aqui.</li>
-            <li><strong>A aplicação Verificação do Estado do PC (PC Health Check).</strong> É gratuita e da Microsoft. Procure-a no menu Iniciar (muitas vezes já vem instalada) ou descarregue-a do site da Microsoft. Clique em "Verificar agora" e ela diz-lhe se sim ou não, e qual é o requisito em falta.</li>
+            <li><strong>A aplicação Verificação do Estado do PC (PC Health Check).</strong> É gratuita e da Microsoft. Procure-a no menu Iniciar (muitas vezes já vem instalada) ou transfira-a do site da Microsoft. Clique em "Verificar agora" e ela diz-lhe se sim ou não, e qual é o requisito em falta.</li>
             <li><strong>tpm.msc.</strong> Carregue na tecla Windows e em R ao mesmo tempo, escreva <strong>tpm.msc</strong> e carregue em Enter. Procure a "Versão da Especificação". Se disser 2.0, está tudo bem nesse ponto. Se disser que não foi encontrado um TPM compatível, pode estar simplesmente desligado.</li>
             <li><strong>msinfo32.</strong> Carregue na tecla Windows e em R, escreva <strong>msinfo32</strong> e carregue em Enter. Aqui vê o processador, o "Modo de BIOS" (o ideal é UEFI e não Legado) e o "Estado do Arranque Seguro".</li>
           </ul>
@@ -169,7 +176,7 @@
           </ul>
 
           <h2>Como atualizar</h2>
-          <p>Se o seu PC for compatível, o caminho mais simples é o Windows Update. Vá a Definições &gt; Atualização e Segurança &gt; Windows Update e, se lá estiver a oferta do Windows 11, escolha transferir e instalar. É gratuito. O Windows descarrega o que precisa, reinicia algumas vezes, e no fim volta a encontrar os mesmos ficheiros e programas, só com um aspeto novo.</p>
+          <p>Se o seu PC for compatível, o caminho mais simples é o Windows Update. Vá a Definições &gt; Atualização e Segurança &gt; Windows Update e, se lá estiver a oferta do Windows 11, escolha transferir e instalar. É gratuito. O Windows transfere o que precisa, reinicia algumas vezes, e no fim volta a encontrar os mesmos ficheiros e programas, só com um aspeto novo.</p>
           <p>Se se arrepender, o Windows 11 costuma permitir voltar ao Windows 10 durante pouco tempo depois da atualização (normalmente dez dias), em Definições &gt; Sistema &gt; Recuperação. Lembre-se só de que voltar atrás significa regressar a uma versão que já não recebe atualizações de segurança.</p>
 
           <h2>O que muda no dia a dia</h2>
@@ -202,6 +209,7 @@
           <a class="link-underline" href="../../#servicos">Serviços</a>
           <a class="link-underline" href="../../#sobre">Sobre</a>
           <a class="link-underline" href="../../#contacto">Contactos</a>
+          <a class="link-underline" href="../../privacy/">Privacidade</a>
         </div>
       </div>
     </footer>

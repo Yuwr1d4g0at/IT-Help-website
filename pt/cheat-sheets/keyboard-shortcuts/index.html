@@ -23,12 +23,6 @@
   <meta property="og:description" content="Uma lista imprimível de uma página com atalhos de teclado do Windows úteis." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
-  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
-  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Yuwri | Atalhos de Teclado" />
   <meta name="twitter:description" content="Uma lista imprimível de uma página com atalhos de teclado do Windows úteis." />
 
@@ -59,14 +53,27 @@
   }
   </script>
 
-
   <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <!-- /sync:head -->
+
   <link href="../../../css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
 
@@ -98,7 +105,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <a href="../../">Início</a>
@@ -132,7 +139,7 @@
           <ul>
             <li><strong>Win + Seta Esquerda/Direita</strong>: Encaixa a janela atual numa metade do ecrã.</li>
             <li><strong>Win + Seta Cima/Baixo</strong>: Maximiza ou minimiza a janela atual.</li>
-            <li><strong>Alt + Tab</strong>: Alterna entre janelas abertas, mantido premido para escolher uma.</li>
+            <li><strong>Alt + Tab</strong>: Alterna entre janelas abertas, mantendo premido para escolher uma.</li>
           </ul>
 
           <h2>Texto e Edição</h2>
@@ -168,6 +175,7 @@
           <a class="link-underline" href="../../#servicos">Serviços</a>
           <a class="link-underline" href="../../#sobre">Sobre</a>
           <a class="link-underline" href="../../#contacto">Contactos</a>
+          <a class="link-underline" href="../../privacy/">Privacidade</a>
         </div>
       </div>
     </footer>

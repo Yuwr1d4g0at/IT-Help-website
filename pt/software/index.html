@@ -23,23 +23,16 @@
   <meta property="og:description" content="O antivírus, VPN e software de produtividade que a Yuwri realmente recomenda aos clientes no Seixal." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
-  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
-  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Yuwri | Software Recomendado" />
   <meta name="twitter:description" content="O antivírus, VPN e software de produtividade que a Yuwri realmente recomenda aos clientes no Seixal." />
 
-
-  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
   <link href="../../css/style.css?v=3" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
 
@@ -71,7 +64,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <h1>Software que Recomendo</h1>
         <p>Escolhas de confiança, não uma lista patrocinada.</p>
@@ -85,7 +78,7 @@
         <div class="picker-bar">
           <div class="picker-info">
             <strong id="picker-count" data-singular="{n} selecionado" data-plural="{n} selecionados">0 selecionados</strong>
-            <span class="picker-hint" data-show-mode="modern">Marque o que quiser na lista abaixo e receba um único script que instala tudo. Corre em winget, já incluído no Windows 10/11, e não hospedo nem agrupo nada por conta própria.</span>
+            <span class="picker-hint" data-show-mode="modern">Marque o que quiser na lista abaixo e receba um único script que instala tudo. Usa o winget, já incluído no Windows 10/11, e não alojo nem agrupo nada por conta própria.</span>
             <span class="picker-hint" data-show-mode="legacy" hidden>No Windows 7 / 8.1 o script usa o Chocolatey em vez do winget, e fixa cada programa na última versão que ainda funciona. Os programas a cinzento já não têm versão compatível, por isso ficam de fora.</span>
             <span class="picker-hint" data-show-mode="mac" hidden>No Mac o script usa o Homebrew, o gestor de pacotes gratuito que a maioria dos técnicos de Mac usa, e instala-o primeiro se for preciso. Os programas a cinzento são só para Windows; aparecem algumas alternativas para Mac no lugar deles.</span>
           </div>
@@ -100,7 +93,7 @@
         </div>
 
         <div class="legacy-panel" data-show-mode="legacy" hidden>
-          <p class="legacy-warning"><strong>Atenção:</strong> o Windows 7 e 8.1 já não recebem atualizações de segurança, e a maioria destes programas também fica presa em versões antigas. Serve para um PC sem internet ou guardado para um programa antigo, mas não para o banco nem para o email. A solução a sério é atualizar: <a class="link-underline" href="../tools/windows-11-checker/">veja se o seu PC aguenta o Windows 11</a>, ou <a class="link-underline" href="../#contact">fale comigo</a>.</p>
+          <p class="legacy-warning"><strong>Atenção:</strong> o Windows 7 e 8.1 já não recebem atualizações de segurança, e a maioria destes programas também fica presa em versões antigas. Serve para um PC sem internet ou reservado a um programa antigo, mas não para o banco nem para o email. A solução a sério é atualizar: <a class="link-underline" href="../tools/windows-11-checker/">veja se o seu PC aguenta o Windows 11</a>, ou <a class="link-underline" href="../#contact">fale comigo</a>.</p>
           <h3>Antes de correr o script (só uma vez)</h3>
           <ol>
             <li>Confirme que o Windows 7 tem o <strong>Service Pack 1</strong> e todas as atualizações que o Windows Update ainda oferece. Para ver, abra o Iniciar, clique com o botão direito em Computador e escolha Propriedades.</li>
@@ -114,7 +107,7 @@
           <h3>Antes de correr o script</h3>
           <ol>
             <li>Use uma <strong>conta de administrador</strong> (normalmente a que foi criada quando o Mac foi configurado). O Homebrew pede a palavra-passe uma vez. Não aparece nada no ecrã enquanto escreve, e isso é normal.</li>
-            <li>Se o Mac ainda não tiver as Command Line Tools da Apple, o Homebrew descarrega-as primeiro. Essa parte pode demorar 5 a 15 minutos.</li>
+            <li>Se o Mac ainda não tiver as Command Line Tools da Apple, o Homebrew transfere-as primeiro. Essa parte pode demorar 5 a 15 minutos.</li>
             <li>Alguns programas precisam de uma versão recente do macOS. Num Mac mais antigo esses param com uma mensagem, e os restantes instalam na mesma.</li>
           </ol>
           <p>Os programas vêm da página oficial de cada programador, e o próprio <a class="link-underline" href="https://brew.sh/pt/" target="_blank" rel="noopener">Homebrew</a> é gratuito e open-source. Um programa que já tenha instalado à mão recebe uma mensagem a dizer que já existe e é saltado.</p>
@@ -126,7 +119,7 @@
             <a href="#" id="picker-download" class="btn btn-primary btn-sm" download="instalar-selecionados.bat" data-file-modern="instalar-selecionados.bat" data-file-legacy="instalar-selecionados-win7.bat" data-file-mac="instalar-selecionados-mac.sh"><span data-show-mode="modern">Descarregar instalar-selecionados.bat</span><span data-show-mode="legacy" hidden>Descarregar instalar-selecionados-win7.bat</span><span data-show-mode="mac" hidden>Descarregar instalar-selecionados-mac.sh</span></a>
             <button type="button" class="btn btn-outline btn-sm" id="picker-copy">Copiar script</button>
           </div>
-          <p class="picker-note" data-show-mode="modern">Precisa do winget (já incluído no Windows 10 2018+ e Windows 11). Faça duplo clique no ficheiro, e escolha "Mais informações &rarr; Executar mesmo assim" se o Windows SmartScreen perguntar. É normal para qualquer script não assinado, como um que escrevesse você mesmo, e instala tudo sem mais avisos.</p>
+          <p class="picker-note" data-show-mode="modern">Precisa do winget (já incluído no Windows 10 2018+ e Windows 11). Faça duplo clique no ficheiro, e escolha "Mais informações &rarr; Executar mesmo assim" se o Windows SmartScreen perguntar. É normal para qualquer script não assinado, como um que você mesmo escrevesse, e instala tudo sem mais avisos.</p>
           <p class="picker-note" data-show-mode="legacy" hidden>Clique com o botão direito no ficheiro e escolha "Executar como administrador". Verifica os passos acima, instala o <a class="link-underline" href="https://chocolatey.org/" target="_blank" rel="noopener">Chocolatey</a> (um gestor de pacotes gratuito e open-source) se for preciso, e depois os seus programas, cada um fixo na versão para Windows 7. Os maiores, como o LibreOffice, demoram um bocado.</p>
           <p class="picker-note" data-show-mode="mac" hidden>Abra o Terminal (carregue em <kbd>&#8984; Cmd</kbd> + <kbd>Espaço</kbd>, escreva Terminal e carregue em Enter). Escreva <code>bash</code> e um espaço, arraste o ficheiro descarregado para a janela do Terminal e carregue em Enter. Não cole o script diretamente: a instalação do Homebrew faz perguntas e ia engolir as linhas seguintes.</p>
         </div>
@@ -180,7 +173,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Proton.ProtonPass" data-brew="proton-pass" data-name="Proton Pass" aria-label="Incluir o Proton Pass no instalador">
                 <span class="app-icon peach"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4"/><path d="M10.5 12.5 19 4M15 6l3 3M12.5 8.5l2.5 2.5"/></svg></span>
-                <a href="https://proton.me/pass" class="app-name" target="_blank" rel="noopener" title="O gestor de palavras-passe da própria Proton, integrado na mesma conta focada em privacidade que o Mail, o Calendar e o Drive. Vale a pena se quiser tudo sob um único login.">Proton Pass</a>
+                <a href="https://proton.me/pass" class="app-name" target="_blank" rel="noopener" title="O gestor de palavras-passe da própria Proton, integrado na mesma conta focada em privacidade que o Mail, o Calendar e o Drive. Vale a pena se quiser tudo com um único início de sessão.">Proton Pass</a>
               </div>
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="DominikReichl.KeePass" data-choco="keepass.install" data-choco-version="2.61.1" data-choco-label="2.61.1" data-brew="keepassxc" data-brew-label="KeePassXC" data-name="KeePass" aria-label="Incluir o KeePass no instalador">
@@ -271,7 +264,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Spotify.Spotify" data-brew="spotify" data-name="Spotify" aria-label="Incluir o Spotify no instalador">
                 <span class="app-icon mint"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17" r="2.3"/><circle cx="17" cy="15" r="2.3"/><path d="M9.3 17V5.5L19.3 4v10.5"/></svg></span>
-                <a href="https://www.spotify.com/" class="app-name" target="_blank" rel="noopener" title="A aplicação de streaming de música que a maioria das pessoas já usa, com plano gratuito incluído, sem precisar de mais nada.">Spotify</a>
+                <a href="https://www.spotify.com/" class="app-name" target="_blank" rel="noopener" title="A aplicação de streaming de música que a maioria das pessoas já usa, com plano gratuito incluído, sem precisar de transferir mais nada.">Spotify</a>
               </div>
             </div>
           </div>
@@ -318,7 +311,7 @@
               <div class="app-row">
                 <input type="checkbox" class="pick-check" data-winget="Mozilla.Thunderbird" data-brew="thunderbird" data-name="Thunderbird" aria-label="Incluir o Thunderbird no instalador">
                 <span class="app-icon blush"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h4l2 3h4l2-3h4"/><path d="M4 12V6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v6"/><path d="M4 12v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6"/></svg></span>
-                <a href="https://www.thunderbird.net/" class="app-name" target="_blank" rel="noopener" title="Um cliente de email de secretária gratuito da Mozilla. Funciona com qualquer email que já tenha (Gmail, Outlook, etc.), ao contrário do Proton Mail que é o seu próprio serviço.">Thunderbird</a>
+                <a href="https://www.thunderbird.net/" class="app-name" target="_blank" rel="noopener" title="Um cliente de email gratuito para computador da Mozilla. Funciona com qualquer email que já tenha (Gmail, Outlook, etc.), ao contrário do Proton Mail que é o seu próprio serviço.">Thunderbird</a>
               </div>
             </div>
           </div>
@@ -518,7 +511,7 @@
               <div class="app-row" data-only-mode="mac">
                 <input type="checkbox" class="pick-check" data-brew="grandperspective" data-name="GrandPerspective" aria-label="Incluir GrandPerspective no instalador">
                 <span class="app-icon mint"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="5"/><rect x="13" y="10" width="8" height="4"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="16" width="8" height="5"/></svg></span>
-                <a href="https://grandperspectiv.sourceforge.net/" class="app-name" target="_blank" rel="noopener" title="Um mapa visual do que está a encher o disco do Mac, ficheiro a ficheiro, como o WinDirStat no Windows. Grátis e open-source instalado desta forma.">GrandPerspective</a>
+                <a href="https://grandperspectiv.sourceforge.net/" class="app-name" target="_blank" rel="noopener" title="Um mapa visual do que está a encher o disco do Mac, ficheiro a ficheiro, como o WinDirStat no Windows. Grátis e open-source quando instalado desta forma.">GrandPerspective</a>
               </div>
             </div>
           </div>
@@ -650,6 +643,7 @@
           <a class="link-underline" href="../#servicos">Serviços</a>
           <a class="link-underline" href="../#sobre">Sobre</a>
           <a class="link-underline" href="../#contacto">Contactos</a>
+          <a class="link-underline" href="../privacy/">Privacidade</a>
         </div>
       </div>
     </footer>

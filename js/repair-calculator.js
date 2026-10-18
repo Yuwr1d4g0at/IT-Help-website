@@ -115,10 +115,28 @@
     }
 
     errorEl.hidden = true;
-    renderResult(decide(age, repairCost, replacementCost));
+    renderResult(decide(age, repairCost, replacementCost), {
+      age: age,
+      repairCost: formatEuro(repairCost),
+      replacementCost: formatEuro(replacementCost)
+    });
   }
 
-  function renderResult(result) {
+  function whatsappHref(result, vals) {
+    if (!ui.whatsappUrl) return "";
+    var lines = [
+      ui.whatsappIntro,
+      "",
+      fillTemplate(ui.whatsappAge, vals),
+      fillTemplate(ui.whatsappRepair, vals),
+      fillTemplate(ui.whatsappReplacement, vals),
+      "",
+      ui.whatsappResult + " " + result.title
+    ];
+    return ui.whatsappUrl + encodeURIComponent(lines.join("\n"));
+  }
+
+  function renderResult(result, vals) {
     root.innerHTML =
       '<span class="calc-badge calc-badge-' +
       esc(result.type) +
@@ -129,6 +147,9 @@
       '<p class="wizard-result-body">' + esc(result.body) + "</p>" +
       '<div class="wizard-actions">' +
       '<a href="' + ui.contactHref + '" class="btn btn-primary btn-sm">' + esc(ui.contactCta) + "</a>" +
+      (ui.whatsappUrl
+        ? '<a href="' + whatsappHref(result, vals) + '" class="btn btn-outline btn-sm" target="_blank" rel="noopener">' + esc(ui.whatsappCta) + "</a>"
+        : "") +
       '<button type="button" class="wizard-restart" id="calc-restart">' + esc(ui.recalculateCta) + "</button>" +
       "</div>";
 

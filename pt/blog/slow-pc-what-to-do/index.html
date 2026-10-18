@@ -23,12 +23,6 @@
   <meta property="og:description" content="O que pode experimentar sozinho, do mais simples ao mais trabalhoso, e como saber quando é altura de um upgrade ou de uma reparação." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
-  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
-  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="PC Lento? O Que Fazer, Passo a Passo" />
   <meta name="twitter:description" content="O que experimentar primeiro, e quando é altura de pedir ajuda." />
 
@@ -75,14 +69,27 @@
   }
   </script>
 
-
   <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <!-- /sync:head -->
+
   <link href="../../../css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
 
@@ -114,7 +121,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <h1>PC Lento? O Que Fazer, Passo a Passo</h1>
       </div>
@@ -142,7 +149,7 @@
           <p>No Windows 10 e 11, "Encerrar" nem sempre limpa tudo, por causa de uma funcionalidade chamada Arranque Rápido. "Reiniciar" limpa. Se o computador está ligado (ou em suspensão) há dias ou semanas, só um reinício a sério já pode fazer diferença.</p>
 
           <h2>2. Reduza o que arranca com o Windows</h2>
-          <p>Há muitos programas que se acrescentam ao arranque sem dizer nada e depois ficam em segundo plano a ocupar memória. Carregue em <strong>Ctrl + Shift + Esc</strong> para abrir o Gestor de Tarefas e vá a <strong>Aplicações de arranque</strong> (no Windows 10 chama-se apenas "Arranque"). Desative o que não precisa logo que liga o computador: aplicações de conversação, plataformas de jogos, programas de atualização. Não ficam desinstalados, apenas deixam de abrir sozinhos. Se não sabe o que é alguma coisa, deixe estar.</p>
+          <p>Há muitos programas que se acrescentam ao arranque sem dizer nada e depois ficam em segundo plano a ocupar memória. Carregue em <strong>Ctrl + Shift + Esc</strong> para abrir o Gestor de Tarefas e vá a <strong>Aplicações de arranque</strong> (no Windows 10 chama-se apenas "Arranque"). Desative o que não precisa logo que liga o computador: aplicações de mensagens, plataformas de jogos, programas de atualização. Não ficam desinstalados, apenas deixam de abrir sozinhos. Se não sabe o que é alguma coisa, deixe estar.</p>
 
           <h2>3. Liberte espaço no disco</h2>
           <p>Um disco quase cheio torna tudo mais lento. Vá a <strong>Definições &gt; Sistema &gt; Armazenamento</strong>, veja as recomendações de limpeza e pondere ativar o Sensor de Armazenamento, para o Windows ir apagando ficheiros temporários sozinho. Depois, desinstale os programas que já não usa e passe fotografias e vídeos antigos para um disco externo ou para a nuvem (de preferência como parte de uma <a href="../how-to-back-up-your-computer/">cópia de segurança a sério</a>). Para saber o que mais pode limpar sem riscos, e o que deve deixar estar, veja como <a href="../safe-pc-cleanup/">limpar o PC em segurança</a>.</p>
@@ -163,7 +170,7 @@
           <p>No mesmo separador Desempenho, veja a <strong>Memória</strong> enquanto faz o que costuma fazer. Se estiver sempre perto do limite, mais RAM vai ajudar, desde que o computador tenha espaço para isso. Nem todos os portáteis permitem acrescentar memória, por isso vale a pena confirmar antes de comprar o que quer que seja.</p>
 
           <h2>Quando é altura de pedir ajuda</h2>
-          <p>Se já fez tudo isto e continua lento, ou se a lentidão vem acompanhada de outros sintomas, como ventoinhas muito ruidosas, barulhos estranhos ou o computador a desligar-se sozinho, pode ser um problema de hardware e não só acumulação de lixo. Vale a pena ler os <a href="../signs-your-computer-needs-repair/">sinais de que o seu computador precisa de reparação</a>, e o <a href="../../troubleshoot/">assistente de diagnóstico</a> ajuda a perceber por onde começar.</p>
+          <p>Se já fez tudo isto e continua lento, ou se a lentidão vem acompanhada de outros sintomas, como ventoinhas muito ruidosas, barulhos estranhos ou o computador a desligar-se sozinho, pode ser um problema de hardware e não apenas acumulação de lixo. Vale a pena ler os <a href="../signs-your-computer-needs-repair/">sinais de que o seu computador precisa de reparação</a>, e o <a href="../../troubleshoot/">assistente de diagnóstico</a> ajuda a perceber por onde começar.</p>
           <p>Se está na dúvida se um computador antigo ainda compensa, a <a href="../../repair-or-replace/">calculadora reparar ou substituir</a> dá-lhe um ponto de partida honesto. Às vezes, um SSD e uma boa limpeza dão ao computador mais uns anos de vida. Outras vezes é mesmo altura de um novo, e eu digo-lhe qual é o caso.</p>
 
           <p><a href="../../#contacto">Contacte-me e vejo o que está a tornar o seu computador lento &rarr;</a></p>
@@ -180,6 +187,7 @@
           <a class="link-underline" href="../../#servicos">Serviços</a>
           <a class="link-underline" href="../../#sobre">Sobre</a>
           <a class="link-underline" href="../../#contacto">Contactos</a>
+          <a class="link-underline" href="../../privacy/">Privacidade</a>
         </div>
       </div>
     </footer>

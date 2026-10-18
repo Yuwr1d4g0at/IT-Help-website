@@ -23,12 +23,6 @@
   <meta property="og:description" content="As burlas que andam a circular em Portugal, os sinais de alerta, e o que fazer se já caiu numa." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
-  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
-  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Burlas por MB WAY e SMS: Como as Reconhecer" />
   <meta name="twitter:description" content="Como funcionam as burlas mais comuns em Portugal, e o que fazer se já caiu numa." />
 
@@ -75,14 +69,27 @@
   }
   </script>
 
-
   <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <!-- /sync:head -->
+
   <link href="../../../css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
 
@@ -114,7 +121,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <h1>Burlas por MB WAY e SMS: Como Funcionam e Como as Reconhecer</h1>
       </div>
@@ -150,7 +157,7 @@
           <ul>
             <li><strong>Pedem-lhe que faça alguma coisa para receber dinheiro.</strong> No MB WAY, para receber não precisa de aceitar nada, de introduzir o PIN nem de ir a uma caixa Multibanco. Se alguém lhe diz o contrário, é aí que está a burla.</li>
             <li><strong>Pressa.</strong> "Só hoje", "a sua conta vai ser bloqueada", "preciso disto na próxima hora". A pressão existe para que não tenha tempo de confirmar.</li>
-            <li><strong>Um link num SMS.</strong> O banco, os CTT e as Finanças não precisam que toque num link por SMS para resolver um problema. Na dúvida, abra a aplicação oficial ou escreva o endereço você mesmo.</li>
+            <li><strong>Um link num SMS.</strong> O banco, os CTT e as Finanças não precisam que toque num link por SMS para resolver um problema. Na dúvida, abra a aplicação oficial ou escreva o endereço manualmente.</li>
             <li><strong>Mudar de conversa para outro sítio.</strong> Um comprador que quer sair do chat da plataforma e passar para o WhatsApp é, muitas vezes, o primeiro passo.</li>
             <li><strong>Um familiar que não pode falar.</strong> Só consegue escrever, o microfone "avariou", e prefere que não ligue. Ligue na mesma para o número antigo.</li>
           </ul>
@@ -168,7 +175,7 @@
           </ol>
 
           <h2>Alguns hábitos que ajudam</h2>
-          <p>Nas vendas online, use o sistema de pagamento e envio da própria plataforma, quando existir. Defina no MB WAY um limite diário com que se sinta confortável. E combine uma regra simples com a família: qualquer pedido de dinheiro urgente por mensagem leva sempre uma chamada primeiro, sem exceções.</p>
+          <p>Nas vendas online, use o sistema de pagamento e envio da própria plataforma, quando existir. Defina no MB WAY um limite diário com que se sinta à vontade. E combine uma regra simples com a família: qualquer pedido de dinheiro urgente por mensagem leva sempre uma chamada primeiro, sem exceções.</p>
 
           <p>Se acha que uma página falsa pode ter instalado alguma coisa no seu computador, ou se quer ajuda a mudar palavras-passe e a ativar a autenticação de dois fatores, posso ver isso consigo.</p>
 
@@ -186,6 +193,7 @@
           <a class="link-underline" href="../../#servicos">Serviços</a>
           <a class="link-underline" href="../../#sobre">Sobre</a>
           <a class="link-underline" href="../../#contacto">Contactos</a>
+          <a class="link-underline" href="../../privacy/">Privacidade</a>
         </div>
       </div>
     </footer>

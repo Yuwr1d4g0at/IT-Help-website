@@ -9,6 +9,11 @@
 (function () {
   "use strict";
 
+  // Lowercase and drop accents so "virus" finds "vírus".
+  function fold(str) {
+    return (str || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
   var checks = Array.prototype.slice.call(document.querySelectorAll(".pick-check"));
   var countEl = document.getElementById("picker-count");
   var generateBtn = document.getElementById("picker-generate");
@@ -267,6 +272,11 @@
 (function () {
   "use strict";
 
+  // Lowercase and drop accents so "virus" finds "vírus".
+  function fold(str) {
+    return (str || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
   var searchInput = document.getElementById("software-search");
   var noResults = document.getElementById("no-results");
   var cards = Array.prototype.slice.call(document.querySelectorAll(".category-card"));
@@ -274,7 +284,7 @@
   if (!searchInput || !cards.length) return;
 
   searchInput.addEventListener("input", function () {
-    var query = searchInput.value.trim().toLowerCase();
+    var query = fold(searchInput.value.trim());
     var anyMatch = false;
 
     cards.forEach(function (card) {
@@ -283,7 +293,7 @@
       rows.forEach(function (row) {
         var match =
           !row.classList.contains("mode-hidden") &&
-          (!query || row.textContent.toLowerCase().indexOf(query) !== -1);
+          (!query || fold(row.textContent).indexOf(query) !== -1);
         row.hidden = !match;
         if (match) cardHasMatch = true;
       });

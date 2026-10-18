@@ -23,23 +23,68 @@
   <meta property="og:description" content="Checklists de uma página que pode imprimir e guardar por perto." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
+  <meta name="twitter:title" content="Yuwri | Checklists" />
+  <meta name="twitter:description" content="Checklists de uma página que pode imprimir e guardar por perto." />
+
+  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
-  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Yuwri | Checklists" />
-  <meta name="twitter:description" content="Checklists de uma página que pode imprimir e guardar por perto." />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <!-- /sync:head -->
 
+  <!-- sync:ld -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Checklists",
+    "description": "Checklists de uma página que pode imprimir e guardar por perto: identificar emails de phishing, manutenção básica do computador, e atalhos de teclado do Windows.",
+    "url": "https://yuwri.pt/pt/cheat-sheets/",
+    "inLanguage": "pt-PT",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Yuwri",
+      "url": "https://yuwri.pt/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Início",
+        "item": "https://yuwri.pt/pt/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Checklists",
+        "item": "https://yuwri.pt/pt/cheat-sheets/"
+      }
+    ]
+  }
+  </script>
+  <!-- /sync:ld -->
 
-  <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
   <link href="../../css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
 
@@ -71,7 +116,7 @@
     </header>
 
     <!-- Page intro -->
-    <section class="page-intro">
+    <section class="page-intro" id="main" tabindex="-1">
       <div class="wrap">
         <h1>Checklists Imprimíveis</h1>
         <p>Uma página cada, feitas para imprimir e guardar perto da secretária, não só para percorrer uma vez.</p>
@@ -115,6 +160,7 @@
           <a class="link-underline" href="../#servicos">Serviços</a>
           <a class="link-underline" href="../#sobre">Sobre</a>
           <a class="link-underline" href="../#contacto">Contactos</a>
+          <a class="link-underline" href="../privacy/">Privacidade</a>
         </div>
       </div>
     </footer>

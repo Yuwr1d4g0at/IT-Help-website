@@ -23,12 +23,6 @@
   <meta property="og:description" content="Reparação de computadores e suporte informático simpático e personalizado no Seixal, Almada, Barreiro e Moita. Reparações, montagem de PCs, remoção de vírus, instalação de sistemas operativos, e criação e manutenção de sites." />
   <meta property="og:locale" content="pt_PT" />
   <meta property="og:locale:alternate" content="en" />
-  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
-  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Yuwri | Reparação de Computadores e Suporte Informático no Seixal" />
   <meta name="twitter:description" content="Reparação de computadores e suporte informático simpático e personalizado no Seixal." />
 
@@ -75,12 +69,26 @@
 
 
   <script>try{var d=document.documentElement,t=localStorage.getItem("yuwri-theme"),w=localStorage.getItem("yuwri-wall");if(t)d.setAttribute("data-theme",t);if(w)d.setAttribute("data-wall",w)}catch(e){}</script>
+  <!-- sync:head -->
+  <meta name="theme-color" content="#2B1D5C" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yuwri – Reparação de Computadores no Seixal" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yuwri.pt/images/og-image-pt.jpg" />
+  <!-- /sync:head -->
+
   <link href="../css/style.css" rel="stylesheet" />
   <script data-goatcounter="https://yuwri.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body class="home">
+  <a class="skip-link" href="#main">Saltar para o conteúdo principal</a>
 
   <div id="top">
     <!-- Taskbar -->
@@ -109,7 +117,7 @@
       </nav>
     </header>
 
-    <main class="desktop">
+    <main class="desktop" id="main" tabindex="-1">
 
       <!-- Desktop icons -->
       <ul class="desk-icons">
@@ -405,6 +413,7 @@
           <a href="#servicos">Serviços</a>
           <a href="#sobre">Sobre</a>
           <a href="#contacto">Contactos</a>
+          <a href="privacy/">Privacidade</a>
         </div>
       </div>
     </footer>
@@ -413,6 +422,7 @@
 
 <script src="../js/nav.js"></script>
 <script src="../js/desktop.js"></script>
+<script src="../js/motion.js"></script>
 <script src="../js/forms.js"></script>
 
 </body>

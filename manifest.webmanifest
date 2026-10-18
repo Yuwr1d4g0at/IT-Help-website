@@ -1,0 +1,16 @@
+{
+  "name": "Yuwri: Computer Repair & IT Support",
+  "short_name": "Yuwri",
+  "description": "Friendly computer repair and IT support in Seixal, Portugal.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#2B1D5C",
+  "theme_color": "#2B1D5C",
+  "lang": "en",
+  "icons": [
+    { "src": "/images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
