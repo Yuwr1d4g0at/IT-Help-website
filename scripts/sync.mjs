@@ -174,6 +174,7 @@ const indexable = pages.filter((f) => f !== "404.html" && !/noindex/.test(source
 // EN/PT pairs
 for (const f of pages) {
   if (f === "404.html" || f === "index.html" || f === "pt/index.html") continue;
+  if (/noindex/.test(sources[f])) continue; // private pages (e.g. /mailroom/) are English-only
   const twin = isPt(f) ? f.slice(3) : "pt/" + f;
   if (!pages.includes(twin)) warn(f, `no ${isPt(f) ? "English" : "Portuguese"} twin (${twin})`);
 }
