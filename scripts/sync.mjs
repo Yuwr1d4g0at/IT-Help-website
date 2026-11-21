@@ -26,7 +26,7 @@ const TODAY = new Date().toISOString().slice(0, 10);
 
 const read = (f) => readFileSync(path.join(ROOT, f), "utf8");
 const pages = execSync('git ls-files -co --exclude-standard "*.html"', { cwd: ROOT })
-  .toString().trim().split("\n").filter((f) => existsSync(path.join(ROOT, f))).sort();
+  .toString().trim().split("\n").filter((f) => existsSync(path.join(ROOT, f)) && !f.startsWith("demo/")).sort(); // demo/ = client mock-ups, not Yuwri pages
 
 const problems = [];
 const changed = [];

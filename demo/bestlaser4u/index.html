@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>BestLaser4u — Depilação a Laser Diodo na Quinta do Conde</title>
+<meta name="description" content="Gabinete de depilação a laser diodo na Quinta do Conde, Setúbal. Atendimento personalizado da Ana, sessões rápidas e resultados visíveis. Marque pelo WhatsApp.">
+<meta name="theme-color" content="#f4d3c7">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#fbf3ee;--surface:#fbf3ee;--card:#fff;--ink:#241618;--ink-soft:#6b4f4f;
+  --accent:#ff5468;--accent-text:#c2243d;--accent-ink:#1a0b0e;--line:rgba(36,22,24,.15);
+  --display:"Bricolage Grotesque",system-ui,sans-serif;--text:"Geist",system-ui,sans-serif;
+  --gutter:clamp(20px,5vw,64px);--ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+/* each section is its own ground; restate color with the tokens */
+.t-skin{--canvas:#f4d3c7;--surface:#f4d3c7;--card:#fff8f4;background:var(--canvas);color:var(--ink)}
+.t-coral{--canvas:#ff5468;--surface:#ff5468;--ink:#1a0b0e;--ink-soft:#3d1a21;background:var(--canvas);color:var(--ink)}
+.t-cream{--canvas:#fbf3ee;--surface:#fbf3ee;background:var(--canvas);color:var(--ink)}
+.t-ink{--canvas:#161114;--surface:#161114;--card:#241b1f;--ink:#f6ece8;--ink-soft:#c4b3b5;--line:rgba(246,236,232,.14);--accent-text:#ff7385;background:var(--canvas);color:var(--ink)}
+body{margin:0;background:var(--canvas);color:var(--ink);font:400 1.0625rem/1.65 var(--text);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1;margin:0;text-wrap:balance}
+p{text-wrap:pretty;margin:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:15px 28px;border-radius:999px;font-weight:500;text-decoration:none;transition:transform .25s var(--ease),background .25s}
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s var(--ease)}
+.btn:hover::after{transform:translateX(120%)}
+.btn:hover{transform:translateY(-2px);background:#ff7385}
+.t-coral .btn{background:var(--ink);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.ghost:hover{background:rgba(127,127,127,.12)}
+
+/* header */
+header{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px var(--gutter);transition:background .3s,backdrop-filter .3s}
+header{color:#241618}
+header.solid{background:rgba(251,243,238,.95);backdrop-filter:blur(10px)}
+.logo{font:700 1.25rem var(--display);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+header nav{display:flex;align-items:center;gap:28px}
+header nav a{text-decoration:none;font-size:.95rem}
+header nav a{color:#6b4f4f}
+header nav a:hover{color:#241618}
+header nav .btn{color:var(--accent-ink);padding:10px 20px}
+
+/* hero: scrubbed canvas */
+.hero{height:260vh;position:relative}
+.hero-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#field{position:absolute;inset:0;width:100%;height:100%}
+.hero-copy{position:absolute;left:var(--gutter);right:var(--gutter);bottom:clamp(40px,10vh,110px);max-width:1100px}
+.hero h1{font-size:clamp(2.5rem,9vw,7rem);line-height:.95}
+.hero h1 em{font-style:normal;color:var(--accent-text)}
+.hero-sub{max-width:34rem;color:var(--ink-soft);margin-top:22px;font-size:1.125rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero-late{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.hero-late.on{opacity:1;transform:none}
+.hero-hint{position:absolute;right:var(--gutter);top:50%;writing-mode:vertical-rl;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);opacity:.0}
+
+/* headline: lines rise out of a mask */
+.ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.ln>span{display:block}
+.js .ln>span{transform:translateY(110%);animation:rise 1.1s var(--ease) .15s forwards}
+.js .ln:nth-child(2)>span{animation-delay:.32s}
+@keyframes rise{to{transform:none}}
+
+/* statement: kinetic words */
+.statement{height:320vh;position:relative}
+.statement-stick{position:sticky;top:0;height:100vh;height:100svh;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,80px);align-items:center;padding:0 var(--gutter)}
+.phrases{display:grid;gap:clamp(18px,4vh,40px)}
+.js .ph{opacity:.22;transform:translateX(-14px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.js .ph.on{opacity:1;transform:none}
+.ph h2{font-size:clamp(2rem,5vw,4.4rem);line-height:1;letter-spacing:-.03em}
+.ph p{margin-top:10px;font-size:1rem;max-width:30rem;color:var(--ink-soft)}
+.stage{width:100%;max-width:520px;justify-self:center;overflow:visible;filter:drop-shadow(0 30px 40px rgba(26,11,14,.28))}
+.st{opacity:0;transition:opacity .5s var(--ease)}
+.stage[data-s="0"] .st0,.stage[data-s="1"] .st1,.stage[data-s="2"] .st2{opacity:1}
+.sp{transform-box:fill-box;transform-origin:center;transform:translate(var(--x),var(--y)) scale(0);animation:tw 2.8s ease-in-out infinite;animation-delay:var(--dl)}
+@keyframes tw{0%,100%{transform:translate(var(--x),var(--y)) scale(0) rotate(0)}50%{transform:translate(var(--x),var(--y)) scale(1) rotate(45deg)}}
+@media(max-width:860px){
+  .statement-stick{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;gap:20px}
+  .stage{order:-1;max-width:min(52vw,260px)}
+}
+@media(prefers-reduced-motion:reduce){.sp{animation:none;transform:translate(var(--x),var(--y)) scale(.8)}.js .ph{opacity:1;transform:none;transition:none}}
+
+/* zones: horizontal pan */
+.zones{position:relative}
+.zones-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(200px,.55fr) 1.6fr;gap:clamp(20px,4vw,64px);align-items:center;padding:80px var(--gutter) 40px}
+.zones-right{min-width:0;overflow:hidden;display:flex;flex-direction:column;gap:clamp(24px,5vh,56px)}
+.zones-head h2{font-size:clamp(1.6rem,3.6vw,2.6rem)}
+.zones-head p{color:var(--ink-soft);margin-top:10px}
+.track{display:flex;gap:clamp(20px,4vw,56px);will-change:transform;width:max-content;align-items:center;padding-right:8vw}
+.zbar{height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.zbar i{display:block;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
+.body{width:100%;max-height:78vh;justify-self:center}
+.body .sil circle,.body .sil path:not(.limb){fill:rgba(246,236,232,.07);stroke:rgba(246,236,232,.28);stroke-width:1.5}
+.body .limb{fill:none;stroke:rgba(246,236,232,.07);stroke-width:22;stroke-linecap:round}
+.hs .dot{fill:rgba(246,236,232,.3);transition:fill .3s,r .3s}
+.hs .ring{fill:none;stroke:var(--accent);stroke-width:1.5;opacity:0}
+.hs.on .dot{fill:var(--accent);r:6}
+.hs.on .ring{animation:ping 1.6s ease-out infinite}
+.hs.back{display:none}.body.back .hs.back{display:inline}.body.back .hs:not(.back){display:none}
+#bodytag{font:500 11px var(--text);letter-spacing:.2em;text-transform:uppercase;fill:var(--ink-soft);opacity:0;transition:opacity .3s}
+.body.back #bodytag{opacity:1}
+@keyframes ping{0%{r:6;opacity:.9}100%{r:22;opacity:0}}
+@media(max-width:860px){
+  .zones-stick{grid-template-columns:1fr;grid-template-rows:34vh 1fr;gap:16px;padding-top:76px}
+  .body{max-height:34vh}
+  .zone{font-size:clamp(2.6rem,13vw,4.5rem)}
+}
+@media(prefers-reduced-motion:reduce){.hs.on .ring{animation:none;opacity:.6}}
+.zone{font:700 clamp(3rem,8vw,7.5rem)/1 var(--display);letter-spacing:-.04em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px var(--ink-soft);transition:color .4s,-webkit-text-stroke-color .4s}
+.zone.hot{color:var(--ink);-webkit-text-stroke-color:var(--ink)}
+.zone-end{white-space:normal;max-width:22rem;font-size:1.1rem}
+.zone-end strong{display:block;font:700 clamp(1.6rem,3vw,2.2rem)/1.1 var(--display);margin-bottom:14px}
+
+/* why: illustrated bento */
+section.pad{padding:clamp(80px,14vh,160px) var(--gutter)}
+.why h2,.proof h2{font-size:clamp(2rem,5vw,3.8rem);max-width:16ch;margin-bottom:clamp(32px,6vh,64px)}
+.t-white{--canvas:#fff;--card:#fff;background:#fff;color:var(--ink)}
+.bento{display:grid;gap:16px;grid-template-columns:repeat(12,1fr);margin:0}
+.bcard{border-radius:28px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease);box-shadow:0 1px 0 rgba(36,22,24,.06)}
+.bcard.in{opacity:1;transform:none}
+.bcard .ill{flex:1;display:flex;align-items:center;justify-content:center;min-height:150px;margin-bottom:18px}
+.bcard svg{width:100%;max-height:300px;overflow:visible}
+.b-ana{grid-column:1/6;grid-row:1/3}
+.b-ana svg{max-height:470px}
+.b-space{grid-column:6/13}
+.b-treat{grid-column:6/10}
+.b-access{grid-column:10/13}
+.bcard h3{font-size:1.5rem;margin-bottom:8px}
+.bcard p{color:var(--ink-soft);max-width:34ch}
+.bcard .ac{stroke:var(--accent-text)}
+.t-coral .ac{stroke:#fff}
+.t-ink .ac{stroke:var(--accent)}
+/* stroke-draw on reveal (pathLength is set to 1 in JS) */
+.js .il :is(path,circle,ellipse,rect,line):not(.keep){stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s var(--ease);transition-delay:calc(var(--k,0) * 45ms + .25s)}
+.js .bcard.in .il :is(path,circle,ellipse,rect,line):not(.keep){stroke-dashoffset:0}
+.js .il .fl{opacity:0;transition:opacity .8s ease 1.2s}
+.js .bcard.in .il .fl{opacity:1}
+.beamf{stroke-dasharray:5 7;animation:flow 1.1s linear infinite}
+.dash{stroke-dasharray:3 8}
+@keyframes flow{to{stroke-dashoffset:-24}}
+.il .ac:not(.keep):not(.fl){animation:none}
+@media(max-width:900px){
+  .bento{grid-template-columns:1fr}
+  .b-ana,.b-space,.b-treat,.b-access{grid-column:auto;grid-row:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  .bcard{opacity:1;transform:none;transition:none}
+  .js .il :is(path,circle,ellipse,rect,line):not(.keep){stroke-dasharray:none;stroke-dashoffset:0;transition:none}
+  .js .il .fl{opacity:1;transition:none}.beamf{animation:none}
+}
+
+/* proof: sticky stack */
+.proof{}
+.proof-grid{display:grid;grid-template-columns:minmax(260px,.8fr) 1.2fr;gap:clamp(28px,6vw,96px);align-items:start;max-width:1200px;margin:0 auto}
+.proof-side{position:sticky;top:110px}
+.proof-side h2{font-size:clamp(2rem,4.4vw,3.4rem);max-width:12ch;margin-bottom:28px}
+.rating{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+.rating b{font:700 clamp(4rem,9vw,7rem)/1 var(--display);letter-spacing:-.04em}
+.rating .stars{color:var(--accent-text);letter-spacing:4px;font-size:1.2rem}
+.dist{display:flex;align-items:center;gap:10px;margin:18px 0 26px;max-width:340px;font-size:.9rem;color:var(--ink-soft)}
+.dist div{flex:1;height:8px;border-radius:8px;background:var(--line);overflow:hidden}
+.dist i{display:block;height:100%;background:var(--accent-text);transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--ease) .3s}
+.dist.in i{transform:none}
+.starwall{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:340px;margin-bottom:22px}
+.starwall span{font-size:clamp(1.3rem,2.6vw,2rem);line-height:1.1;color:rgba(36,22,24,.14);transition:color .4s,transform .5s var(--ease);text-align:center}
+.starwall span.lit{color:var(--accent-text);transform:scale(1.15)}
+.stack{padding-top:10px}
+.quote{transform-origin:50% 0;will-change:transform;position:sticky;top:calc(110px + var(--i)*22px);margin:0 0 24vh;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(24px,4vw,44px);box-shadow:0 26px 50px -26px rgba(36,22,24,.4);overflow:hidden}
+.quote:last-child{margin-bottom:0}
+.quote::before{content:"“";position:absolute;right:22px;top:-18px;font:700 11rem/1 var(--display);color:var(--accent-text);opacity:.1;pointer-events:none}
+.qh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.9rem;color:var(--ink-soft);margin-bottom:18px}
+.qs{color:var(--accent-text);letter-spacing:3px}
+blockquote{margin:0}
+.quote p{font:500 clamp(1.15rem,2.2vw,1.6rem)/1.4 var(--display);letter-spacing:-.01em}
+@media(max-width:860px){
+  .proof-grid{grid-template-columns:1fr}
+  .proof-side{position:static}
+  .quote{top:calc(76px + var(--i)*14px);margin-bottom:16vh}
+}
+@media(prefers-reduced-motion:reduce){.dist i{transform:none;transition:none}.starwall span{color:var(--accent-text)}}
+
+/* contact */
+.contact{padding-bottom:clamp(60px,10vh,120px)}
+.beam{height:3px;background:linear-gradient(90deg,transparent,var(--accent) 20%,var(--accent) 80%,transparent);box-shadow:0 0 22px 2px rgba(255,84,104,.55);transform:scaleX(0);transform-origin:left;transition:transform 1.3s var(--ease);margin-bottom:clamp(40px,8vh,90px)}
+.beam.in{transform:none}
+.contact-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 40px}
+.contact h2{font-size:clamp(2.4rem,7vw,6rem);line-height:.98;max-width:16ch}
+.status{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:var(--card);font-size:.95rem}
+.status i{width:10px;height:10px;border-radius:50%;background:#7d6e72}
+.status.open i{background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:live 1.8s infinite}
+@keyframes live{70%{box-shadow:0 0 0 10px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+.contact-grid{display:grid;gap:clamp(24px,4vw,56px);grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);margin-top:clamp(36px,7vh,72px);align-items:start}
+.composer{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,3.5vw,40px)}
+.composer h3{font-size:1.6rem;margin-bottom:6px}
+.hint{color:var(--ink-soft);margin-bottom:22px}
+fieldset{border:0;padding:0;margin:0 0 20px}
+legend{padding:0;margin-bottom:10px;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:.95rem;color:var(--ink);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .2s var(--ease)}
+.chip:hover{border-color:var(--ink-soft)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);transform:scale(1.04)}
+.bubble{position:relative;background:#144d37;color:#e9fff3;border-radius:18px 18px 4px 18px;padding:14px 18px;margin:8px 0 22px;font-size:.98rem;line-height:1.5;min-height:3.2em;transition:background .3s}
+.bubble::after{content:"";position:absolute;right:-6px;bottom:0;border:8px solid transparent;border-left-color:#144d37;border-bottom:0;border-right:0}
+.composer .actions{display:flex;flex-wrap:wrap;gap:12px}
+.info{display:grid;gap:22px}
+.mapcard{position:relative}
+.mapcard .mapwrap{border-radius:24px}
+.addr{position:absolute;left:14px;right:14px;bottom:14px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;background:rgba(22,17,20,.9);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:16px;padding:12px 16px}
+.addr address{font-style:normal;font-size:.92rem;line-height:1.4;color:var(--ink-soft)}
+.addr strong{color:var(--ink);font-weight:500}
+.addr-btns{display:flex;gap:8px}
+.mini{font:inherit;font-size:.85rem;color:var(--ink);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;text-decoration:none}
+.mini:hover{background:rgba(246,236,232,.08)}
+table{border-collapse:collapse;width:100%}
+caption{text-align:left;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:8px}
+td{padding:10px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;color:var(--ink-soft)}
+tr.today td{color:var(--ink);font-weight:500}
+tr.today td:first-child::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:10px}
+.mapwrap{clip-path:inset(0 0 100% 0 round 24px);transition:clip-path 1.1s var(--ease)}
+.mapcard.in .mapwrap{clip-path:inset(0 0 0 0 round 24px)}
+.wa{transition:opacity .3s,transform .3s}
+.wa.hide{opacity:0;transform:translateY(20px);pointer-events:none}
+iframe{display:block;width:100%;height:400px;border:0;border-radius:24px;filter:grayscale(1) invert(.92) contrast(.9)}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}iframe{height:320px}}
+@media(prefers-reduced-motion:reduce){.status.open i{animation:none}}
+footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid var(--line)}
+
+.wa{position:fixed;right:18px;bottom:18px;z-index:19;box-shadow:0 6px 20px rgba(0,0,0,.45)}
+
+/* generic reveal */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:760px){
+  header nav a:not(.btn){display:none}
+  .hero h1{font-size:clamp(2.3rem,12vw,3.4rem)}
+  .quote{top:calc(72px + var(--i)*16px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .js .ln>span{transform:none;animation:none}
+  html{scroll-behavior:auto}
+  .js .rv,.js .statement .w{opacity:1;transform:none;transition:none}
+  .hero-late{opacity:1;transform:none}
+  .beam{transform:none;transition:none}
+  .mapwrap{clip-path:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<header id="top-bar">
+  <a class="logo" href="#top">Best<span>Laser</span>4u</a>
+  <nav>
+    <a href="#zonas">Zonas</a>
+    <a href="#opinioes">Opiniões</a>
+    <a href="#contacto">Contacto</a>
+    <a class="btn" href="https://wa.me/351962635894?text=Ol%C3%A1!%20Gostava%20de%20marcar%20uma%20sess%C3%A3o%20de%20depila%C3%A7%C3%A3o%20a%20laser.">Marcar</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero t-skin" id="hero" aria-label="Apresentação">
+    <div class="hero-stick">
+      <canvas id="field" aria-hidden="true"></canvas>
+      <div class="hero-copy">
+        <h1><span class="ln"><span>Depilação a laser diodo.</span></span><span class="ln"><span><em>Pele lisa.</em></span></span></h1>
+        <p class="hero-sub hero-late">Gabinete na Quinta do Conde, com atendimento personalizado da Ana. Sessões rápidas, espaço limpo e resultados que se veem cedo.</p>
+        <div class="hero-cta hero-late">
+          <a class="btn" href="https://wa.me/351962635894?text=Ol%C3%A1!%20Gostava%20de%20marcar%20uma%20sess%C3%A3o%20de%20depila%C3%A7%C3%A3o%20a%20laser.">Marcar pelo WhatsApp</a>
+          <a class="btn ghost" href="tel:+351962635894">Ligar 962 635 894</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement t-coral" aria-label="Em resumo">
+    <div class="statement-stick">
+      <div class="phrases">
+        <div class="ph"><h2>Sessões rápidas.</h2><p>“O procedimento é super rápido”</p></div>
+        <div class="ph"><h2>Espaço limpo.</h2><p>“Serviço mt profissional e higiénico.”</p></div>
+        <div class="ph"><h2>Resultados que se veem cedo.</h2><p>“…os resultados são visíveis já nas primeiras sessões.”</p></div>
+      </div>
+      <svg class="stage" id="stage" viewBox="0 0 400 400" role="img" aria-label="Ilustração animada: relógio, brilho e pele lisa" data-s="0">
+        <circle cx="200" cy="200" r="196" fill="#1a0b0e"/>
+        <g class="st st0">
+          <g stroke="#f6ece8" stroke-opacity=".35" stroke-width="2"><line x1="200" y1="46" x2="200" y2="62" transform="rotate(0 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(6 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(12 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(18 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(24 200 200)"/><line x1="200" y1="46" x2="200" y2="62" transform="rotate(30 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(36 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(42 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(48 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(54 200 200)"/><line x1="200" y1="46" x2="200" y2="62" transform="rotate(60 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(66 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(72 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(78 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(84 200 200)"/><line x1="200" y1="46" x2="200" y2="62" transform="rotate(90 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(96 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(102 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(108 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(114 200 200)"/><line x1="200" y1="46" x2="200" y2="62" transform="rotate(120 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(126 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(132 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(138 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(144 200 200)"/><line x1="200" y1="46" x2="200" y2="62" transform="rotate(150 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(156 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(162 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(168 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(174 200 200)"/><line x1="200" y1="46" x2="200" y2="62" transform="rotate(180 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(186 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(192 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(198 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(204 200 200)"/><line x1="200" y1="46" x2="200" y2="62" transform="rotate(210 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(216 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(222 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(228 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(234 200 200)"/><line x1="200" y1="46" x2="200" y2="62" transform="rotate(240 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(246 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(252 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(258 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(264 200 200)"/><line x1="200" y1="46" x2="200" y2="62" transform="rotate(270 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(276 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(282 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(288 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(294 200 200)"/><line x1="200" y1="46" x2="200" y2="62" transform="rotate(300 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(306 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(312 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(318 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(324 200 200)"/><line x1="200" y1="46" x2="200" y2="62" transform="rotate(330 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(336 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(342 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(348 200 200)"/><line x1="200" y1="46" x2="200" y2="54" transform="rotate(354 200 200)"/></g>
+          <circle cx="200" cy="200" r="120" fill="none" stroke="#f6ece8" stroke-opacity=".14" stroke-width="10"/>
+          <circle id="arc" cx="200" cy="200" r="120" fill="none" stroke="#ff5468" stroke-width="10" stroke-linecap="round" transform="rotate(-90 200 200)" stroke-dasharray="754" stroke-dashoffset="754"/>
+          <g id="hand"><line x1="200" y1="200" x2="200" y2="70" stroke="#fff" stroke-width="3" stroke-linecap="round"/></g>
+          <circle cx="200" cy="200" r="9" fill="#ff5468"/>
+        </g>
+        <g class="st st1">
+          <rect x="105" y="105" width="190" height="190" rx="46" fill="#f6ece8" fill-opacity=".08" stroke="#f6ece8" stroke-opacity=".3" stroke-width="2"/>
+          <clipPath id="sq"><rect x="105" y="105" width="190" height="190" rx="46"/></clipPath><g clip-path="url(#sq)"><g id="gloss"><rect x="-40" y="90" width="46" height="220" fill="#fff" fill-opacity=".22" transform="rotate(20 0 200)"/></g></g>
+          <g fill="#ff5468"><path class="sp" style="--x:200px;--y:150px;--dl:0s" d="M0-18C2-6 6-2 18 0 6 2 2 6 0 18-2 6-6 2-18 0-6-2-2-6 0-18Z"/><path class="sp" style="--x:290px;--y:210px;--dl:0.6s" d="M0-18C2-6 6-2 18 0 6 2 2 6 0 18-2 6-6 2-18 0-6-2-2-6 0-18Z"/><path class="sp" style="--x:140px;--y:240px;--dl:1.2s" d="M0-18C2-6 6-2 18 0 6 2 2 6 0 18-2 6-6 2-18 0-6-2-2-6 0-18Z"/><path class="sp" style="--x:240px;--y:290px;--dl:1.8s" d="M0-18C2-6 6-2 18 0 6 2 2 6 0 18-2 6-6 2-18 0-6-2-2-6 0-18Z"/><path class="sp" style="--x:150px;--y:120px;--dl:2.4s" d="M0-18C2-6 6-2 18 0 6 2 2 6 0 18-2 6-6 2-18 0-6-2-2-6 0-18Z"/><path class="sp" style="--x:260px;--y:110px;--dl:0.9s" d="M0-18C2-6 6-2 18 0 6 2 2 6 0 18-2 6-6 2-18 0-6-2-2-6 0-18Z"/><path class="sp" style="--x:205px;--y:225px;--dl:1.5s" d="M0-18C2-6 6-2 18 0 6 2 2 6 0 18-2 6-6 2-18 0-6-2-2-6 0-18Z"/></g>
+        </g>
+        <g class="st st2">
+          <g stroke="#f6ece8" stroke-width="1.6" stroke-linecap="round" stroke-opacity=".8" id="hairs"><line class="hr" x1="70.0" x2="66.9" data-h="114"/><line class="hr" x1="79.5" x2="77.9" data-h="118"/><line class="hr" x1="89.0" x2="90.5" data-h="75"/><line class="hr" x1="98.5" x2="92.7" data-h="137"/><line class="hr" x1="108.0" x2="105.1" data-h="89"/><line class="hr" x1="117.5" x2="123.4" data-h="108"/><line class="hr" x1="127.0" x2="131.0" data-h="108"/><line class="hr" x1="136.5" x2="138.2" data-h="82"/><line class="hr" x1="146.0" x2="147.6" data-h="139"/><line class="hr" x1="155.5" x2="155.8" data-h="129"/><line class="hr" x1="165.0" x2="167.1" data-h="75"/><line class="hr" x1="174.5" x2="177.6" data-h="117"/><line class="hr" x1="184.0" x2="181.6" data-h="72"/><line class="hr" x1="193.5" x2="197.9" data-h="108"/><line class="hr" x1="203.0" x2="205.6" data-h="140"/><line class="hr" x1="212.5" x2="215.1" data-h="144"/><line class="hr" x1="222.0" x2="220.7" data-h="134"/><line class="hr" x1="231.5" x2="230.8" data-h="145"/><line class="hr" x1="241.0" x2="245.5" data-h="78"/><line class="hr" x1="250.5" x2="246.1" data-h="87"/><line class="hr" x1="260.0" x2="265.6" data-h="105"/><line class="hr" x1="269.5" x2="271.0" data-h="94"/><line class="hr" x1="279.0" x2="279.1" data-h="101"/><line class="hr" x1="288.5" x2="286.7" data-h="117"/><line class="hr" x1="298.0" x2="299.0" data-h="142"/><line class="hr" x1="307.5" x2="309.7" data-h="144"/><line class="hr" x1="317.0" x2="321.3" data-h="149"/><line class="hr" x1="326.5" x2="328.6" data-h="83"/><line class="hr" x1="336.0" x2="340.3" data-h="147"/></g>
+          <path id="skin" d="M60 300 Q200 280 340 300" fill="none" stroke="#f6ece8" stroke-width="3" stroke-linecap="round"/>
+          <g id="zap"><line x1="40" x2="360" y1="0" y2="0" stroke="#ff5468" stroke-width="3" stroke-linecap="round"/><line x1="40" x2="360" y1="0" y2="0" stroke="#fff" stroke-width="1"/></g>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="zones t-ink" id="zonas" aria-label="Zonas de tratamento">
+    <div class="zones-stick">
+      <svg class="body" id="body" viewBox="0 0 200 420" role="img" aria-label="Figura humana com as zonas de tratamento assinaladas">
+        <g class="sil">
+          <circle cx="100" cy="42" r="23"/>
+          <path d="M72 88Q100 78 128 88L136 192Q100 208 64 192Z"/>
+          <path class="limb" d="M64 96L38 188M136 96L162 188M84 204L80 396M116 204L120 396"/>
+        </g>
+        <g class="hs" data-i="0" transform="translate(40 175)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="0" transform="translate(160 175)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="1" transform="translate(80 300)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="1" transform="translate(120 300)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="2" transform="translate(82 205)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="2" transform="translate(118 205)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="3" transform="translate(100 222)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="4" transform="translate(100 53)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="5" transform="translate(63 112)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="5" transform="translate(137 112)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="6" transform="translate(78 392)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="6" transform="translate(122 392)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="8" transform="translate(100 118)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs" data-i="9" transform="translate(100 165)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs back" data-i="7" transform="translate(80 112)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs back" data-i="7" transform="translate(120 112)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g><g class="hs back" data-i="7" transform="translate(100 150)"><circle class="ring" r="7"/><circle class="dot" r="4"/></g>
+        <text id="bodytag" x="100" y="415" text-anchor="middle">costas</text>
+      </svg>
+      <div class="zones-right">
+        <div class="zones-head">
+          <h2>Zonas de tratamento</h2>
+          <p>Laser diodo, para mulheres e homens.</p>
+        </div>
+        <div class="track" id="track">
+          <span class="zone">Braços</span><span class="zone">Pernas</span><span class="zone">Virilhas</span><span class="zone">Zona íntima</span><span class="zone">Buço</span><span class="zone">Axilas</span><span class="zone">Pés</span><span class="zone">Costas</span><span class="zone">Peito</span><span class="zone">Abdómen</span>
+          <div class="zone-end">
+            <strong>Quanto custa?</strong>
+            <p style="color:var(--ink-soft);margin-bottom:18px">Preços e pacotes sob orçamento, sem compromisso.</p>
+            <a class="btn" href="https://wa.me/351962635894?text=Ol%C3%A1!%20Gostava%20de%20saber%20os%20pre%C3%A7os%20da%20depila%C3%A7%C3%A3o%20a%20laser.">Pedir orçamento</a>
+          </div>
+        </div>
+        <div class="zbar" aria-hidden="true"><i id="zbar"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why pad t-cream" aria-label="Porquê o BestLaser4u">
+    <h2 class="rv">Um serviço feito à sua medida.</h2>
+    <div class="bento">
+      <article class="bcard b-ana t-skin">
+        <div class="ill"><svg class="il" viewBox="0 0 240 280" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M72 150C50 82 96 46 124 50 168 52 194 100 178 192L172 232 66 232 62 192C58 172 66 162 72 150Z"/>
+  <path d="M30 280C30 222 80 205 120 205 160 205 210 222 210 280" style="fill:var(--canvas)"/>
+  <path d="M104 190V210M136 190V210"/>
+  <path class="keep" style="fill:#fbe3d9;stroke:none" d="M74 140C74 95 98 80 120 80 142 80 166 95 166 140 166 182 144 200 120 200 96 200 74 182 74 140Z"/>
+  <path d="M74 140C74 95 98 80 120 80 142 80 166 95 166 140 166 182 144 200 120 200 96 200 74 182 74 140Z"/>
+  <path d="M76 126C92 100 122 90 158 100 164 108 166 120 166 132"/>
+  <path d="M98 144q8 6 16 0M126 144q8 6 16 0"/>
+  <path d="M104 170q16 14 32 0"/>
+  <circle class="fl fa" cx="92" cy="160" r="5" style="fill:var(--accent);stroke:none"/><circle class="fl fa" cx="148" cy="160" r="5" style="fill:var(--accent);stroke:none"/>
+  <path d="M92 210L120 240 148 210"/>
+  <path class="ac" d="M200 62l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+  <path class="ac" d="M38 108l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+  <circle class="ac" cx="190" cy="120" r="3"/>
+</svg></div>
+        <h3>A Ana</h3><p>Simpática, atenciosa e profissional. É ela quem cuida de si, do início ao fim.</p>
+      </article>
+      <article class="bcard b-space t-ink">
+        <div class="ill"><svg class="il" viewBox="0 0 320 200" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10 176H310"/>
+  <path d="M30 40a30 30 0 0 1 60 0v44H30z"/><path d="M60 24V84M30 54H90"/>
+  <circle class="ac" cx="125" cy="40" r="10"/><path class="ac" d="M125 20v-6M125 66v6M105 40h-6M151 40h6"/>
+  <path d="M44 176V158H70V176"/><path d="M57 158C57 130 38 120 28 98 52 104 62 124 57 158ZM57 150C60 128 78 118 92 104 86 128 72 140 57 150Z"/>
+  <path d="M110 130H236V148H110z"/><path d="M122 148V176M224 148V176"/><path d="M116 130C116 116 134 112 150 114L150 130"/>
+  <rect x="254" y="64" width="40" height="112" rx="10"/><circle cx="274" cy="92" r="9"/><path d="M262 124h24M262 140h24M262 156h14"/>
+  <path d="M274 64C274 22 210 14 190 66"/><rect x="176" y="64" width="26" height="40" rx="8" transform="rotate(-18 189 84)"/>
+  <path class="ac keep beamf" d="M180 108l-12 20M188 112v26M196 110l12 20"/>
+  <path class="ac" d="M160 22l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+</svg></div>
+        <h3>Espaço acolhedor</h3><p>Moderno, confortável e higiénico, onde se sente segurança.</p>
+      </article>
+      <article class="bcard b-treat t-coral">
+        <div class="ill"><svg class="il" viewBox="0 0 200 180" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="64" y="14" width="44" height="76" rx="16" transform="rotate(24 86 52)"/>
+  <path d="M112 84l-4 12"/>
+  <path class="ac keep beamf" d="M110 100l-8 26M122 98l2 30M134 92l16 22"/>
+  <path d="M10 150C60 128 130 128 190 150"/>
+  <path class="ac" d="M10 166C60 144 130 144 190 166"/>
+  <circle cx="160" cy="44" r="22"/><path d="M149 45l8 8 14-16"/>
+</svg></div>
+        <h3>Tratamento eficaz</h3><p>Sessões rápidas e resultados visíveis já nas primeiras.</p>
+      </article>
+      <article class="bcard b-access t-white">
+        <div class="ill"><svg class="il" viewBox="0 0 200 180" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M100 10C72 10 52 30 52 56 52 90 100 134 100 134S148 90 148 56C148 30 128 10 100 10Z"/>
+  <circle cx="100" cy="46" r="7"/><path d="M100 54V74M100 62h14M100 74l-10 14M100 66l12 10"/>
+  <path class="ac keep dash" d="M10 168C60 150 40 140 90 146S150 158 190 142"/>
+  <ellipse cx="100" cy="144" rx="30" ry="8"/>
+</svg></div>
+        <h3>Fácil de chegar</h3><p>Quinta do Conde, com entrada e casa de banho acessíveis a cadeira de rodas.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="proof pad t-skin" id="opinioes" aria-label="Opiniões">
+    <div class="proof-grid">
+      <aside class="proof-side">
+        <h2 class="rv">Quem experimentou, recomenda.</h2>
+        <div class="rating rv"><b>5,0</b><span class="stars" aria-label="5 estrelas">★★★★★</span></div>
+        <p class="rv" style="color:var(--ink-soft)">14 opiniões no Google, todas com 5 estrelas.</p>
+        <div class="dist rv" aria-hidden="true"><span>5★</span><div><i></i></div><span>14</span></div>
+        <div class="starwall" id="starwall" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=BestLaser4u&query_place_id=ChIJc0fXK05PGQ0RfP4tZOf11U4">Ver no Google Maps</a>
+      </aside>
+      <div class="stack">
+      <figure class="quote" style="--i:0"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · abril 2025</span></div><blockquote><p lang="pt">A Ana é uma excelente profissional, delicada, atenciosa e sempre com um sorriso no rosto. O espaço é extremamente acolhedor competente e transmite total segurança.</p></blockquote></figure>
+      <figure class="quote" style="--i:1"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · abril 2025</span></div><blockquote><p lang="pt">Trabalho muito profissional, muito satisfeito com o resultado que consegui, resultado espetacular, a transformação do antes e do depois é enorme. Vale muito a pena, muita experiência com óptimos resultados.</p></blockquote></figure>
+      <figure class="quote" style="--i:2"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · abril 2025</span></div><blockquote><p lang="pt">Completamente satisfeita super simpática. Um atendimento espetacular recomendo 100% 😊. Já começo a ver resultados, em pouco tempo e estou cada vez mais satisfeita ☺️</p></blockquote></figure>
+      <figure class="quote" style="--i:3"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · fevereiro 2025</span></div><blockquote><p lang="pt">Fiquei completamente satisfeita com o atendimento e os resultados da depilação a laser! O ambiente é moderno, acolhedor e muito confortável. O procedimento é super rápido e os resultados são visíveis já nas primeiras sessões.</p></blockquote></figure>
+      <figure class="quote" style="--i:4"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · fevereiro 2024</span></div><blockquote><p lang="pt">Mais uma ida a este espaço maravilhoso! Serviço mt profissional e higiénico. A pessoa mt simpatica e cuidadosa. Recomendo vivamente!</p></blockquote></figure>
+      <figure class="quote" style="--i:5"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · janeiro 2023</span></div><blockquote><p lang="pt">A Ana para além de uma excelente profissional é uma pessoa extremamente atenciosa e simpática.</p></blockquote></figure>
+      <figure class="quote" style="--i:6"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · outubro 2022 · em inglês</span></div><blockquote><p lang="en">Ana, the owner, is super friendly and professional! The space is clean and cozy! The service is fast and, in my case, with amazing results. Affordable! Totally recommend!</p></blockquote></figure>
+      <figure class="quote" style="--i:7"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · junho 2025</span></div><blockquote><p lang="pt">Atendimento 5 estralas e rápidos resultados!</p></blockquote></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact pad t-ink" id="contacto" aria-label="Contacto">
+    <div class="beam" id="beam"></div>
+    <div class="contact-top">
+      <h2 class="rv">Marque a sua sessão.</h2>
+      <p class="status rv" id="status" aria-live="polite"><i></i><span>A verificar o horário…</span></p>
+    </div>
+    <div class="contact-grid">
+      <div class="composer rv">
+        <h3>Monte a sua mensagem</h3>
+        <p class="hint">Escolha o que lhe interessa e enviamos tudo já escrito para o WhatsApp da Ana.</p>
+        <fieldset><legend>Zonas</legend><div class="chips" id="zchips"><button type="button" class="chip" aria-pressed="false">Braços</button><button type="button" class="chip" aria-pressed="false">Pernas</button><button type="button" class="chip" aria-pressed="false">Virilhas</button><button type="button" class="chip" aria-pressed="false">Zona íntima</button><button type="button" class="chip" aria-pressed="false">Buço</button><button type="button" class="chip" aria-pressed="false">Axilas</button><button type="button" class="chip" aria-pressed="false">Pés</button><button type="button" class="chip" aria-pressed="false">Costas</button><button type="button" class="chip" aria-pressed="false">Peito</button><button type="button" class="chip" aria-pressed="false">Abdómen</button></div></fieldset>
+        <fieldset><legend>Melhor dia</legend><div class="chips" id="dchips"><button type="button" class="chip" aria-pressed="false" data-day="terça">terça</button><button type="button" class="chip" aria-pressed="false" data-day="quarta">quarta</button><button type="button" class="chip" aria-pressed="false" data-day="quinta">quinta</button><button type="button" class="chip" aria-pressed="false" data-day="sexta">sexta</button><button type="button" class="chip" aria-pressed="false" data-day="sábado">sábado</button></div></fieldset>
+        <fieldset><legend>Altura do dia</legend><div class="chips" id="tchips"><button type="button" class="chip" aria-pressed="false" data-t="de manhã">Manhã</button><button type="button" class="chip" aria-pressed="false" data-t="à tarde">Tarde</button></div></fieldset>
+        <div class="bubble" id="bubble" aria-live="polite"></div>
+        <div class="actions">
+          <a class="btn" id="send" href="https://wa.me/351962635894">Enviar no WhatsApp</a>
+          <a class="btn ghost" href="tel:+351962635894">Ligar 962 635 894</a>
+        </div>
+      </div>
+      <div class="info rv" style="--d:.15s">
+        <div class="mapcard">
+          <div class="mapwrap" id="map"><iframe title="Mapa do BestLaser4u" loading="lazy" src="https://maps.google.com/maps?q=38.5538843,-9.0472395&z=16&output=embed"></iframe></div>
+          <div class="addr">
+            <address><strong>R. Serra da Arrábida 1238</strong><br>2975-402 Quinta do Conde, Setúbal</address>
+            <div class="addr-btns"><button type="button" id="copy" class="mini">Copiar</button><a class="mini" href="https://www.google.com/maps/search/?api=1&query=BestLaser4u&query_place_id=ChIJc0fXK05PGQ0RfP4tZOf11U4">Abrir no Maps</a></div>
+          </div>
+        </div>
+        <table id="hours"><caption>Horário</caption><tr data-d="0"><td>Domingo</td><td>Fechado</td></tr><tr data-d="1"><td>Segunda</td><td>Fechado</td></tr><tr data-d="2"><td>Terça</td><td>09:00–19:00</td></tr><tr data-d="3"><td>Quarta</td><td>09:00–19:00</td></tr><tr data-d="4"><td>Quinta</td><td>09:00–19:00</td></tr><tr data-d="5"><td>Sexta</td><td>09:00–19:00</td></tr><tr data-d="6"><td>Sábado</td><td>09:00–19:00</td></tr></table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site t-ink">© BestLaser4u · Gabinete de depilação a laser diodo · Quinta do Conde<br><small>Demonstração preparada por <a href="https://yuwri.pt/pt/">Yuwri</a></small></footer>
+
+<a class="btn wa" href="https://wa.me/351962635894?text=Ol%C3%A1!%20Gostava%20de%20marcar%20uma%20sess%C3%A3o%20de%20depila%C3%A7%C3%A3o%20a%20laser.">WhatsApp</a>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s);
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+
+  // progress 0..1 through a tall section whose child is sticky
+  const prog = el => {
+    const r = el.getBoundingClientRect();
+    return clamp(-r.top / (r.height - innerHeight || 1));
+  };
+
+  // header goes solid after the hero starts
+  const bar = $('#top-bar');
+
+  // ---------- hero: laser beam cuts a strand field (signature move) ----------
+  const hero = $('#hero'), cv = $('#field'), ctx = cv.getContext('2d');
+  const lates = document.querySelectorAll('.hero-late');
+  let W, H, dpr, tex, parts = [], strands = [], cur = reduce ? .55 : 0, heroVisible = true;
+
+  // deterministic RNG so layout is stable across resizes
+  const rng = seed => () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296;
+
+  function resize() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const r = rng(7), n = W < 700 ? 150 : 340;
+    const clumps = Array.from({ length: W < 700 ? 6 : 14 }, () => ({ x: r() * W, lean: (r() - .5) * .8 }));
+    strands = Array.from({ length: n }, () => {
+      const d = r() < .3 ? 0 : r() < .6 ? 1 : 2; // 0 far/faint, 2 near/bold
+      const c = r() < .6 ? clumps[(r() * clumps.length) | 0] : null;
+      const len = (40 + r() * 100) * (.7 + d * .25);
+      return {
+        x: c ? c.x + (r() + r() + r() - 1.5) * 50 : r() * W,
+        y: r() * (H + len), len,
+        lean: c ? c.lean + (r() - .5) * .25 : (r() - .5) * .8,
+        curl: (r() - .5) * 70, w: .5 + d * .45 + r() * .4, a: .28 + d * .2
+      };
+    });
+    // static pore texture, blitted over the hairy region only
+    tex = document.createElement('canvas'); tex.width = W; tex.height = H;
+    const t = tex.getContext('2d');
+    for (let i = 0; i < W * H / 900; i++) {
+      t.fillStyle = `rgba(120,70,60,${.04 + r() * .07})`;
+      t.beginPath(); t.arc(r() * W, r() * H, .5 + r() * 1.1, 0, 6.283); t.fill();
+    }
+    parts.length = 0;
+    plan();
+  }
+
+  const WIN = .035; // fraction of progress over which a strand is burnt
+  function plan() { for (const s of strands) s.t = s.y / H; }
+  let prev = 0;
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    const beamY = cur * (H + 220) - 110;
+    const bt = clamp((beamY) / H, 0, 1);
+    const moving = Math.abs(cur - prev) > .0003; prev = cur;
+
+    // pores on the untreated skin
+    ctx.save();
+    ctx.beginPath(); ctx.rect(0, Math.max(0, beamY), W, H); ctx.clip();
+    ctx.drawImage(tex, 0, 0, W, H);
+    ctx.restore();
+
+    // smooth, lit skin behind the beam, with a warm heat glow at the edge
+    if (beamY > 0) {
+      const g = ctx.createLinearGradient(0, 0, 0, beamY);
+      g.addColorStop(0, '#fdf3ed'); g.addColorStop(1, '#fbe3d9');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, Math.min(H, beamY));
+      const h0 = Math.max(0, beamY - 160), hg = ctx.createLinearGradient(0, h0, 0, beamY);
+      hg.addColorStop(0, 'rgba(255,84,104,0)'); hg.addColorStop(1, 'rgba(255,84,104,.16)');
+      ctx.fillStyle = hg; ctx.fillRect(0, h0, W, Math.min(H, beamY) - h0);
+    }
+
+    // strands: tapered, rooted with a follicle dot, burnt tip-first just below the beam
+    ctx.lineCap = 'round';
+    const sway = reduce ? 0 : Math.sin(t / 1400);
+    const kPx = WIN * (H + 220);
+    for (const s of strands) {
+      const rem = Math.min(s.y - beamY, s.len);
+      if (rem <= 0) continue;
+      const cutting = rem < s.len;
+      ctx.fillStyle = `rgba(48,28,26,${s.a * .8})`;
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.w * .9 + .4, 0, 6.283); ctx.fill();
+      ctx.strokeStyle = `rgba(48,28,26,${s.a + .15})`;
+      let px = s.x, py = s.y;
+      for (let i = 1; i <= 6; i++) {
+        const h = rem * i / 6, c = h / s.len;
+        const x = s.x + s.lean * h + (s.curl + sway * 6) * c * c, y = s.y - h;
+        ctx.lineWidth = Math.max(.3, s.w * (1 - (h / s.len) * .75));
+        ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(x, y); ctx.stroke();
+        px = x; py = y;
+      }
+      if (cutting && !reduce) {
+        // hot tip + occasional ember
+        ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(px, py, 1.6, 0, 6.283); ctx.fill();
+        if (moving && parts.length < 260 && Math.random() < .1)
+          parts.push({ x: px, y: py, vx: (Math.random() - .5) * 1.1, vy: -.3 - Math.random() * .9, life: 1 });
+      }
+    }
+
+    // embers drift up and fade
+    for (let i = parts.length - 1; i >= 0; i--) {
+      const p = parts[i];
+      p.x += p.vx; p.y += p.vy; p.vy += .012; p.life -= .022;
+      if (p.life <= 0) { parts.splice(i, 1); continue; }
+      ctx.fillStyle = `rgba(255,${120 + p.life * 100 | 0},${110 + p.life * 80 | 0},${p.life})`;
+      ctx.beginPath(); ctx.arc(p.x, p.y, 1 + p.life * 1.1, 0, 6.283); ctx.fill();
+    }
+
+    // the beam: wide bloom, mid glow, white-hot core, slightly alive
+    if (beamY > -20 && beamY < H + 20) {
+      const bg = ctx.createLinearGradient(0, 0, W, 0);
+      bg.addColorStop(0, 'rgba(255,84,104,0)'); bg.addColorStop(.12, 'rgba(255,84,104,1)');
+      bg.addColorStop(.88, 'rgba(255,84,104,1)'); bg.addColorStop(1, 'rgba(255,84,104,0)');
+      const wob = reduce ? 0 : t / 320;
+      const line = () => { ctx.beginPath(); for (let x = 0; x <= W; x += 16) { const y = beamY + Math.sin(x * .018 + wob) * 1.4; x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); };
+      ctx.save();
+      ctx.strokeStyle = bg; ctx.globalAlpha = .14; ctx.lineWidth = 22; line();
+      ctx.globalAlpha = .4; ctx.lineWidth = 6; line();
+      ctx.globalAlpha = 1; ctx.lineWidth = 2.2; ctx.shadowColor = '#ff5468'; ctx.shadowBlur = 22; line();
+      ctx.strokeStyle = 'rgba(255,255,255,.85)'; ctx.lineWidth = .9; ctx.shadowBlur = 0; line();
+      // travelling flare
+      const fx = reduce ? W * .5 : (Math.sin(t / 1900) * .5 + .5) * W;
+      const fg = ctx.createRadialGradient(fx, beamY, 0, fx, beamY, 110);
+      fg.addColorStop(0, 'rgba(255,255,255,.65)'); fg.addColorStop(.25, 'rgba(255,84,104,.3)'); fg.addColorStop(1, 'rgba(255,84,104,0)');
+      ctx.fillStyle = fg; ctx.fillRect(fx - 110, beamY - 110, 220, 220);
+      ctx.restore();
+    }
+  }
+
+  let target = reduce ? .55 : 0;
+  function frame(t) {
+    target = reduce ? .55 : clamp(prog(hero) * 1.05);
+    cur += (target - cur) * .14;
+    if (heroVisible) draw(t);
+    const late = cur > .7;
+    lates.forEach(el => el.classList.toggle('on', late));
+    requestAnimationFrame(frame);
+  }
+  resize(); addEventListener('resize', resize);
+  new IntersectionObserver(([e]) => heroVisible = e.isIntersecting).observe(hero);
+  requestAnimationFrame(frame);
+
+  // ---------- statement: three phrases drive three illustrations ----------
+  const stSec = $('.statement'), stage = $('#stage'), phs = [...document.querySelectorAll('.ph')];
+  const arc = $('#arc'), hand = $('#hand'), gloss = $('#gloss'), zap = $('#zap'), skin = $('#skin');
+  const hairs = [...document.querySelectorAll('#hairs .hr')];
+  function drawStage(i, local) {
+    stage.dataset.s = i;
+    if (i === 0) {
+      arc.setAttribute('stroke-dashoffset', 754 * (1 - local));
+      hand.setAttribute('transform', `rotate(${local * 360} 200 200)`);
+    } else if (i === 1) {
+      gloss.setAttribute('transform', `translate(${local * 470} 0)`);
+    } else {
+      const by = 70 + local * 230; // beam travels down; hairs are cut to what is below it
+      zap.setAttribute('transform', `translate(0 ${by})`);
+      zap.style.opacity = local > .02 && local < .98 ? 1 : 0;
+      hairs.forEach(h => {
+        const len = Math.min(+h.dataset.h, 300 - by);
+        h.setAttribute('y1', 300); h.setAttribute('y2', 300 - Math.max(0, len));
+        h.style.opacity = len > 0 ? 1 : 0;
+      });
+      skin.style.opacity = .4 + .6 * local;
+    }
+  }
+  drawStage(reduce ? 2 : 0, reduce ? 1 : 0);
+
+  // ---------- zones: vertical scroll drives horizontal pan ----------
+  const zSec = $('#zonas'), track = $('#track'), zEls = [...document.querySelectorAll('.zone')];
+  const zRight = $('.zones-right'), zbar = $('#zbar'), body = $('#body'), spots = [...document.querySelectorAll('.hs')];
+  function sizeZones() {
+    const dist = Math.max(0, track.scrollWidth - zRight.clientWidth);
+    zSec.style.height = `${innerHeight + dist * 1.1}px`;
+    return dist;
+  }
+  let zDist = sizeZones(); addEventListener('resize', () => zDist = sizeZones());
+  addEventListener('load', () => zDist = sizeZones());
+  let zHot = -1;
+
+  let zpx = 0, lastY = scrollY, skewT = 0, skew = 0;
+  const quotes = [...document.querySelectorAll('.quote')], stars = [...document.querySelectorAll('#starwall span')];
+  (function zloop() {
+    skew += (skewT - skew) * .12; skewT *= .9;
+    if (!reduce) track.style.transform = `translate3d(${zpx}px,0,0) skewX(${skew}deg)`;
+    requestAnimationFrame(zloop);
+  })();
+
+  // ---------- scroll handler for the rest ----------
+  function onScroll() {
+    bar.classList.toggle('solid', scrollY > 40);
+    if (!reduce) {
+      const p = clamp((prog(stSec) - .04) / .92) * 3, i = Math.min(2, p | 0);
+      phs.forEach((el, k) => el.classList.toggle('on', k === i));
+      drawStage(i, clamp(p - i));
+    }
+    const zp = prog(zSec);
+    zpx = -zp * zDist;
+    const dy = scrollY - lastY; lastY = scrollY; skewT = clamp(dy * -.12, -9, 9);
+    quotes.forEach((q, i) => {
+      const nx = quotes[i + 1]; if (!nx || reduce) return;
+      const d = nx.getBoundingClientRect().top - q.getBoundingClientRect().top;
+      const k = clamp(1 - (d - 22) / (innerHeight * .55));
+      q.style.transform = `scale(${1 - .05 * k})`; q.style.opacity = 1 - .35 * k;
+    });
+    const arrived = quotes.filter(q => q.getBoundingClientRect().top < innerHeight * .6).length;
+    const lit = arrived >= quotes.length ? 14 : Math.round(arrived / quotes.length * 14);
+    stars.forEach((st, j) => st.classList.toggle('lit', reduce || j < lit));
+    // the zone nearest the left of the pan area is "hot" and lights its spot on the body
+    const rl = zRight.getBoundingClientRect().left;
+    let best = -1, bd = 1e9;
+    zEls.forEach((z, i) => { const d = Math.abs(z.getBoundingClientRect().left + z.offsetWidth * .3 - rl - zRight.clientWidth * .2); if (d < bd) { bd = d; best = i; } });
+    zbar.style.transform = `scaleX(${zp})`;
+    if (best !== zHot) {
+      zHot = best;
+      zEls.forEach((z, i) => z.classList.toggle('hot', i === best));
+      spots.forEach(h => h.classList.toggle('on', +h.dataset.i === best));
+      body.classList.toggle('back', best === 7);
+    }
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ---------- one-shot reveals ----------
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .2 });
+  document.querySelectorAll('.rv,#beam,.mapcard,.bcard,.dist').forEach(el => io.observe(el));
+
+  // rating counts up once (real figure: 5,0)
+  const rb = $('.rating b');
+  new IntersectionObserver(([e], o) => {
+    if (!e.isIntersecting) return; o.disconnect();
+    if (reduce) return;
+    const t0 = performance.now();
+    (function tick(n) { const k = clamp((n - t0) / 1100); rb.textContent = (5 * (1 - (1 - k) ** 3)).toFixed(1).replace('.', ','); if (k < 1) requestAnimationFrame(tick); })(t0);
+  }, { threshold: .6 }).observe(rb);
+
+  // ---------- contact: live opening status + WhatsApp message builder ----------
+  const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Lisbon', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' });
+  const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const NAMES = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
+  function lisbonNow() {
+    const p = Object.fromEntries(fmt.formatToParts(new Date()).map(x => [x.type, x.value]));
+    return { d: DAYS.indexOf(p.weekday), m: +p.hour * 60 + +p.minute };
+  }
+  function paintStatus() {
+    const { d, m } = lisbonNow(), open = d >= 2 && d <= 6 && m >= 540 && m < 1140;
+    const el = $('#status'); el.classList.toggle('open', open);
+    let txt;
+    if (open) txt = 'Aberto agora · fecha às 19:00';
+    else {
+      let n = d, add = 0;
+      if (d >= 2 && d <= 6 && m < 540) txt = 'Fechado · abre hoje às 09:00';
+      else { do { n = (n + 1) % 7; add++; } while (n < 2 || n > 6); txt = `Fechado · abre ${NAMES[n]} às 09:00`; }
+    }
+    el.lastElementChild.textContent = txt;
+    document.querySelectorAll('#hours tr').forEach(tr => tr.classList.toggle('today', +tr.dataset.d === d));
+  }
+  paintStatus(); setInterval(paintStatus, 60000);
+
+  const bubble = $('#bubble'), send = $('#send');
+  const sel = id => [...document.querySelectorAll(`#${id} .chip[aria-pressed="true"]`)];
+  function build() {
+    const z = sel('zchips').map(c => c.textContent), dd = sel('dchips').map(c => c.dataset.day), t = sel('tchips').map(c => c.dataset.t);
+    let msg = 'Olá! Gostava de marcar uma sessão de depilação a laser.';
+    if (z.length) msg += ` Zonas: ${z.join(', ')}.`;
+    if (dd.length || t.length) msg += ` Preferência: ${dd.length ? dd.join(' ou ') : 'qualquer dia'}${t.length ? ', ' + t.join(' ou ') : ''}.`;
+    bubble.textContent = msg;
+    send.href = 'https://wa.me/351962635894?text=' + encodeURIComponent(msg);
+  }
+  document.querySelectorAll('.composer .chip').forEach(c => c.addEventListener('click', () => {
+    c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') !== 'true'); build();
+  }));
+  build();
+
+  $('#copy').addEventListener('click', e => {
+    navigator.clipboard?.writeText('R. Serra da Arrábida 1238, 2975-402 Quinta do Conde, Setúbal').then(() => {
+      e.target.textContent = 'Copiado'; setTimeout(() => e.target.textContent = 'Copiar', 1600);
+    });
+  });
+
+  const waBtn = $('.wa');
+  new IntersectionObserver(([e]) => waBtn.classList.toggle('hide', e.isIntersecting), { threshold: .15 }).observe($('#contacto'));
+
+  // illustrations: draw strokes in sequence
+  document.querySelectorAll('.il').forEach(svg => svg.querySelectorAll('path,circle,ellipse,rect,line').forEach((el, k) => {
+    if (el.classList.contains('keep')) return;
+    el.setAttribute('pathLength', 1); el.style.setProperty('--k', k);
+  }));
+})();
+</script>
+</body>
+</html>
