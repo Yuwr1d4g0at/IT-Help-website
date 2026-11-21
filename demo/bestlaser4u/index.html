@@ -7,6 +7,15 @@
 <title>BestLaser4u — Depilação a Laser Diodo na Quinta do Conde</title>
 <meta name="description" content="Gabinete de depilação a laser diodo na Quinta do Conde, Setúbal. Atendimento personalizado da Ana, sessões rápidas e resultados visíveis. Marque pelo WhatsApp.">
 <meta name="theme-color" content="#f4d3c7">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:url" content="https://yuwri.pt/demo/bestlaser4u/">
+<meta property="og:title" content="BestLaser4u · Depilação a laser diodo na Quinta do Conde">
+<meta property="og:description" content="Atendimento personalizado da Ana. 5,0 estrelas em 14 opiniões no Google. Marque pelo WhatsApp.">
+<meta property="og:image" content="https://yuwri.pt/demo/bestlaser4u/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,16 +62,19 @@ header nav a:hover{color:#241618}
 header nav .btn{color:var(--accent-ink);padding:10px 20px}
 
 /* hero: scrubbed canvas */
-.hero{height:260vh;position:relative}
+.hero{height:180vh;position:relative}
 .hero-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 #field{position:absolute;inset:0;width:100%;height:100%}
-.hero-copy{position:absolute;left:var(--gutter);right:var(--gutter);bottom:clamp(40px,10vh,110px);max-width:1100px}
+.hero-stick::after{content:"";position:absolute;inset:auto 0 0 0;height:62%;background:linear-gradient(rgba(244,211,199,0),rgba(244,211,199,.92) 45%);pointer-events:none}
+.hero-copy{z-index:1;position:absolute;left:var(--gutter);right:var(--gutter);bottom:clamp(40px,10vh,110px);max-width:1100px}
 .hero h1{font-size:clamp(2.5rem,9vw,7rem);line-height:.95}
 .hero h1 em{font-style:normal;color:var(--accent-text)}
 .hero-sub{max-width:34rem;color:var(--ink-soft);margin-top:22px;font-size:1.125rem}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-.hero-late{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.hero-late.on{opacity:1;transform:none}
+.hero .btn.ghost{background:rgba(251,243,238,.75);backdrop-filter:blur(6px)}
+.js .hero-sub,.js .hero-cta{opacity:0;animation:fadeup .8s var(--ease) .7s forwards}
+.js .hero-cta{animation-delay:.85s}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .hero-hint{position:absolute;right:var(--gutter);top:50%;writing-mode:vertical-rl;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);opacity:.0}
 
 /* headline: lines rise out of a mask */
@@ -73,7 +85,7 @@ header nav .btn{color:var(--accent-ink);padding:10px 20px}
 @keyframes rise{to{transform:none}}
 
 /* statement: kinetic words */
-.statement{height:320vh;position:relative}
+.statement{height:220vh;position:relative}
 .statement-stick{position:sticky;top:0;height:100vh;height:100svh;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,80px);align-items:center;padding:0 var(--gutter)}
 .phrases{display:grid;gap:clamp(18px,4vh,40px)}
 .js .ph{opacity:.22;transform:translateX(-14px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
@@ -119,8 +131,6 @@ header nav .btn{color:var(--accent-ink);padding:10px 20px}
 @media(prefers-reduced-motion:reduce){.hs.on .ring{animation:none;opacity:.6}}
 .zone{font:700 clamp(3rem,8vw,7.5rem)/1 var(--display);letter-spacing:-.04em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px var(--ink-soft);transition:color .4s,-webkit-text-stroke-color .4s}
 .zone.hot{color:var(--ink);-webkit-text-stroke-color:var(--ink)}
-.zone-end{white-space:normal;max-width:22rem;font-size:1.1rem}
-.zone-end strong{display:block;font:700 clamp(1.6rem,3vw,2.2rem)/1.1 var(--display);margin-bottom:14px}
 
 /* why: illustrated bento */
 section.pad{padding:clamp(80px,14vh,160px) var(--gutter)}
@@ -239,6 +249,75 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
 
 .wa{position:fixed;right:18px;bottom:18px;z-index:19;box-shadow:0 6px 20px rgba(0,0,0,.45)}
 
+/* shared: "example" tag for content still to confirm with Ana */
+.ex{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1.5px dashed var(--ink-soft);color:var(--ink-soft);margin:0 0 18px}
+.prices h2,.how h2,.faq h2{font-size:clamp(2rem,5vw,3.8rem);max-width:16ch;margin-bottom:16px}
+
+/* prices */
+.plist{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:8px 0 26px;padding:0;list-style:none;max-width:1100px}
+.plist li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:15px 20px;border-radius:18px;background:var(--canvas);border:1px solid var(--line)}
+.plist b{font-weight:500}
+.plist span{color:var(--ink-soft);font-size:.92rem}
+.pnote{color:var(--ink-soft);max-width:40rem;margin-bottom:24px}
+@media(max-width:600px){.plist{grid-template-columns:1fr 1fr;gap:8px}.plist li{flex-direction:column;gap:2px;padding:12px 14px}}
+
+/* how it works + sessions animation */
+.how{height:240vh;position:relative}
+.how-stick{position:sticky;top:0;height:100vh;height:100svh;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;padding:70px var(--gutter) 30px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:clamp(12px,2.6vh,24px);counter-reset:s}
+.steps li{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;opacity:.3;transition:opacity .4s var(--ease)}
+.steps li.on{opacity:1}
+.steps li::before{counter-increment:s;content:counter(s);grid-row:span 2;font:700 1.6rem/1 var(--display);color:var(--accent-text)}
+.steps h3{font-size:1.3rem}
+.steps p{color:var(--ink-soft);font-size:.98rem}
+.patch{width:100%;max-width:420px;justify-self:center;overflow:visible}
+.patch .hr2{stroke:#3a2420;stroke-width:1.8;stroke-linecap:round;transition:opacity .35s}
+#sring{transition:stroke-dashoffset .35s var(--ease)}
+#sess{font:700 26px var(--display);fill:var(--ink)}
+@media(max-width:860px){
+  .how-stick{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;gap:12px;padding-top:64px}
+  .patch{order:-1;max-width:min(40vw,190px)}
+  .how h2{font-size:2rem;margin-bottom:8px}.how .ex{margin-bottom:10px}
+  .steps li:not(.on) p{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .how{height:auto}.how-stick{position:static;height:auto;padding:clamp(80px,14vh,160px) var(--gutter)}
+  .steps li{opacity:1}.steps li p{display:block}
+}
+
+/* reviews: action buttons */
+.plinks{display:flex;flex-wrap:wrap;gap:10px}
+.plinks .btn{padding:12px 20px}
+
+/* faq */
+.faq-list{max-width:860px;margin-top:8px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font:700 clamp(1.1rem,2.2vw,1.4rem)/1.25 var(--display)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.6rem;color:var(--accent-text);transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--ink-soft);padding:0 0 22px;max-width:60ch}
+
+/* map loads only on request (privacy + battery) */
+.mapload{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;height:400px;padding-bottom:80px;border-radius:24px;background:var(--card);border:1px solid var(--line);color:var(--ink-soft);font-size:.92rem;text-align:center}
+@media(max-width:900px){.mapload{height:320px}}
+
+/* legal footer */
+.legal{display:grid;gap:8px;margin:16px 0;font-size:.82rem;color:var(--ink-soft);max-width:72ch}
+.legal a{color:var(--ink)}
+.legal .ex{margin:0 8px 0 0;padding:2px 8px}
+
+/* phones: bottom booking bar instead of the round button */
+.bbar{display:none}
+@media(max-width:760px){
+  .wa{display:none}
+  .hero-cta{display:none}
+  .bbar{display:flex;gap:8px;position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:19;padding:7px;border-radius:999px;background:rgba(22,17,20,.92);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(0,0,0,.35);transition:opacity .3s,transform .3s}
+  .bbar .btn{flex:1;text-align:center;padding:12px 10px}
+  .bbar .btn.ghost{color:#f6ece8;box-shadow:inset 0 0 0 1.5px rgba(246,236,232,.25)}
+  .bbar.hide{opacity:0;transform:translateY(20px);pointer-events:none}
+}
+
 /* generic reveal */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
 .js .rv.in{opacity:1;transform:none}
@@ -252,7 +331,7 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
   .js .ln>span{transform:none;animation:none}
   html{scroll-behavior:auto}
   .js .rv,.js .statement .w{opacity:1;transform:none;transition:none}
-  .hero-late{opacity:1;transform:none}
+  .js .hero-sub,.js .hero-cta{opacity:1;animation:none}
   .beam{transform:none;transition:none}
   .mapwrap{clip-path:none;transition:none}
 }
@@ -264,6 +343,7 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
   <a class="logo" href="#top">Best<span>Laser</span>4u</a>
   <nav>
     <a href="#zonas">Zonas</a>
+    <a href="#precos">Preços</a>
     <a href="#opinioes">Opiniões</a>
     <a href="#contacto">Contacto</a>
     <a class="btn" href="https://wa.me/351962635894?text=Ol%C3%A1!%20Gostava%20de%20marcar%20uma%20sess%C3%A3o%20de%20depila%C3%A7%C3%A3o%20a%20laser.">Marcar</a>
@@ -277,8 +357,8 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
       <canvas id="field" aria-hidden="true"></canvas>
       <div class="hero-copy">
         <h1><span class="ln"><span>Depilação a laser diodo.</span></span><span class="ln"><span><em>Pele lisa.</em></span></span></h1>
-        <p class="hero-sub hero-late">Gabinete na Quinta do Conde, com atendimento personalizado da Ana. Sessões rápidas, espaço limpo e resultados que se veem cedo.</p>
-        <div class="hero-cta hero-late">
+        <p class="hero-sub">Gabinete na Quinta do Conde, com atendimento personalizado da Ana. Sessões rápidas, espaço limpo e resultados que se veem cedo.</p>
+        <div class="hero-cta">
           <a class="btn" href="https://wa.me/351962635894?text=Ol%C3%A1!%20Gostava%20de%20marcar%20uma%20sess%C3%A3o%20de%20depila%C3%A7%C3%A3o%20a%20laser.">Marcar pelo WhatsApp</a>
           <a class="btn ghost" href="tel:+351962635894">Ligar 962 635 894</a>
         </div>
@@ -334,13 +414,63 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
         </div>
         <div class="track" id="track">
           <span class="zone">Braços</span><span class="zone">Pernas</span><span class="zone">Virilhas</span><span class="zone">Zona íntima</span><span class="zone">Buço</span><span class="zone">Axilas</span><span class="zone">Pés</span><span class="zone">Costas</span><span class="zone">Peito</span><span class="zone">Abdómen</span>
-          <div class="zone-end">
-            <strong>Quanto custa?</strong>
-            <p style="color:var(--ink-soft);margin-bottom:18px">Preços e pacotes sob orçamento, sem compromisso.</p>
-            <a class="btn" href="https://wa.me/351962635894?text=Ol%C3%A1!%20Gostava%20de%20saber%20os%20pre%C3%A7os%20da%20depila%C3%A7%C3%A3o%20a%20laser.">Pedir orçamento</a>
-          </div>
         </div>
         <div class="zbar" aria-hidden="true"><i id="zbar"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prices pad t-white" id="precos" aria-label="Preços">
+    <h2 class="rv">Quanto custa?</h2>
+    <p class="ex">Exemplo · preços a confirmar com a Ana</p>
+    <ul class="plist rv">
+      <li><b>Buço</b><span>sob consulta</span></li><li><b>Axilas</b><span>sob consulta</span></li><li><b>Pés</b><span>sob consulta</span></li><li><b>Virilhas</b><span>sob consulta</span></li><li><b>Zona íntima</b><span>sob consulta</span></li><li><b>Braços</b><span>sob consulta</span></li><li><b>Abdómen</b><span>sob consulta</span></li><li><b>Peito</b><span>sob consulta</span></li><li><b>Costas</b><span>sob consulta</span></li><li><b>Pernas</b><span>sob consulta</span></li>
+    </ul>
+    <p class="pnote rv">O valor depende da zona e do número de sessões. Peça o seu orçamento, sem compromisso.</p>
+    <a class="btn rv" href="https://wa.me/351962635894?text=Ol%C3%A1!%20Gostava%20de%20saber%20os%20pre%C3%A7os%20da%20depila%C3%A7%C3%A3o%20a%20laser.">Pedir orçamento no WhatsApp</a>
+  </section>
+
+  <section class="how t-cream" id="como" aria-label="Como funciona">
+    <div class="how-stick">
+      <div>
+        <h2>Como funciona</h2>
+        <p class="ex">Exemplo · tempos a confirmar com a Ana</p>
+        <ol class="steps">
+          <li><h3>Marque pelo WhatsApp</h3><p>Diga que zonas quer tratar e escolha o dia que lhe dá mais jeito.</p></li>
+          <li><h3>Primeira consulta</h3><p>A Ana avalia a pele e o pelo, explica o tratamento e faz um pequeno teste.</p></li>
+          <li><h3>Sessões rápidas</h3><p>De 15 a 45 minutos, conforme a zona, com 4 a 8 semanas entre cada uma.</p></li>
+          <li><h3>Pele lisa</h3><p>Normalmente 6 a 10 sessões. Depois, só uma manutenção de vez em quando.</p></li>
+        </ol>
+      </div>
+      <svg class="patch" id="patch" viewBox="0 0 400 430" role="img" aria-label="Ilustração: o pelo vai diminuindo de sessão para sessão">
+        <defs><clipPath id="pc"><circle cx="200" cy="190" r="164"/></clipPath></defs>
+        <circle cx="200" cy="190" r="170" fill="#fbe3d9"/>
+        <circle cx="200" cy="190" r="186" fill="none" style="stroke:var(--line)" stroke-width="5"/>
+        <circle id="sring" cx="200" cy="190" r="186" fill="none" stroke="#c2243d" stroke-width="5" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset=".875" transform="rotate(-90 200 190)"/>
+        <g id="hairs2" clip-path="url(#pc)"></g>
+        <text id="sess" x="200" y="420" text-anchor="middle">Sessão 1</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="proof pad t-skin" id="opinioes" aria-label="Opiniões">
+    <div class="proof-grid">
+      <aside class="proof-side">
+        <h2 class="rv">Quem experimentou, recomenda.</h2>
+        <div class="rating rv"><b>5,0</b><span class="stars" aria-label="5 estrelas">★★★★★</span></div>
+        <p class="rv" style="color:var(--ink-soft)">14 opiniões no Google, todas com 5 estrelas.</p>
+        <div class="dist rv" aria-hidden="true"><span>5★</span><div><i></i></div><span>14</span></div>
+        <div class="starwall" id="starwall" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="plinks rv"><a class="btn" href="https://search.google.com/local/writereview?placeid=ChIJc0fXK05PGQ0RfP4tZOf11U4">Deixe a sua opinião</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=BestLaser4u&query_place_id=ChIJc0fXK05PGQ0RfP4tZOf11U4">Ver no Google</a></div>
+      </aside>
+      <div class="stack">
+      <figure class="quote" style="--i:0"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · abril 2025</span></div><blockquote><p lang="pt">A Ana é uma excelente profissional, delicada, atenciosa e sempre com um sorriso no rosto. O espaço é extremamente acolhedor competente e transmite total segurança.</p></blockquote></figure>
+      <figure class="quote" style="--i:1"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · abril 2025</span></div><blockquote><p lang="pt">Trabalho muito profissional, muito satisfeito com o resultado que consegui, resultado espetacular, a transformação do antes e do depois é enorme. Vale muito a pena, muita experiência com óptimos resultados.</p></blockquote></figure>
+      <figure class="quote" style="--i:2"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · abril 2025</span></div><blockquote><p lang="pt">Completamente satisfeita super simpática. Um atendimento espetacular recomendo 100% 😊. Já começo a ver resultados, em pouco tempo e estou cada vez mais satisfeita ☺️</p></blockquote></figure>
+      <figure class="quote" style="--i:3"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · fevereiro 2025</span></div><blockquote><p lang="pt">Fiquei completamente satisfeita com o atendimento e os resultados da depilação a laser! O ambiente é moderno, acolhedor e muito confortável. O procedimento é super rápido e os resultados são visíveis já nas primeiras sessões.</p></blockquote></figure>
+      <figure class="quote" style="--i:4"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · fevereiro 2024</span></div><blockquote><p lang="pt">Mais uma ida a este espaço maravilhoso! Serviço mt profissional e higiénico. A pessoa mt simpatica e cuidadosa. Recomendo vivamente!</p></blockquote></figure>
+      <figure class="quote" style="--i:5"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · janeiro 2023</span></div><blockquote><p lang="pt">A Ana para além de uma excelente profissional é uma pessoa extremamente atenciosa e simpática.</p></blockquote></figure>
+      <figure class="quote" style="--i:6"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · outubro 2022 · em inglês</span></div><blockquote><p lang="en">Ana, the owner, is super friendly and professional! The space is clean and cozy! The service is fast and, in my case, with amazing results. Affordable! Totally recommend!</p></blockquote></figure>
       </div>
     </div>
   </section>
@@ -403,26 +533,16 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
     </div>
   </section>
 
-  <section class="proof pad t-skin" id="opinioes" aria-label="Opiniões">
-    <div class="proof-grid">
-      <aside class="proof-side">
-        <h2 class="rv">Quem experimentou, recomenda.</h2>
-        <div class="rating rv"><b>5,0</b><span class="stars" aria-label="5 estrelas">★★★★★</span></div>
-        <p class="rv" style="color:var(--ink-soft)">14 opiniões no Google, todas com 5 estrelas.</p>
-        <div class="dist rv" aria-hidden="true"><span>5★</span><div><i></i></div><span>14</span></div>
-        <div class="starwall" id="starwall" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=BestLaser4u&query_place_id=ChIJc0fXK05PGQ0RfP4tZOf11U4">Ver no Google Maps</a>
-      </aside>
-      <div class="stack">
-      <figure class="quote" style="--i:0"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · abril 2025</span></div><blockquote><p lang="pt">A Ana é uma excelente profissional, delicada, atenciosa e sempre com um sorriso no rosto. O espaço é extremamente acolhedor competente e transmite total segurança.</p></blockquote></figure>
-      <figure class="quote" style="--i:1"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · abril 2025</span></div><blockquote><p lang="pt">Trabalho muito profissional, muito satisfeito com o resultado que consegui, resultado espetacular, a transformação do antes e do depois é enorme. Vale muito a pena, muita experiência com óptimos resultados.</p></blockquote></figure>
-      <figure class="quote" style="--i:2"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · abril 2025</span></div><blockquote><p lang="pt">Completamente satisfeita super simpática. Um atendimento espetacular recomendo 100% 😊. Já começo a ver resultados, em pouco tempo e estou cada vez mais satisfeita ☺️</p></blockquote></figure>
-      <figure class="quote" style="--i:3"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · fevereiro 2025</span></div><blockquote><p lang="pt">Fiquei completamente satisfeita com o atendimento e os resultados da depilação a laser! O ambiente é moderno, acolhedor e muito confortável. O procedimento é super rápido e os resultados são visíveis já nas primeiras sessões.</p></blockquote></figure>
-      <figure class="quote" style="--i:4"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · fevereiro 2024</span></div><blockquote><p lang="pt">Mais uma ida a este espaço maravilhoso! Serviço mt profissional e higiénico. A pessoa mt simpatica e cuidadosa. Recomendo vivamente!</p></blockquote></figure>
-      <figure class="quote" style="--i:5"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · janeiro 2023</span></div><blockquote><p lang="pt">A Ana para além de uma excelente profissional é uma pessoa extremamente atenciosa e simpática.</p></blockquote></figure>
-      <figure class="quote" style="--i:6"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · outubro 2022 · em inglês</span></div><blockquote><p lang="en">Ana, the owner, is super friendly and professional! The space is clean and cozy! The service is fast and, in my case, with amazing results. Affordable! Totally recommend!</p></blockquote></figure>
-      <figure class="quote" style="--i:7"><div class="qh"><span class="qs" aria-label="5 estrelas">★★★★★</span><span>Google · junho 2025</span></div><blockquote><p lang="pt">Atendimento 5 estralas e rápidos resultados!</p></blockquote></figure>
-      </div>
+  <section class="faq pad t-white" id="faq" aria-label="Perguntas frequentes">
+    <h2 class="rv">Perguntas frequentes</h2>
+    <p class="ex">Exemplo · a confirmar com a Ana</p>
+    <div class="faq-list">
+      <details><summary>Dói?</summary><p>Sente-se um calor rápido, como um pequeno estalido na pele. A maioria das pessoas tolera bem, e a Ana ajusta a intensidade a si.</p></details>
+      <details><summary>Como me devo preparar?</summary><p>Rape a zona na véspera. Nas 4 semanas antes não use cera nem pinça, e nas 2 semanas antes evite o sol e o autobronzeador.</p></details>
+      <details><summary>Quantas sessões vou precisar?</summary><p>Normalmente entre 6 e 10, com 4 a 8 semanas entre cada uma. Depende da zona, do tipo de pelo e da pele. Na primeira consulta fica com uma ideia mais certa.</p></details>
+      <details><summary>Quem não pode fazer?</summary><p>Grávidas, quem tem a pele bronzeada ou com feridas na zona, e quem toma alguns medicamentos que tornam a pele sensível à luz. Na primeira consulta a Ana confirma se pode fazer.</p></details>
+      <details><summary>Também é para homens?</summary><p>Sim. Costas, peito, abdómen e outras zonas, com o mesmo cuidado.</p></details>
+      <details><summary>Posso apanhar sol depois?</summary><p>Evite o sol direto na zona tratada nos dias seguintes e use protetor solar. A Ana explica os cuidados depois de cada sessão.</p></details>
     </div>
   </section>
 
@@ -447,7 +567,7 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
       </div>
       <div class="info rv" style="--d:.15s">
         <div class="mapcard">
-          <div class="mapwrap" id="map"><iframe title="Mapa do BestLaser4u" loading="lazy" src="https://maps.google.com/maps?q=38.5538843,-9.0472395&z=16&output=embed"></iframe></div>
+          <div class="mapwrap" id="map"><div class="mapload" id="mapload"><span>O mapa é carregado do Google Maps.</span><button type="button" class="mini" id="showmap">Mostrar mapa</button></div></div>
           <div class="addr">
             <address><strong>R. Serra da Arrábida 1238</strong><br>2975-402 Quinta do Conde, Setúbal</address>
             <div class="addr-btns"><button type="button" id="copy" class="mini">Copiar</button><a class="mini" href="https://www.google.com/maps/search/?api=1&query=BestLaser4u&query_place_id=ChIJc0fXK05PGQ0RfP4tZOf11U4">Abrir no Maps</a></div>
@@ -459,9 +579,18 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
   </section>
 </main>
 
-<footer class="site t-ink">© BestLaser4u · Gabinete de depilação a laser diodo · Quinta do Conde<br><small>Demonstração preparada por <a href="https://yuwri.pt/pt/">Yuwri</a></small></footer>
+<footer class="site t-ink">© BestLaser4u · Gabinete de depilação a laser diodo · Quinta do Conde
+  <div class="legal">
+    <p><span class="ex">Exemplo</span>[Nome da empresa] · NIF [000 000 000] · R. Serra da Arrábida 1238, 2975-402 Quinta do Conde</p>
+    <p><a href="https://www.livroreclamacoes.pt/">Livro de Reclamações Eletrónico</a></p>
+    <p>Em caso de litígio, o consumidor pode recorrer a uma entidade de Resolução Alternativa de Litígios de Consumo. Mais informação no <a href="https://www.consumidor.gov.pt/">Portal do Consumidor</a>.</p>
+    <p>Privacidade: este site não usa cookies nem estatísticas. Os tipos de letra vêm do Google Fonts e o mapa só é carregado do Google Maps se clicar em «Mostrar mapa». As mensagens que enviar seguem pelo WhatsApp.</p>
+  </div>
+  <small>Demonstração preparada por <a href="https://yuwri.pt/pt/">Yuwri</a></small>
+</footer>
 
 <a class="btn wa" href="https://wa.me/351962635894?text=Ol%C3%A1!%20Gostava%20de%20marcar%20uma%20sess%C3%A3o%20de%20depila%C3%A7%C3%A3o%20a%20laser.">WhatsApp</a>
+<div class="bbar" id="bbar"><a class="btn" href="https://wa.me/351962635894?text=Ol%C3%A1!%20Gostava%20de%20marcar%20uma%20sess%C3%A3o%20de%20depila%C3%A7%C3%A3o%20a%20laser.">Marcar</a><a class="btn ghost" href="tel:+351962635894">Ligar</a></div>
 
 <script>
 (() => {
@@ -480,7 +609,6 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
 
   // ---------- hero: laser beam cuts a strand field (signature move) ----------
   const hero = $('#hero'), cv = $('#field'), ctx = cv.getContext('2d');
-  const lates = document.querySelectorAll('.hero-late');
   let W, H, dpr, tex, parts = [], strands = [], cur = reduce ? .55 : 0, heroVisible = true;
 
   // deterministic RNG so layout is stable across resizes
@@ -602,14 +730,16 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
   function frame(t) {
     target = reduce ? .55 : clamp(prog(hero) * 1.05);
     cur += (target - cur) * .14;
-    if (heroVisible) draw(t);
-    const late = cur > .7;
-    lates.forEach(el => el.classList.toggle('on', late));
-    requestAnimationFrame(frame);
+    draw(t);
+    // stop the loop while the hero is off screen; the observer restarts it
+    if (heroVisible) requestAnimationFrame(frame); else heroRun = false;
   }
+  let heroRun = false;
   resize(); addEventListener('resize', resize);
-  new IntersectionObserver(([e]) => heroVisible = e.isIntersecting).observe(hero);
-  requestAnimationFrame(frame);
+  new IntersectionObserver(([e]) => {
+    heroVisible = e.isIntersecting;
+    if (heroVisible && !heroRun) { heroRun = true; requestAnimationFrame(frame); }
+  }).observe(hero);
 
   // ---------- statement: three phrases drive three illustrations ----------
   const stSec = $('.statement'), stage = $('#stage'), phs = [...document.querySelectorAll('.ph')];
@@ -650,11 +780,46 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
 
   let zpx = 0, lastY = scrollY, skewT = 0, skew = 0;
   const quotes = [...document.querySelectorAll('.quote')], stars = [...document.querySelectorAll('#starwall span')];
-  (function zloop() {
+  let zVisible = false, zRun = false;
+  function zloop() {
     skew += (skewT - skew) * .12; skewT *= .9;
-    if (!reduce) track.style.transform = `translate3d(${zpx}px,0,0) skewX(${skew}deg)`;
-    requestAnimationFrame(zloop);
-  })();
+    track.style.transform = `translate3d(${zpx}px,0,0) skewX(${skew}deg)`;
+    if (zVisible) requestAnimationFrame(zloop); else zRun = false;
+  }
+  if (!reduce) new IntersectionObserver(([e]) => {
+    zVisible = e.isIntersecting;
+    if (zVisible && !zRun) { zRun = true; requestAnimationFrame(zloop); }
+  }).observe(zSec);
+
+  // ---------- how it works: hair thins session by session ----------
+  const how = $('#como'), steps = [...document.querySelectorAll('.steps li')];
+  const sessEl = $('#sess'), sring = $('#sring'), h2 = [];
+  {
+    const r = rng(11), g = $('#hairs2'), NS = 'http://www.w3.org/2000/svg';
+    for (let i = 0; i < 90; i++) {
+      const a = r() * 6.283, d = Math.sqrt(r()) * 160, x = 200 + Math.cos(a) * d, y = 205 + Math.sin(a) * d;
+      const l = 14 + r() * 20, lean = (r() - .5) * 14;
+      const el = document.createElementNS(NS, 'line');
+      el.setAttribute('class', 'hr2');
+      el.setAttribute('x1', x); el.setAttribute('y1', y); el.setAttribute('x2', x + lean); el.setAttribute('y2', y - l);
+      el.dataset.k = r(); g.appendChild(el); h2.push(el);
+    }
+  }
+  // share of hair left after each session; illustrative, not a promise
+  const LEFT = [1, .78, .6, .45, .32, .22, .14, .08];
+  let sessNow = 0;
+  function drawHow(p) {
+    const s = 1 + Math.min(7, p * 8 | 0);
+    if (s !== sessNow) {
+      sessNow = s;
+      h2.forEach(h => h.style.opacity = +h.dataset.k < LEFT[s - 1] ? 1 : 0);
+      sessEl.textContent = `Sessão ${s}`;
+      sring.setAttribute('stroke-dashoffset', 1 - s / 8);
+    }
+    const si = Math.min(steps.length - 1, p * steps.length | 0);
+    steps.forEach((li, k) => li.classList.toggle('on', k === si));
+  }
+  drawHow(reduce ? 1 : 0);
 
   // ---------- scroll handler for the rest ----------
   function onScroll() {
@@ -663,6 +828,7 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
       const p = clamp((prog(stSec) - .04) / .92) * 3, i = Math.min(2, p | 0);
       phs.forEach((el, k) => el.classList.toggle('on', k === i));
       drawStage(i, clamp(p - i));
+      drawHow(clamp((prog(how) - .05) / .9));
     }
     const zp = prog(zSec);
     zpx = -zp * zDist;
@@ -750,8 +916,13 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
     });
   });
 
-  const waBtn = $('.wa');
-  new IntersectionObserver(([e]) => waBtn.classList.toggle('hide', e.isIntersecting), { threshold: .15 }).observe($('#contacto'));
+  const waBtn = $('.wa'), bbar = $('#bbar');
+  new IntersectionObserver(([e]) => [waBtn, bbar].forEach(b => b.classList.toggle('hide', e.isIntersecting)), { threshold: .15 }).observe($('#contacto'));
+
+  // map: nothing is loaded from Google until asked
+  $('#showmap').addEventListener('click', () => {
+    $('#map').innerHTML = '<iframe title="Mapa do BestLaser4u" src="https://maps.google.com/maps?q=38.5538843,-9.0472395&z=16&output=embed"></iframe>';
+  });
 
   // illustrations: draw strokes in sequence
   document.querySelectorAll('.il').forEach(svg => svg.querySelectorAll('path,circle,ellipse,rect,line').forEach((el, k) => {
