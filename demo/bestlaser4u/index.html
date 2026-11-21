@@ -255,11 +255,11 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
 
 /* prices */
 .plist{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:8px 0 26px;padding:0;list-style:none;max-width:1100px}
-.plist li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:15px 20px;border-radius:18px;background:var(--canvas);border:1px solid var(--line)}
+.plist li{display:flex;flex-direction:column;gap:2px;padding:15px 20px;border-radius:18px;background:var(--canvas);border:1px solid var(--line)}
 .plist b{font-weight:500}
 .plist span{color:var(--ink-soft);font-size:.92rem}
 .pnote{color:var(--ink-soft);max-width:40rem;margin-bottom:24px}
-@media(max-width:600px){.plist{grid-template-columns:1fr 1fr;gap:8px}.plist li{flex-direction:column;gap:2px;padding:12px 14px}}
+@media(max-width:600px){.plist{grid-template-columns:1fr 1fr;gap:8px}.plist li{padding:12px 14px}}
 
 /* how it works + sessions animation */
 .how{height:240vh;position:relative}
@@ -335,10 +335,34 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
   .beam{transform:none;transition:none}
   .mapwrap{clip-path:none;transition:none}
 }
+/* headline reveals: words rise out of a mask (split in JS) */
+.wd{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.wd>span{display:inline-block;transform:translateY(105%);transition:transform .9s var(--ease);transition-delay:calc(var(--j) * 55ms)}
+.split.in .wd>span{transform:none}
+
+/* laser wipe across the top of each section as it arrives */
+main>section{position:relative}
+.sweep{position:absolute;left:0;right:0;top:0;height:2px;z-index:2;pointer-events:none;transform:scaleX(0);transform-origin:left;opacity:0;
+  background:linear-gradient(90deg,transparent,var(--accent) 12%,#fff 55%,var(--accent) 88%,transparent);box-shadow:0 0 18px 2px rgba(255,84,104,.55)}
+.sweep.in{animation:sweep 1.4s var(--ease) forwards}
+@keyframes sweep{0%{transform:scaleX(0);opacity:1}60%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+
+/* laser cursor (desktop, fine pointer only; the normal cursor stays) */
+.lc{position:fixed;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#ff5468;box-shadow:0 0 12px 3px rgba(255,84,104,.6);pointer-events:none;z-index:40;opacity:0;transition:opacity .3s,width .25s var(--ease),height .25s var(--ease),margin .25s var(--ease),background .25s}
+.lc.on{opacity:1}
+.lc.big{width:34px;height:34px;margin:-17px 0 0 -17px;background:rgba(255,84,104,.18)}
+
+/* film grain over everything */
+.grain{position:fixed;inset:0;z-index:35;pointer-events:none;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+@media(prefers-reduced-motion:reduce){.wd>span{transform:none;transition:none}.sweep{display:none}.lc{display:none}}
 </style>
 </head>
 <body>
 
+<div class="grain" aria-hidden="true"></div>
+<div class="lc" aria-hidden="true"></div>
 <header id="top-bar">
   <a class="logo" href="#top">Best<span>Laser</span>4u</a>
   <nav>
@@ -856,6 +880,61 @@ footer.site{padding:28px var(--gutter) 90px;font-size:.9rem;border-top:1px solid
   }
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // ---------- section titles: split into words that rise in ----------
+  const splitIO = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); splitIO.unobserve(e.target); }
+  }), { threshold: .3 });
+  if (!reduce) document.querySelectorAll('.zones-head h2,.prices h2,.how h2,.proof-side h2,.why h2,.faq h2,.contact h2').forEach(h => {
+    h.classList.remove('rv'); h.classList.add('split');
+    h.innerHTML = h.textContent.trim().split(/\s+/).map((w, j) => `<span class="wd"><span style="--j:${j}">${w}</span></span>`).join(' ');
+    splitIO.observe(h);
+  });
+
+  // ---------- laser wipe on each section after the hero (contact has its own beam) ----------
+  if (!reduce) {
+    const sweepIO = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.querySelector(':scope>.sweep').classList.add('in'); sweepIO.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -35% 0px' });
+    document.querySelectorAll('main>section:not(.hero):not(.contact)').forEach(sec => {
+      sec.insertAdjacentHTML('afterbegin', '<div class="sweep" aria-hidden="true"></div>');
+      sweepIO.observe(sec);
+    });
+  }
+
+  // ---------- desktop only: laser cursor + smooth wheel scrolling ----------
+  if (!reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const lc = $('.lc');
+    let mx = -100, my = -100, lx = -100, ly = -100, lcRun = false;
+    const lcStep = () => {
+      lx += (mx - lx) * .25; ly += (my - ly) * .25;
+      lc.style.transform = `translate3d(${lx}px,${ly}px,0)`;
+      if (Math.abs(mx - lx) + Math.abs(my - ly) > .3) requestAnimationFrame(lcStep); else lcRun = false;
+    };
+    addEventListener('pointermove', e => {
+      mx = e.clientX; my = e.clientY; lc.classList.add('on');
+      lc.classList.toggle('big', !!e.target.closest('a,button,summary,.chip'));
+      if (!lcRun) { lcRun = true; requestAnimationFrame(lcStep); }
+    }, { passive: true });
+    document.addEventListener('pointerleave', () => lc.classList.remove('on'));
+
+    // wheel input eases toward its target; keyboard, scrollbar and anchor links stay native
+    let ty = scrollY, sy = scrollY, wRun = false;
+    const maxY = () => document.documentElement.scrollHeight - innerHeight;
+    const wStep = () => {
+      sy += (ty - sy) * .14;
+      if (Math.abs(ty - sy) < .5) { sy = ty; wRun = false; }
+      scrollTo({ top: sy, behavior: 'instant' });
+      if (wRun) requestAnimationFrame(wStep);
+    };
+    addEventListener('wheel', e => {
+      if (e.ctrlKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return; // pinch-zoom, sideways
+      e.preventDefault();
+      ty = clamp(ty + e.deltaY * (e.deltaMode === 1 ? 40 : 1), 0, maxY());
+      if (!wRun) { wRun = true; sy = scrollY; requestAnimationFrame(wStep); }
+    }, { passive: false });
+    addEventListener('scroll', () => { if (!wRun) ty = scrollY; }, { passive: true });
+  }
 
   // ---------- one-shot reveals ----------
   const io = new IntersectionObserver(es => es.forEach(e => {
