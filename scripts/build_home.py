@@ -171,6 +171,7 @@ T = {
         from_ph='Your name', subject_ph="What's going on?", msg_ph='Tell me what the problem is, what computer you have, and when suits you…',
         contact_h="Let's talk.",
         contact_p="I'd love to hear from you. Write your message here and send it by email or WhatsApp. I usually reply the same day.",
+        contact_quote=('Prefer a form?', 'Describe your problem and get a quote &rarr;'),
         send_btn='Send Email', send_wa='Send via WhatsApp', msg_label='Message',
         book_title='Book a Visit', book_h='Pick a time that suits you',
         book_p="Choose a day and time inside my hours and I'll confirm by message. Nothing is booked until I reply.",
@@ -239,6 +240,7 @@ T = {
         from_ph='O seu nome', subject_ph='O que se passa?', msg_ph='Diga-me qual é o problema, que computador tem, e quando lhe dá jeito…',
         contact_h='Vamos falar.',
         contact_p='Tenho todo o gosto em ouvi-lo. Escreva aqui a sua mensagem e envie por email ou WhatsApp. Respondo normalmente no mesmo dia.',
+        contact_quote=('Prefere um formulário?', 'Descreva o problema e peça um orçamento &rarr;'),
         send_btn='Enviar Email', send_wa='Enviar por WhatsApp', msg_label='Mensagem',
         book_title='Marcar Visita', book_h='Escolha a hora que lhe dá jeito',
         book_p='Escolha um dia e hora dentro do meu horário e eu confirmo por mensagem. Nada fica marcado até eu responder.',
@@ -430,6 +432,7 @@ def body(t):
       f'            <span>{t["f_phone"]}</span><a href="{PHONE_HREF}">{px("p-phone", 16)}{PHONE}</a>\n'
       '          </div>\n          <div class="mail-body">\n'
       f'            <h3>{t["contact_h"]}</h3>\n            <p>{t["contact_p"]}</p>\n'
+      f'            <p class="quote-link">{t["contact_quote"][0]} <a href="quote/">{t["contact_quote"][1]}</a></p>\n'
       f'            <label class="sr-only" for="mail-body-{t["lang"][:2]}">{t["msg_label"]}</label>'
       f'<textarea id="mail-body-{t["lang"][:2]}" name="body" rows="6" placeholder="{t["msg_ph"]}" required></textarea>\n'
       f'            <div class="form-actions"><button type="submit" class="btn" data-via="whatsapp">{t["send_wa"]}</button>'
